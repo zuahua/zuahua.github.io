@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
-  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -26,7 +26,7 @@
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -49,7 +49,7 @@
   <meta name="description" content="python自学第二节运算符 python中的运算符1、算数运算符 + - * &#x2F; &#x2F;&#x2F;地板除,得到整的结果：如：4   8   9.0  …. % 取余 ** 指数幂">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python中的运算符">
-<meta property="og:url" content="http://innozh.com/2018-08-10-Python-2.html">
+<meta property="og:url" content="http://innozh.com/2018-08-10-python-2.html">
 <meta property="og:site_name" content="inno">
 <meta property="og:description" content="python自学第二节运算符 python中的运算符1、算数运算符 + - * &#x2F; &#x2F;&#x2F;地板除,得到整的结果：如：4   8   9.0  …. % 取余 ** 指数幂">
 <meta property="og:locale" content="zh_CN">
@@ -59,7 +59,7 @@
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://innozh.com/2018-08-10-Python-2.html">
+<link rel="canonical" href="http://innozh.com/2018-08-10-python-2.html">
 
 
 <script id="page-configurations">
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-links">
 
-    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -194,10 +194,9 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -213,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://innozh.com/2018-08-10-Python-2.html">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2018-08-10-python-2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -247,13 +246,27 @@
               </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+            <span id="/2018-08-10-python-2.html" class="post-meta-item leancloud_visitors" data-flag-title="python中的运算符" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018-08-10-python-2.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018-08-10-python-2.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -279,7 +292,7 @@
 
       
         <p>python自学第二节<br>运算符</p>
-<h2 id="python中的运算符"><a href="#python中的运算符" class="headerlink" title="python中的运算符"></a>python中的运算符</h2><h3 id="1、算数运算符"><a href="#1、算数运算符" class="headerlink" title="1、算数运算符"></a>1、算数运算符</h3><ul>
+<h2><span id="python中的运算符">python中的运算符</span></h2><h3><span id="1-算数运算符">1、算数运算符</span></h3><ul>
 <li>+</li>
 <li>-</li>
 <li>*</li>
@@ -328,7 +341,7 @@
 
 
 
-<pre><code>256</code></pre><h3 id="算数运算符的优先级"><a href="#算数运算符的优先级" class="headerlink" title="算数运算符的优先级"></a>算数运算符的优先级</h3><ul>
+<pre><code>256</code></pre><h3><span id="算数运算符的优先级">算数运算符的优先级</span></h3><ul>
 <li>（）</li>
 <li>**</li>
 <li>/ *   //  %</li>
@@ -339,7 +352,7 @@
 
 
 
-<pre><code>19</code></pre><h3 id="运算中出现浮点数，结果一定是浮点数"><a href="#运算中出现浮点数，结果一定是浮点数" class="headerlink" title="运算中出现浮点数，结果一定是浮点数"></a>运算中出现浮点数，结果一定是浮点数</h3><h3 id="运算小练习"><a href="#运算小练习" class="headerlink" title="运算小练习"></a>运算小练习</h3><ul>
+<pre><code>19</code></pre><h3><span id="运算中出现浮点数结果一定是浮点数">运算中出现浮点数，结果一定是浮点数</span></h3><h3><span id="运算小练习">运算小练习</span></h3><ul>
 <li>摄氏度、华氏温度、开氏温度的转换</li>
 <li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
 <li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
@@ -349,7 +362,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
 
 <pre><code>华氏温度h: 89.600000
-开氏温度k: 305.150000</code></pre><h3 id="2、赋值运算符"><a href="#2、赋值运算符" class="headerlink" title="2、赋值运算符"></a>2、赋值运算符</h3><ul>
+开氏温度k: 305.150000</code></pre><h3><span id="2-赋值运算符">2、赋值运算符</span></h3><ul>
 <li>=，+=，-=,*=,/=</li>
 <li>** = ,//=</li>
 </ul>
@@ -369,7 +382,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
 
 <pre><code>456
-123</code></pre><h4 id="数值运算练习"><a href="#数值运算练习" class="headerlink" title="数值运算练习"></a>数值运算练习</h4><ul>
+123</code></pre><h4><span id="数值运算练习">数值运算练习</span></h4><ul>
 <li>(1)求r=6.6cm的球的体积和面积</li>
 <li>面积s=4<em>pi</em>r^2</li>
 <li>体积v=4/3<em>pi</em>r^3</li>
@@ -384,7 +397,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
 
-<pre><code>现在的时间：05:23:09</code></pre><h3 id="3、比较运算符"><a href="#3、比较运算符" class="headerlink" title="3、比较运算符"></a>3、比较运算符</h3><ul>
+<pre><code>现在的时间：05:23:09</code></pre><h3><span id="3-比较运算符">3、比较运算符</span></h3><ul>
 <li>&lt; &gt; &lt;= &gt;= == !=</li>
 <li>比较的结果是bool值</li>
 </ul>
@@ -398,7 +411,7 @@
 
 
 
-<pre><code>False</code></pre><h3 id="4、逻辑运算符"><a href="#4、逻辑运算符" class="headerlink" title="4、逻辑运算符"></a>4、逻辑运算符</h3><ul>
+<pre><code>False</code></pre><h3><span id="4-逻辑运算符">4、逻辑运算符</span></h3><ul>
 <li><p>and逻辑与,短路与</p>
 </li>
 <li><p>or 逻辑或</p>
@@ -431,7 +444,7 @@
 
 
 
-<pre><code>False</code></pre><h3 id="5、特殊运算符"><a href="#5、特殊运算符" class="headerlink" title="5、特殊运算符"></a>5、特殊运算符</h3><ul>
+<pre><code>False</code></pre><h3><span id="5-特殊运算符">5、特殊运算符</span></h3><ul>
 <li><p>is 判断两个对象的内存地址是否相同</p>
 </li>
 <li><p>is not 与is相反</p>
@@ -516,7 +529,7 @@ NameError: name &apos;em&apos; is not defined</code></pre>
       <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-23-arcgis-python-5.html" rel="bookmark">Arcgis中的python编程(5)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-5.html" rel="bookmark">函数、return、函数参数、列表字典传入函数、函数文档</a></div>
@@ -525,8 +538,9 @@ NameError: name &apos;em&apos; is not defined</code></pre>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
           </div>
 
         
@@ -555,6 +569,7 @@ NameError: name &apos;em&apos; is not defined</code></pre>
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -601,7 +616,7 @@ NameError: name &apos;em&apos; is not defined</code></pre>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的运算符"><span class="nav-number">1.</span> <span class="nav-text">python中的运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、算数运算符"><span class="nav-number">1.1.</span> <span class="nav-text">1、算数运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算数运算符的优先级"><span class="nav-number">1.2.</span> <span class="nav-text">算数运算符的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算中出现浮点数，结果一定是浮点数"><span class="nav-number">1.3.</span> <span class="nav-text">运算中出现浮点数，结果一定是浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算小练习"><span class="nav-number">1.4.</span> <span class="nav-text">运算小练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、赋值运算符"><span class="nav-number">1.5.</span> <span class="nav-text">2、赋值运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值运算练习"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值运算练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、比较运算符"><span class="nav-number">1.6.</span> <span class="nav-text">3、比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、逻辑运算符"><span class="nav-number">1.7.</span> <span class="nav-text">4、逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、特殊运算符"><span class="nav-number">1.8.</span> <span class="nav-text">5、特殊运算符</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">python中的运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">1、算数运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">算数运算符的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">运算中出现浮点数，结果一定是浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">运算小练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.5.</span> <span class="nav-text">2、赋值运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值运算练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.6.</span> <span class="nav-text">3、比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.7.</span> <span class="nav-text">4、逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.8.</span> <span class="nav-text">5、特殊运算符</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -683,26 +698,6 @@ NameError: name &apos;em&apos; is not defined</code></pre>
   </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -756,6 +751,156 @@ NameError: name &apos;em&apos; is not defined</code></pre>
   
 
   
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
 
 
    
@@ -767,6 +912,13 @@ NameError: name &apos;em&apos; is not defined</code></pre>
 
 
 
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
     
 
   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
@@ -775,6 +927,13 @@ NameError: name &apos;em&apos; is not defined</code></pre>
 
 
 
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 </body>
 </html>

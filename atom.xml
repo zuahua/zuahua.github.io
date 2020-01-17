@@ -18,8 +18,8 @@
   
   <entry>
     <title>使用PHPMailer库发送邮件支持ssl方式</title>
-    <link href="http://innozh.com/2019-12-14-%E4%BD%BF%E7%94%A8PHPMailer%E5%BA%93%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6.html"/>
-    <id>http://innozh.com/2019-12-14-%E4%BD%BF%E7%94%A8PHPMailer%E5%BA%93%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6.html</id>
+    <link href="http://innozh.com/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html"/>
+    <id>http://innozh.com/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html</id>
     <published>2019-12-14T00:00:00.000Z</published>
     <updated>2020-01-16T08:01:49.779Z</updated>
     
@@ -45,8 +45,8 @@
   
   <entry>
     <title>PHP实现注册时邮箱验证</title>
-    <link href="http://innozh.com/2019-12-11-PHP%E5%AE%9E%E7%8E%B0%E6%B3%A8%E5%86%8C%E6%97%B6%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81.html"/>
-    <id>http://innozh.com/2019-12-11-PHP%E5%AE%9E%E7%8E%B0%E6%B3%A8%E5%86%8C%E6%97%B6%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81.html</id>
+    <link href="http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html"/>
+    <id>http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html</id>
     <published>2019-12-11T00:00:00.000Z</published>
     <updated>2020-01-15T12:52:05.016Z</updated>
     
@@ -83,8 +83,8 @@
   
   <entry>
     <title>搭建IPSec VPN 虚拟局域网</title>
-    <link href="http://innozh.com/2019-11-12-IPSec%20VPN%20%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%E6%90%AD%E5%BB%BA.html"/>
-    <id>http://innozh.com/2019-11-12-IPSec%20VPN%20%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%E6%90%AD%E5%BB%BA.html</id>
+    <link href="http://innozh.com/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html"/>
+    <id>http://innozh.com/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html</id>
     <published>2019-11-12T00:00:00.000Z</published>
     <updated>2020-01-15T12:21:03.689Z</updated>
     
@@ -106,8 +106,8 @@
   
   <entry>
     <title>arcEngine C# 独立的地理信息系统程序 计算点坐标、线长、面积</title>
-    <link href="http://innozh.com/2019-09-23-Cshape%20%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%A8%8B%E5%BA%8F.html"/>
-    <id>http://innozh.com/2019-09-23-Cshape%20%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%A8%8B%E5%BA%8F.html</id>
+    <link href="http://innozh.com/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html"/>
+    <id>http://innozh.com/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html</id>
     <published>2019-09-23T00:00:00.000Z</published>
     <updated>2020-01-16T02:49:28.963Z</updated>
     
@@ -146,8 +146,8 @@
   
   <entry>
     <title>arcEngine 计算点坐标、线长、面积</title>
-    <link href="http://innozh.com/2019-09-23-Cshape%20arcengine%20addin.html"/>
-    <id>http://innozh.com/2019-09-23-Cshape%20arcengine%20addin.html</id>
+    <link href="http://innozh.com/2019-09-23-cshape-arcengine-addin.html"/>
+    <id>http://innozh.com/2019-09-23-cshape-arcengine-addin.html</id>
     <published>2019-09-23T00:00:00.000Z</published>
     <updated>2020-01-16T02:49:16.732Z</updated>
     
@@ -174,8 +174,8 @@
   
   <entry>
     <title>Python 计算面的周长</title>
-    <link href="http://innozh.com/2019-09-19-python%20arcpy%20%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%9A%84%E5%91%A8%E9%95%BF.html"/>
-    <id>http://innozh.com/2019-09-19-python%20arcpy%20%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%9A%84%E5%91%A8%E9%95%BF.html</id>
+    <link href="http://innozh.com/2019-09-19-python-arcpy-ji-suan-mian-de-zhou-chang.html"/>
+    <id>http://innozh.com/2019-09-19-python-arcpy-ji-suan-mian-de-zhou-chang.html</id>
     <published>2019-09-19T00:00:00.000Z</published>
     <updated>2020-01-15T12:52:13.893Z</updated>
     
@@ -195,53 +195,9 @@
   </entry>
   
   <entry>
-    <title>Python 计算要素图层面积</title>
-    <link href="http://innozh.com/2019-09-18-py%20%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%A7%AF.html"/>
-    <id>http://innozh.com/2019-09-18-py%20%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%A7%AF.html</id>
-    <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:25.868Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;arcpy&lt;/li&gt;
-&lt;li&gt;获取矢量面图层，添加字段，实现面积的计算&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python arcpy 计算曲线长度与弯曲度</title>
-    <link href="http://innozh.com/2019-09-18-Python%20arcpy%20%E8%AE%A1%E7%AE%97%E6%9B%B2%E7%BA%BF%E9%95%BF%E5%BA%A6%E4%B8%8E%E5%BC%AF%E6%9B%B2%E5%BA%A6.html"/>
-    <id>http://innozh.com/2019-09-18-Python%20arcpy%20%E8%AE%A1%E7%AE%97%E6%9B%B2%E7%BA%BF%E9%95%BF%E5%BA%A6%E4%B8%8E%E5%BC%AF%E6%9B%B2%E5%BA%A6.html</id>
-    <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:20.533Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;arcpy&lt;/li&gt;
-&lt;li&gt;获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
-    
-  </entry>
-  
-  <entry>
     <title>vba ArcMap UI控件  计算要素图层面积</title>
-    <link href="http://innozh.com/2019-09-18-vba%20ArcMap%20UI%E6%8E%A7%E4%BB%B6%20%E8%AE%A1%E7%AE%97%E7%82%B9%E5%9D%90%E6%A0%87.html"/>
-    <id>http://innozh.com/2019-09-18-vba%20ArcMap%20UI%E6%8E%A7%E4%BB%B6%20%E8%AE%A1%E7%AE%97%E7%82%B9%E5%9D%90%E6%A0%87.html</id>
+    <link href="http://innozh.com/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html"/>
+    <id>http://innozh.com/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html</id>
     <published>2019-09-18T00:00:00.000Z</published>
     <updated>2020-01-15T12:52:17.493Z</updated>
     
@@ -261,9 +217,31 @@
   </entry>
   
   <entry>
+    <title>Python arcpy 计算曲线长度与弯曲度</title>
+    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html"/>
+    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html</id>
+    <published>2019-09-18T00:00:00.000Z</published>
+    <updated>2020-01-15T12:52:20.533Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;arcpy&lt;/li&gt;
+&lt;li&gt;获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python arcpy 计算点经纬度坐标</title>
-    <link href="http://innozh.com/2019-09-18-Python%20arcpy%20%20%E8%AE%A1%E7%AE%97%E7%82%B9%E7%BB%8F%E7%BA%AC%E5%BA%A6%E5%9D%90%E6%A0%87.html"/>
-    <id>http://innozh.com/2019-09-18-Python%20arcpy%20%20%E8%AE%A1%E7%AE%97%E7%82%B9%E7%BB%8F%E7%BA%AC%E5%BA%A6%E5%9D%90%E6%A0%87.html</id>
+    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html"/>
+    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</id>
     <published>2019-09-18T00:00:00.000Z</published>
     <updated>2020-01-15T12:52:22.817Z</updated>
     
@@ -282,9 +260,54 @@
   </entry>
   
   <entry>
+    <title>Python 计算要素图层面积</title>
+    <link href="http://innozh.com/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html"/>
+    <id>http://innozh.com/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html</id>
+    <published>2019-09-18T00:00:00.000Z</published>
+    <updated>2020-01-15T12:52:25.868Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;arcpy&lt;/li&gt;
+&lt;li&gt;获取矢量面图层，添加字段，实现面积的计算&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vba ArcMap UI控件  计算要素图层面积</title>
+    <link href="http://innozh.com/2019-09-16-vba-arcmap-ui-kong-jian-ji-suan-yao-su-tu-ceng-mian-ji.html"/>
+    <id>http://innozh.com/2019-09-16-vba-arcmap-ui-kong-jian-ji-suan-yao-su-tu-ceng-mian-ji.html</id>
+    <published>2019-09-16T00:00:00.000Z</published>
+    <updated>2020-01-15T12:51:43.131Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;计算面图层&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加字段&lt;/li&gt;
+&lt;li&gt;计算面积&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ArcMapEngine vba" scheme="http://innozh.com/tags/ArcMapEngine-vba/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vba ArcMap UI控件 线图层-线长与弯曲度</title>
-    <link href="http://innozh.com/2019-09-16-vba%20%E7%BA%BF%E5%9B%BE%E5%B1%82-%E7%BA%BF%E9%95%BF%E4%B8%8E%E5%BC%AF%E6%9B%B2%E5%BA%A6.html"/>
-    <id>http://innozh.com/2019-09-16-vba%20%E7%BA%BF%E5%9B%BE%E5%B1%82-%E7%BA%BF%E9%95%BF%E4%B8%8E%E5%BC%AF%E6%9B%B2%E5%BA%A6.html</id>
+    <link href="http://innozh.com/2019-09-16-vba-xian-tu-ceng-xian-chang-yu-wan-qu-du.html"/>
+    <id>http://innozh.com/2019-09-16-vba-xian-tu-ceng-xian-chang-yu-wan-qu-du.html</id>
     <published>2019-09-16T00:00:00.000Z</published>
     <updated>2020-01-15T12:52:29.106Z</updated>
     
@@ -307,32 +330,9 @@
   </entry>
   
   <entry>
-    <title>vba ArcMap UI控件  计算要素图层面积</title>
-    <link href="http://innozh.com/2019-09-16-vba%20ArcMap%20UI%E6%8E%A7%E4%BB%B6%20%20%E8%AE%A1%E7%AE%97%E8%A6%81%E7%B4%A0%E5%9B%BE%E5%B1%82%E9%9D%A2%E7%A7%AF.html"/>
-    <id>http://innozh.com/2019-09-16-vba%20ArcMap%20UI%E6%8E%A7%E4%BB%B6%20%20%E8%AE%A1%E7%AE%97%E8%A6%81%E7%B4%A0%E5%9B%BE%E5%B1%82%E9%9D%A2%E7%A7%AF.html</id>
-    <published>2019-09-16T00:00:00.000Z</published>
-    <updated>2020-01-15T12:51:43.131Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;计算面图层&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;添加字段&lt;/li&gt;
-&lt;li&gt;计算面积&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine vba" scheme="http://innozh.com/tags/ArcMapEngine-vba/"/>
-    
-  </entry>
-  
-  <entry>
     <title>jQuery实现带下拉框导航栏</title>
-    <link href="http://innozh.com/2019-08-15-jQuery%E5%AE%9E%E7%8E%B0%E5%B8%A6%E4%B8%8B%E6%8B%89%E6%A1%86%E5%AF%BC%E8%88%AA%E6%A0%8F.html"/>
-    <id>http://innozh.com/2019-08-15-jQuery%E5%AE%9E%E7%8E%B0%E5%B8%A6%E4%B8%8B%E6%8B%89%E6%A1%86%E5%AF%BC%E8%88%AA%E6%A0%8F.html</id>
+    <link href="http://innozh.com/2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html"/>
+    <id>http://innozh.com/2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html</id>
     <published>2019-08-15T00:00:00.000Z</published>
     <updated>2020-01-15T12:20:34.458Z</updated>
     
@@ -362,8 +362,8 @@
   
   <entry>
     <title>Python-ArcGIS学习功能索引</title>
-    <link href="http://innozh.com/2019-08-06-Python-ArcGis%E5%AD%A6%E4%B9%A0%E5%8A%9F%E8%83%BD%E7%B4%A2%E5%BC%95.html"/>
-    <id>http://innozh.com/2019-08-06-Python-ArcGis%E5%AD%A6%E4%B9%A0%E5%8A%9F%E8%83%BD%E7%B4%A2%E5%BC%95.html</id>
+    <link href="http://innozh.com/2019-08-06-python-arcgis-xue-xi-gong-neng-suo-yin.html"/>
+    <id>http://innozh.com/2019-08-06-python-arcgis-xue-xi-gong-neng-suo-yin.html</id>
     <published>2019-08-06T00:00:00.000Z</published>
     <updated>2020-01-15T12:20:31.562Z</updated>
     
@@ -389,8 +389,8 @@
   
   <entry>
     <title>JavaScript应用实例-下拉框</title>
-    <link href="http://innozh.com/2019-08-06-JavaScript%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B(3)-%E6%89%8B%E9%A3%8E%E7%90%B4%E4%B8%8B%E6%8B%89%E6%A1%86.html"/>
-    <id>http://innozh.com/2019-08-06-JavaScript%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B(3)-%E6%89%8B%E9%A3%8E%E7%90%B4%E4%B8%8B%E6%8B%89%E6%A1%86.html</id>
+    <link href="http://innozh.com/2019-08-06-javascript-ying-yong-shi-li-3-shou-feng-qin-xia-la-kuang.html"/>
+    <id>http://innozh.com/2019-08-06-javascript-ying-yong-shi-li-3-shou-feng-qin-xia-la-kuang.html</id>
     <published>2019-08-06T00:00:00.000Z</published>
     <updated>2020-01-15T12:20:17.209Z</updated>
     
@@ -413,8 +413,8 @@
   
   <entry>
     <title>JavaScript应用实例-自动、手动播放图片</title>
-    <link href="http://innozh.com/2019-08-05-%E8%87%AA%E5%8A%A8%E3%80%81%E6%89%8B%E5%8A%A8%E6%92%AD%E6%94%BE%E5%9B%BE%E7%89%87JavaScript.html"/>
-    <id>http://innozh.com/2019-08-05-%E8%87%AA%E5%8A%A8%E3%80%81%E6%89%8B%E5%8A%A8%E6%92%AD%E6%94%BE%E5%9B%BE%E7%89%87JavaScript.html</id>
+    <link href="http://innozh.com/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html"/>
+    <id>http://innozh.com/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html</id>
     <published>2019-08-05T00:00:00.000Z</published>
     <updated>2020-01-15T12:20:12.110Z</updated>
     
@@ -440,59 +440,9 @@
   </entry>
   
   <entry>
-    <title>CSS图片居中</title>
-    <link href="http://innozh.com/2019-08-05-%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%ADCSS.html"/>
-    <id>http://innozh.com/2019-08-05-%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%ADCSS.html</id>
-    <published>2019-08-05T00:00:00.000Z</published>
-    <updated>2020-01-15T12:26:39.825Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;CSS-图片居中方式&quot;&gt;&lt;a href=&quot;#CSS-图片居中方式&quot; class=&quot;headerlink&quot; title=&quot;CSS-图片居中方式&quot;&gt;&lt;/a&gt;CSS-图片居中方式&lt;/h2&gt;&lt;h3 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;div id&amp;#x3D;&amp;quot;pic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;img src&amp;#x3D;&amp;quot;&amp;#x2F;php&amp;#x2F;images&amp;#x2F;1.png&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;&amp;#x2F;div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-&lt;li&gt;控制父级元素高、宽;&lt;/li&gt;
-&lt;li&gt;设置img占满父级元素&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="CSS" scheme="http://innozh.com/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript应用实例-下拉框</title>
-    <link href="http://innozh.com/2019-08-05-%E4%B8%8B%E6%8B%89%E6%A1%86JavaScript.html"/>
-    <id>http://innozh.com/2019-08-05-%E4%B8%8B%E6%8B%89%E6%A1%86JavaScript.html</id>
-    <published>2019-08-05T00:00:00.000Z</published>
-    <updated>2020-01-15T12:19:55.329Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;JavaScript应用实例-2-下拉菜单&quot;&gt;&lt;a href=&quot;#JavaScript应用实例-2-下拉菜单&quot; class=&quot;headerlink&quot; title=&quot;JavaScript应用实例(2)-下拉菜单&quot;&gt;&lt;/a&gt;JavaScript应用实例(2)-下拉菜单&lt;/h2&gt;&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/u014175572/article/details/50325929&quot; target=&quot;_blank&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;js实现简单的下拉菜单&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;html&lt;/li&gt;
-&lt;li&gt;css&lt;/li&gt;
-&lt;li&gt;javascript&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;效果:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/blog/subMenu.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JavaScript学习实例(3)</title>
-    <link href="http://innozh.com/2019-08-05-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(3).html"/>
-    <id>http://innozh.com/2019-08-05-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(3).html</id>
+    <link href="http://innozh.com/2019-08-05-javascript-xue-xi-shi-li-3.html"/>
+    <id>http://innozh.com/2019-08-05-javascript-xue-xi-shi-li-3.html</id>
     <published>2019-08-05T00:00:00.000Z</published>
     <updated>2020-01-15T12:19:52.626Z</updated>
     
@@ -521,9 +471,59 @@
   </entry>
   
   <entry>
+    <title>CSS图片居中</title>
+    <link href="http://innozh.com/2019-08-05-tu-pian-ju-zhong-css.html"/>
+    <id>http://innozh.com/2019-08-05-tu-pian-ju-zhong-css.html</id>
+    <published>2019-08-05T00:00:00.000Z</published>
+    <updated>2020-01-15T12:26:39.825Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CSS-图片居中方式&quot;&gt;&lt;a href=&quot;#CSS-图片居中方式&quot; class=&quot;headerlink&quot; title=&quot;CSS-图片居中方式&quot;&gt;&lt;/a&gt;CSS-图片居中方式&lt;/h2&gt;&lt;h3 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;div id&amp;#x3D;&amp;quot;pic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;img src&amp;#x3D;&amp;quot;&amp;#x2F;php&amp;#x2F;images&amp;#x2F;1.png&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;&amp;#x2F;div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;控制父级元素高、宽;&lt;/li&gt;
+&lt;li&gt;设置img占满父级元素&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="CSS" scheme="http://innozh.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript应用实例-下拉框</title>
+    <link href="http://innozh.com/2019-08-05-xia-la-kuang-javascript.html"/>
+    <id>http://innozh.com/2019-08-05-xia-la-kuang-javascript.html</id>
+    <published>2019-08-05T00:00:00.000Z</published>
+    <updated>2020-01-15T12:19:55.329Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JavaScript应用实例-2-下拉菜单&quot;&gt;&lt;a href=&quot;#JavaScript应用实例-2-下拉菜单&quot; class=&quot;headerlink&quot; title=&quot;JavaScript应用实例(2)-下拉菜单&quot;&gt;&lt;/a&gt;JavaScript应用实例(2)-下拉菜单&lt;/h2&gt;&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/u014175572/article/details/50325929&quot; target=&quot;_blank&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;js实现简单的下拉菜单&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;html&lt;/li&gt;
+&lt;li&gt;css&lt;/li&gt;
+&lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;效果:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/blog/subMenu.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript学习实例(2)</title>
-    <link href="http://innozh.com/2019-08-04-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(2).html"/>
-    <id>http://innozh.com/2019-08-04-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(2).html</id>
+    <link href="http://innozh.com/2019-08-04-javascript-xue-xi-shi-li-2.html"/>
+    <id>http://innozh.com/2019-08-04-javascript-xue-xi-shi-li-2.html</id>
     <published>2019-08-04T00:00:00.000Z</published>
     <updated>2020-01-15T12:19:49.165Z</updated>
     

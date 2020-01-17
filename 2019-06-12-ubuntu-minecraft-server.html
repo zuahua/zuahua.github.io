@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
-  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -26,7 +26,7 @@
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-links">
 
-    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -194,10 +194,9 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -247,13 +246,27 @@
               </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+            <span id="/2019-06-12-ubuntu-minecraft-server.html" class="post-meta-item leancloud_visitors" data-flag-title="minecraft服务器搭建" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019-06-12-ubuntu-minecraft-server.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019-06-12-ubuntu-minecraft-server.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -284,24 +297,24 @@
 <p>参考：<br><a href="https://linux.cn/article-9480-1.html" target="_blank" rel="noopener external nofollow noreferrer">在ubuntu搭建minecraft服务器</a></p>
 <a id="more"></a>
 
-<h4 id="安装java1-8"><a href="#安装java1-8" class="headerlink" title="安装java1.8"></a>安装java1.8</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openjdk-8-jdk</span><br></pre></td></tr></table></figure>
-<h4 id="卸载java"><a href="#卸载java" class="headerlink" title="卸载java"></a>卸载java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove openjdk*</span><br></pre></td></tr></table></figure>
-<h4 id="1-screen进入screen"><a href="#1-screen进入screen" class="headerlink" title="1.screen进入screen"></a>1.screen进入screen</h4><h5 id="1-1-新建screen"><a href="#1-1-新建screen" class="headerlink" title="1.1 新建screen"></a>1.1 新建screen</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S newscreen</span><br></pre></td></tr></table></figure>
-<h5 id="1-2-打开screen进程"><a href="#1-2-打开screen进程" class="headerlink" title="1.2 打开screen进程"></a>1.2 打开screen进程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -r</span><br></pre></td></tr></table></figure>
-<h4 id="2-kill-pid退出screen某个进程"><a href="#2-kill-pid退出screen某个进程" class="headerlink" title="2.kill pid退出screen某个进程"></a>2.kill pid退出screen某个进程</h4><h4 id="3-运行minecraft"><a href="#3-运行minecraft" class="headerlink" title="3.运行minecraft"></a>3.运行minecraft</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
-<h4 id="4-执行-sh脚本"><a href="#4-执行-sh脚本" class="headerlink" title="4.执行.sh脚本"></a>4.执行.sh脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
-<h4 id="5-进入服务器控制台"><a href="#5-进入服务器控制台" class="headerlink" title="5.进入服务器控制台"></a>5.进入服务器控制台</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -r minecraft</span><br></pre></td></tr></table></figure>
-<h4 id="6-下载新版本minecraft"><a href="#6-下载新版本minecraft" class="headerlink" title="6.下载新版本minecraft"></a>6.下载新版本minecraft</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;s3.amazonaws.com&#x2F;Minecraft.Download&#x2F;versions&#x2F;1.12.2&#x2F;minecraft_server.1.12.2.jar</span><br></pre></td></tr></table></figure>
-<h5 id="6-1接下来，运行并构建新服务端："><a href="#6-1接下来，运行并构建新服务端：" class="headerlink" title="6.1接下来，运行并构建新服务端："></a>6.1接下来，运行并构建新服务端：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
-<h5 id="6-2最后，更新你的启动脚本："><a href="#6-2最后，更新你的启动脚本：" class="headerlink" title="6.2最后，更新你的启动脚本："></a>6.2最后，更新你的启动脚本：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
-<h5 id="6-3更新版本号数字："><a href="#6-3更新版本号数字：" class="headerlink" title="6.3更新版本号数字："></a>6.3更新版本号数字：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
-<h4 id="7-server-properties参数"><a href="#7-server-properties参数" class="headerlink" title="7.server.properties参数"></a>7.server.properties参数</h4><p><a href="https://minecraft-zh.gamepedia.com/index.php?title=Server.properties&variant=zh" target="_blank" rel="noopener external nofollow noreferrer">server.properties参数</a></p>
-<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br></pre></td></tr></table></figure>
-<h4 id="9-minecraft服务端指令"><a href="#9-minecraft服务端指令" class="headerlink" title="9.minecraft服务端指令"></a>9.minecraft服务端指令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;op 玩家名    &#x2F;&#x2F; 给权限</span><br><span class="line">&#x2F;gamemode 模式 玩家名</span><br></pre></td></tr></table></figure>
-<h4 id="10-forge安装"><a href="#10-forge安装" class="headerlink" title="10.forge安装"></a>10.forge安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;files.minecraftforge.net&#x2F;maven&#x2F;net&#x2F;minecraftforge&#x2F;forge&#x2F;1.12.2-14.23.5.2808&#x2F;forge-1.12.2-14.23.5.2808-installer.jar</span><br><span class="line">java -jar forge文件.jar --insatll</span><br></pre></td></tr></table></figure>
-<h5 id="10-1运行forge"><a href="#10-1运行forge" class="headerlink" title="10.1运行forge"></a>10.1运行forge</h5><h5 id="运行forge需要java1-8"><a href="#运行forge需要java1-8" class="headerlink" title="运行forge需要java1.8"></a>运行forge需要java1.8</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -server -jar forge-1.12.2-14.23.5.2808-universal.jar -nogui</span><br></pre></td></tr></table></figure>
-<h4 id="11赋予-sh文件权限"><a href="#11赋予-sh文件权限" class="headerlink" title="11赋予.sh文件权限"></a>11赋予.sh文件权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x start.sh</span><br></pre></td></tr></table></figure>
-<h4 id="12MC服务器崩溃自启脚本"><a href="#12MC服务器崩溃自启脚本" class="headerlink" title="12MC服务器崩溃自启脚本"></a>12MC服务器崩溃自启脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h4><span id="安装java18">安装java1.8</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openjdk-8-jdk</span><br></pre></td></tr></table></figure>
+<h4><span id="卸载java">卸载java</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove openjdk*</span><br></pre></td></tr></table></figure>
+<h4><span id="1screen进入screen">1.screen进入screen</span></h4><h5><span id="11-新建screen">1.1 新建screen</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S newscreen</span><br></pre></td></tr></table></figure>
+<h5><span id="12-打开screen进程">1.2 打开screen进程</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -r</span><br></pre></td></tr></table></figure>
+<h4><span id="2kill-pid退出screen某个进程">2.kill pid退出screen某个进程</span></h4><h4><span id="3运行minecraft">3.运行minecraft</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
+<h4><span id="4执行sh脚本">4.执行.sh脚本</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
+<h4><span id="5进入服务器控制台">5.进入服务器控制台</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -r minecraft</span><br></pre></td></tr></table></figure>
+<h4><span id="6下载新版本minecraft">6.下载新版本minecraft</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;s3.amazonaws.com&#x2F;Minecraft.Download&#x2F;versions&#x2F;1.12.2&#x2F;minecraft_server.1.12.2.jar</span><br></pre></td></tr></table></figure>
+<h5><span id="61接下来运行并构建新服务端">6.1接下来，运行并构建新服务端：</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
+<h5><span id="62最后更新你的启动脚本">6.2最后，更新你的启动脚本：</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
+<h5><span id="63更新版本号数字">6.3更新版本号数字：</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
+<h4><span id="7serverproperties参数">7.server.properties参数</span></h4><p><a href="https://minecraft-zh.gamepedia.com/index.php?title=Server.properties&variant=zh" target="_blank" rel="noopener external nofollow noreferrer">server.properties参数</a></p>
+<h4><span id="8">8.</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br></pre></td></tr></table></figure>
+<h4><span id="9minecraft服务端指令">9.minecraft服务端指令</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;op 玩家名    &#x2F;&#x2F; 给权限</span><br><span class="line">&#x2F;gamemode 模式 玩家名</span><br></pre></td></tr></table></figure>
+<h4><span id="10forge安装">10.forge安装</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;files.minecraftforge.net&#x2F;maven&#x2F;net&#x2F;minecraftforge&#x2F;forge&#x2F;1.12.2-14.23.5.2808&#x2F;forge-1.12.2-14.23.5.2808-installer.jar</span><br><span class="line">java -jar forge文件.jar --insatll</span><br></pre></td></tr></table></figure>
+<h5><span id="101运行forge">10.1运行forge</span></h5><h5><span id="运行forge需要java18">运行forge需要java1.8</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -server -jar forge-1.12.2-14.23.5.2808-universal.jar -nogui</span><br></pre></td></tr></table></figure>
+<h4><span id="11赋予sh文件权限">11赋予.sh文件权限</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x start.sh</span><br></pre></td></tr></table></figure>
+<h4><span id="12mc服务器崩溃自启脚本">12MC服务器崩溃自启脚本</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -311,7 +324,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-23-arcgis-python-5.html" rel="bookmark">Arcgis中的python编程(5)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
@@ -320,8 +333,9 @@
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Minecraft/" rel="tag"># Minecraft</a>
+              <a href="/tags/Minecraft/" rel="tag"><i class="fa fa-tag"></i> Minecraft</a>
           </div>
 
         
@@ -330,12 +344,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-03-19-C%E8%AF%AD%E8%A8%80%E9%A1%BA%E5%BA%8F%E6%A0%88.html" rel="prev" title="C语言顺序栈">
+    <a href="/2019-03-19-c-yu-yan-shun-xu-zhan.html" rel="prev" title="C语言顺序栈">
       <i class="fa fa-chevron-left"></i> C语言顺序栈
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019-06-12-ubuntu16.04%20vsftpd.html" rel="next" title="ubuntu16.04安装vsftpd">
-      ubuntu16.04安装vsftpd <i class="fa fa-chevron-right"></i>
+    <a href="/2019-06-12-essay1.html" rel="next" title="记录使用这个 blog theme">
+      记录使用这个 blog theme <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -350,6 +364,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -396,7 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装java1-8"><span class="nav-number">1.</span> <span class="nav-text">安装java1.8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载java"><span class="nav-number">2.</span> <span class="nav-text">卸载java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-screen进入screen"><span class="nav-number">3.</span> <span class="nav-text">1.screen进入screen</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-新建screen"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 新建screen</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-打开screen进程"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 打开screen进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-kill-pid退出screen某个进程"><span class="nav-number">4.</span> <span class="nav-text">2.kill pid退出screen某个进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-运行minecraft"><span class="nav-number">5.</span> <span class="nav-text">3.运行minecraft</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-执行-sh脚本"><span class="nav-number">6.</span> <span class="nav-text">4.执行.sh脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-进入服务器控制台"><span class="nav-number">7.</span> <span class="nav-text">5.进入服务器控制台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-下载新版本minecraft"><span class="nav-number">8.</span> <span class="nav-text">6.下载新版本minecraft</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1接下来，运行并构建新服务端："><span class="nav-number">8.1.</span> <span class="nav-text">6.1接下来，运行并构建新服务端：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2最后，更新你的启动脚本："><span class="nav-number">8.2.</span> <span class="nav-text">6.2最后，更新你的启动脚本：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3更新版本号数字："><span class="nav-number">8.3.</span> <span class="nav-text">6.3更新版本号数字：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-server-properties参数"><span class="nav-number">9.</span> <span class="nav-text">7.server.properties参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8"><span class="nav-number">10.</span> <span class="nav-text">8.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-minecraft服务端指令"><span class="nav-number">11.</span> <span class="nav-text">9.minecraft服务端指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-forge安装"><span class="nav-number">12.</span> <span class="nav-text">10.forge安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1运行forge"><span class="nav-number">12.1.</span> <span class="nav-text">10.1运行forge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行forge需要java1-8"><span class="nav-number">12.2.</span> <span class="nav-text">运行forge需要java1.8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11赋予-sh文件权限"><span class="nav-number">13.</span> <span class="nav-text">11赋予.sh文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12MC服务器崩溃自启脚本"><span class="nav-number">14.</span> <span class="nav-text">12MC服务器崩溃自启脚本</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">安装java1.8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">卸载java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">1.screen进入screen</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 新建screen</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 打开screen进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">2.kill pid退出screen某个进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">3.运行minecraft</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">4.执行.sh脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">5.进入服务器控制台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text">6.下载新版本minecraft</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">8.1.</span> <span class="nav-text">6.1接下来，运行并构建新服务端：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">8.2.</span> <span class="nav-text">6.2最后，更新你的启动脚本：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">8.3.</span> <span class="nav-text">6.3更新版本号数字：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">9.</span> <span class="nav-text">7.server.properties参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">10.</span> <span class="nav-text">8.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">11.</span> <span class="nav-text">9.minecraft服务端指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">12.</span> <span class="nav-text">10.forge安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">12.1.</span> <span class="nav-text">10.1运行forge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">12.2.</span> <span class="nav-text">运行forge需要java1.8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">13.</span> <span class="nav-text">11赋予.sh文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">14.</span> <span class="nav-text">12MC服务器崩溃自启脚本</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -478,26 +493,6 @@
   </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -551,6 +546,156 @@
   
 
   
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
 
 
    
@@ -562,6 +707,13 @@
 
 
 
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
     
 
   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
@@ -570,6 +722,13 @@
 
 
 
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 </body>
 </html>

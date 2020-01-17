@@ -1125,6 +1125,74 @@ pre .javascript .function {
 .use-motion .menu-item {
   opacity: 0;
 }
+.github-corner :hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+.github-corner svg {
+  border: 0;
+  color: #fff;
+  fill: #222;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+@media (max-width: 991px) {
+  .github-corner svg {
+    color: #222;
+    fill: #fff;
+  }
+  .github-corner .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
+@-moz-keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+@-webkit-keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+@-o-keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
 .sidebar {
   background: #222;
   bottom: 0;
@@ -1205,7 +1273,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #095817;
+  background: #b3d59e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1512,39 +1580,15 @@ pre .javascript .function {
     transform: scale(1.1);
   }
 }
-.back-to-top {
-  background: #222;
-  bottom: -100px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-size: 12px;
-  left: 30px;
-  opacity: 0.6;
-  padding: 0 6px;
+.reading-progress-bar {
+  background: #37c6c0;
+  display: block;
+  height: 3px;
+  left: 0;
   position: fixed;
-  text-align: center;
-  transition-property: bottom;
-  z-index: 1300;
-  transition-delay: 0s;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  width: 24px;
-}
-.back-to-top span {
-  display: none;
-}
-.back-to-top:hover {
-  color: #fc6423;
-}
-.back-to-top.back-to-top-on {
-  bottom: 30px;
-}
-@media (max-width: 991px) {
-  .back-to-top {
-    left: 20px;
-    opacity: 0.8;
-  }
+  top: 0;
+  width: 0;
+  z-index: 1500;
 }
 .post-body {
   font-family: 'Noto Serif SC', 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -2771,6 +2815,67 @@ ul.breadcrumb li + li:last-child {
     margin: 8px 0 0;
   }
 }
+.moon-menu,
+.moon-menu-text {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  z-index: 999;
+}
+.moon-menu-svg,
+.moon-menu-button {
+  width: 4rem;
+  height: 4rem;
+}
+.moon-menu-button {
+  cursor: pointer;
+}
+.moon-menu-cricle {
+  fill: #607d8b;
+  opacity: 0.9;
+}
+.moon-menu-border {
+  stroke: #607d8b;
+  opacity: 0.9;
+  stroke-width: 1px;
+  fill: none;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.moon-menu-points {
+  transform: translate3d(2rem, 2rem, 0);
+}
+.moon-menu-point {
+  fill: #fff;
+  transition: all 0.15s cubic-bezier(0, 0, 0.382, 1.618);
+}
+.moon-menu-text {
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  line-height: 4rem;
+  font-size: 1.2rem;
+  display: none;
+}
+.moon-menu-item {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 0;
+  display: block;
+  transition: all 0.3s cubic-bezier(0, 0, 0.382, 1.618);
+  z-index: -1;
+  text-align: center;
+  line-height: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+}
 @media only screen and (min-width: 800px) {
   .post-block,
   .page {
@@ -2914,8 +3019,42 @@ body {
   margin: auto;
   border-radius: 10px;
 }
-.back-to-top {
-  border-radius: 5px;
-  right: 40px;
-  padding: 5px 26px 5px 16px;
+.popular-posts {
+  font-size: 18px;
+}
+.moon-menu-item {
+  left: 0.75rem;
+}
+/* 鼠标样式 */
+* {
+  cursor: url("/images/default.cur"), auto;
+}
+:link {
+  cursor: url("/images/pointer.cur"), auto;
+}
+/*文章底部标签样式*/
+.posts-expand .post-tags a {
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  font-family: 'Comic Sans MS', sans-serif;
+  transition: 0.2s ease-out;
+  padding: 3px 5px;
+  margin: 5px;
+  background: #f5f5f5;
+  border-bottom: none;
+  border-radius: 15px;
+}
+@media (max-width: 767px) {
+  .posts-expand .post-tags a {
+    padding: 1px 3px;
+    font-size: 8px;
+  }
+}
+.posts-expand .post-tags a:hover {
+  background: rgba(100,154,182,0.902);
+  color: #fff;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  -moz-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

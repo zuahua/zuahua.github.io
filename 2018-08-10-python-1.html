@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
-  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -26,7 +26,7 @@
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-links">
 
-    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -194,10 +194,9 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -247,13 +246,27 @@
               </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+            <span id="/2018-08-10-python-1.html" class="post-meta-item leancloud_visitors" data-flag-title="python数据类型" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018-08-10-python-1.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018-08-10-python-1.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -281,7 +294,7 @@
         <p>python自学第一节<br>数据类型</p>
 <a id="more"></a>
 
-<h1 id="python数据类型"><a href="#python数据类型" class="headerlink" title="python数据类型"></a>python数据类型</h1><h2 id="1-数字类型"><a href="#1-数字类型" class="headerlink" title="1 数字类型"></a>1 数字类型</h2><p>常量数字</p>
+<h1><span id="python数据类型">python数据类型</span></h1><h2><span id="1-数字类型">1 数字类型</span></h2><p>常量数字</p>
 <p> 数字类型  |  数字举例</p>
 <p> ————–| —————–</p>
 <p> 十进制整数 |  222， 666</p>
@@ -302,11 +315,11 @@
 
 <pre><code>4030</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 八进制</span></span><br><span class="line">a = <span class="number">0o776</span></span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 
-<pre><code>510</code></pre><h3 id="1-整数"><a href="#1-整数" class="headerlink" title="(1)整数"></a>(1)整数</h3><p>可以表示任何大的数</p>
+<pre><code>510</code></pre><h3><span id="1整数">(1)整数</span></h3><p>可以表示任何大的数</p>
 <p>  -二进制</p>
 <p>  -八进制</p>
 <p>  -十六进制</p>
-<h4 id="进制之间的转换"><a href="#进制之间的转换" class="headerlink" title="进制之间的转换"></a>进制之间的转换</h4><h4 id="转换成二进制"><a href="#转换成二进制" class="headerlink" title="转换成二进制"></a>转换成二进制</h4><pre><code>bin()</code></pre><h4 id="转换为八进制"><a href="#转换为八进制" class="headerlink" title="转换为八进制"></a>转换为八进制</h4><pre><code>oct()</code></pre><h4 id="转换为十六进制"><a href="#转换为十六进制" class="headerlink" title="转换为十六进制"></a>转换为十六进制</h4><pre><code>hex()</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 十进制转换为二进制</span></span><br><span class="line">a = <span class="number">678</span></span><br><span class="line">b = bin(a)</span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># 十进制转换为八进制</span></span><br><span class="line">c = oct(a)</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># 十进制转换为十六进制</span></span><br><span class="line">d = hex(a)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+<h4><span id="进制之间的转换">进制之间的转换</span></h4><h4><span id="转换成二进制">转换成二进制</span></h4><pre><code>bin()</code></pre><h4><span id="转换为八进制">转换为八进制</span></h4><pre><code>oct()</code></pre><h4><span id="转换为十六进制">转换为十六进制</span></h4><pre><code>hex()</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 十进制转换为二进制</span></span><br><span class="line">a = <span class="number">678</span></span><br><span class="line">b = bin(a)</span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># 十进制转换为八进制</span></span><br><span class="line">c = oct(a)</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># 十进制转换为十六进制</span></span><br><span class="line">d = hex(a)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
 
 <pre><code>0b1010100110
 0o1246
@@ -314,16 +327,16 @@
 
 <pre><code>0o13
 11
-11</code></pre><h3 id="2-浮点数"><a href="#2-浮点数" class="headerlink" title="(2)浮点数"></a>(2)浮点数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 小数</span></span><br><span class="line">a = <span class="number">3.456</span></span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># 科学计数法</span></span><br><span class="line">b = <span class="number">3.356e9</span></span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+11</code></pre><h3><span id="2浮点数">(2)浮点数</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 小数</span></span><br><span class="line">a = <span class="number">3.456</span></span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># 科学计数法</span></span><br><span class="line">b = <span class="number">3.356e9</span></span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
 
 <pre><code>3.456
-3356000000.0</code></pre><h3 id="3-复数"><a href="#3-复数" class="headerlink" title="(3)复数"></a>(3)复数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实部和虚部</span></span><br><span class="line">a = <span class="number">55</span> + <span class="number">6j</span></span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+3356000000.0</code></pre><h3><span id="3复数">(3)复数</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实部和虚部</span></span><br><span class="line">a = <span class="number">55</span> + <span class="number">6j</span></span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 
-<pre><code>(55+6j)</code></pre><h3 id="4-bool"><a href="#4-bool" class="headerlink" title="(4)bool"></a>(4)bool</h3><h2 id="2字符串"><a href="#2字符串" class="headerlink" title="2字符串"></a>2字符串</h2><p>单引号 ‘’</p>
+<pre><code>(55+6j)</code></pre><h3><span id="4bool">(4)bool</span></h3><h2><span id="2字符串">2字符串</span></h2><p>单引号 ‘’</p>
 <p>双引号 “”</p>
 <p>三单引号 ‘’’ ‘’’</p>
 <p>三双单引号””” “””</p>
-<h4 id="几个引号表示字符串的区别"><a href="#几个引号表示字符串的区别" class="headerlink" title="几个引号表示字符串的区别"></a>几个引号表示字符串的区别</h4><ul>
+<h4><span id="几个引号表示字符串的区别">几个引号表示字符串的区别</span></h4><ul>
 <li>单引号和双引号没有区别</li>
 <li>三单引号和三双单引号没有区别</li>
 <li>三引号可表示换行类的字符串，或者在函数开头解释</li>
@@ -333,12 +346,12 @@
 <pre><code>这世界
 不可能
 有这么美丽
-这世界不可能有这么美丽</code></pre><h4 id="当字符串中出现引号的表示方法及转义字符"><a href="#当字符串中出现引号的表示方法及转义字符" class="headerlink" title="当字符串中出现引号的表示方法及转义字符"></a>当字符串中出现引号的表示方法及转义字符</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"Let's go"</span></span><br><span class="line">b =  <span class="string">'''Let's go '''</span></span><br><span class="line">c = <span class="string">"""这是'FF' """</span></span><br><span class="line"><span class="comment">#转义字符</span></span><br><span class="line">d = <span class="string">"Let\'s go"</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line">print(c)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+这世界不可能有这么美丽</code></pre><h4><span id="当字符串中出现引号的表示方法及转义字符">当字符串中出现引号的表示方法及转义字符</span></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"Let's go"</span></span><br><span class="line">b =  <span class="string">'''Let's go '''</span></span><br><span class="line">c = <span class="string">"""这是'FF' """</span></span><br><span class="line"><span class="comment">#转义字符</span></span><br><span class="line">d = <span class="string">"Let\'s go"</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line">print(c)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
 
 <pre><code>Let&apos;s go
 Let&apos;s go 
 这是&apos;FF&apos; 
-Let&apos;s go</code></pre><h3 id="3转义字符"><a href="#3转义字符" class="headerlink" title="3转义字符"></a>3转义字符</h3><ul>
+Let&apos;s go</code></pre><h3><span id="3转义字符">3转义字符</span></h3><ul>
 <li>一些不好直接表示的符号，如引号，换行符，制表符</li>
 <li>单引号 &#39;</li>
 <li>双引号 &quot;</li>
@@ -353,8 +366,8 @@ Let&apos;s go</code></pre><h3 id="3转义字符"><a href="#3转义字符" class=
 <li>八进制 \oXX</li>
 <li>十六进制 \xXX (第一个为x，后面为数字)</li>
 </ul>
-<h3 id="4-string类型的API"><a href="#4-string类型的API" class="headerlink" title="4   string类型的API"></a>4   string类型的API</h3><ul>
-<li>API 应用程序接口<h4 id="（1）一般函数"><a href="#（1）一般函数" class="headerlink" title="（1）一般函数"></a>（1）一般函数</h4></li>
+<h3><span id="4-string类型的api">4   string类型的API</span></h3><ul>
+<li>API 应用程序接口<h4><span id="1一般函数">（1）一般函数</span></h4></li>
 <li>startswith\endswith<br>判断\检查以什么开头\结尾</li>
 <li>count<pre><code>-计数，计算一个字符串中一个子字符串出现的个数</code></pre></li>
 <li>find<pre><code>-查找一个字符串中一个字符出现的位置</code></pre></li>
@@ -785,7 +798,7 @@ class str(object)
  |      If there are two arguments, they must be strings of equal length, and
  |      in the resulting dictionary, each character in x will be mapped to the
  |      character at the same position in y. If there is a third argument, it
- |      must be a string, whose characters will be mapped to None in the result.</code></pre><h4 id="2-判断字符串"><a href="#2-判断字符串" class="headerlink" title="(2) 判断字符串"></a>(2) 判断字符串</h4><ul>
+ |      must be a string, whose characters will be mapped to None in the result.</code></pre><h4><span id="2-判断字符串">(2) 判断字符串</span></h4><ul>
 <li>islower/isupper<pre><code>- 判断字符串是否全是大写小写</code></pre></li>
 <li>isdigit<pre><code>- 判断字符串是否全是数字</code></pre></li>
 <li>isalpha<pre><code>- 判断是否全是英文字母</code></pre></li>
@@ -810,7 +823,7 @@ class str(object)
 
 
 
-<pre><code>True</code></pre><h4 id="（3）操作字符串"><a href="#（3）操作字符串" class="headerlink" title="（3）操作字符串"></a>（3）操作字符串</h4><ul>
+<pre><code>True</code></pre><h4><span id="3操作字符串">（3）操作字符串</span></h4><ul>
 <li>lower/upper<ul>
 <li>将字符串转换为小写、大写</li>
 </ul>
@@ -836,7 +849,7 @@ AS DD</code></pre><figure class="highlight python"><table><tr><td class="gutter"
 
 <pre><code>.   123,wehdjahsk   .
 .   123,wehdjahsk   .   
-  .   123,wehdjahsk   .</code></pre><h4 id="4-字符串的格式化"><a href="#4-字符串的格式化" class="headerlink" title="(4)字符串的格式化"></a>(4)字符串的格式化</h4><ul>
+  .   123,wehdjahsk   .</code></pre><h4><span id="4字符串的格式化">(4)字符串的格式化</span></h4><ul>
 <li>%</li>
 <li>format</li>
 </ul>
@@ -867,7 +880,7 @@ My name ia Inno and my age is 19,my height is 172</code></pre><ul>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"这是%100会出现%"</span></span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
 
-<pre><code>这是%100会出现%</code></pre><h4 id="占位符的种类"><a href="#占位符的种类" class="headerlink" title="占位符的种类"></a>占位符的种类</h4><ul>
+<pre><code>这是%100会出现%</code></pre><h4><span id="占位符的种类">占位符的种类</span></h4><ul>
 <li>%s 字符串</li>
 <li>%r 字符串，但是是使用repr而不是str</li>
 <li>%c 整数转换为单个字符</li>
@@ -889,7 +902,7 @@ My name ia Inno and my age is 19,my height is 172</code></pre><ul>
 
 <pre><code>you are     16age
 you are16     age
-you are0000016age</code></pre><h3 id="bool类型"><a href="#bool类型" class="headerlink" title="bool类型"></a>bool类型</h3><ul>
+you are0000016age</code></pre><h3><span id="bool类型">bool类型</span></h3><ul>
 <li>True/False</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> &gt; <span class="number">4</span></span><br></pre></td></tr></table></figure>
@@ -942,7 +955,7 @@ you are0000016age</code></pre><h3 id="bool类型"><a href="#bool类型" class="h
 
 <pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">4</span>&gt;<span class="number">5</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"False"</span>)</span><br></pre></td></tr></table></figure>
 
-<pre><code>False</code></pre><h3 id="None"><a href="#None" class="headerlink" title="None"></a>None</h3><ul>
+<pre><code>False</code></pre><h3><span id="none">None</span></h3><ul>
 <li>一个特殊的常量</li>
 <li>不表示任何类型，用来占位或者解除变量绑定，None与任何类型比较返回False<ul>
 <li>作用：<ul>
@@ -992,7 +1005,7 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-Python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-4.html" rel="bookmark">程序结构、分支语句、条件、列表、循环</a></div>
@@ -1001,7 +1014,7 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
       <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-23-arcgis-python-5.html" rel="bookmark">Arcgis中的python编程(5)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-5.html" rel="bookmark">函数、return、函数参数、列表字典传入函数、函数文档</a></div>
@@ -1010,8 +1023,9 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
           </div>
 
         
@@ -1040,6 +1054,7 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1086,7 +1101,7 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python数据类型"><span class="nav-number">1.</span> <span class="nav-text">python数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数字类型"><span class="nav-number">1.1.</span> <span class="nav-text">1 数字类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-整数"><span class="nav-number">1.1.1.</span> <span class="nav-text">(1)整数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进制之间的转换"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">进制之间的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转换成二进制"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">转换成二进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转换为八进制"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">转换为八进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转换为十六进制"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">转换为十六进制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-浮点数"><span class="nav-number">1.1.2.</span> <span class="nav-text">(2)浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-复数"><span class="nav-number">1.1.3.</span> <span class="nav-text">(3)复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-bool"><span class="nav-number">1.1.4.</span> <span class="nav-text">(4)bool</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2字符串"><span class="nav-number">1.2.</span> <span class="nav-text">2字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几个引号表示字符串的区别"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">几个引号表示字符串的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当字符串中出现引号的表示方法及转义字符"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">当字符串中出现引号的表示方法及转义字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3转义字符"><span class="nav-number">1.2.1.</span> <span class="nav-text">3转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-string类型的API"><span class="nav-number">1.2.2.</span> <span class="nav-text">4   string类型的API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）一般函数"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">（1）一般函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-判断字符串"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">(2) 判断字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）操作字符串"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">（3）操作字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-字符串的格式化"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">(4)字符串的格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#占位符的种类"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">占位符的种类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bool类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">bool类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#None"><span class="nav-number">1.2.4.</span> <span class="nav-text">None</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">python数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">1 数字类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.</span> <span class="nav-text">(1)整数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">进制之间的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">转换成二进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">转换为八进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">转换为十六进制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.2.</span> <span class="nav-text">(2)浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.3.</span> <span class="nav-text">(3)复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.4.</span> <span class="nav-text">(4)bool</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">2字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">几个引号表示字符串的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">当字符串中出现引号的表示方法及转义字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.1.</span> <span class="nav-text">3转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.2.</span> <span class="nav-text">4   string类型的API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">（1）一般函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">(2) 判断字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">（3）操作字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">(4)字符串的格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">占位符的种类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.3.</span> <span class="nav-text">bool类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.4.</span> <span class="nav-text">None</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1168,26 +1183,6 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
   </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -1241,6 +1236,156 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
   
 
   
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
 
 
    
@@ -1252,6 +1397,13 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
 
 
 
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
     
 
   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
@@ -1260,6 +1412,13 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
 
 
 
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 </body>
 </html>

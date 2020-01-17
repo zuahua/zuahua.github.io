@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
-  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -26,7 +26,7 @@
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-links">
 
-    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -194,10 +194,9 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -247,13 +246,27 @@
               </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+            <span id="/2018-08-21-pygame-2.html" class="post-meta-item leancloud_visitors" data-flag-title="从0开始的python飞机外星人大战 (2)" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018-08-21-pygame-2.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018-08-21-pygame-2.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -278,13 +291,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="重构：模块game-Function-由于每次重构都需要改alien-invasin-py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien-invasion-py的代码"><a href="#重构：模块game-Function-由于每次重构都需要改alien-invasin-py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien-invasion-py的代码" class="headerlink" title="重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码"></a>重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码</h2><h3 id="新建文件：game-Functions-py"><a href="#新建文件：game-Functions-py" class="headerlink" title="新建文件：game_Functions.py"></a>新建文件：game_Functions.py</h3><h3 id="函数check-event"><a href="#函数check-event" class="headerlink" title="函数check_event()"></a>函数check_event()</h3><h3 id="函数update-screen"><a href="#函数update-screen" class="headerlink" title="函数update_screen()"></a>函数update_screen()</h3><a id="more"></a>
+        <h2><span id="重构模块game_function-由于每次重构都需要改alien_invasinpy在写笔记时很麻烦所以我这儿先重构一些最后给出alien_invasionpy的代码">重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码</span></h2><h3><span id="新建文件game_functionspy">新建文件：game_Functions.py</span></h3><h3><span id="函数check_event">函数check_event()</span></h3><h3><span id="函数update_screen">函数update_screen()</span></h3><a id="more"></a>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"></span><br><span class="line">def check_events():</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            sys.exit</span><br><span class="line"></span><br><span class="line">def update_screen(ai_settings,screen,ship):</span><br><span class="line">    <span class="string">""</span><span class="string">"更新屏幕"</span><span class="string">""</span></span><br><span class="line">    <span class="comment"># 每次循环都重绘屏幕</span></span><br><span class="line">    screen.fill(ai_settings.bg_color)</span><br><span class="line">    ship.blitme()</span><br><span class="line">    </span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure>
-<h3 id="响应按键，飞船的左右连续移动"><a href="#响应按键，飞船的左右连续移动" class="headerlink" title="响应按键，飞船的左右连续移动"></a>响应按键，飞船的左右连续移动</h3><p>我们让moving_right和moving_left来存储是否左右移动，True和False;  KEYDOWN代表键被按住，KEYUP代表松开键； 在ship类中初始化moving_right和moving_left的值为False,并设置在为True时的移动； 在check_event()中则设置了判断True和Fale的依据</p>
+<h3><span id="响应按键飞船的左右连续移动">响应按键，飞船的左右连续移动</span></h3><p>我们让moving_right和moving_left来存储是否左右移动，True和False;  KEYDOWN代表键被按住，KEYUP代表松开键； 在ship类中初始化moving_right和moving_left的值为False,并设置在为True时的移动； 在check_event()中则设置了判断True和Fale的依据</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"></span><br><span class="line">def check_events(ship):</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            sys.exit</span><br><span class="line">        <span class="comment">##################</span></span><br><span class="line">        <span class="keyword">elif</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                ship.moving_right = True</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                ship.moving_left = True</span><br><span class="line">        <span class="keyword">elif</span> event.type == pygame.KEYUP</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                ship.moving_right = False</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                ship.moving_left = False</span><br><span class="line">        <span class="comment">#########################        </span></span><br><span class="line">            </span><br><span class="line">def update_screen(ai_settings,screen,ship):</span><br><span class="line">    <span class="string">""</span><span class="string">"更新屏幕"</span><span class="string">""</span></span><br><span class="line">    <span class="comment"># 每次循环都重绘屏幕</span></span><br><span class="line">    screen.fill(ai_settings.bg_color)</span><br><span class="line">    ship.blitme()</span><br><span class="line">    </span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure>
-<h3 id="ship类中的更改"><a href="#ship类中的更改" class="headerlink" title="ship类中的更改"></a>ship类中的更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import pygame</span><br><span class="line">class Ship():</span><br><span class="line">    def __init__(self,screen):</span><br><span class="line">        <span class="string">""</span><span class="string">"初始化飞船，设置它的位置"</span><span class="string">""</span></span><br><span class="line">        <span class="comment"># 设置screen属性</span></span><br><span class="line">        self.screen = screen</span><br><span class="line">        <span class="comment"># 加载飞船图片</span></span><br><span class="line">        self.image = pygame.image.load(<span class="string">'images/ship.bmp'</span>)</span><br><span class="line">        <span class="comment"># 获取图片外接矩形和屏幕矩形</span></span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.screen_rect = self.screen.get_rect()</span><br><span class="line">    </span><br><span class="line">        <span class="comment"># 将飞船的位置放在屏幕底部中央</span></span><br><span class="line">        self.rect.centerx = self.screen_rect.centerx</span><br><span class="line">        self.rect.bottom = self.screen_rect.bottom</span><br><span class="line">     <span class="comment">########   </span></span><br><span class="line">        self.moving_right = False</span><br><span class="line">        self.moving_left = False</span><br><span class="line">    def update(self):</span><br><span class="line">        <span class="keyword">if</span> self.moving_right:</span><br><span class="line">            self.rect.centerx += 1</span><br><span class="line">        <span class="keyword">if</span> self.moving_left:</span><br><span class="line">            self.rect.centerx -= 1</span><br><span class="line">    <span class="comment">################</span></span><br><span class="line">    <span class="comment"># 按指定的位置绘制飞船</span></span><br><span class="line">    def blitme(self):</span><br><span class="line">        self.screen.blit(self.image,self.rect)</span><br></pre></td></tr></table></figure>
-<h3 id="alien-invasion-py的更改"><a href="#alien-invasion-py的更改" class="headerlink" title="alien_invasion.py的更改"></a>alien_invasion.py的更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"><span class="comment"># 导入类</span></span><br><span class="line">from settings import Settings</span><br><span class="line">from ship import Ship</span><br><span class="line"><span class="comment">##</span></span><br><span class="line">import game_Functions as gf</span><br><span class="line"><span class="comment">##</span></span><br><span class="line">def run_game():</span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 将Settings类中属性存储在ai_settings中</span></span><br><span class="line">    ai_settings = Settings()</span><br><span class="line">    <span class="comment"># 调用类中属性</span></span><br><span class="line">    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))</span><br><span class="line">    pygame.display.caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="comment"># 创建飞船</span></span><br><span class="line">    ship = Ship(screen)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="comment">#########</span></span><br><span class="line">        gf.check_event(ship)</span><br><span class="line">        ship.update()</span><br><span class="line">        <span class="comment">##</span></span><br><span class="line">        gf.update_screen(ai_settings,screen,ship)</span><br><span class="line">        </span><br><span class="line">       </span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
+<h3><span id="ship类中的更改">ship类中的更改</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import pygame</span><br><span class="line">class Ship():</span><br><span class="line">    def __init__(self,screen):</span><br><span class="line">        <span class="string">""</span><span class="string">"初始化飞船，设置它的位置"</span><span class="string">""</span></span><br><span class="line">        <span class="comment"># 设置screen属性</span></span><br><span class="line">        self.screen = screen</span><br><span class="line">        <span class="comment"># 加载飞船图片</span></span><br><span class="line">        self.image = pygame.image.load(<span class="string">'images/ship.bmp'</span>)</span><br><span class="line">        <span class="comment"># 获取图片外接矩形和屏幕矩形</span></span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.screen_rect = self.screen.get_rect()</span><br><span class="line">    </span><br><span class="line">        <span class="comment"># 将飞船的位置放在屏幕底部中央</span></span><br><span class="line">        self.rect.centerx = self.screen_rect.centerx</span><br><span class="line">        self.rect.bottom = self.screen_rect.bottom</span><br><span class="line">     <span class="comment">########   </span></span><br><span class="line">        self.moving_right = False</span><br><span class="line">        self.moving_left = False</span><br><span class="line">    def update(self):</span><br><span class="line">        <span class="keyword">if</span> self.moving_right:</span><br><span class="line">            self.rect.centerx += 1</span><br><span class="line">        <span class="keyword">if</span> self.moving_left:</span><br><span class="line">            self.rect.centerx -= 1</span><br><span class="line">    <span class="comment">################</span></span><br><span class="line">    <span class="comment"># 按指定的位置绘制飞船</span></span><br><span class="line">    def blitme(self):</span><br><span class="line">        self.screen.blit(self.image,self.rect)</span><br></pre></td></tr></table></figure>
+<h3><span id="alien_invasionpy的更改">alien_invasion.py的更改</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"><span class="comment"># 导入类</span></span><br><span class="line">from settings import Settings</span><br><span class="line">from ship import Ship</span><br><span class="line"><span class="comment">##</span></span><br><span class="line">import game_Functions as gf</span><br><span class="line"><span class="comment">##</span></span><br><span class="line">def run_game():</span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 将Settings类中属性存储在ai_settings中</span></span><br><span class="line">    ai_settings = Settings()</span><br><span class="line">    <span class="comment"># 调用类中属性</span></span><br><span class="line">    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))</span><br><span class="line">    pygame.display.caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="comment"># 创建飞船</span></span><br><span class="line">    ship = Ship(screen)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="comment">#########</span></span><br><span class="line">        gf.check_event(ship)</span><br><span class="line">        ship.update()</span><br><span class="line">        <span class="comment">##</span></span><br><span class="line">        gf.update_screen(ai_settings,screen,ship)</span><br><span class="line">        </span><br><span class="line">       </span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -300,7 +313,7 @@
       <div class="popular-posts-title"><a href="\2019-03-07-pygame-exe.html" rel="bookmark">pygame飞机大战游戏打包为exe</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-23-arcgis-python-5.html" rel="bookmark">Arcgis中的python编程(5)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
@@ -309,8 +322,9 @@
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/pygame/" rel="tag"># pygame</a>
+              <a href="/tags/pygame/" rel="tag"><i class="fa fa-tag"></i> pygame</a>
           </div>
 
         
@@ -323,7 +337,7 @@
       <i class="fa fa-chevron-left"></i> 从0开始的python飞机外星人大战 (1)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018-08-23-%E5%A4%8D%E4%B9%A0C%E8%AF%AD%E8%A8%80%E4%BA%8C%E7%BA%A7%E7%AC%94%E8%AE%B0.html" rel="next" title="复习C语言二级笔记">
+    <a href="/2018-08-23-fu-xi-c-yu-yan-er-ji-bi-ji.html" rel="next" title="复习C语言二级笔记">
       复习C语言二级笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -339,6 +353,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -385,7 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重构：模块game-Function-由于每次重构都需要改alien-invasin-py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien-invasion-py的代码"><span class="nav-number">1.</span> <span class="nav-text">重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文件：game-Functions-py"><span class="nav-number">1.1.</span> <span class="nav-text">新建文件：game_Functions.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数check-event"><span class="nav-number">1.2.</span> <span class="nav-text">函数check_event()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数update-screen"><span class="nav-number">1.3.</span> <span class="nav-text">函数update_screen()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应按键，飞船的左右连续移动"><span class="nav-number">1.4.</span> <span class="nav-text">响应按键，飞船的左右连续移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ship类中的更改"><span class="nav-number">1.5.</span> <span class="nav-text">ship类中的更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alien-invasion-py的更改"><span class="nav-number">1.6.</span> <span class="nav-text">alien_invasion.py的更改</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">新建文件：game_Functions.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">函数check_event()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">函数update_screen()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">响应按键，飞船的左右连续移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.5.</span> <span class="nav-text">ship类中的更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.6.</span> <span class="nav-text">alien_invasion.py的更改</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -467,26 +482,6 @@
   </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -540,6 +535,156 @@
   
 
   
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
 
 
    
@@ -551,6 +696,13 @@
 
 
 
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
     
 
   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
@@ -559,6 +711,13 @@
 
 
 
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 </body>
 </html>

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
-  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -26,7 +26,7 @@
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-links">
 
-    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -194,10 +194,9 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -247,13 +246,27 @@
               </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+            <span id="/2018-08-20-pygame-1.html" class="post-meta-item leancloud_visitors" data-flag-title="从0开始的python飞机外星人大战 (1)" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2018-08-20-pygame-1.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018-08-20-pygame-1.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -280,23 +293,20 @@
       
         <p>由于学了几天python的基础知识，意识到python作为一门语言，它的语法的简单，严格的格式；……这里是作为一个菜鸡，开始写的（抄的）一个经典的实战：飞机大战</p>
 <p>下面我们开始。</p>
-<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>本文使用的是python3 + pycharm</p>
-<h2 id="创建项目文件"><a href="#创建项目文件" class="headerlink" title="创建项目文件"></a>创建项目文件</h2><p>创建文件：alien_invasion,后面创建的py文件都放在这个文件下</p>
-<h2 id="安装pygame包"><a href="#安装pygame包" class="headerlink" title="安装pygame包"></a>安装pygame包</h2><p>在pycharm中，file–&gt;Default settings–&gt;Project Interpreter(项目解释器)–&gt;右边的+号–&gt;搜索pygame–&gt;install</p>
+<h2><span id="环境说明">环境说明</span></h2><p>本文使用的是python3 + pycharm</p>
+<h2><span id="创建项目文件">创建项目文件</span></h2><p>创建文件：alien_invasion,后面创建的py文件都放在这个文件下</p>
+<h2><span id="安装pygame包">安装pygame包</span></h2><p>在pycharm中，file–&gt;Default settings–&gt;Project Interpreter(项目解释器)–&gt;右边的+号–&gt;搜索pygame–&gt;install</p>
 <a id="more"></a>
 
-<h2 id="新建alien-invasion-py文件；创建pygame窗口以及响应用户输入"><a href="#新建alien-invasion-py文件；创建pygame窗口以及响应用户输入" class="headerlink" title="新建alien_invasion.py文件；创建pygame窗口以及响应用户输入"></a>新建alien_invasion.py文件；创建pygame窗口以及响应用户输入</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line">def run_game():</span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 绘制屏幕</span></span><br><span class="line">    screen = pygame.display.set_mode((1200,800))</span><br><span class="line">    <span class="comment"># 设置屏幕标题</span></span><br><span class="line">    pygame.display.set_caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="comment"># 游戏主函数</span></span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="comment"># 获取键盘鼠标输入，设置退出</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                sys.exit()</span><br><span class="line">        <span class="comment"># 让绘制屏幕可见</span></span><br><span class="line">        pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
-<h2 id="加入背景颜色"><a href="#加入背景颜色" class="headerlink" title="加入背景颜色"></a>加入背景颜色</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">pygame.display.set_caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line"><span class="comment"># 设置背景色，RGB</span></span><br><span class="line">bg_color = (230,230,230)</span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 每次循环都重绘屏幕</span></span><br><span class="line">    screen.fill(bg_color)</span><br><span class="line">    pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
-<h2 id="创建一个设置的类"><a href="#创建一个设置的类" class="headerlink" title="创建一个设置的类"></a>创建一个设置的类</h2><p>新建一个settings.py</p>
+<h2><span id="新建alien_invasionpy文件创建pygame窗口以及响应用户输入">新建alien_invasion.py文件；创建pygame窗口以及响应用户输入</span></h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line">def run_game():</span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 绘制屏幕</span></span><br><span class="line">    screen = pygame.display.set_mode((1200,800))</span><br><span class="line">    <span class="comment"># 设置屏幕标题</span></span><br><span class="line">    pygame.display.set_caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="comment"># 游戏主函数</span></span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="comment"># 获取键盘鼠标输入，设置退出</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                sys.exit()</span><br><span class="line">        <span class="comment"># 让绘制屏幕可见</span></span><br><span class="line">        pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
+<h2><span id="加入背景颜色">加入背景颜色</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">pygame.display.set_caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line"><span class="comment"># 设置背景色，RGB</span></span><br><span class="line">bg_color = (230,230,230)</span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 每次循环都重绘屏幕</span></span><br><span class="line">    screen.fill(bg_color)</span><br><span class="line">    pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
+<h2><span id="创建一个设置的类">创建一个设置的类</span></h2><p>新建一个settings.py</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Settings():</span><br><span class="line">    <span class="string">""</span><span class="string">"存储外星人入侵所有设置的类"</span><span class="string">""</span></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.screen_width = 1200</span><br><span class="line">        self.screen_heught = 800</span><br><span class="line">        self.bg_corlor = (230,230,230)</span><br></pre></td></tr></table></figure>
-<h2 id="更改alien-invasion-py参数，完整代码如下"><a href="#更改alien-invasion-py参数，完整代码如下" class="headerlink" title="更改alien_invasion.py参数，完整代码如下"></a>更改alien_invasion.py参数，完整代码如下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"><span class="comment"># 导入类</span></span><br><span class="line">from settings import Settings</span><br><span class="line">def run_game():</span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 将Settings类中属性存储在ai_settings中</span></span><br><span class="line">    ai_settings = Settings()</span><br><span class="line">    <span class="comment"># 调用类中属性</span></span><br><span class="line">    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))</span><br><span class="line">    pygame.display.caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                sys.exit()</span><br><span class="line">        screen.fill(ai_settings.bg_color)</span><br><span class="line">        pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
-<h2 id="下载飞船图片，建立ship-py，构建Ship类"><a href="#下载飞船图片，建立ship-py，构建Ship类" class="headerlink" title="下载飞船图片，建立ship.py，构建Ship类"></a>下载飞船图片，建立ship.py，构建Ship类</h2><p>在alien_invasion下新建文件夹images，将图片放在其下（图片为位图格式，因为python能识别位图，其他格式需要安装包）</p>
+<h2><span id="更改alien_invasionpy参数完整代码如下">更改alien_invasion.py参数，完整代码如下</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"><span class="comment"># 导入类</span></span><br><span class="line">from settings import Settings</span><br><span class="line">def run_game():</span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 将Settings类中属性存储在ai_settings中</span></span><br><span class="line">    ai_settings = Settings()</span><br><span class="line">    <span class="comment"># 调用类中属性</span></span><br><span class="line">    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))</span><br><span class="line">    pygame.display.caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                sys.exit()</span><br><span class="line">        screen.fill(ai_settings.bg_color)</span><br><span class="line">        pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
+<h2><span id="下载飞船图片建立shippy构建ship类">下载飞船图片，建立ship.py，构建Ship类</span></h2><p>在alien_invasion下新建文件夹images，将图片放在其下（图片为位图格式，因为python能识别位图，其他格式需要安装包）</p>
 <p>ship.py</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import pygame</span><br><span class="line">class Ship():</span><br><span class="line">    def __init__(self,screen):</span><br><span class="line">        <span class="string">""</span><span class="string">"初始化飞船，设置它的位置"</span><span class="string">""</span></span><br><span class="line">        <span class="comment"># 设置screen属性</span></span><br><span class="line">        self.screen = screen</span><br><span class="line">        <span class="comment"># 加载飞船图片</span></span><br><span class="line">        self.image = pygame.image.load(<span class="string">'images/ship.bmp'</span>)</span><br><span class="line">        <span class="comment"># 获取图片外接矩形和屏幕矩形</span></span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.screen_rect = self.screen.get_rect()</span><br><span class="line">    </span><br><span class="line">        <span class="comment"># 将飞船的位置放在屏幕底部中央</span></span><br><span class="line">        self.rect.centerx = self.screen_rect.centerx</span><br><span class="line">        self.rect.bottom = self.screen_rect.bottom</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 按指定的位置绘制飞船</span></span><br><span class="line">    def blitme(self):</span><br><span class="line">        self.screen.blit(self.image,self.rect)</span><br></pre></td></tr></table></figure>
-<h2 id="在alien-invasion-py中引用Ship类来创建飞船"><a href="#在alien-invasion-py中引用Ship类来创建飞船" class="headerlink" title="在alien_invasion.py中引用Ship类来创建飞船"></a>在alien_invasion.py中引用Ship类来创建飞船</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"><span class="comment"># 导入类</span></span><br><span class="line">from settings import Settings</span><br><span class="line">from ship import Ship</span><br><span class="line">def run_game():</span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 将Settings类中属性存储在ai_settings中</span></span><br><span class="line">    ai_settings = Settings()</span><br><span class="line">    <span class="comment"># 调用类中属性</span></span><br><span class="line">    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))</span><br><span class="line">    pygame.display.caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="comment"># 创建飞船</span></span><br><span class="line">    ship = Ship(screen)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                sys.exit()</span><br><span class="line">        screen.fill(ai_settings.bg_color)</span><br><span class="line">        </span><br><span class="line">        ship.blitme()</span><br><span class="line">        </span><br><span class="line">        pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
-
-
-
+<h2><span id="在alien_invasionpy中引用ship类来创建飞船">在alien_invasion.py中引用Ship类来创建飞船</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"><span class="comment"># 导入类</span></span><br><span class="line">from settings import Settings</span><br><span class="line">from ship import Ship</span><br><span class="line">def run_game():</span><br><span class="line">    pygame.init()</span><br><span class="line">    <span class="comment"># 将Settings类中属性存储在ai_settings中</span></span><br><span class="line">    ai_settings = Settings()</span><br><span class="line">    <span class="comment"># 调用类中属性</span></span><br><span class="line">    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))</span><br><span class="line">    pygame.display.caption(<span class="string">"Alien Invasion"</span>)</span><br><span class="line">    <span class="comment"># 创建飞船</span></span><br><span class="line">    ship = Ship(screen)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                sys.exit()</span><br><span class="line">        screen.fill(ai_settings.bg_color)</span><br><span class="line">        </span><br><span class="line">        ship.blitme()</span><br><span class="line">        </span><br><span class="line">        pygame.display.flip()</span><br><span class="line">run_game()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -316,7 +326,7 @@
       <div class="popular-posts-title"><a href="\2019-03-07-pygame-exe.html" rel="bookmark">pygame飞机大战游戏打包为exe</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-23-arcgis-python-5.html" rel="bookmark">Arcgis中的python编程(5)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
@@ -325,8 +335,9 @@
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/pygame/" rel="tag"># pygame</a>
+              <a href="/tags/pygame/" rel="tag"><i class="fa fa-tag"></i> pygame</a>
           </div>
 
         
@@ -355,6 +366,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -401,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境说明"><span class="nav-number">1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目文件"><span class="nav-number">2.</span> <span class="nav-text">创建项目文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装pygame包"><span class="nav-number">3.</span> <span class="nav-text">安装pygame包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建alien-invasion-py文件；创建pygame窗口以及响应用户输入"><span class="nav-number">4.</span> <span class="nav-text">新建alien_invasion.py文件；创建pygame窗口以及响应用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入背景颜色"><span class="nav-number">5.</span> <span class="nav-text">加入背景颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个设置的类"><span class="nav-number">6.</span> <span class="nav-text">创建一个设置的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改alien-invasion-py参数，完整代码如下"><span class="nav-number">7.</span> <span class="nav-text">更改alien_invasion.py参数，完整代码如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载飞船图片，建立ship-py，构建Ship类"><span class="nav-number">8.</span> <span class="nav-text">下载飞船图片，建立ship.py，构建Ship类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在alien-invasion-py中引用Ship类来创建飞船"><span class="nav-number">9.</span> <span class="nav-text">在alien_invasion.py中引用Ship类来创建飞船</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">创建项目文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">安装pygame包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">新建alien_invasion.py文件；创建pygame窗口以及响应用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">加入背景颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">创建一个设置的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">更改alien_invasion.py参数，完整代码如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text">下载飞船图片，建立ship.py，构建Ship类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">9.</span> <span class="nav-text">在alien_invasion.py中引用Ship类来创建飞船</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -483,26 +495,6 @@
   </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -556,6 +548,156 @@
   
 
   
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
 
 
    
@@ -567,6 +709,13 @@
 
 
 
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
     
 
   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
@@ -575,6 +724,13 @@
 
 
 
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 </body>
 </html>
