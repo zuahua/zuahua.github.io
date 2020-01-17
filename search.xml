@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>使用PHPMailer库发送邮件支持ssl方式</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-12-14-%E4%BD%BF%E7%94%A8PHPMailer%E5%BA%93%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6.html</url>
     <content><![CDATA[<p>说明：</p>
 <ul>
 <li>PHP7..</li>
@@ -56,7 +56,7 @@
   </entry>
   <entry>
     <title>PHP实现注册时邮箱验证</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-12-11-PHP%E5%AE%9E%E7%8E%B0%E6%B3%A8%E5%86%8C%E6%97%B6%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81.html</url>
     <content><![CDATA[<p>说明：</p>
 <ul>
 <li>PHP7</li>
@@ -107,7 +107,7 @@
   </entry>
   <entry>
     <title>搭建IPSec VPN 虚拟局域网</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-11-12-IPSec%20VPN%20%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%E6%90%AD%E5%BB%BA.html</url>
     <content><![CDATA[<p>环境: </p>
 <ul>
 <li>服务器：阿里云 ubuntu</li>
@@ -138,29 +138,8 @@
       </tags>
   </entry>
   <entry>
-    <title>arcEngine 计算点坐标、线长、面积</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<ul>
-<li>VS新建addin</li>
-</ul>
-<p>功能：</p>
-<ul>
-<li>C# 获取当前文档地图图层</li>
-<li>添加字段, 计算面图层的面积</li>
-<li>添加字段，计算线图层的长度</li>
-<li>添加字段，计算点图层的经纬度</li>
-</ul>
-<a id="more"></a>
-
-<h3 id="addin-xxx-cs文件"><a href="#addin-xxx-cs文件" class="headerlink" title="addin         xxx.cs文件"></a>addin         xxx.cs文件</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.Geodatabase;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.Carto;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.ArcMapUI;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.Geometry;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">calcArea</span></span><br><span class="line">&#123;</span><br><span class="line">    public class calcArea : ESRI.ArcGIS.Desktop.AddIns.Button</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 在C#中类有三种，</span></span><br><span class="line">        <span class="comment">// 抽象类(无构造函数，不能创建新的对象，用于创建新的类、</span></span><br><span class="line">        <span class="comment">// com类(组件类) 用于创建新的对象的类，可用new生成，所以必须有构造函数</span></span><br><span class="line">        <span class="comment">// 第三种是普通类，不是抽象类，不能用new创建，是由其他类生成的</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">calcArea</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// FeatureClass是不可创建对象的普通类</span></span><br><span class="line">            <span class="comment">// IFeatureLayer pFeatLyr = new FeatureLayer(); //是可创建的com类，利用new关键字生成新的矢量图层，</span></span><br><span class="line">                                                        <span class="comment">//  是一个对象，用接口操作</span></span><br><span class="line">                   </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">funAddField</span>(<span class="params">IFeatureClass pFeatCls, <span class="keyword">string</span> fldName, esriFieldType fldType</span>) </span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">// 添加字段函数 //</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断字段是否存在</span></span><br><span class="line">            <span class="keyword">if</span> (pFeatCls.FindField(fldName) != <span class="number">-1</span>) <span class="comment">// 字段已存在</span></span><br><span class="line">            &#123;</span><br><span class="line">                MessageBox.Show(<span class="string">"欲创建的字段已存在，使用存在字段计算！！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="comment">// 字段不存在，创建</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// IFields pFlds = pFeatCls.Fields;</span></span><br><span class="line">                IFieldEdit pFieldEdit = <span class="keyword">new</span> FieldClass();</span><br><span class="line">                pFieldEdit.Name_2 = fldName;</span><br><span class="line">                pFieldEdit.Type_2 = fldType;</span><br><span class="line">                pFieldEdit.Editable_2 = <span class="literal">true</span>;</span><br><span class="line">                pFeatCls.AddField(pFieldEdit); <span class="comment">// 添加字段</span></span><br><span class="line">            &#125;</span><br><span class="line">                       </span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            <span class="comment">//  <span class="doctag">TODO:</span> Sample code showing how to access button host</span></span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            ArcMap.Application.CurrentTool = <span class="literal">null</span>;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">         功能：计算面图层面积，线图层长度，点图层经纬度坐标</span></span><br><span class="line"><span class="comment">         作者：1985857412@qq.com</span></span><br><span class="line"><span class="comment">         说明：添加字段，计算计算面图层面积，线图层长度，点图层经纬度坐标</span></span><br><span class="line"><span class="comment">         * 操作的是地图文档中第一个图层</span></span><br><span class="line"><span class="comment">         日期：2019/9/23</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">            <span class="comment">// 获取当前地图文档</span></span><br><span class="line">            IMxDocument pDoc = ArcMap.Application.Document <span class="keyword">as</span> IMxDocument;</span><br><span class="line">            IMap pMap = pDoc.ActivatedView.FocusMap; <span class="comment">// 获取地图</span></span><br><span class="line">            ILayer pLyr = pMap.get_Layer(<span class="number">0</span>); <span class="comment">// 获取地图第一个图层</span></span><br><span class="line">            IFeatureLayer pFeatLyr = pLyr <span class="keyword">as</span> IFeatureLayer; <span class="comment">//QI</span></span><br><span class="line">            <span class="comment">//MessageBox.Show(pFeatLyr.Name); 测试打印要素名称</span></span><br><span class="line">            IFeatureClass pFeatCls = pFeatLyr.FeatureClass;</span><br><span class="line"></span><br><span class="line">            IFeatureCursor pFeatCur; <span class="comment">// 游标</span></span><br><span class="line">            IFeature pFeat; <span class="comment">// feature</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> s = <span class="string">""</span>; <span class="comment">// 存储打印字符串</span></span><br><span class="line">                      </span><br><span class="line">            <span class="comment">// 面图层计算面积</span></span><br><span class="line">            <span class="keyword">if</span> (esriGeometryType.esriGeometryPolygon == pFeatCls.ShapeType)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 调用函数，添加字段</span></span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_area"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line"></span><br><span class="line">                pFeatCur = pFeatCls.Update(<span class="literal">null</span>, <span class="literal">false</span>); <span class="comment">// 获取游标</span></span><br><span class="line">                pFeat = pFeatCur.NextFeature(); <span class="comment">// 获取feature</span></span><br><span class="line">                IPolygon pPlg;  <span class="comment">// polygon对象</span></span><br><span class="line">                IArea pArea;    <span class="comment">// area对象</span></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">                <span class="keyword">int</span> nameId = pFeatCls.FindField(<span class="string">"NAME"</span>); <span class="comment">// NAME字段索引</span></span><br><span class="line">                <span class="keyword">int</span> areaId = pFeatCls.FindField(<span class="string">"addin_area"</span>); <span class="comment">// addin_area字段索引</span></span><br><span class="line">                                </span><br><span class="line">                <span class="keyword">while</span> (pFeat != <span class="literal">null</span>) </span><br><span class="line">                &#123;</span><br><span class="line">                    pPlg = pFeat.Shape <span class="keyword">as</span> IPolygon;  <span class="comment">// 赋值</span></span><br><span class="line">                    pArea = pPlg <span class="keyword">as</span> IArea;</span><br><span class="line"></span><br><span class="line">                    pFeat.set_Value(areaId, pArea.Area); <span class="comment">// 面积字段赋值</span></span><br><span class="line"></span><br><span class="line">                    s = s + pFeat.get_Value(nameId) + Convert.ToString(pArea.Area) + <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">                    pFeatCur.UpdateFeature(pFeat); <span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">                    pFeat = pFeatCur.NextFeature();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                MessageBox.Show(s);</span><br><span class="line">                MessageBox.Show(<span class="string">"计算面积与赋值字段：ok"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 线图层计算长度</span></span><br><span class="line">            <span class="keyword">if</span>(esriGeometryType.esriGeometryPolyline == pFeatCls.ShapeType)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 调用函数，添加字段</span></span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_len"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line"></span><br><span class="line">                pFeatCur = pFeatCls.Update(<span class="literal">null</span>, <span class="literal">false</span>); <span class="comment">// 获取游标</span></span><br><span class="line">                pFeat = pFeatCur.NextFeature(); <span class="comment">// 获取feature</span></span><br><span class="line"></span><br><span class="line">                IPolyline pPline;  <span class="comment">// 线对象</span></span><br><span class="line">                <span class="keyword">int</span> nameId = pFeatCls.FindField(<span class="string">"NAME"</span>); <span class="comment">// NAME字段索引</span></span><br><span class="line">                <span class="keyword">int</span> lenId = pFeatCls.FindField(<span class="string">"addin_len"</span>); <span class="comment">// addin_len字段索引</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (pFeat != <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    pPline = pFeat.Shape <span class="keyword">as</span> IPolyline;  <span class="comment">// 赋值</span></span><br><span class="line">                   </span><br><span class="line"></span><br><span class="line">                    pFeat.set_Value(lenId, pPline.Length); <span class="comment">// 长度字段赋值</span></span><br><span class="line"></span><br><span class="line">                    s = s + pFeat.get_Value(nameId) + Convert.ToString(pPline.Length) + <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">                    pFeatCur.UpdateFeature(pFeat); <span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">                    pFeat = pFeatCur.NextFeature();</span><br><span class="line">                &#125;</span><br><span class="line">                MessageBox.Show(s);</span><br><span class="line">                MessageBox.Show(<span class="string">"计算长度与赋值字段：ok"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 点图层计算经纬度坐标</span></span><br><span class="line">            <span class="keyword">if</span> (esriGeometryType.esriGeometryPoint == pFeatCls.ShapeType)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 调用函数，添加x,y字段</span></span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_x"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_y"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line"></span><br><span class="line">                pFeatCur = pFeatCls.Update(<span class="literal">null</span>, <span class="literal">false</span>); <span class="comment">// 获取游标</span></span><br><span class="line">                pFeat = pFeatCur.NextFeature(); <span class="comment">// 获取feature</span></span><br><span class="line"></span><br><span class="line">                IPoint pPnt;  <span class="comment">// 点对象</span></span><br><span class="line">                <span class="keyword">int</span> nameId = pFeatCls.FindField(<span class="string">"NAME"</span>); <span class="comment">// NAME字段索引</span></span><br><span class="line">                <span class="keyword">int</span> xId = pFeatCls.FindField(<span class="string">"addin_x"</span>); <span class="comment">// x字段索引</span></span><br><span class="line">                <span class="keyword">int</span> yId = pFeatCls.FindField(<span class="string">"addin_y"</span>); <span class="comment">// y字段索引</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (pFeat != <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    pPnt = pFeat.Shape <span class="keyword">as</span> IPoint;  <span class="comment">// 赋值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    pFeat.set_Value(xId, pPnt.X); <span class="comment">// x字段赋值</span></span><br><span class="line">                    pFeat.set_Value(yId, pPnt.Y); <span class="comment">// y字段赋值</span></span><br><span class="line"></span><br><span class="line">                    s = s + pFeat.get_Value(nameId) + <span class="string">"x:"</span> + Convert.ToString(pPnt.X) + <span class="string">" y:"</span> + </span><br><span class="line">                        Convert.ToString(pPnt.Y) + <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">                    pFeatCur.UpdateFeature(pFeat); <span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">                    pFeat = pFeatCur.NextFeature();</span><br><span class="line">                &#125;</span><br><span class="line">                MessageBox.Show(s);</span><br><span class="line">                MessageBox.Show(<span class="string">"计算经纬度与赋值字段：ok"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">            <span class="comment">//MessageBox.Show("I am hua");</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Enabled = ArcMap.Application != <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>ArcMapEngine VS addin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>arcEngine C# 独立的地理信息系统程序 计算点坐标、线长、面积</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-23-Cshape%20%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%A8%8B%E5%BA%8F.html</url>
     <content><![CDATA[<p>功能说明：</p>
 <ul>
 <li>计算面的面积、线的长度、点的坐标</li>
@@ -191,8 +170,29 @@
       </tags>
   </entry>
   <entry>
+    <title>arcEngine 计算点坐标、线长、面积</title>
+    <url>/2019-09-23-Cshape%20arcengine%20addin.html</url>
+    <content><![CDATA[<ul>
+<li>VS新建addin</li>
+</ul>
+<p>功能：</p>
+<ul>
+<li>C# 获取当前文档地图图层</li>
+<li>添加字段, 计算面图层的面积</li>
+<li>添加字段，计算线图层的长度</li>
+<li>添加字段，计算点图层的经纬度</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="addin-xxx-cs文件"><a href="#addin-xxx-cs文件" class="headerlink" title="addin         xxx.cs文件"></a>addin         xxx.cs文件</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.Geodatabase;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.Carto;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.ArcMapUI;</span><br><span class="line"><span class="keyword">using</span> ESRI.ArcGIS.Geometry;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">calcArea</span></span><br><span class="line">&#123;</span><br><span class="line">    public class calcArea : ESRI.ArcGIS.Desktop.AddIns.Button</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 在C#中类有三种，</span></span><br><span class="line">        <span class="comment">// 抽象类(无构造函数，不能创建新的对象，用于创建新的类、</span></span><br><span class="line">        <span class="comment">// com类(组件类) 用于创建新的对象的类，可用new生成，所以必须有构造函数</span></span><br><span class="line">        <span class="comment">// 第三种是普通类，不是抽象类，不能用new创建，是由其他类生成的</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">calcArea</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// FeatureClass是不可创建对象的普通类</span></span><br><span class="line">            <span class="comment">// IFeatureLayer pFeatLyr = new FeatureLayer(); //是可创建的com类，利用new关键字生成新的矢量图层，</span></span><br><span class="line">                                                        <span class="comment">//  是一个对象，用接口操作</span></span><br><span class="line">                   </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">funAddField</span>(<span class="params">IFeatureClass pFeatCls, <span class="keyword">string</span> fldName, esriFieldType fldType</span>) </span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">// 添加字段函数 //</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断字段是否存在</span></span><br><span class="line">            <span class="keyword">if</span> (pFeatCls.FindField(fldName) != <span class="number">-1</span>) <span class="comment">// 字段已存在</span></span><br><span class="line">            &#123;</span><br><span class="line">                MessageBox.Show(<span class="string">"欲创建的字段已存在，使用存在字段计算！！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="comment">// 字段不存在，创建</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// IFields pFlds = pFeatCls.Fields;</span></span><br><span class="line">                IFieldEdit pFieldEdit = <span class="keyword">new</span> FieldClass();</span><br><span class="line">                pFieldEdit.Name_2 = fldName;</span><br><span class="line">                pFieldEdit.Type_2 = fldType;</span><br><span class="line">                pFieldEdit.Editable_2 = <span class="literal">true</span>;</span><br><span class="line">                pFeatCls.AddField(pFieldEdit); <span class="comment">// 添加字段</span></span><br><span class="line">            &#125;</span><br><span class="line">                       </span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            <span class="comment">//  <span class="doctag">TODO:</span> Sample code showing how to access button host</span></span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            ArcMap.Application.CurrentTool = <span class="literal">null</span>;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">         功能：计算面图层面积，线图层长度，点图层经纬度坐标</span></span><br><span class="line"><span class="comment">         作者：1985857412@qq.com</span></span><br><span class="line"><span class="comment">         说明：添加字段，计算计算面图层面积，线图层长度，点图层经纬度坐标</span></span><br><span class="line"><span class="comment">         * 操作的是地图文档中第一个图层</span></span><br><span class="line"><span class="comment">         日期：2019/9/23</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">            <span class="comment">// 获取当前地图文档</span></span><br><span class="line">            IMxDocument pDoc = ArcMap.Application.Document <span class="keyword">as</span> IMxDocument;</span><br><span class="line">            IMap pMap = pDoc.ActivatedView.FocusMap; <span class="comment">// 获取地图</span></span><br><span class="line">            ILayer pLyr = pMap.get_Layer(<span class="number">0</span>); <span class="comment">// 获取地图第一个图层</span></span><br><span class="line">            IFeatureLayer pFeatLyr = pLyr <span class="keyword">as</span> IFeatureLayer; <span class="comment">//QI</span></span><br><span class="line">            <span class="comment">//MessageBox.Show(pFeatLyr.Name); 测试打印要素名称</span></span><br><span class="line">            IFeatureClass pFeatCls = pFeatLyr.FeatureClass;</span><br><span class="line"></span><br><span class="line">            IFeatureCursor pFeatCur; <span class="comment">// 游标</span></span><br><span class="line">            IFeature pFeat; <span class="comment">// feature</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> s = <span class="string">""</span>; <span class="comment">// 存储打印字符串</span></span><br><span class="line">                      </span><br><span class="line">            <span class="comment">// 面图层计算面积</span></span><br><span class="line">            <span class="keyword">if</span> (esriGeometryType.esriGeometryPolygon == pFeatCls.ShapeType)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 调用函数，添加字段</span></span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_area"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line"></span><br><span class="line">                pFeatCur = pFeatCls.Update(<span class="literal">null</span>, <span class="literal">false</span>); <span class="comment">// 获取游标</span></span><br><span class="line">                pFeat = pFeatCur.NextFeature(); <span class="comment">// 获取feature</span></span><br><span class="line">                IPolygon pPlg;  <span class="comment">// polygon对象</span></span><br><span class="line">                IArea pArea;    <span class="comment">// area对象</span></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">                <span class="keyword">int</span> nameId = pFeatCls.FindField(<span class="string">"NAME"</span>); <span class="comment">// NAME字段索引</span></span><br><span class="line">                <span class="keyword">int</span> areaId = pFeatCls.FindField(<span class="string">"addin_area"</span>); <span class="comment">// addin_area字段索引</span></span><br><span class="line">                                </span><br><span class="line">                <span class="keyword">while</span> (pFeat != <span class="literal">null</span>) </span><br><span class="line">                &#123;</span><br><span class="line">                    pPlg = pFeat.Shape <span class="keyword">as</span> IPolygon;  <span class="comment">// 赋值</span></span><br><span class="line">                    pArea = pPlg <span class="keyword">as</span> IArea;</span><br><span class="line"></span><br><span class="line">                    pFeat.set_Value(areaId, pArea.Area); <span class="comment">// 面积字段赋值</span></span><br><span class="line"></span><br><span class="line">                    s = s + pFeat.get_Value(nameId) + Convert.ToString(pArea.Area) + <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">                    pFeatCur.UpdateFeature(pFeat); <span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">                    pFeat = pFeatCur.NextFeature();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                MessageBox.Show(s);</span><br><span class="line">                MessageBox.Show(<span class="string">"计算面积与赋值字段：ok"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 线图层计算长度</span></span><br><span class="line">            <span class="keyword">if</span>(esriGeometryType.esriGeometryPolyline == pFeatCls.ShapeType)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 调用函数，添加字段</span></span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_len"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line"></span><br><span class="line">                pFeatCur = pFeatCls.Update(<span class="literal">null</span>, <span class="literal">false</span>); <span class="comment">// 获取游标</span></span><br><span class="line">                pFeat = pFeatCur.NextFeature(); <span class="comment">// 获取feature</span></span><br><span class="line"></span><br><span class="line">                IPolyline pPline;  <span class="comment">// 线对象</span></span><br><span class="line">                <span class="keyword">int</span> nameId = pFeatCls.FindField(<span class="string">"NAME"</span>); <span class="comment">// NAME字段索引</span></span><br><span class="line">                <span class="keyword">int</span> lenId = pFeatCls.FindField(<span class="string">"addin_len"</span>); <span class="comment">// addin_len字段索引</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (pFeat != <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    pPline = pFeat.Shape <span class="keyword">as</span> IPolyline;  <span class="comment">// 赋值</span></span><br><span class="line">                   </span><br><span class="line"></span><br><span class="line">                    pFeat.set_Value(lenId, pPline.Length); <span class="comment">// 长度字段赋值</span></span><br><span class="line"></span><br><span class="line">                    s = s + pFeat.get_Value(nameId) + Convert.ToString(pPline.Length) + <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">                    pFeatCur.UpdateFeature(pFeat); <span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">                    pFeat = pFeatCur.NextFeature();</span><br><span class="line">                &#125;</span><br><span class="line">                MessageBox.Show(s);</span><br><span class="line">                MessageBox.Show(<span class="string">"计算长度与赋值字段：ok"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 点图层计算经纬度坐标</span></span><br><span class="line">            <span class="keyword">if</span> (esriGeometryType.esriGeometryPoint == pFeatCls.ShapeType)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 调用函数，添加x,y字段</span></span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_x"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line">                funAddField(pFeatCls, <span class="string">"addin_y"</span>, esriFieldType.esriFieldTypeDouble);</span><br><span class="line"></span><br><span class="line">                pFeatCur = pFeatCls.Update(<span class="literal">null</span>, <span class="literal">false</span>); <span class="comment">// 获取游标</span></span><br><span class="line">                pFeat = pFeatCur.NextFeature(); <span class="comment">// 获取feature</span></span><br><span class="line"></span><br><span class="line">                IPoint pPnt;  <span class="comment">// 点对象</span></span><br><span class="line">                <span class="keyword">int</span> nameId = pFeatCls.FindField(<span class="string">"NAME"</span>); <span class="comment">// NAME字段索引</span></span><br><span class="line">                <span class="keyword">int</span> xId = pFeatCls.FindField(<span class="string">"addin_x"</span>); <span class="comment">// x字段索引</span></span><br><span class="line">                <span class="keyword">int</span> yId = pFeatCls.FindField(<span class="string">"addin_y"</span>); <span class="comment">// y字段索引</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (pFeat != <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    pPnt = pFeat.Shape <span class="keyword">as</span> IPoint;  <span class="comment">// 赋值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    pFeat.set_Value(xId, pPnt.X); <span class="comment">// x字段赋值</span></span><br><span class="line">                    pFeat.set_Value(yId, pPnt.Y); <span class="comment">// y字段赋值</span></span><br><span class="line"></span><br><span class="line">                    s = s + pFeat.get_Value(nameId) + <span class="string">"x:"</span> + Convert.ToString(pPnt.X) + <span class="string">" y:"</span> + </span><br><span class="line">                        Convert.ToString(pPnt.Y) + <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">                    pFeatCur.UpdateFeature(pFeat); <span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">                    pFeat = pFeatCur.NextFeature();</span><br><span class="line">                &#125;</span><br><span class="line">                MessageBox.Show(s);</span><br><span class="line">                MessageBox.Show(<span class="string">"计算经纬度与赋值字段：ok"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">            <span class="comment">//MessageBox.Show("I am hua");</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Enabled = ArcMap.Application != <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>ArcMapEngine VS addin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python 计算面的周长</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-19-python%20arcpy%20%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%9A%84%E5%91%A8%E9%95%BF.html</url>
     <content><![CDATA[<ul>
 <li>arcpy</li>
 <li>计算面图层周长</li>
@@ -208,7 +208,7 @@
   </entry>
   <entry>
     <title>Python 计算要素图层面积</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-18-py%20%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%A7%AF.html</url>
     <content><![CDATA[<ul>
 <li>arcpy</li>
 <li>获取矢量面图层，添加字段，实现面积的计算</li>
@@ -224,7 +224,7 @@
   </entry>
   <entry>
     <title>Python arcpy 计算曲线长度与弯曲度</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-18-Python%20arcpy%20%E8%AE%A1%E7%AE%97%E6%9B%B2%E7%BA%BF%E9%95%BF%E5%BA%A6%E4%B8%8E%E5%BC%AF%E6%9B%B2%E5%BA%A6.html</url>
     <content><![CDATA[<ul>
 <li>arcpy</li>
 <li>获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段</li>
@@ -240,7 +240,7 @@
   </entry>
   <entry>
     <title>vba ArcMap UI控件  计算要素图层面积</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-18-vba%20ArcMap%20UI%E6%8E%A7%E4%BB%B6%20%E8%AE%A1%E7%AE%97%E7%82%B9%E5%9D%90%E6%A0%87.html</url>
     <content><![CDATA[<ul>
 <li>计算点坐标</li>
 <li>添加两个字段，X和Y，X为经度，Y为纬度</li>
@@ -254,7 +254,7 @@
   </entry>
   <entry>
     <title>Python arcpy 计算点经纬度坐标</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-18-Python%20arcpy%20%20%E8%AE%A1%E7%AE%97%E7%82%B9%E7%BB%8F%E7%BA%AC%E5%BA%A6%E5%9D%90%E6%A0%87.html</url>
     <content><![CDATA[<ul>
 <li>arcpy</li>
 </ul>
@@ -269,7 +269,7 @@
   </entry>
   <entry>
     <title>vba ArcMap UI控件 线图层-线长与弯曲度</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-16-vba%20%E7%BA%BF%E5%9B%BE%E5%B1%82-%E7%BA%BF%E9%95%BF%E4%B8%8E%E5%BC%AF%E6%9B%B2%E5%BA%A6.html</url>
     <content><![CDATA[<p>计算线图层</p>
 <ul>
 <li>添加字段</li>
@@ -286,7 +286,7 @@
   </entry>
   <entry>
     <title>vba ArcMap UI控件  计算要素图层面积</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-09-16-vba%20ArcMap%20UI%E6%8E%A7%E4%BB%B6%20%20%E8%AE%A1%E7%AE%97%E8%A6%81%E7%B4%A0%E5%9B%BE%E5%B1%82%E9%9D%A2%E7%A7%AF.html</url>
     <content><![CDATA[<p>计算面图层</p>
 <ul>
 <li>添加字段</li>
@@ -308,7 +308,7 @@
   </entry>
   <entry>
     <title>jQuery实现带下拉框导航栏</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-15-jQuery%E5%AE%9E%E7%8E%B0%E5%B8%A6%E4%B8%8B%E6%8B%89%E6%A1%86%E5%AF%BC%E8%88%AA%E6%A0%8F.html</url>
     <content><![CDATA[<h2 id="jQuery实例-1-带下拉框导航栏"><a href="#jQuery实例-1-带下拉框导航栏" class="headerlink" title="jQuery实例(1)-带下拉框导航栏"></a>jQuery实例(1)-带下拉框导航栏</h2><p>实现功能:</p>
 <ul>
 <li>当鼠标悬停时自动出现下拉框(hover)</li>
@@ -337,7 +337,7 @@
   </entry>
   <entry>
     <title>Python-ArcGIS学习功能索引</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-06-Python-ArcGis%E5%AD%A6%E4%B9%A0%E5%8A%9F%E8%83%BD%E7%B4%A2%E5%BC%95.html</url>
     <content><![CDATA[<h2 id="Python-ArcGIS学习功能索引"><a href="#Python-ArcGIS学习功能索引" class="headerlink" title="Python-ArcGIS学习功能索引"></a>Python-ArcGIS学习功能索引</h2><p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p><b>功能索引</b></p>
 <h3 id="学习日志-1"><a href="#学习日志-1" class="headerlink" title="学习日志 1:"></a>学习日志 1:</h3><ul>
@@ -444,7 +444,7 @@
   </entry>
   <entry>
     <title>JavaScript应用实例-下拉框</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-06-JavaScript%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B(3)-%E6%89%8B%E9%A3%8E%E7%90%B4%E4%B8%8B%E6%8B%89%E6%A1%86.html</url>
     <content><![CDATA[<h2 id="JavaScript应用实例-3-手风琴下拉框"><a href="#JavaScript应用实例-3-手风琴下拉框" class="headerlink" title="JavaScript应用实例(3)-手风琴下拉框"></a>JavaScript应用实例(3)-手风琴下拉框</h2><p>参考：<a href="https://c.runoob.com/codedemo/3158" target="_blank" rel="noopener external nofollow noreferrer"> JS/CSS 带图标手风琴动画效果</a></p>
 <ul>
 <li>html</li>
@@ -462,7 +462,7 @@
   </entry>
   <entry>
     <title>JavaScript应用实例-自动、手动播放图片</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-05-%E8%87%AA%E5%8A%A8%E3%80%81%E6%89%8B%E5%8A%A8%E6%92%AD%E6%94%BE%E5%9B%BE%E7%89%87JavaScript.html</url>
     <content><![CDATA[<h2 id="JavaScript应用实例-1"><a href="#JavaScript应用实例-1" class="headerlink" title="JavaScript应用实例(1)"></a>JavaScript应用实例(1)</h2><p>参考：<a href="http://www.runoob.com/js/js-examples.html" target="_blank" rel="noopener external nofollow noreferrer">菜鸟教程</a></p>
 <p>环境:</p>
 <ul>
@@ -496,7 +496,7 @@
   </entry>
   <entry>
     <title>CSS图片居中</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-05-%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%ADCSS.html</url>
     <content><![CDATA[<h2 id="CSS-图片居中方式"><a href="#CSS-图片居中方式" class="headerlink" title="CSS-图片居中方式"></a>CSS-图片居中方式</h2><h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;1.png&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -512,7 +512,7 @@
   </entry>
   <entry>
     <title>JavaScript应用实例-下拉框</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-05-%E4%B8%8B%E6%8B%89%E6%A1%86JavaScript.html</url>
     <content><![CDATA[<h2 id="JavaScript应用实例-2-下拉菜单"><a href="#JavaScript应用实例-2-下拉菜单" class="headerlink" title="JavaScript应用实例(2)-下拉菜单"></a>JavaScript应用实例(2)-下拉菜单</h2><p>参考：<a href="https://blog.csdn.net/u014175572/article/details/50325929" target="_blank" rel="noopener external nofollow noreferrer">js实现简单的下拉菜单</a></p>
 <ul>
 <li>html</li>
@@ -540,7 +540,7 @@
   </entry>
   <entry>
     <title>JavaScript学习实例(3)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-05-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(3).html</url>
     <content><![CDATA[<h2 id="高级JavaScript实例"><a href="#高级JavaScript实例" class="headerlink" title="高级JavaScript实例"></a>高级JavaScript实例</h2><p>参考：<a href="http://www.runoob.com/js/js-examples.html" target="_blank" rel="noopener external nofollow noreferrer">菜鸟教程</a></p>
 <p>环境:</p>
 <ul>
@@ -588,7 +588,7 @@
   </entry>
   <entry>
     <title>JavaScript学习实例(2)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-04-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(2).html</url>
     <content><![CDATA[<h2 id="JavaScript学习实例-2"><a href="#JavaScript学习实例-2" class="headerlink" title="JavaScript学习实例(2)"></a>JavaScript学习实例(2)</h2><p>参考：<a href="http://www.runoob.com/" target="_blank" rel="noopener external nofollow noreferrer">菜鸟教程</a></p>
 <p>环境:</p>
 <ul>
@@ -630,7 +630,7 @@
   </entry>
   <entry>
     <title>JavaScript学习实例(1)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-03-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(1).html</url>
     <content><![CDATA[<h2 id="JavaScript学习实例-1"><a href="#JavaScript学习实例-1" class="headerlink" title="JavaScript学习实例(1)"></a>JavaScript学习实例(1)</h2><p>环境:</p>
 <ul>
 <li>html</li>
@@ -703,7 +703,7 @@
   </entry>
   <entry>
     <title>php+Apache+mysql用户登录系统(1)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-01-php-Apache-mysql-ULS(1)%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F.html</url>
     <content><![CDATA[<p>php+Apache+mysql用户登录系统</p>
 <p>说明:</p>
 <ul>
@@ -746,45 +746,8 @@
       </tags>
   </entry>
   <entry>
-    <title>PHP中password_hash()密码加密</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<h2 id="PHP对登陆密码加密的方法"><a href="#PHP对登陆密码加密的方法" class="headerlink" title="PHP对登陆密码加密的方法"></a>PHP对登陆密码加密的方法</h2><p>环境说明：</p>
-<ul>
-<li>php7.0</li>
-<li>apache2</li>
-<li><?php 代码 ?>
-
-</li>
-</ul>
-<p>加密方法:</p>
-<blockquote>
-<ul>
-<li>password_hash ($password, PASSWORD_BCRYPT, $options)</li>
-<li>$password 需要加密的密码</li>
-<li>PASSWORD_BCRYPT 加密方式</li>
-<li>$options 可用于设置cost值和 salt值</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;例:</span><br><span class="line">$options &#x3D; [</span><br><span class="line">        &#39;cost&#39; &#x3D;&gt; 11,</span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
-
-<p>验证哈希值与密码是否匹配</p>
-<ul>
-<li>password_verify($password, $hash)</li>
-<li>参数为密码和加密后的哈希值</li>
-</ul>
-<a id="more"></a>
-
-<h3 id="1-查看服务器在不拖慢速度的最高cost值"><a href="#1-查看服务器在不拖慢速度的最高cost值" class="headerlink" title="1. 查看服务器在不拖慢速度的最高cost值"></a>1. 查看服务器在不拖慢速度的最高cost值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;测试机器能够达到的最高cost</span><br><span class="line">	$time &#x3D; 0.1; &#x2F;&#x2F; 100毫秒</span><br><span class="line">	$cost &#x3D; 8;</span><br><span class="line">	do&#123;</span><br><span class="line">		$cost++;</span><br><span class="line">		$start &#x3D; microtime(true);</span><br><span class="line">		password_hash($password, PASSWORD_BCRYPT, [&#39;cost&#39; &#x3D;&gt; $cost]);</span><br><span class="line">		$end &#x3D; microtime(true);</span><br><span class="line"></span><br><span class="line">	&#125;while(($end - $start) &lt; $time);</span><br></pre></td></tr></table></figure>
-<h3 id="2-加密与验证加密后的哈希值与密码是否匹配"><a href="#2-加密与验证加密后的哈希值与密码是否匹配" class="headerlink" title="2. 加密与验证加密后的哈希值与密码是否匹配"></a>2. 加密与验证加密后的哈希值与密码是否匹配</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 加密</span><br><span class="line">$hash &#x3D; password_hash($password, PASSWORD_BCRYPT, [&quot;cost&quot; &#x3D;&gt; 11]);</span><br><span class="line"></span><br><span class="line">echo &quot;$hash&quot; . &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">&#x2F;&#x2F; 验证</span><br><span class="line">if(password_verify($password, $hash))&#123;</span><br><span class="line">	echo &quot;匹配&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;不匹配&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>php php密码加密</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu16.04, Apache+PHP+Mysql安装与卸载</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-31-ubuntu-php-mysql.html</url>
     <content><![CDATA[<p>ubuntu16.04, Apache+PHP+Mysql的安装与卸载</p>
 <p>说明:</p>
 <ul>
@@ -845,8 +808,45 @@
       </tags>
   </entry>
   <entry>
+    <title>PHP中password_hash()密码加密</title>
+    <url>/2019-07-31-php-password_hash().html</url>
+    <content><![CDATA[<h2 id="PHP对登陆密码加密的方法"><a href="#PHP对登陆密码加密的方法" class="headerlink" title="PHP对登陆密码加密的方法"></a>PHP对登陆密码加密的方法</h2><p>环境说明：</p>
+<ul>
+<li>php7.0</li>
+<li>apache2</li>
+<li><?php 代码 ?>
+
+</li>
+</ul>
+<p>加密方法:</p>
+<blockquote>
+<ul>
+<li>password_hash ($password, PASSWORD_BCRYPT, $options)</li>
+<li>$password 需要加密的密码</li>
+<li>PASSWORD_BCRYPT 加密方式</li>
+<li>$options 可用于设置cost值和 salt值</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;例:</span><br><span class="line">$options &#x3D; [</span><br><span class="line">        &#39;cost&#39; &#x3D;&gt; 11,</span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
+
+<p>验证哈希值与密码是否匹配</p>
+<ul>
+<li>password_verify($password, $hash)</li>
+<li>参数为密码和加密后的哈希值</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="1-查看服务器在不拖慢速度的最高cost值"><a href="#1-查看服务器在不拖慢速度的最高cost值" class="headerlink" title="1. 查看服务器在不拖慢速度的最高cost值"></a>1. 查看服务器在不拖慢速度的最高cost值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;测试机器能够达到的最高cost</span><br><span class="line">	$time &#x3D; 0.1; &#x2F;&#x2F; 100毫秒</span><br><span class="line">	$cost &#x3D; 8;</span><br><span class="line">	do&#123;</span><br><span class="line">		$cost++;</span><br><span class="line">		$start &#x3D; microtime(true);</span><br><span class="line">		password_hash($password, PASSWORD_BCRYPT, [&#39;cost&#39; &#x3D;&gt; $cost]);</span><br><span class="line">		$end &#x3D; microtime(true);</span><br><span class="line"></span><br><span class="line">	&#125;while(($end - $start) &lt; $time);</span><br></pre></td></tr></table></figure>
+<h3 id="2-加密与验证加密后的哈希值与密码是否匹配"><a href="#2-加密与验证加密后的哈希值与密码是否匹配" class="headerlink" title="2. 加密与验证加密后的哈希值与密码是否匹配"></a>2. 加密与验证加密后的哈希值与密码是否匹配</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 加密</span><br><span class="line">$hash &#x3D; password_hash($password, PASSWORD_BCRYPT, [&quot;cost&quot; &#x3D;&gt; 11]);</span><br><span class="line"></span><br><span class="line">echo &quot;$hash&quot; . &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">&#x2F;&#x2F; 验证</span><br><span class="line">if(password_verify($password, $hash))&#123;</span><br><span class="line">	echo &quot;匹配&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;不匹配&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>php php密码加密</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PHP新建用户数据库和表</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-31-php-mysql-create.html</url>
     <content><![CDATA[<p>环境说明: </p>
 <ul>
 <li>php7.0</li>
@@ -869,7 +869,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(附录)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-26-ArcGIS-Python(13).html</url>
     <content><![CDATA[<p>学习日志(附录) GIS程序员不可不知的Python功能</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>附录</b></p>
@@ -914,7 +914,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(12)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-24-ArcGIS-Python(12).html</url>
     <content><![CDATA[<p>学习日志12 使用Python实现ArcGis的高级功能</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>第十二章</b></p>
@@ -954,7 +954,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(11)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-21-ArcGIS-Python(11).html</url>
     <content><![CDATA[<p>学习日志11 异常识别和错误处理</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>第十一章</b></p>
@@ -990,7 +990,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(10)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-21-ArcGIS-Python(10).html</url>
     <content><![CDATA[<p>学习日志10 使用add-in定制Arcgis界面</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>第十章</b></p>
@@ -1058,7 +1058,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(9)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-19-ArcGIS-Python(9).html</url>
     <content><![CDATA[<p>学习日志9 获取GIS数据列表和描述</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>第九章</b></p>
@@ -1094,7 +1094,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(8)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-18-ArcGIS-Python(8).html</url>
     <content><![CDATA[<p>学习日志8     查询和选择数据</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>第八章</b></p>
@@ -1162,7 +1162,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(7)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-07-16-ArcGIS-Python(7).html</url>
     <content><![CDATA[<p>学习日志7     查询和选择数据</p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习<b>第七章</b></p>
@@ -1197,7 +1197,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(6)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-30-ArcGIS-Python(6).html</url>
     <content><![CDATA[<p>学习日志 6    </p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习==第六章==</p>
@@ -1223,7 +1223,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(5)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-23-ArcGIS-Python(5).html</url>
     <content><![CDATA[<p>学习日志 5    </p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习==第五章==   </p>
@@ -1245,7 +1245,7 @@
   </entry>
   <entry>
     <title>初恋-玉置浩二</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-22-%E5%88%9D%E6%81%8B-%E7%8E%89%E7%BD%AE%E6%B5%A9%E4%BA%8C.html</url>
     <content><![CDATA[<ul>
 <li>歌名: 初恋</li>
 <li>唱: 玉置浩二</li>
@@ -1378,7 +1378,7 @@
   </entry>
   <entry>
     <title>Arcgis中的python编程(4)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-21-ArcGIS-Python(4).html</url>
     <content><![CDATA[<p>学习日志 4    </p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
 <p>学习==第四章==   </p>
@@ -1468,219 +1468,8 @@
       </tags>
   </entry>
   <entry>
-    <title>今日から思い出</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<ul>
-<li>热爱之所爱</li>
-<li>学思之所学</li>
-</ul>
-<ul>
-<li>今日から思い出</li>
-<li>Aimer</li>
-</ul>
-<a id="more"></a>
-
-
-<ul>
-<li>今日から思い出<blockquote>
-<p>kyou kara omoide</p>
-<p>从今天开始的回忆</p>
-</blockquote>
-</li>
-<li>素敌な思い出<blockquote>
-<p>suteki na omoide</p>
-<p>美好的回忆</p>
-</blockquote>
-</li>
-<li>明日はもう一人だ<blockquote>
-<p>ashita wa mou hitori da</p>
-<p>明天开始就孤单一人了</p>
-</blockquote>
-</li>
-<li>これから　一人だ<blockquote>
-<p>kore kara hitori da</p>
-<p>从今往后 独自一人</p>
-</blockquote>
-</li>
-<li>すべては思い出<blockquote>
-<p>subete wa omoide</p>
-<p>一切都是回忆</p>
-</blockquote>
-</li>
-<li>悲しい思い出<blockquote>
-<p>kanashii omoide</p>
-<p>伤感的回忆</p>
-</blockquote>
-</li>
-<li>明日は そう どこかへ<blockquote>
-<p>ashita wa sou dokokahe</p>
-<p>明天也不知该去哪里</p>
-</blockquote>
-</li>
-<li>どこかへ 远くへ<blockquote>
-<p>dokokahe toukuhe</p>
-<p>肯定是遥远的某个地方</p>
-</blockquote>
-</li>
-<li>电话のむこう<blockquote>
-<p>denwa no mukou</p>
-<p>在电话的另一头</p>
-</blockquote>
-</li>
-<li>ママが泣いてた<blockquote>
-<p>mama ga naiteta</p>
-<p>妈妈哭了起来</p>
-</blockquote>
-</li>
-<li>「大丈夫？」って いった<blockquote>
-<p>daijoubu tte itta</p>
-<p>我问了一声「没事吧?」</p>
-</blockquote>
-</li>
-<li>ズルイな 先に泣くから<blockquote>
-<p>zuruina saki ni naku kara</p>
-<p>好狡猾啊 因为你先哭了起来</p>
-</blockquote>
-</li>
-<li>私はもう 泣けなくなるよ<blockquote>
-<p>watashi wa mou nake naku naru yo</p>
-<p>我就已经无法哭泣</p>
-</blockquote>
-</li>
-<li>今 あなたの声を 闻くことできるなら<blockquote>
-<p>ima anata no koe wo kiku koto dekiru nara</p>
-<p>如果现在 能听到你的声音的话</p>
-</blockquote>
-</li>
-<li>「爱してる」の一言を<blockquote>
-<p>aishiteru no hitokoto wo</p>
-<p>「我爱你」这一句话</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>今 あなたに言叶 送ることできるなら<blockquote>
-<p>ima anata ni kotoba okuru koto dekiru nara</p>
-<p>如果现在 我说的话语还能传达给你</p>
-</blockquote>
-</li>
-<li>「生まれ変わっても<blockquote>
-<p>umare kawatte mo</p>
-<p>「就算转世以后</p>
-</blockquote>
-</li>
-<li>また一绪にいたい」<blockquote>
-<p>mata isshyoni itai</p>
-<p>我还是想和你在一起」</p>
-</blockquote>
-</li>
-<li>もう会えないなんて…<blockquote>
-<p>mou aenai nante …</p>
-<p>不想相信再也无法见面什么的…</p>
-</blockquote>
-</li>
-<li>今日から思い出<blockquote>
-<p>kyou kara omoide</p>
-<p>从今天起一切都是回忆</p>
-</blockquote>
-</li>
-<li>それでも思い出<blockquote>
-<p>sore demo omoide</p>
-<p>尽管如此 也是回忆</p>
-</blockquote>
-</li>
-<li>いつかは そう 一人だ<blockquote>
-<p>itsuka wa sou hitori da</p>
-<p>不知何时 只剩下我一个人</p>
-</blockquote>
-</li>
-<li>それなら どうして<blockquote>
-<p>sore nara doushite</p>
-<p>如果是这样 那为什么</p>
-</blockquote>
-</li>
-<li>窓のむこう  あなたが见えた<blockquote>
-<p>mado no mukou anata ga mieta</p>
-<p>在窗户的另一边 我看到了你</p>
-</blockquote>
-</li>
-<li>「大丈夫？」って いうの？<blockquote>
-<p>daijoubu tte iuno</p>
-<p>是否在问我 「没事吧?」</p>
-</blockquote>
-</li>
-<li>ヒドイな そう闻かれたら<blockquote>
-<p>hidoi na sou kikare tara</p>
-<p>好过分啊 如果被这样问的话</p>
-</blockquote>
-</li>
-<li>私はもう 泣けなくなるよ<blockquote>
-<p>watashi wa mou nake naku naru yo</p>
-<p>我就无法哭泣了</p>
-</blockquote>
-</li>
-<li>今 あなたの声を 闻くことできるなら<blockquote>
-<p>ima anata no koe wo kiku koto dekiru nara</p>
-<p>如果现在 能听到你的声音的话</p>
-</blockquote>
-</li>
-<li>「爱してる」の一言を<blockquote>
-<p>aishiteru no hitokoto wo</p>
-<p>「我爱你」这一句话</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>今 あなたに言叶 送ることできるなら<blockquote>
-<p>ima anatani kotoba okuru koto dekiru nara</p>
-<p>如果现在 我说的话语还能传达给你</p>
-</blockquote>
-</li>
-<li>「生まれ変わっても<blockquote>
-<p>umare kawatte mo</p>
-<p>「就算转世以后</p>
-</blockquote>
-</li>
-<li>また一绪にいたい」<blockquote>
-<p>mata isshyoni itai</p>
-<p>我还是想和你在一起」</p>
-</blockquote>
-</li>
-<li>もう会えないなんて…<blockquote>
-<p>mou aenai nante …</p>
-<p>不想相信再也无法见面什么的…</p>
-</blockquote>
-</li>
-<li>もう会えないなんて…<blockquote>
-<p>mou aenai nante …</p>
-<p>不想相信再也无法见面什么的 …</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>歌</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>lemon</title>
-    <url>/archives/9e780924.html</url>
+    <url>/2019-06-20-Music_lemon.html</url>
     <content><![CDATA[<ul>
 <li><p>热爱之所爱</p>
 </li>
@@ -1959,8 +1748,219 @@
       </tags>
   </entry>
   <entry>
+    <title>今日から思い出</title>
+    <url>/2019-06-20-%E4%BB%8A%E6%97%A5%E3%81%8B%E3%82%89%E6%80%9D%E3%81%84%E5%87%BA.html</url>
+    <content><![CDATA[<ul>
+<li>热爱之所爱</li>
+<li>学思之所学</li>
+</ul>
+<ul>
+<li>今日から思い出</li>
+<li>Aimer</li>
+</ul>
+<a id="more"></a>
+
+
+<ul>
+<li>今日から思い出<blockquote>
+<p>kyou kara omoide</p>
+<p>从今天开始的回忆</p>
+</blockquote>
+</li>
+<li>素敌な思い出<blockquote>
+<p>suteki na omoide</p>
+<p>美好的回忆</p>
+</blockquote>
+</li>
+<li>明日はもう一人だ<blockquote>
+<p>ashita wa mou hitori da</p>
+<p>明天开始就孤单一人了</p>
+</blockquote>
+</li>
+<li>これから　一人だ<blockquote>
+<p>kore kara hitori da</p>
+<p>从今往后 独自一人</p>
+</blockquote>
+</li>
+<li>すべては思い出<blockquote>
+<p>subete wa omoide</p>
+<p>一切都是回忆</p>
+</blockquote>
+</li>
+<li>悲しい思い出<blockquote>
+<p>kanashii omoide</p>
+<p>伤感的回忆</p>
+</blockquote>
+</li>
+<li>明日は そう どこかへ<blockquote>
+<p>ashita wa sou dokokahe</p>
+<p>明天也不知该去哪里</p>
+</blockquote>
+</li>
+<li>どこかへ 远くへ<blockquote>
+<p>dokokahe toukuhe</p>
+<p>肯定是遥远的某个地方</p>
+</blockquote>
+</li>
+<li>电话のむこう<blockquote>
+<p>denwa no mukou</p>
+<p>在电话的另一头</p>
+</blockquote>
+</li>
+<li>ママが泣いてた<blockquote>
+<p>mama ga naiteta</p>
+<p>妈妈哭了起来</p>
+</blockquote>
+</li>
+<li>「大丈夫？」って いった<blockquote>
+<p>daijoubu tte itta</p>
+<p>我问了一声「没事吧?」</p>
+</blockquote>
+</li>
+<li>ズルイな 先に泣くから<blockquote>
+<p>zuruina saki ni naku kara</p>
+<p>好狡猾啊 因为你先哭了起来</p>
+</blockquote>
+</li>
+<li>私はもう 泣けなくなるよ<blockquote>
+<p>watashi wa mou nake naku naru yo</p>
+<p>我就已经无法哭泣</p>
+</blockquote>
+</li>
+<li>今 あなたの声を 闻くことできるなら<blockquote>
+<p>ima anata no koe wo kiku koto dekiru nara</p>
+<p>如果现在 能听到你的声音的话</p>
+</blockquote>
+</li>
+<li>「爱してる」の一言を<blockquote>
+<p>aishiteru no hitokoto wo</p>
+<p>「我爱你」这一句话</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>今 あなたに言叶 送ることできるなら<blockquote>
+<p>ima anata ni kotoba okuru koto dekiru nara</p>
+<p>如果现在 我说的话语还能传达给你</p>
+</blockquote>
+</li>
+<li>「生まれ変わっても<blockquote>
+<p>umare kawatte mo</p>
+<p>「就算转世以后</p>
+</blockquote>
+</li>
+<li>また一绪にいたい」<blockquote>
+<p>mata isshyoni itai</p>
+<p>我还是想和你在一起」</p>
+</blockquote>
+</li>
+<li>もう会えないなんて…<blockquote>
+<p>mou aenai nante …</p>
+<p>不想相信再也无法见面什么的…</p>
+</blockquote>
+</li>
+<li>今日から思い出<blockquote>
+<p>kyou kara omoide</p>
+<p>从今天起一切都是回忆</p>
+</blockquote>
+</li>
+<li>それでも思い出<blockquote>
+<p>sore demo omoide</p>
+<p>尽管如此 也是回忆</p>
+</blockquote>
+</li>
+<li>いつかは そう 一人だ<blockquote>
+<p>itsuka wa sou hitori da</p>
+<p>不知何时 只剩下我一个人</p>
+</blockquote>
+</li>
+<li>それなら どうして<blockquote>
+<p>sore nara doushite</p>
+<p>如果是这样 那为什么</p>
+</blockquote>
+</li>
+<li>窓のむこう  あなたが见えた<blockquote>
+<p>mado no mukou anata ga mieta</p>
+<p>在窗户的另一边 我看到了你</p>
+</blockquote>
+</li>
+<li>「大丈夫？」って いうの？<blockquote>
+<p>daijoubu tte iuno</p>
+<p>是否在问我 「没事吧?」</p>
+</blockquote>
+</li>
+<li>ヒドイな そう闻かれたら<blockquote>
+<p>hidoi na sou kikare tara</p>
+<p>好过分啊 如果被这样问的话</p>
+</blockquote>
+</li>
+<li>私はもう 泣けなくなるよ<blockquote>
+<p>watashi wa mou nake naku naru yo</p>
+<p>我就无法哭泣了</p>
+</blockquote>
+</li>
+<li>今 あなたの声を 闻くことできるなら<blockquote>
+<p>ima anata no koe wo kiku koto dekiru nara</p>
+<p>如果现在 能听到你的声音的话</p>
+</blockquote>
+</li>
+<li>「爱してる」の一言を<blockquote>
+<p>aishiteru no hitokoto wo</p>
+<p>「我爱你」这一句话</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>今 あなたに言叶 送ることできるなら<blockquote>
+<p>ima anatani kotoba okuru koto dekiru nara</p>
+<p>如果现在 我说的话语还能传达给你</p>
+</blockquote>
+</li>
+<li>「生まれ変わっても<blockquote>
+<p>umare kawatte mo</p>
+<p>「就算转世以后</p>
+</blockquote>
+</li>
+<li>また一绪にいたい」<blockquote>
+<p>mata isshyoni itai</p>
+<p>我还是想和你在一起」</p>
+</blockquote>
+</li>
+<li>もう会えないなんて…<blockquote>
+<p>mou aenai nante …</p>
+<p>不想相信再也无法见面什么的…</p>
+</blockquote>
+</li>
+<li>もう会えないなんて…<blockquote>
+<p>mou aenai nante …</p>
+<p>不想相信再也无法见面什么的 …</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>歌</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Arcgis中的python编程(3)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-16-ArcGIS-Python(3).html</url>
     <content><![CDATA[<p>学习日志 3    </p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版);  </p>
 <ul>
@@ -1981,8 +1981,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Git指令</title>
+    <url>/2019-06-12-Git%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE.html</url>
+    <content><![CDATA[<h4 id="1-新建项目后"><a href="#1-新建项目后" class="headerlink" title="1.新建项目后"></a>1.新建项目后</h4><h4 id="…or-create-a-new-repository-on-the-command-line"><a href="#…or-create-a-new-repository-on-the-command-line" class="headerlink" title="…or create a new repository on the command line"></a>…or create a new repository on the command line</h4><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# emmm&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h5 id="…or-push-an-existing-repository-from-the-command-line"><a href="#…or-push-an-existing-repository-from-the-command-line" class="headerlink" title="…or push an existing repository from the command line"></a>…or push an existing repository from the command line</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h4 id="2-流程"><a href="#2-流程" class="headerlink" title="2.流程"></a>2.流程</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加此文件全部</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Arcgis中的python编程(1)</title>
+    <url>/2019-06-13-ArcGIS-Python(1).html</url>
+    <content><![CDATA[<h3 id="学习日志-1"><a href="#学习日志-1" class="headerlink" title="学习日志 1:"></a>学习日志 1:</h3><p>书籍：基于ArcGIS的Python编程秘笈(第2版);   </p>
+<ul>
+<li>arcpy库  </li>
+<li>引用mxd文档、数据框、图层  </li>
+<li>改变地图范围  </li>
+<li>添加图层文件到数据框  </li>
+<li>插入一个图层到某个位置  </li>
+</ul>
+<a id="more"></a>
+
+<h3 id="1-arcpy库"><a href="#1-arcpy库" class="headerlink" title="1. arcpy库"></a>1. arcpy库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br></pre></td></tr></table></figure>
+<h3 id="2-引用mxd文档、数据框、图层"><a href="#2-引用mxd文档、数据框、图层" class="headerlink" title="2. 引用mxd文档、数据框、图层"></a>2. 引用mxd文档、数据框、图层</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mxd &#x3D; mapping.MapDocument(&quot;H:\\upUpStudy\\pythonGis\\text\\text.mxd&quot;)</span><br><span class="line"></span><br><span class="line">#或</span><br><span class="line"></span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">df &#x3D; mapping.ListDataFrames(mxd)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">layers &#x3D; mapping.ListLayers(mxd, &quot;p&quot;, df)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-改变地图范围"><a href="#3-改变地图范围" class="headerlink" title="3. 改变地图范围"></a>3. 改变地图范围</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... </span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; for df in mapping.ListDataFrames(mxd):</span><br><span class="line">...     if df &#x3D;&#x3D; &quot;df1&quot;:</span><br><span class="line">...         layers &#x3D; mapping.ListLayers(mxd, &#39;counties&#39;, df)</span><br><span class="line">...         for layer in layers:</span><br><span class="line">...             query &#x3D; &#39;&quot;county&quot; &#x3D; &quot;HAYS&quot;&#39;</span><br><span class="line">...             layer.definitionQuery &#x3D; query</span><br><span class="line">...             df.extent &#x3D; layer.getExtent()</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-添加图层文件到数据框"><a href="#4-添加图层文件到数据框" class="headerlink" title="4. 添加图层文件到数据框"></a>4. 添加图层文件到数据框</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">#########</span><br><span class="line">... layer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\counties.lyr&#39;)</span><br><span class="line">... mapping.AddLayer(df, layer, &quot;AUTO_ARRANGE&quot;)</span><br><span class="line">##########</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-添加到图层组、移除图层"><a href="#4-1-添加到图层组、移除图层" class="headerlink" title="4.1 添加到图层组、移除图层"></a>4.1 添加到图层组、移除图层</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.AddLayerToGroup()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.RemoveLayer()</span><br></pre></td></tr></table></figure>
+<h3 id="5-插入一个图层到某个位置"><a href="#5-插入一个图层到某个位置" class="headerlink" title="5. 插入一个图层到某个位置"></a>5. 插入一个图层到某个位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.InsertLayer()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">&gt;&gt;&gt; mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">&gt;&gt;&gt; df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">&gt;&gt;&gt; # 参考图层</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; reflayer &#x3D; mapping.ListLayers(mxd, &#39;boun*&#39;, df)[0]</span><br><span class="line">&gt;&gt;&gt; # 插入的图层</span><br><span class="line">&gt;&gt;&gt; insertLayer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\streets.shp&#39;)</span><br><span class="line">&gt;&gt;&gt; # 插入</span><br><span class="line">&gt;&gt;&gt; mapping.InsertLayer(df, reflayer, insertLayer, &quot;BEFORE&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>pythonGIS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Arcgis中的python编程(2)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-13-ArcGIS-Python(2).html</url>
     <content><![CDATA[<p>学习日志 2:   </p>
 <p>书籍：基于ArcGIS的Python编程秘笈(第2版);       </p>
 <ul>
@@ -2042,50 +2084,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Arcgis中的python编程(1)</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<h3 id="学习日志-1"><a href="#学习日志-1" class="headerlink" title="学习日志 1:"></a>学习日志 1:</h3><p>书籍：基于ArcGIS的Python编程秘笈(第2版);   </p>
-<ul>
-<li>arcpy库  </li>
-<li>引用mxd文档、数据框、图层  </li>
-<li>改变地图范围  </li>
-<li>添加图层文件到数据框  </li>
-<li>插入一个图层到某个位置  </li>
-</ul>
-<a id="more"></a>
-
-<h3 id="1-arcpy库"><a href="#1-arcpy库" class="headerlink" title="1. arcpy库"></a>1. arcpy库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br></pre></td></tr></table></figure>
-<h3 id="2-引用mxd文档、数据框、图层"><a href="#2-引用mxd文档、数据框、图层" class="headerlink" title="2. 引用mxd文档、数据框、图层"></a>2. 引用mxd文档、数据框、图层</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mxd &#x3D; mapping.MapDocument(&quot;H:\\upUpStudy\\pythonGis\\text\\text.mxd&quot;)</span><br><span class="line"></span><br><span class="line">#或</span><br><span class="line"></span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">df &#x3D; mapping.ListDataFrames(mxd)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">layers &#x3D; mapping.ListLayers(mxd, &quot;p&quot;, df)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-改变地图范围"><a href="#3-改变地图范围" class="headerlink" title="3. 改变地图范围"></a>3. 改变地图范围</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... </span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; for df in mapping.ListDataFrames(mxd):</span><br><span class="line">...     if df &#x3D;&#x3D; &quot;df1&quot;:</span><br><span class="line">...         layers &#x3D; mapping.ListLayers(mxd, &#39;counties&#39;, df)</span><br><span class="line">...         for layer in layers:</span><br><span class="line">...             query &#x3D; &#39;&quot;county&quot; &#x3D; &quot;HAYS&quot;&#39;</span><br><span class="line">...             layer.definitionQuery &#x3D; query</span><br><span class="line">...             df.extent &#x3D; layer.getExtent()</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-添加图层文件到数据框"><a href="#4-添加图层文件到数据框" class="headerlink" title="4. 添加图层文件到数据框"></a>4. 添加图层文件到数据框</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">#########</span><br><span class="line">... layer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\counties.lyr&#39;)</span><br><span class="line">... mapping.AddLayer(df, layer, &quot;AUTO_ARRANGE&quot;)</span><br><span class="line">##########</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h4 id="4-1-添加到图层组、移除图层"><a href="#4-1-添加到图层组、移除图层" class="headerlink" title="4.1 添加到图层组、移除图层"></a>4.1 添加到图层组、移除图层</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.AddLayerToGroup()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.RemoveLayer()</span><br></pre></td></tr></table></figure>
-<h3 id="5-插入一个图层到某个位置"><a href="#5-插入一个图层到某个位置" class="headerlink" title="5. 插入一个图层到某个位置"></a>5. 插入一个图层到某个位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.InsertLayer()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">&gt;&gt;&gt; mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">&gt;&gt;&gt; df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">&gt;&gt;&gt; # 参考图层</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; reflayer &#x3D; mapping.ListLayers(mxd, &#39;boun*&#39;, df)[0]</span><br><span class="line">&gt;&gt;&gt; # 插入的图层</span><br><span class="line">&gt;&gt;&gt; insertLayer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\streets.shp&#39;)</span><br><span class="line">&gt;&gt;&gt; # 插入</span><br><span class="line">&gt;&gt;&gt; mapping.InsertLayer(df, reflayer, insertLayer, &quot;BEFORE&quot;)</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>pythonGIS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git指令</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<h4 id="1-新建项目后"><a href="#1-新建项目后" class="headerlink" title="1.新建项目后"></a>1.新建项目后</h4><h4 id="…or-create-a-new-repository-on-the-command-line"><a href="#…or-create-a-new-repository-on-the-command-line" class="headerlink" title="…or create a new repository on the command line"></a>…or create a new repository on the command line</h4><a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# emmm&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<h5 id="…or-push-an-existing-repository-from-the-command-line"><a href="#…or-push-an-existing-repository-from-the-command-line" class="headerlink" title="…or push an existing repository from the command line"></a>…or push an existing repository from the command line</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h4 id="2-流程"><a href="#2-流程" class="headerlink" title="2.流程"></a>2.流程</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加此文件全部</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录使用这个 blog theme</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-essay1.html</url>
     <content><![CDATA[<blockquote>
 <ul>
 <li>使用github page 来作为blog已经快有一年时间了;</li>
@@ -2120,7 +2120,7 @@
   </entry>
   <entry>
     <title>ubuntu16.04安装vsftpd</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-ubuntu16.04%20vsftpd.html</url>
     <content><![CDATA[<p><a href="https://cnaning.iteye.com/blog/335797" target="_blank" rel="noopener external nofollow noreferrer">配置文件中详细配置说明</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service vsftpd restart &#x2F;&#x2F;重启ftp服务</span><br><span class="line"></span><br><span class="line">netstat -natp | grep 21 &#x2F;&#x2F;查看端口监听状态</span><br><span class="line"></span><br><span class="line">apt-get remove vsftpd &#x2F;&#x2F;卸载软件</span><br><span class="line"></span><br><span class="line">service vsftpd status &#x2F;&#x2F;查看vsftpd的状态，可以输入命令</span><br></pre></td></tr></table></figure>
 
@@ -2140,7 +2140,7 @@
   </entry>
   <entry>
     <title>minecraft服务器搭建</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-ubuntu-minecraft-server.html</url>
     <content><![CDATA[<p>暑假玩网易代理我的世界；</p>
 <p>玩得不爽，模组太少；</p>
 <p>想着自己用服务器搭一个玩玩</p>
@@ -2171,7 +2171,7 @@
   </entry>
   <entry>
     <title>C语言顺序栈</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-03-19-C%E8%AF%AD%E8%A8%80%E9%A1%BA%E5%BA%8F%E6%A0%88.html</url>
     <content><![CDATA[<p>环境：vscode C语言</p>
 <a id="more"></a>
 
@@ -2182,7 +2182,7 @@
   </entry>
   <entry>
     <title>python3 链表结构</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-03-10-python3%20%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.html</url>
     <content><![CDATA[<p>环境: python3<br>工具: Spyder</p>
 <a id="more"></a>
 
@@ -2193,7 +2193,7 @@
   </entry>
   <entry>
     <title>pygame飞机大战游戏打包为exe</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-03-07-pygame-exe.html</url>
     <content><![CDATA[<p>环境: python 3.5<br>使用打包库：cx_Freeze<br><a href="http://sighingnow.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/cx_freeze.html" target="_blank" rel="noopener external nofollow noreferrer">可参考</a></p>
 <a id="more"></a>
 
@@ -2213,7 +2213,7 @@
   </entry>
   <entry>
     <title>C语言链表</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-03-03-C%E8%AF%AD%E8%A8%80%E9%93%BE%E8%A1%A8.html</url>
     <content><![CDATA[<p>环境: VC++ 6.0</p>
 <a id="more"></a>
 
@@ -2233,7 +2233,7 @@
   </entry>
   <entry>
     <title>python爬虫入门学习笔记</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-02-19-python-spider.html</url>
     <content><![CDATA[<p>学习环境:python3<br>python IDLE</p>
 <a id="more"></a>
 
@@ -2474,7 +2474,7 @@
   </entry>
   <entry>
     <title>HTML学习笔记</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-HTML-note.html</url>
     <content><![CDATA[<p>由于自己学着ruby on rails网站的部署，现在也部署成功了；<br>因此开始学习前端的一些知识；<br>这里是我学习html的学习笔记。</p>
 <p>我是在w3school学习的;<a href="www.w3school.com.cn/">w3school</a></p>
 <a id="more"></a>
@@ -2492,7 +2492,7 @@
   </entry>
   <entry>
     <title>给service添加ssh port</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-service-add-ssh%20port.html</url>
     <content><![CDATA[<p>给service添加ssh port</p>
 <a id="more"></a>
 
@@ -2512,7 +2512,7 @@
   </entry>
   <entry>
     <title>ruby on Rails建站思路</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-12-07-ruby%20on%20Rails%E5%BB%BA%E7%AB%99%E6%80%9D%E8%B7%AF.html</url>
     <content><![CDATA[<p>建网站需要我会ruby,ruby on rails,nodejs,git，gem…….</p>
 <p>然而我只会“教程”</p>
 <p>很菜很佛</p>
@@ -2693,7 +2693,7 @@
   </entry>
   <entry>
     <title>求三角形外接圆的圆心</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-%E6%B1%82%E4%B8%89%E8%A7%92%E5%BD%A2%E5%A4%96%E6%8E%A5%E5%9C%86%E7%9A%84%E5%9C%86%E5%BF%83.html</url>
     <content><![CDATA[<p>已知三点坐标<br>求三角形外接圆的圆心</p>
 <a id="more"></a>
 
@@ -2705,7 +2705,7 @@
   </entry>
   <entry>
     <title>bwg搭建ss教程</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-11-22-bwg-ss.html</url>
     <content><![CDATA[<p>bwg搭建ss教程</p>
 <p>本文来自：<a href="https://www.vpnask.com/fanqiang/bandwagonhost-install-shadowsocks/" target="_blank" rel="noopener external nofollow noreferrer">搬瓦工(BandwagonHost)取消了一键安装SS后，最新搬瓦工手动安装SS教程！</a></p>
 <a id="more"></a>
@@ -2730,7 +2730,7 @@
   </entry>
   <entry>
     <title>求垂点与平行线的算法</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-%E6%B1%82%E5%9E%82%E7%82%B9%E4%B8%8E%E5%B9%B3%E8%A1%8C%E7%BA%BF%E7%9A%84%E7%AE%97%E6%B3%95.html</url>
     <content><![CDATA[<p>已知两点构成的线段</p>
 <p>求第三点到已知线段的垂点</p>
 <p>求过第四点与已知线段平行的直线</p>
@@ -2761,7 +2761,7 @@
   </entry>
   <entry>
     <title>C_ALG坐标变换公式</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-C_ALG%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F.html</url>
     <content><![CDATA[<p>C语言实现GIS算法中的坐标变换</p>
 <p>平移变换、比例变换、旋转变换</p>
 <a id="more"></a>
@@ -2773,7 +2773,7 @@
   </entry>
   <entry>
     <title>vc6.0;MFC；画笔与填充</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-10-22-vc6.0;MFC%EF%BC%9B%E7%94%BB%E7%AC%94%E4%B8%8E%E7%9F%A9%E5%BD%A2%E5%A1%AB%E5%85%85.html</url>
     <content><![CDATA[<p>C语言MFC中画笔与矩形填充</p>
 <a id="more"></a>
 
@@ -2786,7 +2786,7 @@
   </entry>
   <entry>
     <title>C语言的写入文件数据与读取文件数据</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-10-22-C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE.html</url>
     <content><![CDATA[<p>C语言的写入文件数据与读取文件数据</p>
 <p>vc6.0</p>
 <p>MFC</p>
@@ -2801,7 +2801,7 @@
   </entry>
   <entry>
     <title>复习C语言二级笔记</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-08-23-%E5%A4%8D%E4%B9%A0C%E8%AF%AD%E8%A8%80%E4%BA%8C%E7%BA%A7%E7%AC%94%E8%AE%B0.html</url>
     <content><![CDATA[<p>学完一学期C语言，没啥感觉</p>
 <p>好多题也不会做</p>
 <p>二级临近，只有边刷题，边学习了</p>
@@ -2946,7 +2946,7 @@
   </entry>
   <entry>
     <title>从0开始的python飞机外星人大战 (2)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-08-21-pygame-2.html</url>
     <content><![CDATA[<h2 id="重构：模块game-Function-由于每次重构都需要改alien-invasin-py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien-invasion-py的代码"><a href="#重构：模块game-Function-由于每次重构都需要改alien-invasin-py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien-invasion-py的代码" class="headerlink" title="重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码"></a>重构：模块game_Function  由于每次重构都需要改alien_invasin.py，在写笔记时很麻烦，所以我这儿先重构一些，最后给出alien_invasion.py的代码</h2><h3 id="新建文件：game-Functions-py"><a href="#新建文件：game-Functions-py" class="headerlink" title="新建文件：game_Functions.py"></a>新建文件：game_Functions.py</h3><h3 id="函数check-event"><a href="#函数check-event" class="headerlink" title="函数check_event()"></a>函数check_event()</h3><h3 id="函数update-screen"><a href="#函数update-screen" class="headerlink" title="函数update_screen()"></a>函数update_screen()</h3><a id="more"></a>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pygame</span><br><span class="line"></span><br><span class="line">def check_events():</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            sys.exit</span><br><span class="line"></span><br><span class="line">def update_screen(ai_settings,screen,ship):</span><br><span class="line">    <span class="string">""</span><span class="string">"更新屏幕"</span><span class="string">""</span></span><br><span class="line">    <span class="comment"># 每次循环都重绘屏幕</span></span><br><span class="line">    screen.fill(ai_settings.bg_color)</span><br><span class="line">    ship.blitme()</span><br><span class="line">    </span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure>
@@ -2960,7 +2960,7 @@
   </entry>
   <entry>
     <title>从0开始的python飞机外星人大战 (1)</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-08-20-pygame-1.html</url>
     <content><![CDATA[<p>由于学了几天python的基础知识，意识到python作为一门语言，它的语法的简单，严格的格式；……这里是作为一个菜鸡，开始写的（抄的）一个经典的实战：飞机大战</p>
 <p>下面我们开始。</p>
 <h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>本文使用的是python3 + pycharm</p>
@@ -2989,8 +2989,422 @@
       </tags>
   </entry>
   <entry>
+    <title>程序结构、分支语句、条件、列表、循环</title>
+    <url>/2018-08-10-python-4.html</url>
+    <content><![CDATA[<p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
+<h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><ul>
+<li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
+<li>顺序</li>
+<li>分支：即选择条件</li>
+<li>循环</li>
+</ul>
+<h3 id="1、条件语句"><a href="#1、条件语句" class="headerlink" title="1、条件语句"></a>1、条件语句</h3><ul>
+<li>语法如下：<pre><code>if (条件表达式)：
+    程序处理模块</code></pre></li>
+<li>python用缩进来表示代码层级关系<ul>
+<li>python2空格和tab可混用</li>
+<li>python3不能混用</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre><ul>
+<li>在python中  pass语句，占位，不执行任何语句，不起任何作用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="练习：判断学生成绩的等级"><a href="#练习：判断学生成绩的等级" class="headerlink" title="练习：判断学生成绩的等级"></a>练习：判断学生成绩的等级</h4><ul>
+<li>90及以上为A</li>
+<li>80-90为B</li>
+<li>70-80为C</li>
+<li>60-70为D</li>
+<li>其余为E</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>键入学生成绩：70
+C</code></pre><h3 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入成绩：99
+及格
+优</code></pre><h3 id="2、三元运算符"><a href="#2、三元运算符" class="headerlink" title="2、三元运算符"></a>2、三元运算符</h3><ul>
+<li>语法： x if 条件 else y</li>
+<li>表示如果条件成立则输出x；否则输出y</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"优秀"</span> <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> <span class="keyword">else</span> <span class="string">"不行"</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&apos;优秀&apos;</code></pre><h4 id="运用三元运算符求最大值"><a href="#运用三元运算符求最大值" class="headerlink" title="运用三元运算符求最大值"></a>运用三元运算符求最大值</h4><ul>
+<li>a,b,c由用户输入</li>
+<li>输出最大值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = int(input(<span class="string">"输入a:"</span>))</span><br><span class="line">b = int(input(<span class="string">"输入b:"</span>))</span><br><span class="line">c = int(input(<span class="string">"输入c:"</span>))</span><br><span class="line">d = (a <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b) <span class="keyword">if</span> ((a <span class="keyword">if</span> a &gt;b <span class="keyword">else</span> b)&gt;c) <span class="keyword">else</span> c</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入a:23
+输入b:45
+输入c:11
+45</code></pre><h3 id="3、列表-list"><a href="#3、列表-list" class="headerlink" title="3、列表 list"></a>3、列表 list</h3><ul>
+<li>可以放数字、字符串、列表、和其他结构</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3 id="4、range"><a href="#4、range" class="headerlink" title="4、range"></a>4、range</h3><ul>
+<li>可以看成一个函数</li>
+<li>产生一个有规律的有数字组成的列表</li>
+<li>语法： range(start,end,step)</li>
+<li>start:开始数字，生成列表包含start,默认为0；end:结束值，结果列表不包含end;</li>
+<li>step:步长，默认为1</li>
+<li>python2中range()生成的是列表，同时有xrange()函数，功能类似</li>
+<li>python3中，生成结果是迭代器，不是列表，可粗略地认为是列表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = range(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#   可看成L1 == [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、for循环"><a href="#5、for循环" class="headerlink" title="5、for循环"></a>5、for循环</h3><ul>
+<li>一般明确循环次数</li>
+<li>语法：    for i in xxx:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">5</span>,<span class="number">9</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">77</span>,<span class="string">"fuck"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L1:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5
+9
+55
+99
+77
+fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">1</span>,<span class="number">100</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">for</span> a1 <span class="keyword">in</span> a:</span><br><span class="line">    print(a1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+20
+39
+58
+77
+96</code></pre><h4 id="运用循环求和"><a href="#运用循环求和" class="headerlink" title="运用循环求和"></a>运用循环求和</h4><ul>
+<li>求从1加到100</li>
+<li>使用range</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5050</code></pre><h3 id="6、while循环"><a href="#6、while循环" class="headerlink" title="6、while循环"></a>6、while循环</h3><ul>
+<li>不明确循环次数，却满足一定条件</li>
+<li>语法；      while (条件):<pre><code>循环体</code></pre></li>
+</ul>
+<h4 id="示例：银行存款"><a href="#示例：银行存款" class="headerlink" title="示例：银行存款"></a>示例：银行存款</h4><ul>
+<li>本金10000</li>
+<li>年利率： %2.5</li>
+<li>多少年总金额超过20000<ul>
+<li>分析：没有明确循环次数</li>
+<li>条件：总金额超过20000</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year is 29</code></pre><h4 id="累加求和"><a href="#累加求和" class="headerlink" title="累加求和"></a>累加求和</h4><ul>
+<li>1-100</li>
+<li>while循环</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5050</code></pre><h3 id="7、-break语句"><a href="#7、-break语句" class="headerlink" title="7、 break语句"></a>7、 break语句</h3><ul>
+<li>无条件终止循环，并跳出循环体</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ul>
+<li>在200-300中找到第一个可以被9整除的数</li>
+<li>使用break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>207</code></pre><h4 id="对于嵌套多重循环，break跳出离他最近的循环"><a href="#对于嵌套多重循环，break跳出离他最近的循环" class="headerlink" title="对于嵌套多重循环，break跳出离他最近的循环"></a>对于嵌套多重循环，break跳出离他最近的循环</h4><h4 id="打印9-9乘法表"><a href="#打印9-9乘法表" class="headerlink" title="打印9*9乘法表"></a>打印9*9乘法表</h4><ul>
+<li>要求最大值为36</li>
+<li>典型 for 嵌套循环</li>
+<li>break</li>
+<li>调用sys模块中write可以在打印时不会换行</li>
+<li>sys.stdout.write();括号内只能用字符型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">36</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9  
+2 4 6 8 10 12 14 16 18  
+3 6 9 12 15 18 21 24 27  
+4 8 12 16 20 24 28 32 36  
+5 10 15 20 25 30 35  
+6 12 18 24 30 36  
+7 14 21 28 35  
+8 16 24 32  
+9 18 27 36  </code></pre><h3 id="8、continue"><a href="#8、continue" class="headerlink" title="8、continue"></a>8、continue</h3><ul>
+<li>含义：继续下一轮循环</li>
+<li>当我们已经确定不需要此轮循环时使用</li>
+</ul>
+<h4 id="例：累加求和"><a href="#例：累加求和" class="headerlink" title="例：累加求和"></a>例：累加求和</h4><ul>
+<li>当数为偶数时才求和</li>
+<li>1-100</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2550</code></pre><h4 id="例：9-9乘法表"><a href="#例：9-9乘法表" class="headerlink" title="例：9*9乘法表"></a>例：9*9乘法表</h4><ul>
+<li>要求：打印值小于12的数</li>
+<li>嵌套for循环</li>
+<li>使用continue</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9 
+
+2 4 6 8 10 12 
+
+3 6 9 12 
+
+4 8 12 
+
+5 10 
+
+6 12 
+
+7 
+
+8 
+
+9 </code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python中的运算符</title>
+    <url>/2018-08-10-Python-2.html</url>
+    <content><![CDATA[<p>python自学第二节<br>运算符</p>
+<h2 id="python中的运算符"><a href="#python中的运算符" class="headerlink" title="python中的运算符"></a>python中的运算符</h2><h3 id="1、算数运算符"><a href="#1、算数运算符" class="headerlink" title="1、算数运算符"></a>1、算数运算符</h3><ul>
+<li>+</li>
+<li>-</li>
+<li>*</li>
+<li>/</li>
+<li>//地板除,得到整的结果：如：4   8   9.0  ….</li>
+<li>% 取余</li>
+<li>** 指数幂</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5.0</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.6666666666666667</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 得到结果为整！</span></span><br><span class="line">a = <span class="number">22</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>11</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">22.9</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>11.0</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">17</span></span><br><span class="line">a // <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>5</code></pre><ul>
+<li>** 指数幂</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span> ** <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>256</code></pre><h3 id="算数运算符的优先级"><a href="#算数运算符的优先级" class="headerlink" title="算数运算符的优先级"></a>算数运算符的优先级</h3><ul>
+<li>（）</li>
+<li>**</li>
+<li>/ *   //  %</li>
+<li>+,-</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span> + <span class="number">4</span> ** <span class="number">2</span> - <span class="number">7</span> // <span class="number">4</span> - (<span class="number">5</span> % <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>19</code></pre><h3 id="运算中出现浮点数，结果一定是浮点数"><a href="#运算中出现浮点数，结果一定是浮点数" class="headerlink" title="运算中出现浮点数，结果一定是浮点数"></a>运算中出现浮点数，结果一定是浮点数</h3><h3 id="运算小练习"><a href="#运算小练习" class="headerlink" title="运算小练习"></a>运算小练习</h3><ul>
+<li>摄氏度、华氏温度、开氏温度的转换</li>
+<li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
+<li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
+<li>今天32摄氏度，求华氏温度，开氏温度</li>
+<li>华氏温度=摄氏度*9.0/5.0+32</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
+
+<pre><code>华氏温度h: 89.600000
+开氏温度k: 305.150000</code></pre><h3 id="2、赋值运算符"><a href="#2、赋值运算符" class="headerlink" title="2、赋值运算符"></a>2、赋值运算符</h3><ul>
+<li>=，+=，-=,*=,/=</li>
+<li>** = ,//=</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">a **= <span class="number">6</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">b //= <span class="number">3</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+<pre><code>729
+1</code></pre><ul>
+<li>批量赋值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = <span class="number">100</span>,<span class="number">234</span>,<span class="number">456</span></span><br><span class="line">print(<span class="string">"%d\n%d\n%d"</span> %(a,b,c))</span><br></pre></td></tr></table></figure>
+
+<pre><code>100
+234
+456</code></pre><ul>
+<li>数值交换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
+
+<pre><code>456
+123</code></pre><h4 id="数值运算练习"><a href="#数值运算练习" class="headerlink" title="数值运算练习"></a>数值运算练习</h4><ul>
+<li>(1)求r=6.6cm的球的体积和面积</li>
+<li>面积s=4<em>pi</em>r^2</li>
+<li>体积v=4/3<em>pi</em>r^3</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pi = <span class="number">3.1415926</span></span><br><span class="line">r = <span class="number">6.6</span></span><br><span class="line">s = <span class="number">4</span>*pi*r**<span class="number">2</span></span><br><span class="line">v = <span class="number">4</span>/<span class="number">3</span>*pi*r**<span class="number">3</span></span><br><span class="line">print(<span class="string">"面积为%f;体积为%f"</span> % (s,v))</span><br></pre></td></tr></table></figure>
+
+<pre><code>面积为547.391095;体积为1204.260408</code></pre><ul>
+<li>(2)求当前时间<ul>
+<li>从7：00：00开始已经过去476589s，求现在的时间</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
+
+<pre><code>现在的时间：05:23:09</code></pre><h3 id="3、比较运算符"><a href="#3、比较运算符" class="headerlink" title="3、比较运算符"></a>3、比较运算符</h3><ul>
+<li>&lt; &gt; &lt;= &gt;= == !=</li>
+<li>比较的结果是bool值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span> &gt; <span class="number">1</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> != <span class="number">6</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><h3 id="4、逻辑运算符"><a href="#4、逻辑运算符" class="headerlink" title="4、逻辑运算符"></a>4、逻辑运算符</h3><ul>
+<li><p>and逻辑与,短路与</p>
+</li>
+<li><p>or 逻辑或</p>
+</li>
+<li><p>not 逻辑非</p>
+</li>
+<li><p>and从左往右运算值时，都为真则返回最后一个值</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">1111</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1111</code></pre><ul>
+<li>or只要第一个值为真，就直接返回第一个值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">111</span> <span class="keyword">or</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>111</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">9</span></span><br><span class="line">a &gt; b <span class="keyword">and</span> a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><h3 id="5、特殊运算符"><a href="#5、特殊运算符" class="headerlink" title="5、特殊运算符"></a>5、特殊运算符</h3><ul>
+<li><p>is 判断两个对象的内存地址是否相同</p>
+</li>
+<li><p>is not 与is相反</p>
+</li>
+<li><p>del 删除某个对象，解除对象的绑定值，可能释放掉它的内存（视情况）</p>
+</li>
+<li><p>在python中，对于一些初级的，常用的对象，无论把它赋值给几个变量，它会被存储在相同的内存中；而其他才会重新开辟内存存储</p>
+</li>
+<li><p>例子如下</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><ul>
+<li>查看地址用  id()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(a)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(b)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = <span class="number">456</span></span><br><span class="line">d = <span class="number">456</span></span><br><span class="line">c <span class="keyword">is</span> d</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(c)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2069301952784</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(d)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2069301953168</code></pre><ul>
+<li>del</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">em = <span class="number">678</span></span><br><span class="line"><span class="comment"># 删除em</span></span><br><span class="line"><span class="keyword">del</span> em</span><br><span class="line">id(em)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-34-aa4fc6229635&gt; in &lt;module&gt;()
+      2 # 删除em
+      3 del em
+----&gt; 4 id(em)
+
+
+NameError: name &apos;em&apos; is not defined</code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>标准输入输出</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-08-10-python-3.html</url>
     <content><![CDATA[<p>python自学第三节<br>标准输入输出</p>
 <h2 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h2><ul>
 <li>input（） 要求用户键入</li>
@@ -3007,8 +3421,205 @@
       </tags>
   </entry>
   <entry>
+    <title>函数、return、函数参数、列表字典传入函数、函数文档</title>
+    <url>/2018-08-10-python-5.html</url>
+    <content><![CDATA[<p>python自学第五节<br>函数、return、函数参数、列表字典传入函数、函数文档</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>作用：<ul>
+<li>代码组织</li>
+<li>代码复用</li>
+</ul>
+</li>
+<li>函数名</li>
+<li>参数</li>
+<li>返回值（可没有）</li>
+<li>函数的定义</li>
+<li>函数的调用</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">FirstFun</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"这是一个函数"</span>)</span><br><span class="line"><span class="comment"># 函数调用</span></span><br><span class="line">FirstFun()</span><br></pre></td></tr></table></figure>
+
+<pre><code>这是一个函数</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numFun</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>):</span><br><span class="line">        print(i)</span><br><span class="line">numFun()</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+3
+4
+5</code></pre><h3 id="1、函数返回，return语句"><a href="#1、函数返回，return语句" class="headerlink" title="1、函数返回，return语句"></a>1、函数返回，return语句</h3><ul>
+<li>表示无条件结束函数并返回结果</li>
+<li>约定，任何函数都应该以return语句表示结束；无返回值可return None</li>
+</ul>
+<h4 id="写一个求阶乘的函数"><a href="#写一个求阶乘的函数" class="headerlink" title="写一个求阶乘的函数"></a>写一个求阶乘的函数</h4><ul>
+<li>要求键入一个大于0的数</li>
+<li>返回它的阶乘值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">getnum = int(input(<span class="string">"输入大于0的数："</span>))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fact</span><span class="params">(num)</span>:</span></span><br><span class="line">    w = num</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,num):</span><br><span class="line">        w *= (num-i)</span><br><span class="line">    <span class="keyword">return</span> w</span><br><span class="line">Fact(getnum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入大于0的数：5
+
+
+
+
+
+120</code></pre><h3 id="2、函数的参数"><a href="#2、函数的参数" class="headerlink" title="2、函数的参数"></a>2、函数的参数</h3><ul>
+<li>形参，函数定义时</li>
+<li>实参，函数调用时</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Func1</span><span class="params">(yourname)</span>:</span></span><br><span class="line">    print(<span class="string">"your name is "</span> + yourname)</span><br><span class="line">Func1(<span class="string">"I"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>your name is I</code></pre><ul>
+<li>关键字参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Func2</span><span class="params">(name,food)</span>:</span></span><br><span class="line">    print(name + <span class="string">" like eat "</span> + food)</span><br><span class="line">Func2(<span class="string">"Jony"</span>,<span class="string">"fish"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Jony like eat fish</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Func2(<span class="string">"fish"</span>,<span class="string">"Jony"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>fish like eat Jony</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置关键字参数</span></span><br><span class="line">Func2(name = <span class="string">"Jony"</span>,food = <span class="string">"fish"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Jony like eat fish</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可换位置</span></span><br><span class="line">Func2(food = <span class="string">"fish"</span>,name = <span class="string">"Jony"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Jony like eat fish</code></pre><h3 id="3、默认参数"><a href="#3、默认参数" class="headerlink" title="3、默认参数"></a>3、默认参数</h3><ul>
+<li>函数在定义时，就给参数一个默认值</li>
+<li>注意：函数定义时，给某个参数默认值，其之后不能出现没有默认值的参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给出一个默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Func3</span><span class="params">(score1,score2 = <span class="number">50</span>)</span>:</span></span><br><span class="line">    print(score1+score2)</span><br><span class="line"><span class="comment"># 调用时只写了一个参数，另一参数使用默认值</span></span><br><span class="line">Func3(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>60</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Func3(<span class="number">10</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>30</code></pre><h3 id="4、序列参数、字典参数（即将序列，字典传入函数）"><a href="#4、序列参数、字典参数（即将序列，字典传入函数）" class="headerlink" title="4、序列参数、字典参数（即将序列，字典传入函数）"></a>4、序列参数、字典参数（即将序列，字典传入函数）</h3><ul>
+<li>列表参数：所有参数作为一个列表传入<ul>
+<li>在调用时列表前使用一个*号</li>
+<li>列表的参数个数与函数参数个数一致</li>
+</ul>
+</li>
+<li>字典参数：所有参数作为一个字典传入<ul>
+<li>在调用时列表前使用两个**号</li>
+<li>字典的参数个数与函数参数个数一致</li>
+<li>字典的键与函数形参相同，键作为字符串类型</li>
+<li>字典的值传给键所对应的形参</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myFunc</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">    print(<span class="string">"Value of a is %s"</span> %a)</span><br><span class="line">    print(<span class="string">"Value of b is %s"</span> %b)</span><br><span class="line">    print(<span class="string">"Value of c is %s"</span> %c)</span><br><span class="line">L1 = [<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>]</span><br><span class="line"><span class="comment"># 在调用时列表前使用一个*号</span></span><br><span class="line">myFunc(*L1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Value of a is one
+Value of b is two
+Value of c is three</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L2 = &#123;<span class="string">"a"</span>:<span class="string">"one"</span>,<span class="string">"b"</span>:<span class="string">"two"</span>,<span class="string">"c"</span>:<span class="string">"three"</span>&#125;</span><br><span class="line"><span class="comment"># 使用两个*号</span></span><br><span class="line">myFunc(**L2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Value of a is one
+Value of b is two
+Value of c is three</code></pre><h3 id="5、星号元组参数"><a href="#5、星号元组参数" class="headerlink" title="5、星号元组参数"></a>5、星号元组参数</h3><ul>
+<li>星号元组参数</li>
+<li>语法：<ul>
+<li>def 函数名(*元组形参):<br>   语句块</li>
+</ul>
+</li>
+<li>含义： *元组形参相当于将参数设置成列表<ul>
+<li>形参可以任意个数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Lfunc</span><span class="params">(*arg)</span>:</span></span><br><span class="line">    print(<span class="string">"进入元组参数"</span>)</span><br><span class="line">    print(arg)</span><br><span class="line"><span class="comment"># 不给参数代表列表为空</span></span><br><span class="line">Lfunc()</span><br></pre></td></tr></table></figure>
+
+<pre><code>进入元组参数
+()</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可放多个参数</span></span><br><span class="line">Lfunc(<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>进入元组参数
+(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;)</code></pre><h3 id="6、双星号字典参数"><a href="#6、双星号字典参数" class="headerlink" title="6、双星号字典参数"></a>6、双星号字典参数</h3><ul>
+<li>语法：<ul>
+<li>def 函数名(**元组参数):<br>   函数体</li>
+</ul>
+</li>
+<li>**函数名 代表的是字典</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DiFun</span><span class="params">(**args)</span>:</span></span><br><span class="line">    print(<span class="string">"进入字典"</span>)</span><br><span class="line">    print(args)</span><br><span class="line">DiFun()</span><br></pre></td></tr></table></figure>
+
+<pre><code>进入字典
+{}</code></pre><ul>
+<li>双星号字典参数，调用时必须按照字典的格式；有”键”和”值”</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DiFun(a=<span class="string">"one"</span>,b=<span class="string">"two"</span>,c=<span class="string">"three"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>进入字典
+{&apos;a&apos;: &apos;one&apos;, &apos;b&apos;: &apos;two&apos;, &apos;c&apos;: &apos;three&apos;}</code></pre><h3 id="7、单星号元组参数与双星号字典参数都叫做-不定长参数"><a href="#7、单星号元组参数与双星号字典参数都叫做-不定长参数" class="headerlink" title="7、单星号元组参数与双星号字典参数都叫做 不定长参数"></a>7、单星号元组参数与双星号字典参数都叫做 不定长参数</h3><ul>
+<li>说明：<ul>
+<li>位置形参，单星号元组形参，双星号字典形参可以混用</li>
+<li>混用时，顺序必须是：位置形参，单星号元组形参，双星号字典形参</li>
+</ul>
+</li>
+</ul>
+<h3 id="8、函数返回值"><a href="#8、函数返回值" class="headerlink" title="8、函数返回值"></a>8、函数返回值</h3><ul>
+<li>一般需要返回值，使用return</li>
+<li>函数的类型就是返回值的类型</li>
+<li>可以没有return，不建议去掉</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fun1</span><span class="params">(one)</span>:</span></span><br><span class="line">    print(<span class="string">"skr skr skr!!!"</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">Fun1(<span class="number">999</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>skr skr skr!!!</code></pre><ul>
+<li>有return无返回值时，返回None</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">w = Fun1(<span class="number">999</span>)</span><br><span class="line">print(w)</span><br></pre></td></tr></table></figure>
+
+<pre><code>skr skr skr!!!
+None</code></pre><ul>
+<li>没有return时，返回值也为None</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SecFun</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"第二个 skr,没有return"</span>)</span><br><span class="line">w = SecFun()</span><br><span class="line">print(w)</span><br></pre></td></tr></table></figure>
+
+<pre><code>第二个 skr,没有return
+None</code></pre><ul>
+<li>返回值为多个的用法<ul>
+<li>当函数有多个返回值却给它一个存储变量时，自动将其打包为tuple类型</li>
+<li>可以将多个返回值赋值给对应个数的变量</li>
+<li>所以多个返回值只能打包成一个tuple或者与其对应数量的变量</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nFunc</span><span class="params">(one,two)</span>:</span></span><br><span class="line">    one += <span class="number">10</span></span><br><span class="line">    two *= <span class="number">3</span></span><br><span class="line">    three = one + two</span><br><span class="line">    <span class="keyword">return</span> one,two,three</span><br><span class="line">a = nFunc(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">print(a)</span><br><span class="line">type(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(12, 12, 24)
+
+
+
+
+
+tuple</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">o,t,h = nFunc(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">print(o,t,h)</span><br></pre></td></tr></table></figure>
+
+<pre><code>12 12 24</code></pre><h3 id="9、函数文档"><a href="#9、函数文档" class="headerlink" title="9、函数文档"></a>9、函数文档</h3><ul>
+<li>函数文档值在函数开头起一定说明的文字</li>
+<li>例子如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Sum</span><span class="params">(one,two)</span>:</span></span><br><span class="line">    <span class="string">'''这是函数文档，解释函数的作用</span></span><br><span class="line"><span class="string">    这个函数是用来求one到two值的求和'''</span></span><br><span class="line">    three = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(one,two + <span class="number">1</span>):</span><br><span class="line">        three += i</span><br><span class="line">    <span class="keyword">return</span> three</span><br><span class="line">Sum(<span class="number">100</span>,<span class="number">150</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>6375</code></pre><ul>
+<li>查看函数文档可用； 函数.<strong>doc</strong>  doc两边是两个下划线</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Sum.__doc__</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&apos;这是函数文档，解释函数的作用\n    这个函数是用来求one到two值的求和&apos;</code></pre><ul>
+<li>可使用help来查询某个函数的函数文档</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">help(Sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Help on function Sum in module __main__:
+
+Sum(one, two)
+    这是函数文档，解释函数的作用
+    这个函数是用来求one到two值的求和</code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python数据类型</title>
-    <url>/archives/undefined.html</url>
+    <url>/2018-08-10-python-1.html</url>
     <content><![CDATA[<p>python自学第一节<br>数据类型</p>
 <a id="more"></a>
 
@@ -3719,619 +4330,8 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
       </tags>
   </entry>
   <entry>
-    <title>程序结构、分支语句、条件、列表、循环</title>
-    <url>/archives/ed74eff9.html</url>
-    <content><![CDATA[<p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
-<h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><ul>
-<li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
-<li>顺序</li>
-<li>分支：即选择条件</li>
-<li>循环</li>
-</ul>
-<h3 id="1、条件语句"><a href="#1、条件语句" class="headerlink" title="1、条件语句"></a>1、条件语句</h3><ul>
-<li>语法如下：<pre><code>if (条件表达式)：
-    程序处理模块</code></pre></li>
-<li>python用缩进来表示代码层级关系<ul>
-<li>python2空格和tab可混用</li>
-<li>python3不能混用</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>True</code></pre><ul>
-<li>在python中  pass语句，占位，不执行任何语句，不起任何作用</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="练习：判断学生成绩的等级"><a href="#练习：判断学生成绩的等级" class="headerlink" title="练习：判断学生成绩的等级"></a>练习：判断学生成绩的等级</h4><ul>
-<li>90及以上为A</li>
-<li>80-90为B</li>
-<li>70-80为C</li>
-<li>60-70为D</li>
-<li>其余为E</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>键入学生成绩：70
-C</code></pre><h3 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入成绩：99
-及格
-优</code></pre><h3 id="2、三元运算符"><a href="#2、三元运算符" class="headerlink" title="2、三元运算符"></a>2、三元运算符</h3><ul>
-<li>语法： x if 条件 else y</li>
-<li>表示如果条件成立则输出x；否则输出y</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"优秀"</span> <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> <span class="keyword">else</span> <span class="string">"不行"</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&apos;优秀&apos;</code></pre><h4 id="运用三元运算符求最大值"><a href="#运用三元运算符求最大值" class="headerlink" title="运用三元运算符求最大值"></a>运用三元运算符求最大值</h4><ul>
-<li>a,b,c由用户输入</li>
-<li>输出最大值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = int(input(<span class="string">"输入a:"</span>))</span><br><span class="line">b = int(input(<span class="string">"输入b:"</span>))</span><br><span class="line">c = int(input(<span class="string">"输入c:"</span>))</span><br><span class="line">d = (a <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b) <span class="keyword">if</span> ((a <span class="keyword">if</span> a &gt;b <span class="keyword">else</span> b)&gt;c) <span class="keyword">else</span> c</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入a:23
-输入b:45
-输入c:11
-45</code></pre><h3 id="3、列表-list"><a href="#3、列表-list" class="headerlink" title="3、列表 list"></a>3、列表 list</h3><ul>
-<li>可以放数字、字符串、列表、和其他结构</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3 id="4、range"><a href="#4、range" class="headerlink" title="4、range"></a>4、range</h3><ul>
-<li>可以看成一个函数</li>
-<li>产生一个有规律的有数字组成的列表</li>
-<li>语法： range(start,end,step)</li>
-<li>start:开始数字，生成列表包含start,默认为0；end:结束值，结果列表不包含end;</li>
-<li>step:步长，默认为1</li>
-<li>python2中range()生成的是列表，同时有xrange()函数，功能类似</li>
-<li>python3中，生成结果是迭代器，不是列表，可粗略地认为是列表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = range(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#   可看成L1 == [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5、for循环"><a href="#5、for循环" class="headerlink" title="5、for循环"></a>5、for循环</h3><ul>
-<li>一般明确循环次数</li>
-<li>语法：    for i in xxx:</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">5</span>,<span class="number">9</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">77</span>,<span class="string">"fuck"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L1:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5
-9
-55
-99
-77
-fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">1</span>,<span class="number">100</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">for</span> a1 <span class="keyword">in</span> a:</span><br><span class="line">    print(a1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-20
-39
-58
-77
-96</code></pre><h4 id="运用循环求和"><a href="#运用循环求和" class="headerlink" title="运用循环求和"></a>运用循环求和</h4><ul>
-<li>求从1加到100</li>
-<li>使用range</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5050</code></pre><h3 id="6、while循环"><a href="#6、while循环" class="headerlink" title="6、while循环"></a>6、while循环</h3><ul>
-<li>不明确循环次数，却满足一定条件</li>
-<li>语法；      while (条件):<pre><code>循环体</code></pre></li>
-</ul>
-<h4 id="示例：银行存款"><a href="#示例：银行存款" class="headerlink" title="示例：银行存款"></a>示例：银行存款</h4><ul>
-<li>本金10000</li>
-<li>年利率： %2.5</li>
-<li>多少年总金额超过20000<ul>
-<li>分析：没有明确循环次数</li>
-<li>条件：总金额超过20000</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
-
-<pre><code>year is 29</code></pre><h4 id="累加求和"><a href="#累加求和" class="headerlink" title="累加求和"></a>累加求和</h4><ul>
-<li>1-100</li>
-<li>while循环</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5050</code></pre><h3 id="7、-break语句"><a href="#7、-break语句" class="headerlink" title="7、 break语句"></a>7、 break语句</h3><ul>
-<li>无条件终止循环，并跳出循环体</li>
-</ul>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ul>
-<li>在200-300中找到第一个可以被9整除的数</li>
-<li>使用break</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>207</code></pre><h4 id="对于嵌套多重循环，break跳出离他最近的循环"><a href="#对于嵌套多重循环，break跳出离他最近的循环" class="headerlink" title="对于嵌套多重循环，break跳出离他最近的循环"></a>对于嵌套多重循环，break跳出离他最近的循环</h4><h4 id="打印9-9乘法表"><a href="#打印9-9乘法表" class="headerlink" title="打印9*9乘法表"></a>打印9*9乘法表</h4><ul>
-<li>要求最大值为36</li>
-<li>典型 for 嵌套循环</li>
-<li>break</li>
-<li>调用sys模块中write可以在打印时不会换行</li>
-<li>sys.stdout.write();括号内只能用字符型</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">36</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9  
-2 4 6 8 10 12 14 16 18  
-3 6 9 12 15 18 21 24 27  
-4 8 12 16 20 24 28 32 36  
-5 10 15 20 25 30 35  
-6 12 18 24 30 36  
-7 14 21 28 35  
-8 16 24 32  
-9 18 27 36  </code></pre><h3 id="8、continue"><a href="#8、continue" class="headerlink" title="8、continue"></a>8、continue</h3><ul>
-<li>含义：继续下一轮循环</li>
-<li>当我们已经确定不需要此轮循环时使用</li>
-</ul>
-<h4 id="例：累加求和"><a href="#例：累加求和" class="headerlink" title="例：累加求和"></a>例：累加求和</h4><ul>
-<li>当数为偶数时才求和</li>
-<li>1-100</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>2550</code></pre><h4 id="例：9-9乘法表"><a href="#例：9-9乘法表" class="headerlink" title="例：9*9乘法表"></a>例：9*9乘法表</h4><ul>
-<li>要求：打印值小于12的数</li>
-<li>嵌套for循环</li>
-<li>使用continue</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9 
-
-2 4 6 8 10 12 
-
-3 6 9 12 
-
-4 8 12 
-
-5 10 
-
-6 12 
-
-7 
-
-8 
-
-9 </code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数、return、函数参数、列表字典传入函数、函数文档</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<p>python自学第五节<br>函数、return、函数参数、列表字典传入函数、函数文档</p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
-<li>作用：<ul>
-<li>代码组织</li>
-<li>代码复用</li>
-</ul>
-</li>
-<li>函数名</li>
-<li>参数</li>
-<li>返回值（可没有）</li>
-<li>函数的定义</li>
-<li>函数的调用</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">FirstFun</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"这是一个函数"</span>)</span><br><span class="line"><span class="comment"># 函数调用</span></span><br><span class="line">FirstFun()</span><br></pre></td></tr></table></figure>
-
-<pre><code>这是一个函数</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numFun</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>):</span><br><span class="line">        print(i)</span><br><span class="line">numFun()</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-2
-3
-4
-5</code></pre><h3 id="1、函数返回，return语句"><a href="#1、函数返回，return语句" class="headerlink" title="1、函数返回，return语句"></a>1、函数返回，return语句</h3><ul>
-<li>表示无条件结束函数并返回结果</li>
-<li>约定，任何函数都应该以return语句表示结束；无返回值可return None</li>
-</ul>
-<h4 id="写一个求阶乘的函数"><a href="#写一个求阶乘的函数" class="headerlink" title="写一个求阶乘的函数"></a>写一个求阶乘的函数</h4><ul>
-<li>要求键入一个大于0的数</li>
-<li>返回它的阶乘值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">getnum = int(input(<span class="string">"输入大于0的数："</span>))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fact</span><span class="params">(num)</span>:</span></span><br><span class="line">    w = num</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,num):</span><br><span class="line">        w *= (num-i)</span><br><span class="line">    <span class="keyword">return</span> w</span><br><span class="line">Fact(getnum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入大于0的数：5
-
-
-
-
-
-120</code></pre><h3 id="2、函数的参数"><a href="#2、函数的参数" class="headerlink" title="2、函数的参数"></a>2、函数的参数</h3><ul>
-<li>形参，函数定义时</li>
-<li>实参，函数调用时</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Func1</span><span class="params">(yourname)</span>:</span></span><br><span class="line">    print(<span class="string">"your name is "</span> + yourname)</span><br><span class="line">Func1(<span class="string">"I"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>your name is I</code></pre><ul>
-<li>关键字参数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Func2</span><span class="params">(name,food)</span>:</span></span><br><span class="line">    print(name + <span class="string">" like eat "</span> + food)</span><br><span class="line">Func2(<span class="string">"Jony"</span>,<span class="string">"fish"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Jony like eat fish</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Func2(<span class="string">"fish"</span>,<span class="string">"Jony"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>fish like eat Jony</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置关键字参数</span></span><br><span class="line">Func2(name = <span class="string">"Jony"</span>,food = <span class="string">"fish"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Jony like eat fish</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可换位置</span></span><br><span class="line">Func2(food = <span class="string">"fish"</span>,name = <span class="string">"Jony"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Jony like eat fish</code></pre><h3 id="3、默认参数"><a href="#3、默认参数" class="headerlink" title="3、默认参数"></a>3、默认参数</h3><ul>
-<li>函数在定义时，就给参数一个默认值</li>
-<li>注意：函数定义时，给某个参数默认值，其之后不能出现没有默认值的参数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给出一个默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Func3</span><span class="params">(score1,score2 = <span class="number">50</span>)</span>:</span></span><br><span class="line">    print(score1+score2)</span><br><span class="line"><span class="comment"># 调用时只写了一个参数，另一参数使用默认值</span></span><br><span class="line">Func3(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>60</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Func3(<span class="number">10</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>30</code></pre><h3 id="4、序列参数、字典参数（即将序列，字典传入函数）"><a href="#4、序列参数、字典参数（即将序列，字典传入函数）" class="headerlink" title="4、序列参数、字典参数（即将序列，字典传入函数）"></a>4、序列参数、字典参数（即将序列，字典传入函数）</h3><ul>
-<li>列表参数：所有参数作为一个列表传入<ul>
-<li>在调用时列表前使用一个*号</li>
-<li>列表的参数个数与函数参数个数一致</li>
-</ul>
-</li>
-<li>字典参数：所有参数作为一个字典传入<ul>
-<li>在调用时列表前使用两个**号</li>
-<li>字典的参数个数与函数参数个数一致</li>
-<li>字典的键与函数形参相同，键作为字符串类型</li>
-<li>字典的值传给键所对应的形参</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myFunc</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">    print(<span class="string">"Value of a is %s"</span> %a)</span><br><span class="line">    print(<span class="string">"Value of b is %s"</span> %b)</span><br><span class="line">    print(<span class="string">"Value of c is %s"</span> %c)</span><br><span class="line">L1 = [<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>]</span><br><span class="line"><span class="comment"># 在调用时列表前使用一个*号</span></span><br><span class="line">myFunc(*L1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Value of a is one
-Value of b is two
-Value of c is three</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L2 = &#123;<span class="string">"a"</span>:<span class="string">"one"</span>,<span class="string">"b"</span>:<span class="string">"two"</span>,<span class="string">"c"</span>:<span class="string">"three"</span>&#125;</span><br><span class="line"><span class="comment"># 使用两个*号</span></span><br><span class="line">myFunc(**L2)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Value of a is one
-Value of b is two
-Value of c is three</code></pre><h3 id="5、星号元组参数"><a href="#5、星号元组参数" class="headerlink" title="5、星号元组参数"></a>5、星号元组参数</h3><ul>
-<li>星号元组参数</li>
-<li>语法：<ul>
-<li>def 函数名(*元组形参):<br>   语句块</li>
-</ul>
-</li>
-<li>含义： *元组形参相当于将参数设置成列表<ul>
-<li>形参可以任意个数</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Lfunc</span><span class="params">(*arg)</span>:</span></span><br><span class="line">    print(<span class="string">"进入元组参数"</span>)</span><br><span class="line">    print(arg)</span><br><span class="line"><span class="comment"># 不给参数代表列表为空</span></span><br><span class="line">Lfunc()</span><br></pre></td></tr></table></figure>
-
-<pre><code>进入元组参数
-()</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可放多个参数</span></span><br><span class="line">Lfunc(<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>进入元组参数
-(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;)</code></pre><h3 id="6、双星号字典参数"><a href="#6、双星号字典参数" class="headerlink" title="6、双星号字典参数"></a>6、双星号字典参数</h3><ul>
-<li>语法：<ul>
-<li>def 函数名(**元组参数):<br>   函数体</li>
-</ul>
-</li>
-<li>**函数名 代表的是字典</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DiFun</span><span class="params">(**args)</span>:</span></span><br><span class="line">    print(<span class="string">"进入字典"</span>)</span><br><span class="line">    print(args)</span><br><span class="line">DiFun()</span><br></pre></td></tr></table></figure>
-
-<pre><code>进入字典
-{}</code></pre><ul>
-<li>双星号字典参数，调用时必须按照字典的格式；有”键”和”值”</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DiFun(a=<span class="string">"one"</span>,b=<span class="string">"two"</span>,c=<span class="string">"three"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>进入字典
-{&apos;a&apos;: &apos;one&apos;, &apos;b&apos;: &apos;two&apos;, &apos;c&apos;: &apos;three&apos;}</code></pre><h3 id="7、单星号元组参数与双星号字典参数都叫做-不定长参数"><a href="#7、单星号元组参数与双星号字典参数都叫做-不定长参数" class="headerlink" title="7、单星号元组参数与双星号字典参数都叫做 不定长参数"></a>7、单星号元组参数与双星号字典参数都叫做 不定长参数</h3><ul>
-<li>说明：<ul>
-<li>位置形参，单星号元组形参，双星号字典形参可以混用</li>
-<li>混用时，顺序必须是：位置形参，单星号元组形参，双星号字典形参</li>
-</ul>
-</li>
-</ul>
-<h3 id="8、函数返回值"><a href="#8、函数返回值" class="headerlink" title="8、函数返回值"></a>8、函数返回值</h3><ul>
-<li>一般需要返回值，使用return</li>
-<li>函数的类型就是返回值的类型</li>
-<li>可以没有return，不建议去掉</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fun1</span><span class="params">(one)</span>:</span></span><br><span class="line">    print(<span class="string">"skr skr skr!!!"</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">Fun1(<span class="number">999</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>skr skr skr!!!</code></pre><ul>
-<li>有return无返回值时，返回None</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">w = Fun1(<span class="number">999</span>)</span><br><span class="line">print(w)</span><br></pre></td></tr></table></figure>
-
-<pre><code>skr skr skr!!!
-None</code></pre><ul>
-<li>没有return时，返回值也为None</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SecFun</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"第二个 skr,没有return"</span>)</span><br><span class="line">w = SecFun()</span><br><span class="line">print(w)</span><br></pre></td></tr></table></figure>
-
-<pre><code>第二个 skr,没有return
-None</code></pre><ul>
-<li>返回值为多个的用法<ul>
-<li>当函数有多个返回值却给它一个存储变量时，自动将其打包为tuple类型</li>
-<li>可以将多个返回值赋值给对应个数的变量</li>
-<li>所以多个返回值只能打包成一个tuple或者与其对应数量的变量</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nFunc</span><span class="params">(one,two)</span>:</span></span><br><span class="line">    one += <span class="number">10</span></span><br><span class="line">    two *= <span class="number">3</span></span><br><span class="line">    three = one + two</span><br><span class="line">    <span class="keyword">return</span> one,two,three</span><br><span class="line">a = nFunc(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">print(a)</span><br><span class="line">type(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(12, 12, 24)
-
-
-
-
-
-tuple</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">o,t,h = nFunc(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">print(o,t,h)</span><br></pre></td></tr></table></figure>
-
-<pre><code>12 12 24</code></pre><h3 id="9、函数文档"><a href="#9、函数文档" class="headerlink" title="9、函数文档"></a>9、函数文档</h3><ul>
-<li>函数文档值在函数开头起一定说明的文字</li>
-<li>例子如下：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Sum</span><span class="params">(one,two)</span>:</span></span><br><span class="line">    <span class="string">'''这是函数文档，解释函数的作用</span></span><br><span class="line"><span class="string">    这个函数是用来求one到two值的求和'''</span></span><br><span class="line">    three = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(one,two + <span class="number">1</span>):</span><br><span class="line">        three += i</span><br><span class="line">    <span class="keyword">return</span> three</span><br><span class="line">Sum(<span class="number">100</span>,<span class="number">150</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>6375</code></pre><ul>
-<li>查看函数文档可用； 函数.<strong>doc</strong>  doc两边是两个下划线</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Sum.__doc__</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&apos;这是函数文档，解释函数的作用\n    这个函数是用来求one到two值的求和&apos;</code></pre><ul>
-<li>可使用help来查询某个函数的函数文档</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">help(Sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Help on function Sum in module __main__:
-
-Sum(one, two)
-    这是函数文档，解释函数的作用
-    这个函数是用来求one到two值的求和</code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python中的运算符</title>
-    <url>/archives/undefined.html</url>
-    <content><![CDATA[<p>python自学第二节<br>运算符</p>
-<h2 id="python中的运算符"><a href="#python中的运算符" class="headerlink" title="python中的运算符"></a>python中的运算符</h2><h3 id="1、算数运算符"><a href="#1、算数运算符" class="headerlink" title="1、算数运算符"></a>1、算数运算符</h3><ul>
-<li>+</li>
-<li>-</li>
-<li>*</li>
-<li>/</li>
-<li>//地板除,得到整的结果：如：4   8   9.0  ….</li>
-<li>% 取余</li>
-<li>** 指数幂</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5.0</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.6666666666666667</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 得到结果为整！</span></span><br><span class="line">a = <span class="number">22</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>11</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">22.9</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>11.0</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">17</span></span><br><span class="line">a // <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>5</code></pre><ul>
-<li>** 指数幂</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span> ** <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>256</code></pre><h3 id="算数运算符的优先级"><a href="#算数运算符的优先级" class="headerlink" title="算数运算符的优先级"></a>算数运算符的优先级</h3><ul>
-<li>（）</li>
-<li>**</li>
-<li>/ *   //  %</li>
-<li>+,-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span> + <span class="number">4</span> ** <span class="number">2</span> - <span class="number">7</span> // <span class="number">4</span> - (<span class="number">5</span> % <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>19</code></pre><h3 id="运算中出现浮点数，结果一定是浮点数"><a href="#运算中出现浮点数，结果一定是浮点数" class="headerlink" title="运算中出现浮点数，结果一定是浮点数"></a>运算中出现浮点数，结果一定是浮点数</h3><h3 id="运算小练习"><a href="#运算小练习" class="headerlink" title="运算小练习"></a>运算小练习</h3><ul>
-<li>摄氏度、华氏温度、开氏温度的转换</li>
-<li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
-<li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
-<li>今天32摄氏度，求华氏温度，开氏温度</li>
-<li>华氏温度=摄氏度*9.0/5.0+32</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
-
-<pre><code>华氏温度h: 89.600000
-开氏温度k: 305.150000</code></pre><h3 id="2、赋值运算符"><a href="#2、赋值运算符" class="headerlink" title="2、赋值运算符"></a>2、赋值运算符</h3><ul>
-<li>=，+=，-=,*=,/=</li>
-<li>** = ,//=</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">a **= <span class="number">6</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">b //= <span class="number">3</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-
-<pre><code>729
-1</code></pre><ul>
-<li>批量赋值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = <span class="number">100</span>,<span class="number">234</span>,<span class="number">456</span></span><br><span class="line">print(<span class="string">"%d\n%d\n%d"</span> %(a,b,c))</span><br></pre></td></tr></table></figure>
-
-<pre><code>100
-234
-456</code></pre><ul>
-<li>数值交换</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
-
-<pre><code>456
-123</code></pre><h4 id="数值运算练习"><a href="#数值运算练习" class="headerlink" title="数值运算练习"></a>数值运算练习</h4><ul>
-<li>(1)求r=6.6cm的球的体积和面积</li>
-<li>面积s=4<em>pi</em>r^2</li>
-<li>体积v=4/3<em>pi</em>r^3</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pi = <span class="number">3.1415926</span></span><br><span class="line">r = <span class="number">6.6</span></span><br><span class="line">s = <span class="number">4</span>*pi*r**<span class="number">2</span></span><br><span class="line">v = <span class="number">4</span>/<span class="number">3</span>*pi*r**<span class="number">3</span></span><br><span class="line">print(<span class="string">"面积为%f;体积为%f"</span> % (s,v))</span><br></pre></td></tr></table></figure>
-
-<pre><code>面积为547.391095;体积为1204.260408</code></pre><ul>
-<li>(2)求当前时间<ul>
-<li>从7：00：00开始已经过去476589s，求现在的时间</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
-
-<pre><code>现在的时间：05:23:09</code></pre><h3 id="3、比较运算符"><a href="#3、比较运算符" class="headerlink" title="3、比较运算符"></a>3、比较运算符</h3><ul>
-<li>&lt; &gt; &lt;= &gt;= == !=</li>
-<li>比较的结果是bool值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span> &gt; <span class="number">1</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> != <span class="number">6</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>False</code></pre><h3 id="4、逻辑运算符"><a href="#4、逻辑运算符" class="headerlink" title="4、逻辑运算符"></a>4、逻辑运算符</h3><ul>
-<li><p>and逻辑与,短路与</p>
-</li>
-<li><p>or 逻辑或</p>
-</li>
-<li><p>not 逻辑非</p>
-</li>
-<li><p>and从左往右运算值时，都为真则返回最后一个值</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">1111</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1111</code></pre><ul>
-<li>or只要第一个值为真，就直接返回第一个值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">111</span> <span class="keyword">or</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>111</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">9</span></span><br><span class="line">a &gt; b <span class="keyword">and</span> a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>False</code></pre><h3 id="5、特殊运算符"><a href="#5、特殊运算符" class="headerlink" title="5、特殊运算符"></a>5、特殊运算符</h3><ul>
-<li><p>is 判断两个对象的内存地址是否相同</p>
-</li>
-<li><p>is not 与is相反</p>
-</li>
-<li><p>del 删除某个对象，解除对象的绑定值，可能释放掉它的内存（视情况）</p>
-</li>
-<li><p>在python中，对于一些初级的，常用的对象，无论把它赋值给几个变量，它会被存储在相同的内存中；而其他才会重新开辟内存存储</p>
-</li>
-<li><p>例子如下</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True</code></pre><ul>
-<li>查看地址用  id()</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(a)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(b)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = <span class="number">456</span></span><br><span class="line">d = <span class="number">456</span></span><br><span class="line">c <span class="keyword">is</span> d</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>False</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(c)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2069301952784</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(d)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2069301953168</code></pre><ul>
-<li>del</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">em = <span class="number">678</span></span><br><span class="line"><span class="comment"># 删除em</span></span><br><span class="line"><span class="keyword">del</span> em</span><br><span class="line">id(em)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-NameError                                 Traceback (most recent call last)
-
-&lt;ipython-input-34-aa4fc6229635&gt; in &lt;module&gt;()
-      2 # 删除em
-      3 del em
-----&gt; 4 id(em)
-
-
-NameError: name &apos;em&apos; is not defined</code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浏览器中session的使用，保存登陆状态与注销登陆</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-08-02-session-brower.html</url>
     <content><![CDATA[<h2 id="浏览器中session的使用，保存登陆状态与注销登陆"><a href="#浏览器中session的使用，保存登陆状态与注销登陆" class="headerlink" title="浏览器中session的使用，保存登陆状态与注销登陆"></a>浏览器中session的使用，保存登陆状态与注销登陆</h2><p>说明:</p>
 <ul>
 <li>apache2</li>
@@ -4364,7 +4364,7 @@ NameError: name &apos;em&apos; is not defined</code></pre>]]></content>
   </entry>
   <entry>
     <title>校园网ip重置</title>
-    <url>/archives/undefined.html</url>
+    <url>/2019-06-12-about%20ipconfig.html</url>
     <content><![CDATA[<p>中文名：显示IP配置值   是一种DOS命令  可显示IP地址信息</p>
 <p>更多关于ipconfig信息(百科):<a href="https://baike.baidu.com/item/ipconfig/2496619?fr=aladdin" target="_blank" rel="noopener external nofollow noreferrer">ipconfig</a></p>
 <a id="more"></a>

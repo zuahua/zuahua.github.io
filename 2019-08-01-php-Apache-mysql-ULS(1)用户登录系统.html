@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="php+Apache+mysql用户登录系统 说明:  php7.0 apache2 数据库设计主键id为自动递增，插入数据时才能不手动插入id主键  文件树:  register.html注册 register.php login.html登陆 login.php  下篇文章: PHP中password_hash()密码加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php+Apache+mysql用户登录系统(1)">
+<meta property="og:url" content="http://innozh.com/2019-08-01-php-Apache-mysql-ULS(1)%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F.html">
+<meta property="og:site_name" content="inno">
+<meta property="og:description" content="php+Apache+mysql用户登录系统 说明:  php7.0 apache2 数据库设计主键id为自动递增，插入数据时才能不手动插入id主键  文件树:  register.html注册 register.php login.html登陆 login.php  下篇文章: PHP中password_hash()密码加密">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:52:48.687Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="php apache mysql 用户登陆系统">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://innozh.com/2019-08-01-php-Apache-mysql-ULS(1)%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>php+Apache+mysql用户登录系统(1) | inno</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2019-08-01-php-Apache-mysql-ULS(1)%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          php+Apache+mysql用户登录系统(1)
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-01T00:00:00Z">2019-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 12:52:48" itemprop="dateModified" datetime="2020-01-15T12:52:48Z">2020-01-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>php+Apache+mysql用户登录系统</p>
+<p>说明:</p>
+<ul>
+<li>php7.0</li>
+<li>apache2</li>
+<li>数据库设计主键id为自动递增，插入数据时才能不手动插入id主键</li>
+</ul>
+<p>文件树:</p>
+<ul>
+<li>register.html注册</li>
+<li>register.php</li>
+<li>login.html登陆</li>
+<li>login.php</li>
+</ul>
+<p>下篇文章:</p>
+<p><a href="https://inno-hua.xyz/2019/07/31/php-password_hash().html" target="_blank" rel="noopener external nofollow noreferrer">PHP中password_hash()密码加密</a></p>
+<a id="more"></a>
+
+<h3 id="简单版用户登陆系统"><a href="#简单版用户登陆系统" class="headerlink" title="简单版用户登陆系统"></a>简单版用户登陆系统</h3><p>实现:</p>
+<ul>
+<li>简单注册登陆</li>
+</ul>
+<p>未考虑:</p>
+<ul>
+<li>验证方式</li>
+<li>安全性等等</li>
+</ul>
+<h3 id="1-创建数据库及添加表"><a href="#1-创建数据库及添加表" class="headerlink" title="1.创建数据库及添加表"></a>1.创建数据库及添加表</h3><p>以前文章：</p>
+<p><a href="https://inno-hua.xyz/2019-07-31-ubuntu-php-mysql.html" target="_blank" rel="noopener external nofollow noreferrer">PHP新建用户数据库和表</a></p>
+<h3 id="2-注册页面register-html"><a href="#2-注册页面register-html" class="headerlink" title="2.注册页面register.html"></a>2.注册页面register.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;用户注册页面&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;&#x2F;head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p&gt;---------^-^注册啦^_^----------&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;form action&#x3D;&quot;register.php&quot; method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">            &lt;p&gt;用户名:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;密  码: &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;&lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;form&gt;</span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-注册register-php"><a href="#3-注册register-php" class="headerlink" title="3.注册register.php"></a>3.注册register.php</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	header(&quot;Content-Type: text&#x2F;html; charset&#x3D;utf8&quot;);</span><br><span class="line">	&#x2F;&#x2F; 判断是否有submit操作</span><br><span class="line">	if(!isset($_POST[&#39;submit&#39;]))&#123;</span><br><span class="line">		exit(&quot;错误&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	$servername &#x3D; &quot;localhost&quot;;</span><br><span class="line">	$user &#x3D; &quot;root&quot;;</span><br><span class="line">	$password &#x3D; &quot;&quot;;</span><br><span class="line">	$dbname &#x3D; &quot;users&quot;;</span><br><span class="line">	&#x2F;&#x2F; 连接</span><br><span class="line">	$conn &#x3D; new mysqli($servername, $user, $password, $dbname);</span><br><span class="line">	if($conn-&gt;connect_error)&#123;</span><br><span class="line">		die(&quot;连接失败&quot; . $conn-&gt;connect_error);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 注意varchar型变量加引号</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 获取注册的name和password</span><br><span class="line">	$name &#x3D; $_POST[&#39;name&#39;];</span><br><span class="line">	$pwd &#x3D; $_POST[&#39;password&#39;];</span><br><span class="line"></span><br><span class="line">	if($name &amp;&amp; $pwd)&#123;&#x2F;&#x2F; 如果用户名和密码都不为空</span><br><span class="line">		$sql &#x3D; &quot;INSERT INTO user(username, password) VALUES(&#39;$name&#39;, $pwd)&quot;;</span><br><span class="line">		$result &#x3D; $conn-&gt;query($sql);</span><br><span class="line">		if($result &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">			&#x2F;&#x2F;echo &quot;新纪录插入成功&quot;;</span><br><span class="line">			echo &quot;注册成功&quot;;</span><br><span class="line">			&#x2F;&#x2F; 跳去登录页面</span><br><span class="line">			&#x2F;&#x2F; 使用的是url</span><br><span class="line">			header(&quot;refresh:0;url&#x3D;&#39;login.html&#39;&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			echo &quot;注册失败&quot; . &quot;&lt;br&gt;&quot; . $conn-&gt;error;</span><br><span class="line">			&#x2F;&#x2F; 注册失败回到注册页面</span><br><span class="line">			echo &quot;&lt;script&gt;</span><br><span class="line">				window.location.href&#x3D;&#39;register.html&#39;</span><br><span class="line">			&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">	$conn-&gt;close();</span><br><span class="line">	&#125;else&#123;&#x2F;&#x2F; 用户名或密码有空</span><br><span class="line">		echo &quot;&lt;script&gt;</span><br><span class="line">			alert(&#39;用户名或密码不能为空&#39;)</span><br><span class="line">			window.location.href&#x3D;&#39;register.html&#39;</span><br><span class="line">		&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-登陆页面login"><a href="#4-登陆页面login" class="headerlink" title="4.登陆页面login"></a>4.登陆页面login</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;用户登录页面&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;&#x2F;head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p&gt;-------:)登录吧(:-------&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;form action&#x3D;&quot;login.php&quot; method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">            &lt;p&gt;用户名:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;密  码: &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;&lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;form&gt;</span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-登陆login-php"><a href="#5-登陆login-php" class="headerlink" title="5.登陆login.php"></a>5.登陆login.php</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 判断是否提交submit</span><br><span class="line">	if(!isset($_POST[&#39;submit&#39;]))&#123;</span><br><span class="line">		exit(&quot;错误，未提交登录信息&quot;);</span><br><span class="line">	&#125; </span><br><span class="line">	$server &#x3D; &quot;localhost&quot;;</span><br><span class="line">	$user &#x3D; &quot;root&quot;;</span><br><span class="line">	$password &#x3D; &quot;&quot;;</span><br><span class="line">	$dbname &#x3D; &quot;users&quot;;</span><br><span class="line">	&#x2F;&#x2F; 连接数据库</span><br><span class="line">	$con &#x3D; new mysqli($server, $user, $password, $dbname);</span><br><span class="line">	if($con-&gt;connect_error)&#123;</span><br><span class="line">		die(&quot;连接数据库失败&quot; . $con-&gt;connect_error);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 判断数据库中是否存在用户信息</span><br><span class="line">	$username &#x3D; $_POST[&#39;name&#39;];</span><br><span class="line">	$pwd &#x3D; $_POST[&#39;password&#39;];</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 判断提交数据书否为空</span><br><span class="line">	if($username &amp;&amp; $pwd)&#123; &#x2F;&#x2F;如果用户名和密码都不为空</span><br><span class="line">		&#x2F;&#x2F; 查询语句</span><br><span class="line">		$sql &#x3D; &quot;SELECT * FROM user where username&#x3D;&#39;$username&#39; and password&#x3D;&#39;$pwd&#39;&quot;;</span><br><span class="line">		&#x2F;&#x2F; 执行语句</span><br><span class="line">		$result &#x3D; $con-&gt;query($sql);</span><br><span class="line">		&#x2F;&#x2F; 获取返回的行数</span><br><span class="line">		$num_row &#x3D; $result-&gt;num_rows;</span><br><span class="line">		</span><br><span class="line">		if($num_row &#x3D;&#x3D; 1)&#123;&#x2F;&#x2F; 如果返回了一条数据</span><br><span class="line">			echo &quot;登录成功&quot;;</span><br><span class="line">			&#x2F;&#x2F; 跳转页面到wekcome.html</span><br><span class="line">			header(&quot;refresh:0; url&#x3D;welcome.html&quot;);</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			</span><br><span class="line">			echo &quot;&lt;script&gt;</span><br><span class="line">				alert(&#39;用户名或密码错误&#39;)</span><br><span class="line">				window.location.href &#x3D; &#39;login.html&#39;</span><br><span class="line">			&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;else&#123;&#x2F;&#x2F; 用户名或密码有空</span><br><span class="line">		echo &quot;&lt;script&gt;</span><br><span class="line">			alert(&#39;用户名或密码不能为空&#39;)</span><br><span class="line">			window.location.href&#x3D;&#39;login.html&#39;</span><br><span class="line">		&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/php-apache-mysql-%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%E7%B3%BB%E7%BB%9F/" rel="tag"># php apache mysql 用户登陆系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-07-31-ubuntu-php-mysql.html" rel="prev" title="ubuntu16.04, Apache+PHP+Mysql安装与卸载">
+      <i class="fa fa-chevron-left"></i> ubuntu16.04, Apache+PHP+Mysql安装与卸载
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019-08-03-JavaScript%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B(1).html" rel="next" title="JavaScript学习实例(1)">
+      JavaScript学习实例(1) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单版用户登陆系统"><span class="nav-number">1.</span> <span class="nav-text">简单版用户登陆系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建数据库及添加表"><span class="nav-number">2.</span> <span class="nav-text">1.创建数据库及添加表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-注册页面register-html"><span class="nav-number">3.</span> <span class="nav-text">2.注册页面register.html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-注册register-php"><span class="nav-number">4.</span> <span class="nav-text">3.注册register.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-登陆页面login"><span class="nav-number">5.</span> <span class="nav-text">4.登陆页面login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-登陆login-php"><span class="nav-number">6.</span> <span class="nav-text">5.登陆login.php</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">223k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+</body>
+</html>

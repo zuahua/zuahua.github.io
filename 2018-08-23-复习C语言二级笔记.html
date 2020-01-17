@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="学完一学期C语言，没啥感觉 好多题也不会做 二级临近，只有边刷题，边学习了 内容比较杂乱，刷题遇到便逐渐解决的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复习C语言二级笔记">
+<meta property="og:url" content="http://innozh.com/2018-08-23-%E5%A4%8D%E4%B9%A0C%E8%AF%AD%E8%A8%80%E4%BA%8C%E7%BA%A7%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="inno">
+<meta property="og:description" content="学完一学期C语言，没啥感觉 好多题也不会做 二级临近，只有边刷题，边学习了 内容比较杂乱，刷题遇到便逐渐解决的问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-23T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:54:47.982Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://innozh.com/2018-08-23-%E5%A4%8D%E4%B9%A0C%E8%AF%AD%E8%A8%80%E4%BA%8C%E7%BA%A7%E7%AC%94%E8%AE%B0.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>复习C语言二级笔记 | inno</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2018-08-23-%E5%A4%8D%E4%B9%A0C%E8%AF%AD%E8%A8%80%E4%BA%8C%E7%BA%A7%E7%AC%94%E8%AE%B0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          复习C语言二级笔记
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-23 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-23T00:00:00Z">2018-08-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 12:54:47" itemprop="dateModified" datetime="2020-01-15T12:54:47Z">2020-01-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学完一学期C语言，没啥感觉</p>
+<p>好多题也不会做</p>
+<p>二级临近，只有边刷题，边学习了</p>
+<p>内容比较杂乱，刷题遇到便逐渐解决的问题</p>
+<a id="more"></a>
+
+<hr>
+<h3 id="1、-a-getchar-只获取键盘上-一个-字符；getchar函数的作用是从-终端-读入一个字符"><a href="#1、-a-getchar-只获取键盘上-一个-字符；getchar函数的作用是从-终端-读入一个字符" class="headerlink" title="1、   a = getchar() 只获取键盘上++一个++字符；getchar函数的作用是从==终端==读入一个字符"></a>1、   a = getchar() 只获取键盘上++一个++字符；getchar函数的作用是从==终端==读入一个字符</h3><hr>
+<h3 id="2、数据库常用的关系运算为三种："><a href="#2、数据库常用的关系运算为三种：" class="headerlink" title="2、数据库常用的关系运算为三种："></a>2、数据库常用的关系运算为三种：</h3><p>1、即选择。</p>
+<p>2、投影。</p>
+<p>3、连接。 </p>
+<p>（1）选择，是从二维表中选出符合条件的记录，它是从行的角度对关系进行的运算。</p>
+<p>（2）投影，是从二维表中选出所需要的列，它是从列的角度对关系进行的运算。</p>
+<p>（3）连接，是同时涉及到两个二维表的运算，它是将两个关系在给定的属性上满足给定条件的记录连接起来而得到的一个新的关系</p>
+<hr>
+<h3 id="3、-C语言没有逻辑值，用-1-0-代替"><a href="#3、-C语言没有逻辑值，用-1-0-代替" class="headerlink" title="3、   C语言没有逻辑值，用 1 0 代替"></a>3、   C语言没有逻辑值，用 <strong>1 0</strong> 代替</h3><hr>
+<h3 id="4、当有序链表为顺序存储时才能采用二分查找，二分查找最多需要比较log2-n次，而顺序查找最多需要n次。"><a href="#4、当有序链表为顺序存储时才能采用二分查找，二分查找最多需要比较log2-n次，而顺序查找最多需要n次。" class="headerlink" title="4、当有序链表为顺序存储时才能采用二分查找，二分查找最多需要比较log2 n次，而顺序查找最多需要n次。"></a>4、当有序链表为顺序存储时才能采用二分查找，二分查找最多需要比较log2 n次，而顺序查找最多需要n次。</h3><hr>
+<h3 id="5、数据流程图（DFD图）是结构化方法的需求分析工具"><a href="#5、数据流程图（DFD图）是结构化方法的需求分析工具" class="headerlink" title="5、数据流程图（DFD图）是结构化方法的需求分析工具"></a>5、数据流程图（DFD图）是结构化方法的<strong>需求分析工具</strong></h3><hr>
+<h3 id="6、-字符数组的赋值："><a href="#6、-字符数组的赋值：" class="headerlink" title="6、 字符数组的赋值："></a>6、 字符数组的赋值：</h3><p>char str[] = {‘h’,’a’,’p’,’p’,’y’,’\0’}</p>
+<p>char str[] = “happy”;        </p>
+<p>char str[] = {“happy”};</p>
+<p>char *str;                 str = “happy”;</p>
+<p>==错误赋值==：char str[6];  str = “happy”;</p>
+<p>char *str;  str={“happy”};</p>
+<hr>
+<h3 id="7、关于自定义函数中的return"><a href="#7、关于自定义函数中的return" class="headerlink" title="7、关于自定义函数中的return:"></a>7、关于自定义函数中的return:</h3><p>一个自定义函数中可以没有返回值，定义为void，程序执行结束后自动返回到调用处；</p>
+<p>自定义函数中可以设置多个return语句，但返回值只能是一个。</p>
+<hr>
+<h3 id="8、指针与数组："><a href="#8、指针与数组：" class="headerlink" title="8、指针与数组："></a>8、指针与数组：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int a=10,*p;</span><br><span class="line">int a=10;</span><br><span class="line">p=&amp;a;  //int *p=&amp;a;</span><br><span class="line"><span class="built_in">printf</span>(“%p”,p);  //为a的地址</span><br><span class="line"><span class="built_in">printf</span>(“%d”,*p)  //为a的值，*p代表指向a地址的值</span><br><span class="line"><span class="built_in">printf</span>(“%d”，&amp;p);  //为指针型变量p自己的地址</span><br><span class="line">/////////////////////////////</span><br><span class="line">int a[5]=&#123;1,2,3,4,5&#125;;</span><br><span class="line">int *p=a;  //a的首地址给了指针p</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,*(p+1));等价于<span class="built_in">printf</span>(<span class="string">"%d"</span>,*(a+1));  //输出为2</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="9、指针数组和数组指针"><a href="#9、指针数组和数组指针" class="headerlink" title="9、指针数组和数组指针"></a>9、指针数组和数组指针</h3><h4 id="数组指针："><a href="#数组指针：" class="headerlink" title="数组指针："></a>数组指针：</h4><p>int (*p)[3];  //定义了一个指针型变量p，指向一个整型数组</p>
+<h4 id="指针数组："><a href="#指针数组：" class="headerlink" title="指针数组："></a>指针数组：</h4><p>int *p[3];     //定义了一个数组，里面存放指针型元素，指向整型</p>
+<hr>
+<h3 id="10、静态变量static"><a href="#10、静态变量static" class="headerlink" title="10、静态变量static"></a>10、静态变量static</h3><h4 id="静态局部变量："><a href="#静态局部变量：" class="headerlink" title="静态局部变量："></a>静态局部变量：</h4><p>在函数中时，函数运行结束，这个静态变量的值不会被销毁，函数下次使用时仍能使用。</p>
+<h4 id="静态全局变量："><a href="#静态全局变量：" class="headerlink" title="静态全局变量："></a>静态全局变量：</h4><p>静态全局变量 作用于仅限于变量被定义的文件。在函数中引用不会改变他的值</p>
+<hr>
+<h3 id="11、结构体"><a href="#11、结构体" class="headerlink" title="11、结构体"></a>11、结构体</h3><p>结构体类型的变量在程序运行期间要作==为一个整体占用连续的内存单元==</p>
+<h4 id="结构体的定义"><a href="#结构体的定义" class="headerlink" title="结构体的定义"></a>结构体的定义</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct student   //struct student为结构体类型</span><br><span class="line">        &#123; </span><br><span class="line">         int num;</span><br><span class="line">         char  name[20];</span><br><span class="line">         char sex;</span><br><span class="line">         int age;</span><br><span class="line">         <span class="built_in">float</span> score;</span><br><span class="line">         char addr[30];</span><br><span class="line">        &#125;; </span><br><span class="line">struct student   stu1,stu2;   //声明结构体变量stu1,stu2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct student</span><br><span class="line">    &#123; </span><br><span class="line">     int num;</span><br><span class="line">     char  name[20];</span><br><span class="line">     char sex;</span><br><span class="line">     int age;</span><br><span class="line">     <span class="built_in">float</span> score;</span><br><span class="line">     char addr[30];</span><br><span class="line">    &#125;stu1,stu2;</span><br></pre></td></tr></table></figure>
+
+<h4 id="初始化："><a href="#初始化：" class="headerlink" title="初始化："></a>初始化：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct student</span><br><span class="line">    &#123; char name[10];</span><br><span class="line">    int age;</span><br><span class="line">    <span class="built_in">float</span> score[5];</span><br><span class="line">    &#125;stu=&#123;“zhangsan”,20,78,92,83,75,69&#125;;</span><br><span class="line">    struct student li,zhang=&#123;<span class="string">"zhangsan"</span>,20,78,92,83,75,69&#125;; </span><br><span class="line">    li=zhang; //将zhang对象拷贝一份赋值给li</span><br><span class="line">      /*</span><br><span class="line">      但li=&#123; “li si”,19,76,56,90,69,80&#125;;是非法的</span><br><span class="line">      */</span><br></pre></td></tr></table></figure>
+<h4 id="typedef定义的数据类型"><a href="#typedef定义的数据类型" class="headerlink" title="typedef定义的数据类型"></a>typedef定义的数据类型</h4><p>typedef struct student STUDENT  为==结构体类型==定义一个新的名字，即==strct student与STUDENT同义==</p>
+<p>等价于下程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct student</span><br><span class="line">    &#123; char name[10];</span><br><span class="line">    int age;</span><br><span class="line">    float score[5];</span><br><span class="line">    &#125;STUDENT;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-1-共用体"><a href="#11-1-共用体" class="headerlink" title="11.1 共用体"></a>11.1 共用体</h3><p>共用体的每个成员的==起始地址都相同==</p>
+<p>变量所占的内存长度等于==最长的成员的长度==</p>
+<p>C 语言规定 ,==不能==把共用体变量作为函数的参数</p>
+<hr>
+<h3 id="12、文件操作"><a href="#12、文件操作" class="headerlink" title="12、文件操作"></a>12、文件操作</h3><p>文件的打开操作 fopen 打开一个文件</p>
+<p>文件的关闭操作 fclose 关闭一个文件</p>
+<p>文件的读写操作 fgetc 从文件中读取一个字符</p>
+<p>fputc 写一个字符到文件中去</p>
+<p>fgets 从文件中读取一个字符串</p>
+<p>fputs 写一个字符串到文件中去</p>
+<p>fprintf 往文件中写格式化数据</p>
+<p>fscanf(fp,”%d”,n) 格式化读取文件中数据</p>
+<p>fread(stu,sizeof(STUDENT),n,fp) 以二进制形式读取文件中的数据</p>
+<p>fwrite 以二进制形式写数据到文件中去</p>
+<p>getw 以二进制形式读取一个整数</p>
+<p>putw 以二进制形式存贮一个整数</p>
+<p>文件状态检查函数 feof 文件结束</p>
+<p>ferror 文件读/写出错</p>
+<p>feof 读入到字符尾’\0’时返回0</p>
+<p>以 “wt” 方式写入的是字符文件 ,转义字符 \n 被看作两个字符来处理</p>
+<p>“wb”方式写入的是二进制文件 ,转义字符 ‘\n’是一个字符</p>
+<hr>
+<h3 id="13、设某循环队列的容量为50，如果头指针front-＝45（指向队头元素的前一位置），尾指针-rear-＝10（指向队尾元素），则该循环队列中共有15个元素。"><a href="#13、设某循环队列的容量为50，如果头指针front-＝45（指向队头元素的前一位置），尾指针-rear-＝10（指向队尾元素），则该循环队列中共有15个元素。" class="headerlink" title="13、设某循环队列的容量为50，如果头指针front ＝45（指向队头元素的前一位置），尾指针 rear ＝10（指向队尾元素），则该循环队列中共有15个元素。"></a>13、设某循环队列的容量为50，如果头指针front ＝45（指向队头元素的前一位置），尾指针 rear ＝10（指向队尾元素），则该循环队列中共有15个元素。</h3><h4 id="计算公式（队列头为front-队列尾为rear-M为容量）"><a href="#计算公式（队列头为front-队列尾为rear-M为容量）" class="headerlink" title="计算公式（队列头为front,队列尾为rear,M为容量）"></a>计算公式（队列头为front,队列尾为rear,M为容量）</h4><h4 id="rear-front-M-M"><a href="#rear-front-M-M" class="headerlink" title="|rear - front + M|%M"></a>|rear - front + M|%M</h4><p>这里为 |10-45+50|%50=15</p>
+<hr>
+<h3 id="14、二叉树的遍历"><a href="#14、二叉树的遍历" class="headerlink" title="14、二叉树的遍历"></a>14、二叉树的遍历</h3><p>遍历就是不重复地访问二叉树的所有结点。</p>
+<p>二叉树遍历的方法有3种：++前序遍历、中序遍历和后序遍历++。</p>
+<p>记住3种遍历的顺序：</p>
+<p>①前序，访问根→按前序遍历左子树→按前序遍历右子树。 </p>
+<p>②中序，按中序遍历左子树→访问根→按中序遍历右子树。 </p>
+<p>③后序，按后序遍历左子树→按后序遍历右子树→访问根。</p>
+<h4 id="例子：后序遍历"><a href="#例子：后序遍历" class="headerlink" title="例子：后序遍历"></a>例子：后序遍历</h4><p>  E</p>
+<p> /  \</p>
+<p>S    C</p>
+<p>|    / \</p>
+<p>A   B  P</p>
+<p>结果：ASBPCE</p>
+<h4 id="14、1-在任意一棵二叉树中-度为-0-的结点-即叶子结点-总是比度为-2-的结点-多一个-。"><a href="#14、1-在任意一棵二叉树中-度为-0-的结点-即叶子结点-总是比度为-2-的结点-多一个-。" class="headerlink" title="14、1  在任意一棵二叉树中 ,度为 0 的结点 (即叶子结点 )总是比度为 2 的结点==多一个==。"></a>14、1  在任意一棵二叉树中 ,度为 0 的结点 (即叶子结点 )总是比度为 2 的结点==多一个==。</h4><h4 id="14-2-在树形结构中-每一个结点只有一个-前件-称为-父结点-没有前件的结点只有一个-称为-树的根结点-每一个结点可以有多个-后件-它们都称为该结点的-子结点-没有后件的结点称为-叶子结点-。"><a href="#14-2-在树形结构中-每一个结点只有一个-前件-称为-父结点-没有前件的结点只有一个-称为-树的根结点-每一个结点可以有多个-后件-它们都称为该结点的-子结点-没有后件的结点称为-叶子结点-。" class="headerlink" title="14.2 在树形结构中 ,每一个结点只有一个==前件== ,称为==父结点==;没有前件的结点只有一个 ,称为==树的根结点== ;每一个结点可以有多个==后件== ,它们都称为该结点的==子结点== ;没有后件的结点称为==叶子结点==。"></a>14.2 在树形结构中 ,每一个结点只有一个==前件== ,称为==父结点==;没有前件的结点只有一个 ,称为==树的根结点== ;每一个结点可以有多个==后件== ,它们都称为该结点的==子结点== ;没有后件的结点称为==叶子结点==。</h4><hr>
+<h3 id="15、软件是-程序数据-和-文档-的集合"><a href="#15、软件是-程序数据-和-文档-的集合" class="headerlink" title="15、软件是==程序数据==和==文档==的集合"></a>15、软件是==程序数据==和==文档==的集合</h3><hr>
+<h3 id="16、else-与其最近的没有配对的if配对"><a href="#16、else-与其最近的没有配对的if配对" class="headerlink" title="16、else 与其最近的没有配对的if配对"></a>16、else 与其最近的没有配对的if配对</h3><h4 id="下题注意else-if与else的配对"><a href="#下题注意else-if与else的配对" class="headerlink" title="下题注意else if与else的配对"></a>下题注意else if与else的配对</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        int a&#x3D;1,b&#x3D;2,c&#x3D;3,d&#x3D;0;</span><br><span class="line">        if （ a&#x3D;&#x3D;1 ）</span><br><span class="line">        &#123;</span><br><span class="line">                if （ b!&#x3D;2 ）</span><br><span class="line">                &#123;</span><br><span class="line">                        if （ c&#x3D;&#x3D;3 ）</span><br><span class="line">                        &#123;</span><br><span class="line">                                d&#x3D;1;</span><br><span class="line">                        &#125;</span><br><span class="line">                        else</span><br><span class="line">                        &#123;</span><br><span class="line">                                d&#x3D;2;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else if （ c!&#x3D;3 ） </span><br><span class="line">                &#123;       </span><br><span class="line">                        d&#x3D;3;    </span><br><span class="line">                &#125;       </span><br><span class="line">                else    </span><br><span class="line">                &#123;       </span><br><span class="line">                        d&#x3D;4;    </span><br><span class="line">                &#125;       </span><br><span class="line">        &#125;       </span><br><span class="line">        else    </span><br><span class="line">        &#123;       </span><br><span class="line">                d&#x3D;5;    </span><br><span class="line">        &#125;</span><br><span class="line">        printf （ &quot; %d\n &quot; ,d ） ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="17、c语言中的字符数组的结尾"><a href="#17、c语言中的字符数组的结尾" class="headerlink" title="17、c语言中的字符数组的结尾"></a>17、c语言中的字符数组的结尾</h3><p>因为c语言中没有字符串类型，所以借助字符数组来存储字符串，为了区别字符串，需要在字符数组的末尾添加ASCII为0，即’\0’，来作为字符串的结束标志，并且不计入字符串长度。</p>
+<h4 id="即strlen-输出结果为实际数组长度"><a href="#即strlen-输出结果为实际数组长度" class="headerlink" title="即strlen()输出结果为实际数组长度"></a>即strlen()输出结果为实际数组长度</h4><hr>
+<h2 id="算法及理论题汇总"><a href="#算法及理论题汇总" class="headerlink" title="算法及理论题汇总"></a>算法及理论题汇总</h2><h3 id="18-1-、N-S图"><a href="#18-1-、N-S图" class="headerlink" title="18.1 、N-S图"></a>18.1 、N-S图</h3><p>为了避免流程图在描述程序逻辑时的灵活性,提出了用方框图来代替传统的程序流程图 ,通常也把这种图称为==N-S图==</p>
+<p>N-S 图是由 Nassi 和 Shneiderman 提出的一种符合程序化结构<br>设计原则的图形描述工具。 它的提出是为了避免流程图在描述程序逻辑时的随意性上灵活性。</p>
+<h3 id="18-2、结构化程序设计方法的主要原则可以概括为-自顶向下-、-逐步求精-、-模块化-及限制使用goto语句-总的来说可使-程序结构良好、-易读、易理解、易维护-。"><a href="#18-2、结构化程序设计方法的主要原则可以概括为-自顶向下-、-逐步求精-、-模块化-及限制使用goto语句-总的来说可使-程序结构良好、-易读、易理解、易维护-。" class="headerlink" title="18.2、结构化程序设计方法的主要原则可以概括为==自顶向下==、==逐步求精==、==模块化==及限制使用goto语句,总的来说可使==程序结构良好、 易读、易理解、易维护==。"></a>18.2、结构化程序设计方法的主要原则可以概括为==自顶向下==、==逐步求精==、==模块化==及限制使用goto语句,总的来说可使==程序结构良好、 易读、易理解、易维护==。</h3><h3 id="18-2-1-软件设计遵循软件工程的基本目标和原则-建立了适用于在软件设计中应该遵循的基本原理和与软件设计有关的概念-它们具有-抽象、-模块化、信息隐蔽和数据独立性-。自底向上是集成测试中增量测试的一种"><a href="#18-2-1-软件设计遵循软件工程的基本目标和原则-建立了适用于在软件设计中应该遵循的基本原理和与软件设计有关的概念-它们具有-抽象、-模块化、信息隐蔽和数据独立性-。自底向上是集成测试中增量测试的一种" class="headerlink" title="18.2.1 软件设计遵循软件工程的基本目标和原则,建立了适用于在软件设计中应该遵循的基本原理和与软件设计有关的概念,它们具有==抽象、 模块化、信息隐蔽和数据独立性==。自底向上是集成测试中增量测试的一种"></a>18.2.1 软件设计遵循软件工程的基本目标和原则,建立了适用于在软件设计中应该遵循的基本原理和与软件设计有关的概念,它们具有==抽象、 模块化、信息隐蔽和数据独立性==。自底向上是集成测试中增量测试的一种</h3><h3 id="18-3、为了使模块尽可能独立-要求模块的-内聚程度要尽量高-且各模块间的-耦合程度要尽量弱"><a href="#18-3、为了使模块尽可能独立-要求模块的-内聚程度要尽量高-且各模块间的-耦合程度要尽量弱" class="headerlink" title="18.3、为了使模块尽可能独立,要求模块的==内聚程度要尽量高==,且各模块间的==耦合程度要尽量弱=="></a>18.3、为了使模块尽可能独立,要求模块的==内聚程度要尽量高==,且各模块间的==耦合程度要尽量弱==</h3><h3 id="18-3-1模块之间的耦合程度反映了模块的独立性-也反映了系统分解后的复杂程度。按照耦合程度从强到弱分别是-内容耦合、公共耦合、外部耦合、控制耦合、标记耦合、数据耦合和非直接耦合-没有异构耦合这种方式。"><a href="#18-3-1模块之间的耦合程度反映了模块的独立性-也反映了系统分解后的复杂程度。按照耦合程度从强到弱分别是-内容耦合、公共耦合、外部耦合、控制耦合、标记耦合、数据耦合和非直接耦合-没有异构耦合这种方式。" class="headerlink" title="18.3.1模块之间的耦合程度反映了模块的独立性,也反映了系统分解后的复杂程度。按照耦合程度从强到弱分别是:==内容耦合、公共耦合、外部耦合、控制耦合、标记耦合、数据耦合和非直接耦合==,没有异构耦合这种方式。"></a>18.3.1模块之间的耦合程度反映了模块的独立性,也反映了系统分解后的复杂程度。按照耦合程度从强到弱分别是:==内容耦合、公共耦合、外部耦合、控制耦合、标记耦合、数据耦合和非直接耦合==,没有异构耦合这种方式。</h3><p>。</p>
+<p>模块的独立程度可以由两个定性标准度量:耦合性和内聚性。耦合性是衡量不同模块彼此间互相依赖(连接)的紧密程度;内聚性是衡量一个模块内部各个元素彼此结合的紧密程度。一般来说,要求模块之间的耦合尽可能地低 ,而内聚性尽可能地高。</p>
+<h3 id="18-4、需求分析"><a href="#18-4、需求分析" class="headerlink" title="18.4、需求分析"></a>18.4、需求分析</h3><p>需求分析是软件定义时期的最后一个阶段；任务是确定==软件系统功能==</p>
+<h4 id="软件开发方法是在总体设计阶段需完成的任务"><a href="#软件开发方法是在总体设计阶段需完成的任务" class="headerlink" title="软件开发方法是在总体设计阶段需完成的任务"></a>软件开发方法是在总体设计阶段需完成的任务</h4><h4 id="软件开发工具是在实现阶段需完成的任务"><a href="#软件开发工具是在实现阶段需完成的任务" class="headerlink" title="软件开发工具是在实现阶段需完成的任务"></a>软件开发工具是在实现阶段需完成的任务</h4><h4 id="软件开发费用是在可行性研究阶段需完成的任务"><a href="#软件开发费用是在可行性研究阶段需完成的任务" class="headerlink" title="软件开发费用是在可行性研究阶段需完成的任务"></a>软件开发费用是在可行性研究阶段需完成的任务</h4><h3 id="18-4-1软件需求规格说明书-SRS-Software-Requirement-Specification-是需求分析阶段的最后成果-是软件开发中的重要文档之一。"><a href="#18-4-1软件需求规格说明书-SRS-Software-Requirement-Specification-是需求分析阶段的最后成果-是软件开发中的重要文档之一。" class="headerlink" title="18.4.1软件需求规格说明书 (SRS,Software Requirement Specification)是需求分析阶段的最后成果 ,是软件开发中的重要文档之一。"></a>18.4.1软件需求规格说明书 (SRS,Software Requirement Specification)是需求分析阶段的最后成果 ,是软件开发中的重要文档之一。</h3><p>它具有以下几个方面的作用:==①便于用户、开发人员进行理解和交流 ;② 反映出用户问题的结构 ,可以作为软件开发工作的基础和依据 ;③ 作为确认测试和验收的依据==。</p>
+<h3 id="18-5、算法的特征"><a href="#18-5、算法的特征" class="headerlink" title="18.5、算法的特征"></a>18.5、算法的特征</h3><p>算法具有 5 个特性:①==有穷性==:一个算法必须(对任何合法的输入值 )在执行有穷步之后结束,且每一步都可在==有限时间内完成==,即运行时间是有限的 ;②==确定性==:算法中每一条指令必须有确切的含义 ,读者理解时不会产生歧义;③==可行性==:一个算法是可行的,即算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现;④ ==输入:一个算法有零个或多个输入==,这些输入取自于某个特定的对象的集合 ;⑤ ==输出 :一个算法有一个或多个输出==。</p>
+<h3 id="18-6、如果进栈序列为-e1-e2-e3-e4-则可能的出栈序列是"><a href="#18-6、如果进栈序列为-e1-e2-e3-e4-则可能的出栈序列是" class="headerlink" title="18.6、如果进栈序列为 e1,e2,e3,e4,则可能的出栈序列是"></a>18.6、如果进栈序列为 e1,e2,e3,e4,则可能的出栈序列是</h3><p>进栈与出栈的规则是：==后进先出==</p>
+<p>可能的情况：e1进e2进e3进e4进，则出的顺序e4/e3/e2/e1</p>
+<p>e1进，e2进再出，e3进再出，e4进；出的顺序:e2/e3/e4/e1</p>
+<p>e1进，e2进，e3进再出，e4进；出的顺序e3/e4/e2/e1</p>
+<p>等等</p>
+<h3 id="18-7、结构体对链表的定义"><a href="#18-7、结构体对链表的定义" class="headerlink" title="18.7、结构体对链表的定义"></a>18.7、结构体对链表的定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct link</span><br><span class="line">&#123;</span><br><span class="line">    int data;              &#x2F;&#x2F;数据域</span><br><span class="line">    struct link *next;           &#x2F;&#x2F;指针域</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="19、在最坏情况下-快速排序、冒泡排序和直接插入排序需要的比较次数都为-n-n-1-2-堆排序需要的比较次数为-nlog2n。"><a href="#19、在最坏情况下-快速排序、冒泡排序和直接插入排序需要的比较次数都为-n-n-1-2-堆排序需要的比较次数为-nlog2n。" class="headerlink" title="19、在最坏情况下,快速排序、冒泡排序和直接插入排序需要的比较次数都为 n(n-1)/2,堆排序需要的比较次数为 nlog2n。"></a>19、在最坏情况下,快速排序、冒泡排序和直接插入排序需要的比较次数都为 n(n-1)/2,堆排序需要的比较次数为 nlog2n。</h3><hr>
+<h3 id="20、数据的物理独立性是指数据的物理结构的改变-不会影响数据库的逻辑结构"><a href="#20、数据的物理独立性是指数据的物理结构的改变-不会影响数据库的逻辑结构" class="headerlink" title="20、数据的物理独立性是指数据的物理结构的改变,不会影响数据库的逻辑结构"></a>20、数据的物理独立性是指数据的物理结构的改变,不会影响数据库的逻辑结构</h3><hr>
+<h3 id="21、关系中的-行称为元组-对应存储文件中的记录-关系中的-列称为属性-对应存储文件中的字段"><a href="#21、关系中的-行称为元组-对应存储文件中的记录-关系中的-列称为属性-对应存储文件中的字段" class="headerlink" title="21、关系中的==行称为元组==,对应存储文件中的记录,关系中的==列称为属性==,对应存储文件中的字段"></a>21、关系中的==行称为元组==,对应存储文件中的记录,关系中的==列称为属性==,对应存储文件中的字段</h3><hr>
+<h3 id="22、C-语言中-在定义并初始化二维数组时-可以省略数组第一维的长度-但是-不能省略第二维的长度-。"><a href="#22、C-语言中-在定义并初始化二维数组时-可以省略数组第一维的长度-但是-不能省略第二维的长度-。" class="headerlink" title="22、C 语言中 ,在定义并初始化二维数组时 ,可以省略数组第一维的长度 ,但是==不能省略第二维的长度==。"></a>22、C 语言中 ,在定义并初始化二维数组时 ,可以省略数组第一维的长度 ,但是==不能省略第二维的长度==。</h3><hr>
+<h3 id="23、预处理"><a href="#23、预处理" class="headerlink" title="23、预处理"></a>23、预处理</h3><p>在程序中凡是以 “#”开始的语句行都是预处理命令行</p>
+<p>C 语言中的预处理命令以符号#开头,这些命令是在==程序编译之前进行处理的==</p>
+<hr>
+<h3 id="24、位运算"><a href="#24、位运算" class="headerlink" title="24、位运算"></a>24、位运算</h3><h4 id="按位取反"><a href="#按位取反" class="headerlink" title="~ 按位取反"></a>~ 按位取反</h4><h4 id="lt-lt-左移-gt-gt-右移"><a href="#lt-lt-左移-gt-gt-右移" class="headerlink" title="&lt;&lt;左移    &gt;&gt;右移"></a>&lt;&lt;左移    &gt;&gt;右移</h4><p>a &lt;&lt; n</p>
+<p>二进制数a向左移动n位，左边n位舍去，右边n位用0补齐</p>
+<h4 id="按位异或"><a href="#按位异或" class="headerlink" title="^按位异或"></a>^按位异或</h4><p>规则：相同为0,不同为1</p>
+<p>&nbsp; 011100</p>
+<p>^100111</p>
+<p>&nbsp;111011</p>
+<hr>
+<h3 id="25、-测试-的目的是暴露错误-评价程序的可靠性；-调试-的目的是发现错误的位置并改正错误"><a href="#25、-测试-的目的是暴露错误-评价程序的可靠性；-调试-的目的是发现错误的位置并改正错误" class="headerlink" title="25、==测试==的目的是暴露错误 ,评价程序的可靠性；==调试==的目的是发现错误的位置并改正错误"></a>25、==测试==的目的是暴露错误 ,评价程序的可靠性；==调试==的目的是发现错误的位置并改正错误</h3><hr>
+<h3 id="26、当循环队列非空且队尾指针等于队头指针时-说明循环队列已满-不能进行入队运算。这种情况称为-上溢"><a href="#26、当循环队列非空且队尾指针等于队头指针时-说明循环队列已满-不能进行入队运算。这种情况称为-上溢" class="headerlink" title="26、当循环队列非空且队尾指针等于队头指针时 ,说明循环队列已满 ,不能进行入队运算。这种情况称为==上溢=="></a>26、当循环队列非空且队尾指针等于队头指针时 ,说明循环队列已满 ,不能进行入队运算。这种情况称为==上溢==</h3><h3 id="27、在关系模型中-把数据看成一个二维表-每一个二维表称为一个-关系"><a href="#27、在关系模型中-把数据看成一个二维表-每一个二维表称为一个-关系" class="headerlink" title="27、在关系模型中 ,把数据看成一个二维表 ,每一个二维表称为一个==关系=="></a>27、在关系模型中 ,把数据看成一个二维表 ,每一个二维表称为一个==关系==</h3><p>在关系模型中 ,把数据看成一个二维表 ,每一个二维表称为一个==关系==。表中的每一列称为一个==属性== ,相当于记录中的一个数据项 ,对属性的命名称为属性名 ;表中的一行称为一个==元组== ,相当于记录值。</p>
+<hr>
+<h3 id="27、在计算机软件系统的体系结构中-数据库管理系统位于用户和-操作系统-之间"><a href="#27、在计算机软件系统的体系结构中-数据库管理系统位于用户和-操作系统-之间" class="headerlink" title="27、在计算机软件系统的体系结构中 ,数据库管理系统位于用户和==操作系统==之间"></a>27、在计算机软件系统的体系结构中 ,数据库管理系统位于用户和==操作系统==之间</h3><h3 id="28、fseek函数的调用-fseek-文件指针-位移量-起始点"><a href="#28、fseek函数的调用-fseek-文件指针-位移量-起始点" class="headerlink" title="28、fseek函数的调用  ==fseek(文件指针 ,位移量 ,起始点)=="></a>28、fseek函数的调用  ==fseek(文件指针 ,位移量 ,起始点)==</h3><p>“起始点 “用 0,1 或 2 代替 ,其中 ,0 代表 “文件开始 “;1 为”当前位置 “;2 为”文件末尾 “ 。 “位移量 “指以 “起始点 “为基点 ,向前移动的字节数。 ANSI C 和大多数 C 版本要求位移量是 long 型数据 ,这样当文件的长度大于 64k 时不致出现问题。 ANSI C标准规定在数字的末尾加一个字母 L,就表示 long 型。</p>
+<h3 id="29、流程图"><a href="#29、流程图" class="headerlink" title="29、流程图"></a>29、流程图</h3><p>程序流程图是人们对解决问题的方法、思路或算法的一种图形方式的描述。其中 ,==图框==表示各种==操作的类型==,图框中的==文字==和符号表示操作的==内容== ;==流程线==表示操作的==先后次序==。带箭头的线段在数据流程图中表示==数据流==;带箭头的线段在程序流程图中表示==控制流==。在图元之间用带有箭头的线段表示==图元关系==。在模块之间用带有箭头的线段表示==调用关系==。</p>
+<hr>
+<h3 id="30、已知数据表中-每个元素距其最终位置不远-，为节省时间，应采用的算法是-直接插入排序"><a href="#30、已知数据表中-每个元素距其最终位置不远-，为节省时间，应采用的算法是-直接插入排序" class="headerlink" title="30、已知数据表中==每个元素距其最终位置不远==，为节省时间，应采用的算法是==直接插入排序=="></a>30、已知数据表中==每个元素距其最终位置不远==，为节省时间，应采用的算法是==直接插入排序==</h3><p>堆排序的比较次数为nlog2n;直接插入排序的比较次数为n(n-1)/2;快速排序的比较次数为 nlog2n</p>
+<hr>
+<h3 id="31、C-语言的语法规定-字母-e-E-之前必须有数字-且-e-E-后面的指数必须是整数"><a href="#31、C-语言的语法规定-字母-e-E-之前必须有数字-且-e-E-后面的指数必须是整数" class="headerlink" title="31、C 语言的语法规定 ,字母 e(E)==之前必须有数字== ,且 e(E)==后面的指数必须是整数=="></a>31、C 语言的语法规定 ,字母 e(E)==之前必须有数字== ,且 e(E)==后面的指数必须是整数==</h3><p>3E04</p>
+<p>0.2E5</p>
+<hr>
+<h3 id="32、数据结构分为逻辑结构与存储结构-线性链表属于-存储结构"><a href="#32、数据结构分为逻辑结构与存储结构-线性链表属于-存储结构" class="headerlink" title="32、数据结构分为逻辑结构与存储结构 ,线性链表属于==存储结构=="></a>32、数据结构分为逻辑结构与存储结构 ,线性链表属于==存储结构==</h3><p>数据的逻辑结构是指反映数据元素之间逻辑关系的数据结构 ;数据的存储结构是指数据的逻辑结构在计算机存储空间中的存放<br>形式。在数据的存储结构中 ,不仅要存放各数据元素的信息 ,还需要存放各数据元素之间前后件关系的信息。</p>
+<hr>
+<h3 id="33、数据库设计分为以下-6-个设计阶段-需求分析阶段、概念设计阶段、逻辑设计阶段、物理设计阶段、实施阶段及数据库运行和维护阶段。"><a href="#33、数据库设计分为以下-6-个设计阶段-需求分析阶段、概念设计阶段、逻辑设计阶段、物理设计阶段、实施阶段及数据库运行和维护阶段。" class="headerlink" title="33、数据库设计分为以下 6 个设计阶段 :需求分析阶段、概念设计阶段、逻辑设计阶段、物理设计阶段、实施阶段及数据库运行和维护阶段。"></a>33、数据库设计分为以下 6 个设计阶段 :需求分析阶段、概念设计阶段、逻辑设计阶段、物理设计阶段、实施阶段及数据库运行和维护阶段。</h3><hr>
+<h3 id="34、gets-puts-fgets-标准输入输出"><a href="#34、gets-puts-fgets-标准输入输出" class="headerlink" title="34、gets();puts();fgets();标准输入输出"></a>34、gets();puts();fgets();标准输入输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int name[10];</span><br><span class="line">gets(name);</span><br><span class="line">fgets(name,sizeof(name),stdin);</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="35、字符操作函数"><a href="#35、字符操作函数" class="headerlink" title="35、字符操作函数"></a>35、字符操作函数</h3><p>strlen(str)返回实际数组的长度</p>
+<p>strcpy(str1,str2)将str2复制到str1，注意数组长度</p>
+<p>strcmp(str1,str2)比较str1与str2，从左到右以ASCII码值比较，str1&gt;str2，返回值大于1，str1=str2返回0，str1&lt;str2，返回值小于0</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-10-22-C语言的写入文件数据与读取文件数据.html" rel="bookmark">C语言的写入文件数据与读取文件数据</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-10-22-vc6.0;MFC；画笔与矩形填充.html" rel="bookmark">vc6.0;MFC；画笔与填充</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-03-03-C语言链表.html" rel="bookmark">C语言链表</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018-08-21-pygame-2.html" rel="prev" title="从0开始的python飞机外星人大战 (2)">
+      <i class="fa fa-chevron-left"></i> 从0开始的python飞机外星人大战 (2)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018-10-22-C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE.html" rel="next" title="C语言的写入文件数据与读取文件数据">
+      C语言的写入文件数据与读取文件数据 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-a-getchar-只获取键盘上-一个-字符；getchar函数的作用是从-终端-读入一个字符"><span class="nav-number">1.</span> <span class="nav-text">1、   a &#x3D; getchar() 只获取键盘上++一个++字符；getchar函数的作用是从&#x3D;&#x3D;终端&#x3D;&#x3D;读入一个字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、数据库常用的关系运算为三种："><span class="nav-number">2.</span> <span class="nav-text">2、数据库常用的关系运算为三种：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、-C语言没有逻辑值，用-1-0-代替"><span class="nav-number">3.</span> <span class="nav-text">3、   C语言没有逻辑值，用 1 0 代替</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、当有序链表为顺序存储时才能采用二分查找，二分查找最多需要比较log2-n次，而顺序查找最多需要n次。"><span class="nav-number">4.</span> <span class="nav-text">4、当有序链表为顺序存储时才能采用二分查找，二分查找最多需要比较log2 n次，而顺序查找最多需要n次。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、数据流程图（DFD图）是结构化方法的需求分析工具"><span class="nav-number">5.</span> <span class="nav-text">5、数据流程图（DFD图）是结构化方法的需求分析工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、-字符数组的赋值："><span class="nav-number">6.</span> <span class="nav-text">6、 字符数组的赋值：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、关于自定义函数中的return"><span class="nav-number">7.</span> <span class="nav-text">7、关于自定义函数中的return:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、指针与数组："><span class="nav-number">8.</span> <span class="nav-text">8、指针与数组：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、指针数组和数组指针"><span class="nav-number">9.</span> <span class="nav-text">9、指针数组和数组指针</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组指针："><span class="nav-number">9.1.</span> <span class="nav-text">数组指针：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指针数组："><span class="nav-number">9.2.</span> <span class="nav-text">指针数组：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、静态变量static"><span class="nav-number">10.</span> <span class="nav-text">10、静态变量static</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态局部变量："><span class="nav-number">10.1.</span> <span class="nav-text">静态局部变量：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态全局变量："><span class="nav-number">10.2.</span> <span class="nav-text">静态全局变量：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、结构体"><span class="nav-number">11.</span> <span class="nav-text">11、结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体的定义"><span class="nav-number">11.1.</span> <span class="nav-text">结构体的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化："><span class="nav-number">11.2.</span> <span class="nav-text">初始化：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typedef定义的数据类型"><span class="nav-number">11.3.</span> <span class="nav-text">typedef定义的数据类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-共用体"><span class="nav-number">12.</span> <span class="nav-text">11.1 共用体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、文件操作"><span class="nav-number">13.</span> <span class="nav-text">12、文件操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、设某循环队列的容量为50，如果头指针front-＝45（指向队头元素的前一位置），尾指针-rear-＝10（指向队尾元素），则该循环队列中共有15个元素。"><span class="nav-number">14.</span> <span class="nav-text">13、设某循环队列的容量为50，如果头指针front ＝45（指向队头元素的前一位置），尾指针 rear ＝10（指向队尾元素），则该循环队列中共有15个元素。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算公式（队列头为front-队列尾为rear-M为容量）"><span class="nav-number">14.1.</span> <span class="nav-text">计算公式（队列头为front,队列尾为rear,M为容量）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rear-front-M-M"><span class="nav-number">14.2.</span> <span class="nav-text">|rear - front + M|%M</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、二叉树的遍历"><span class="nav-number">15.</span> <span class="nav-text">14、二叉树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例子：后序遍历"><span class="nav-number">15.1.</span> <span class="nav-text">例子：后序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14、1-在任意一棵二叉树中-度为-0-的结点-即叶子结点-总是比度为-2-的结点-多一个-。"><span class="nav-number">15.2.</span> <span class="nav-text">14、1  在任意一棵二叉树中 ,度为 0 的结点 (即叶子结点 )总是比度为 2 的结点&#x3D;&#x3D;多一个&#x3D;&#x3D;。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-2-在树形结构中-每一个结点只有一个-前件-称为-父结点-没有前件的结点只有一个-称为-树的根结点-每一个结点可以有多个-后件-它们都称为该结点的-子结点-没有后件的结点称为-叶子结点-。"><span class="nav-number">15.3.</span> <span class="nav-text">14.2 在树形结构中 ,每一个结点只有一个&#x3D;&#x3D;前件&#x3D;&#x3D; ,称为&#x3D;&#x3D;父结点&#x3D;&#x3D;;没有前件的结点只有一个 ,称为&#x3D;&#x3D;树的根结点&#x3D;&#x3D; ;每一个结点可以有多个&#x3D;&#x3D;后件&#x3D;&#x3D; ,它们都称为该结点的&#x3D;&#x3D;子结点&#x3D;&#x3D; ;没有后件的结点称为&#x3D;&#x3D;叶子结点&#x3D;&#x3D;。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、软件是-程序数据-和-文档-的集合"><span class="nav-number">16.</span> <span class="nav-text">15、软件是&#x3D;&#x3D;程序数据&#x3D;&#x3D;和&#x3D;&#x3D;文档&#x3D;&#x3D;的集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、else-与其最近的没有配对的if配对"><span class="nav-number">17.</span> <span class="nav-text">16、else 与其最近的没有配对的if配对</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下题注意else-if与else的配对"><span class="nav-number">17.1.</span> <span class="nav-text">下题注意else if与else的配对</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、c语言中的字符数组的结尾"><span class="nav-number">18.</span> <span class="nav-text">17、c语言中的字符数组的结尾</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#即strlen-输出结果为实际数组长度"><span class="nav-number">18.1.</span> <span class="nav-text">即strlen()输出结果为实际数组长度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法及理论题汇总"><span class="nav-number"></span> <span class="nav-text">算法及理论题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#18-1-、N-S图"><span class="nav-number">1.</span> <span class="nav-text">18.1 、N-S图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-2、结构化程序设计方法的主要原则可以概括为-自顶向下-、-逐步求精-、-模块化-及限制使用goto语句-总的来说可使-程序结构良好、-易读、易理解、易维护-。"><span class="nav-number">2.</span> <span class="nav-text">18.2、结构化程序设计方法的主要原则可以概括为&#x3D;&#x3D;自顶向下&#x3D;&#x3D;、&#x3D;&#x3D;逐步求精&#x3D;&#x3D;、&#x3D;&#x3D;模块化&#x3D;&#x3D;及限制使用goto语句,总的来说可使&#x3D;&#x3D;程序结构良好、 易读、易理解、易维护&#x3D;&#x3D;。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-2-1-软件设计遵循软件工程的基本目标和原则-建立了适用于在软件设计中应该遵循的基本原理和与软件设计有关的概念-它们具有-抽象、-模块化、信息隐蔽和数据独立性-。自底向上是集成测试中增量测试的一种"><span class="nav-number">3.</span> <span class="nav-text">18.2.1 软件设计遵循软件工程的基本目标和原则,建立了适用于在软件设计中应该遵循的基本原理和与软件设计有关的概念,它们具有&#x3D;&#x3D;抽象、 模块化、信息隐蔽和数据独立性&#x3D;&#x3D;。自底向上是集成测试中增量测试的一种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-3、为了使模块尽可能独立-要求模块的-内聚程度要尽量高-且各模块间的-耦合程度要尽量弱"><span class="nav-number">4.</span> <span class="nav-text">18.3、为了使模块尽可能独立,要求模块的&#x3D;&#x3D;内聚程度要尽量高&#x3D;&#x3D;,且各模块间的&#x3D;&#x3D;耦合程度要尽量弱&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-3-1模块之间的耦合程度反映了模块的独立性-也反映了系统分解后的复杂程度。按照耦合程度从强到弱分别是-内容耦合、公共耦合、外部耦合、控制耦合、标记耦合、数据耦合和非直接耦合-没有异构耦合这种方式。"><span class="nav-number">5.</span> <span class="nav-text">18.3.1模块之间的耦合程度反映了模块的独立性,也反映了系统分解后的复杂程度。按照耦合程度从强到弱分别是:&#x3D;&#x3D;内容耦合、公共耦合、外部耦合、控制耦合、标记耦合、数据耦合和非直接耦合&#x3D;&#x3D;,没有异构耦合这种方式。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-4、需求分析"><span class="nav-number">6.</span> <span class="nav-text">18.4、需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件开发方法是在总体设计阶段需完成的任务"><span class="nav-number">6.1.</span> <span class="nav-text">软件开发方法是在总体设计阶段需完成的任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件开发工具是在实现阶段需完成的任务"><span class="nav-number">6.2.</span> <span class="nav-text">软件开发工具是在实现阶段需完成的任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件开发费用是在可行性研究阶段需完成的任务"><span class="nav-number">6.3.</span> <span class="nav-text">软件开发费用是在可行性研究阶段需完成的任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-4-1软件需求规格说明书-SRS-Software-Requirement-Specification-是需求分析阶段的最后成果-是软件开发中的重要文档之一。"><span class="nav-number">7.</span> <span class="nav-text">18.4.1软件需求规格说明书 (SRS,Software Requirement Specification)是需求分析阶段的最后成果 ,是软件开发中的重要文档之一。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-5、算法的特征"><span class="nav-number">8.</span> <span class="nav-text">18.5、算法的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-6、如果进栈序列为-e1-e2-e3-e4-则可能的出栈序列是"><span class="nav-number">9.</span> <span class="nav-text">18.6、如果进栈序列为 e1,e2,e3,e4,则可能的出栈序列是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-7、结构体对链表的定义"><span class="nav-number">10.</span> <span class="nav-text">18.7、结构体对链表的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19、在最坏情况下-快速排序、冒泡排序和直接插入排序需要的比较次数都为-n-n-1-2-堆排序需要的比较次数为-nlog2n。"><span class="nav-number">11.</span> <span class="nav-text">19、在最坏情况下,快速排序、冒泡排序和直接插入排序需要的比较次数都为 n(n-1)&#x2F;2,堆排序需要的比较次数为 nlog2n。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20、数据的物理独立性是指数据的物理结构的改变-不会影响数据库的逻辑结构"><span class="nav-number">12.</span> <span class="nav-text">20、数据的物理独立性是指数据的物理结构的改变,不会影响数据库的逻辑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21、关系中的-行称为元组-对应存储文件中的记录-关系中的-列称为属性-对应存储文件中的字段"><span class="nav-number">13.</span> <span class="nav-text">21、关系中的&#x3D;&#x3D;行称为元组&#x3D;&#x3D;,对应存储文件中的记录,关系中的&#x3D;&#x3D;列称为属性&#x3D;&#x3D;,对应存储文件中的字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22、C-语言中-在定义并初始化二维数组时-可以省略数组第一维的长度-但是-不能省略第二维的长度-。"><span class="nav-number">14.</span> <span class="nav-text">22、C 语言中 ,在定义并初始化二维数组时 ,可以省略数组第一维的长度 ,但是&#x3D;&#x3D;不能省略第二维的长度&#x3D;&#x3D;。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23、预处理"><span class="nav-number">15.</span> <span class="nav-text">23、预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24、位运算"><span class="nav-number">16.</span> <span class="nav-text">24、位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按位取反"><span class="nav-number">16.1.</span> <span class="nav-text">~ 按位取反</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-lt-左移-gt-gt-右移"><span class="nav-number">16.2.</span> <span class="nav-text">&lt;&lt;左移    &gt;&gt;右移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按位异或"><span class="nav-number">16.3.</span> <span class="nav-text">^按位异或</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25、-测试-的目的是暴露错误-评价程序的可靠性；-调试-的目的是发现错误的位置并改正错误"><span class="nav-number">17.</span> <span class="nav-text">25、&#x3D;&#x3D;测试&#x3D;&#x3D;的目的是暴露错误 ,评价程序的可靠性；&#x3D;&#x3D;调试&#x3D;&#x3D;的目的是发现错误的位置并改正错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26、当循环队列非空且队尾指针等于队头指针时-说明循环队列已满-不能进行入队运算。这种情况称为-上溢"><span class="nav-number">18.</span> <span class="nav-text">26、当循环队列非空且队尾指针等于队头指针时 ,说明循环队列已满 ,不能进行入队运算。这种情况称为&#x3D;&#x3D;上溢&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27、在关系模型中-把数据看成一个二维表-每一个二维表称为一个-关系"><span class="nav-number">19.</span> <span class="nav-text">27、在关系模型中 ,把数据看成一个二维表 ,每一个二维表称为一个&#x3D;&#x3D;关系&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27、在计算机软件系统的体系结构中-数据库管理系统位于用户和-操作系统-之间"><span class="nav-number">20.</span> <span class="nav-text">27、在计算机软件系统的体系结构中 ,数据库管理系统位于用户和&#x3D;&#x3D;操作系统&#x3D;&#x3D;之间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28、fseek函数的调用-fseek-文件指针-位移量-起始点"><span class="nav-number">21.</span> <span class="nav-text">28、fseek函数的调用  &#x3D;&#x3D;fseek(文件指针 ,位移量 ,起始点)&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29、流程图"><span class="nav-number">22.</span> <span class="nav-text">29、流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30、已知数据表中-每个元素距其最终位置不远-，为节省时间，应采用的算法是-直接插入排序"><span class="nav-number">23.</span> <span class="nav-text">30、已知数据表中&#x3D;&#x3D;每个元素距其最终位置不远&#x3D;&#x3D;，为节省时间，应采用的算法是&#x3D;&#x3D;直接插入排序&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31、C-语言的语法规定-字母-e-E-之前必须有数字-且-e-E-后面的指数必须是整数"><span class="nav-number">24.</span> <span class="nav-text">31、C 语言的语法规定 ,字母 e(E)&#x3D;&#x3D;之前必须有数字&#x3D;&#x3D; ,且 e(E)&#x3D;&#x3D;后面的指数必须是整数&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32、数据结构分为逻辑结构与存储结构-线性链表属于-存储结构"><span class="nav-number">25.</span> <span class="nav-text">32、数据结构分为逻辑结构与存储结构 ,线性链表属于&#x3D;&#x3D;存储结构&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33、数据库设计分为以下-6-个设计阶段-需求分析阶段、概念设计阶段、逻辑设计阶段、物理设计阶段、实施阶段及数据库运行和维护阶段。"><span class="nav-number">26.</span> <span class="nav-text">33、数据库设计分为以下 6 个设计阶段 :需求分析阶段、概念设计阶段、逻辑设计阶段、物理设计阶段、实施阶段及数据库运行和维护阶段。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34、gets-puts-fgets-标准输入输出"><span class="nav-number">27.</span> <span class="nav-text">34、gets();puts();fgets();标准输入输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35、字符操作函数"><span class="nav-number">28.</span> <span class="nav-text">35、字符操作函数</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">223k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+</body>
+</html>

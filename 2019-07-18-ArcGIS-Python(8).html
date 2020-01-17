@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="学习日志8     查询和选择数据 书籍：基于ArcGIS的Python编程秘笈(第2版);  学习第八章  使用SearchCursor检索要素类中的要素 使用几何令牌参数的SearchCursor() 使用InsertCursor(),从文本文件读取数据给要素添加记录 UpdateCursor()创建对象,updateRow()方法更新表中每一行 UpdateCursor()对象的delete">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arcgis中的python编程(8)">
+<meta property="og:url" content="http://innozh.com/2019-07-18-ArcGIS-Python(8).html">
+<meta property="og:site_name" content="inno">
+<meta property="og:description" content="学习日志8     查询和选择数据 书籍：基于ArcGIS的Python编程秘笈(第2版);  学习第八章  使用SearchCursor检索要素类中的要素 使用几何令牌参数的SearchCursor() 使用InsertCursor(),从文本文件读取数据给要素添加记录 UpdateCursor()创建对象,updateRow()方法更新表中每一行 UpdateCursor()对象的delete">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-18T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:19:09.700Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="pythonGIS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://innozh.com/2019-07-18-ArcGIS-Python(8).html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Arcgis中的python编程(8) | inno</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2019-07-18-ArcGIS-Python(8).html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Arcgis中的python编程(8)
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-18T00:00:00Z">2019-07-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 12:19:09" itemprop="dateModified" datetime="2020-01-15T12:19:09Z">2020-01-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学习日志8     查询和选择数据</p>
+<p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
+<p>学习<b>第八章</b></p>
+<ul>
+<li>使用SearchCursor检索要素类中的要素</li>
+<li>使用几何令牌参数的SearchCursor()</li>
+<li>使用InsertCursor(),从文本文件读取数据给要素添加记录</li>
+<li>UpdateCursor()创建对象,updateRow()方法更新表中每一行</li>
+<li>UpdateCursor()对象的deleteRow(),删除特定记录</li>
+<li>在编辑会话中插入和更新行</li>
+<li>读取要素类中的几何信息</li>
+<li>使用Walk()遍历目录</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="1-使用SearchCursor检索要素类中的要素"><a href="#1-使用SearchCursor检索要素类中的要素" class="headerlink" title="1. 使用SearchCursor检索要素类中的要素"></a>1. 使用SearchCursor检索要素类中的要素</h3><ul>
+<li>arcpy.da.SearchCursor(“Schools.shp”, (“FACILITY”, “NAME”), ‘“FACILITY” = &#39;HIGH SCHOOL&#39;‘)</li>
+</ul>
+<p>参数1: 要素,表 </p>
+<p>参数2: 返回哪些值字段</p>
+<p>参数3: where子句,即限制条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">arcpy.da.SearchCursor()</span><br><span class="line">查询要素类中的要素</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy.da</span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\Ch8&quot;</span><br><span class="line"># 创建SearchCursor()</span><br><span class="line"></span><br><span class="line"># with arcpy.da.SearchCursor(&quot;Schools.shp&quot;, (&quot;FACILITY&quot;, &quot;NAME&quot;)) as cursor:</span><br><span class="line">#     for row in sorted(cursor):</span><br><span class="line"></span><br><span class="line">#         print(&quot;School facility and name:&quot; + row[0] + &quot; &quot; + row[1])</span><br><span class="line"></span><br><span class="line"># 创建SearchCursor() 并添加where子句</span><br><span class="line">with arcpy.da.SearchCursor(&quot;Schools.shp&quot;, (&quot;FACILITY&quot;, &quot;NAME&quot;), </span><br><span class="line">        &#39;&quot;FACILITY&quot; &#x3D; \&#39;HIGH SCHOOL\&#39;&#39;) as cursor:</span><br><span class="line">     for row in sorted(cursor):</span><br><span class="line">         print(&quot;name:&#123;0&#125;, facility:&#123;1&#125;&quot;.format(row[1], row[0]))</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用几何令牌参数的SearchCursor"><a href="#2-使用几何令牌参数的SearchCursor" class="headerlink" title="2. 使用几何令牌参数的SearchCursor()"></a>2. 使用几何令牌参数的SearchCursor()</h3><ul>
+<li>arcpy.da.SearchCursor(“coa_parcels.shp”, (“PY_FULL_OW”, “SHAPE@XY”))</li>
+</ul>
+<p>SHAPE@XY 返回 一组要素的质心 x,y 坐标。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">使用几何令牌</span><br><span class="line">SearchCursor()</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy.da</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\Ch8&quot;</span><br><span class="line">start &#x3D; time.clock() #　记录时间</span><br><span class="line"># 使用几何令牌进行游标搜索操作</span><br><span class="line"># SHAPE@XY 返回 一组要素的质心 x,y 坐标。</span><br><span class="line"></span><br><span class="line">with arcpy.da.SearchCursor(&quot;coa_parcels.shp&quot;, (&quot;PY_FULL_OW&quot;, &quot;SHAPE@XY&quot;)) as cursor:</span><br><span class="line">    for row in cursor:</span><br><span class="line">        print(&quot;PY_FULL_OW: &#123;0&#125;, Location: &#123;1&#125;&quot;.format(row[0], row[1]))</span><br><span class="line"></span><br><span class="line">elasped &#x3D; time.clock() - start</span><br><span class="line">print(&quot;\n用时: &quot; + str(elasped))</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用InsertCursor-从文本文件读取数据给要素添加记录"><a href="#3-使用InsertCursor-从文本文件读取数据给要素添加记录" class="headerlink" title="3.使用InsertCursor(),从文本文件读取数据给要素添加记录"></a>3.使用InsertCursor(),从文本文件读取数据给要素添加记录</h3><ul>
+<li>arcpy.da.InsertCursor(“FireIncidents”, (“SHAPE@XY”, “CONFIDENCEVALUE”))</li>
+<li>参数1：要素,表</li>
+<li>参数2：Field字段, SHAPE@XY几何x,y坐标，”CONFIDENCEVALUE”字段名</li>
+<li>cursor.insertRow([(latitude, longitude), confid]) 给InsertCursor对象插入行 </li>
+<li>[(latitude, longitude), confid]对应(“SHAPE@XY”, “CONFIDENCEVALUE”)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">使用InsertCursor()</span><br><span class="line">从文本文件读取数据给要素添加记录</span><br><span class="line">文本文件为北美某地区荒地大火事件</span><br><span class="line">每行为纬度,经度,置信度</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">import arcpy.da</span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\Ch8\WildfireData\WildlandFires.mdb&quot;</span><br><span class="line"># 读取txt文件</span><br><span class="line">f &#x3D; open(r&quot;H:\ArcpyBook\Ch8\WildfireData\NorthAmericaWildfires_2007275.txt&quot;, &quot;r&quot;)</span><br><span class="line">lstfires &#x3D; f.readlines()</span><br><span class="line"># 创建InsertCursor()变量</span><br><span class="line">try:</span><br><span class="line">    with arcpy.da.InsertCursor(&quot;FireIncidents&quot;, (&quot;SHAPE@XY&quot;, &quot;CONFIDENCEVALUE&quot;)) as cursor:</span><br><span class="line">        cnt &#x3D; 1 # 计数</span><br><span class="line">        for lstRow in lstfires: # 遍历文件每一行</span><br><span class="line">            if &#39;Latitude&#39; in lstRow:</span><br><span class="line">                continue</span><br><span class="line">            vals &#x3D; lstRow.split(&#39;,&#39;) # 以 , 分割</span><br><span class="line">            latitude &#x3D; float(vals[0]) # 纬度</span><br><span class="line">            longitude &#x3D; float(vals[1]) # 经度</span><br><span class="line">            confid &#x3D; int(vals[2]) # 置信度</span><br><span class="line">            # 将要素每一行的插入数据保存</span><br><span class="line">            rowFire &#x3D; [(latitude, longitude), confid]</span><br><span class="line">            # 插入要素</span><br><span class="line">            cursor.insertRow(rowFire)</span><br><span class="line">            print(&quot;插入&#123;0&#125; 条记录&quot;.format(str(cnt)))</span><br><span class="line">            cnt &#x3D; cnt + 1</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br><span class="line">finally:</span><br><span class="line">    f.close() # 关闭文件</span><br></pre></td></tr></table></figure>
+<h3 id="4-UpdateCursor-创建对象-updateRow-方法更新表中每一行"><a href="#4-UpdateCursor-创建对象-updateRow-方法更新表中每一行" class="headerlink" title="4.UpdateCursor()创建对象,updateRow()方法更新表中每一行"></a>4.UpdateCursor()创建对象,updateRow()方法更新表中每一行</h3><ul>
+<li>arcpy.da.UpdateCursor(“FireIncidents”, (“CONFIDENCEVALUE”, “CONFID_RATING”))</li>
+<li>参数1：要素,表</li>
+<li>参数2：Field</li>
+<li>AddField_management()  给表中添加字段:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">使用UpdateCursor()创建对象</span><br><span class="line">updateRow()方法更新表中每一行</span><br><span class="line">给表中添加字段: AddField_management()</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\Ch8\WildfireData\WildlandFires.mdb&quot;</span><br><span class="line"># 添加字段</span><br><span class="line">arcpy.AddField_management(&quot;FireIncidents&quot;, &quot;CONFID_RATING&quot;, &quot;TEXT&quot;, &quot;10&quot;)</span><br><span class="line">print(&quot;添加字段CONFID_RATING成功&quot;)</span><br><span class="line">try:</span><br><span class="line">    # 创建UpdateCurSor()对象</span><br><span class="line">    with arcpy.da.UpdateCursor(&quot;FireIncidents&quot;, </span><br><span class="line">            (&quot;CONFIDENCEVALUE&quot;, &quot;CONFID_RATING&quot;)) as cursor:</span><br><span class="line">        cnt &#x3D; 1 # 计数</span><br><span class="line">        for row in cursor: # 遍历每一行</span><br><span class="line">            # 给新建字段CONFID_RATING赋值</span><br><span class="line">            if row[0] &lt;&#x3D; 40:</span><br><span class="line">                row[1] &#x3D; &#39;Poor&#39;</span><br><span class="line">            elif row[0] &gt; 40 and row[0] &lt;&#x3D; 60:</span><br><span class="line">                row[1] &#x3D; &#39;Fair&#39;</span><br><span class="line">            elif row[0] &gt; 60 and row[0] &lt;&#x3D; 85:</span><br><span class="line">                row[1] &#x3D; &#39;Good&#39;</span><br><span class="line">            else:</span><br><span class="line">                row[1] &#x3D; &#39;Excellent&#39;</span><br><span class="line">            # 调用updateRow()方法更新每一行</span><br><span class="line">            cursor.updateRow(row)</span><br><span class="line">            print(&quot;更新了&#123;0&#125;条记录&quot;.format(str(cnt)))</span><br><span class="line">            cnt &#x3D; cnt + 1</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<h3 id="5-UpdateCursor-对象的deleteRow-删除特定记录"><a href="#5-UpdateCursor-对象的deleteRow-删除特定记录" class="headerlink" title="5. UpdateCursor()对象的deleteRow(),删除特定记录"></a>5. UpdateCursor()对象的deleteRow(),删除特定记录</h3><ul>
+<li>rcpy.da.UpdateCursor(“FireIncidents”, (“CONFID_RATING”), “[CONFID_RATING] = &#39;Poor&#39;“)</li>
+<li>注意：个人地理数据库构建查询语句字段名使用[]括起来而不是””<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">UpdateCursor()对象的deleteRow()</span><br><span class="line">删除特定记录</span><br><span class="line">注意：个人地理数据库构建查询语句字段名使用[]括起来而不是&quot;&quot;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line"></span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\Ch8\WildfireData\WildlandFires.mdb&quot;</span><br><span class="line">try:</span><br><span class="line">    cnt &#x3D; 1 # 计数</span><br><span class="line">    # 构建UpdateCursor()对象</span><br><span class="line">    with arcpy.da.UpdateCursor(&quot;FireIncidents&quot;, (&quot;CONFID_RATING&quot;), </span><br><span class="line">            &quot;[CONFID_RATING] &#x3D; \&#39;Poor\&#39;&quot;) as cursor:</span><br><span class="line">        # 遍历返回的对象</span><br><span class="line">        for row in cursor:</span><br><span class="line">            cursor.deleteRow() # 删除当前行</span><br><span class="line">            print(&quot;删除&#123;0&#125;条记录&quot;.format(str(cnt)))</span><br><span class="line">            cnt &#x3D; cnt + 1</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<h3 id="6-在编辑会话中插入和更新行"><a href="#6-在编辑会话中插入和更新行" class="headerlink" title="6.在编辑会话中插入和更新行"></a>6.在编辑会话中插入和更新行</h3></li>
+<li>在编辑会话外的插入更新操作是不可更改的</li>
+<li>在编辑会话中的操作是可以撤销的</li>
+<li>edit = arcpy.da.Editor(r”H:\ArcpyBook\Ch8\WildfireData\WildlandFires.mdb”)</li>
+<li>edit.startEditing(True)</li>
+<li>edit.stopEditing(True) 停止编辑,True表示保存操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">在编辑会话中使用插入和更新操作</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line"></span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\Ch8\WildfireData\WildlandFires.mdb&quot;</span><br><span class="line">try:</span><br><span class="line">    cnt &#x3D; 1 # 计数</span><br><span class="line">    # 构建编辑会话对象</span><br><span class="line">    edit &#x3D; arcpy.da.Editor(r&quot;H:\ArcpyBook\Ch8\WildfireData\WildlandFires.mdb&quot;)</span><br><span class="line">    edit.startEditing(True) # 开始编辑</span><br><span class="line">    with arcpy.da.UpdateCursor(&quot;FireIncidents&quot;, </span><br><span class="line">            (&quot;CONFIDENCEVALUE&quot;, &quot;CONFID_RATING&quot;)) as cursor:</span><br><span class="line">        for row in cursor: # 遍历</span><br><span class="line">            if row[0] &gt; 40 and row[0] &lt;&#x3D; 60:</span><br><span class="line">                row[1] &#x3D; &quot;GOOD&quot;</span><br><span class="line">            elif row[0] &gt; 60 and row[0] &lt;&#x3D; 80:</span><br><span class="line">                row[1] &#x3D; &quot;BETTER&quot;</span><br><span class="line">            else:</span><br><span class="line">                row[1] &#x3D; &quot;BEST&quot;</span><br><span class="line">            cursor.updateRow(row) # 更新操作</span><br><span class="line">            print(&quot;更新了&#123;0&#125;条记录&quot;.format(str(cnt)))</span><br><span class="line">            cnt &#x3D; cnt + 1</span><br><span class="line">    edit.stopEditing(True) # 停止编辑,True表示保存操作</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<h3 id="7-读取要素类中的几何信息"><a href="#7-读取要素类中的几何信息" class="headerlink" title="7.读取要素类中的几何信息"></a>7.读取要素类中的几何信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">读取要素类的几何信息</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line"># 输入面要素</span><br><span class="line">infc &#x3D; r&quot;H:\ArcpyBook\data\CityOfSanAntonio.gdb\SchoolDistricts&quot;</span><br><span class="line"># 遍历要素的SearchCursor对象</span><br><span class="line">for row in arcpy.da.SearchCursor(infc, [&quot;OID@&quot;, &quot;SHAPE@&quot;]):</span><br><span class="line">    print(&quot;Object ID:&#123;0&#125;&quot;.format(row[0])) # 打印OID</span><br><span class="line">    partnum &#x3D; 0 # 计数</span><br><span class="line">    for part in row[1]: # 遍历几何信息的每一部分</span><br><span class="line">        print(&quot;partnum:&#123;0&#125;&quot;.format(partnum))</span><br><span class="line">        for pnt in part: # 遍历点</span><br><span class="line">            if pnt:</span><br><span class="line">                print(&quot;&#123;0&#125;,&#123;1&#125;&quot;.format(pnt.X, pnt.Y))</span><br><span class="line">            else:</span><br><span class="line">                print(&quot;Interior Ring&quot;)</span><br><span class="line">        partnum &#x3D; partnum + 1</span><br></pre></td></tr></table></figure>
+<h3 id="8-使用Walk-遍历目录"><a href="#8-使用Walk-遍历目录" class="headerlink" title="8.使用Walk()遍历目录"></a>8.使用Walk()遍历目录</h3><ul>
+<li>os.walk()返回文件目录树</li>
+<li>arcpy.da.Walk()可以限制返回地理数据文件类型</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">arcpy.da.Walk()遍历目录树</span><br><span class="line">os.walk()返回一个三元组</span><br><span class="line">使用da.Walk()遍历目录树，限制输出要素类名</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy.da as da</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">f &#x3D; r&quot;H:\ArcpyBook\data&quot; </span><br><span class="line">print(&quot;os walk&quot;)</span><br><span class="line"># 使用os.walk()遍历目录树</span><br><span class="line">for root, dirs, names in os.walk(f):</span><br><span class="line">    for fname in names:</span><br><span class="line">        print(fname)</span><br><span class="line"></span><br><span class="line">print(&quot;&quot;)</span><br><span class="line">print(&quot;arcpy.da.Walk()&quot;)</span><br><span class="line"># 使用da.Walk()遍历目录树，限制输出要素类名</span><br><span class="line">for root, dirs, names in da.Walk(f, datatype&#x3D;&quot;FeatureClass&quot;):</span><br><span class="line">    for name in names:</span><br><span class="line">        fname &#x3D; os.path.join(root, name)</span><br><span class="line">        print(fname)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-16-ArcGIS-Python(7).html" rel="bookmark">Arcgis中的python编程(7)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-13-ArcGIS-Python(1).html" rel="bookmark">Arcgis中的python编程(1)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-13-ArcGIS-Python(2).html" rel="bookmark">Arcgis中的python编程(2)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pythonGIS/" rel="tag"># pythonGIS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-07-16-ArcGIS-Python(7).html" rel="prev" title="Arcgis中的python编程(7)">
+      <i class="fa fa-chevron-left"></i> Arcgis中的python编程(7)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019-07-19-ArcGIS-Python(9).html" rel="next" title="Arcgis中的python编程(9)">
+      Arcgis中的python编程(9) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用SearchCursor检索要素类中的要素"><span class="nav-number">1.</span> <span class="nav-text">1. 使用SearchCursor检索要素类中的要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用几何令牌参数的SearchCursor"><span class="nav-number">2.</span> <span class="nav-text">2. 使用几何令牌参数的SearchCursor()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用InsertCursor-从文本文件读取数据给要素添加记录"><span class="nav-number">3.</span> <span class="nav-text">3.使用InsertCursor(),从文本文件读取数据给要素添加记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-UpdateCursor-创建对象-updateRow-方法更新表中每一行"><span class="nav-number">4.</span> <span class="nav-text">4.UpdateCursor()创建对象,updateRow()方法更新表中每一行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-UpdateCursor-对象的deleteRow-删除特定记录"><span class="nav-number">5.</span> <span class="nav-text">5. UpdateCursor()对象的deleteRow(),删除特定记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-在编辑会话中插入和更新行"><span class="nav-number">6.</span> <span class="nav-text">6.在编辑会话中插入和更新行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-读取要素类中的几何信息"><span class="nav-number">7.</span> <span class="nav-text">7.读取要素类中的几何信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-使用Walk-遍历目录"><span class="nav-number">8.</span> <span class="nav-text">8.使用Walk()遍历目录</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">223k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+</body>
+</html>

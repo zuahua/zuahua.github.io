@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="python自学第二节运算符 python中的运算符1、算数运算符 + - * &#x2F; &#x2F;&#x2F;地板除,得到整的结果：如：4   8   9.0  …. % 取余 ** 指数幂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python中的运算符">
+<meta property="og:url" content="http://innozh.com/2018-08-10-Python-2.html">
+<meta property="og:site_name" content="inno">
+<meta property="og:description" content="python自学第二节运算符 python中的运算符1、算数运算符 + - * &#x2F; &#x2F;&#x2F;地板除,得到整的结果：如：4   8   9.0  …. % 取余 ** 指数幂">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:55:04.710Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://innozh.com/2018-08-10-Python-2.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>python中的运算符 | inno</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2018-08-10-Python-2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          python中的运算符
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-10 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-10T00:00:00Z">2018-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 12:55:04" itemprop="dateModified" datetime="2020-01-15T12:55:04Z">2020-01-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>python自学第二节<br>运算符</p>
+<h2 id="python中的运算符"><a href="#python中的运算符" class="headerlink" title="python中的运算符"></a>python中的运算符</h2><h3 id="1、算数运算符"><a href="#1、算数运算符" class="headerlink" title="1、算数运算符"></a>1、算数运算符</h3><ul>
+<li>+</li>
+<li>-</li>
+<li>*</li>
+<li>/</li>
+<li>//地板除,得到整的结果：如：4   8   9.0  ….</li>
+<li>% 取余</li>
+<li>** 指数幂</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5.0</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.6666666666666667</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 得到结果为整！</span></span><br><span class="line">a = <span class="number">22</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>11</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">22.9</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>11.0</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">17</span></span><br><span class="line">a // <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>5</code></pre><ul>
+<li>** 指数幂</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span> ** <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>256</code></pre><h3 id="算数运算符的优先级"><a href="#算数运算符的优先级" class="headerlink" title="算数运算符的优先级"></a>算数运算符的优先级</h3><ul>
+<li>（）</li>
+<li>**</li>
+<li>/ *   //  %</li>
+<li>+,-</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span> + <span class="number">4</span> ** <span class="number">2</span> - <span class="number">7</span> // <span class="number">4</span> - (<span class="number">5</span> % <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>19</code></pre><h3 id="运算中出现浮点数，结果一定是浮点数"><a href="#运算中出现浮点数，结果一定是浮点数" class="headerlink" title="运算中出现浮点数，结果一定是浮点数"></a>运算中出现浮点数，结果一定是浮点数</h3><h3 id="运算小练习"><a href="#运算小练习" class="headerlink" title="运算小练习"></a>运算小练习</h3><ul>
+<li>摄氏度、华氏温度、开氏温度的转换</li>
+<li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
+<li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
+<li>今天32摄氏度，求华氏温度，开氏温度</li>
+<li>华氏温度=摄氏度*9.0/5.0+32</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
+
+<pre><code>华氏温度h: 89.600000
+开氏温度k: 305.150000</code></pre><h3 id="2、赋值运算符"><a href="#2、赋值运算符" class="headerlink" title="2、赋值运算符"></a>2、赋值运算符</h3><ul>
+<li>=，+=，-=,*=,/=</li>
+<li>** = ,//=</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">a **= <span class="number">6</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">b //= <span class="number">3</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+<pre><code>729
+1</code></pre><ul>
+<li>批量赋值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a,b,c = <span class="number">100</span>,<span class="number">234</span>,<span class="number">456</span></span><br><span class="line">print(<span class="string">"%d\n%d\n%d"</span> %(a,b,c))</span><br></pre></td></tr></table></figure>
+
+<pre><code>100
+234
+456</code></pre><ul>
+<li>数值交换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
+
+<pre><code>456
+123</code></pre><h4 id="数值运算练习"><a href="#数值运算练习" class="headerlink" title="数值运算练习"></a>数值运算练习</h4><ul>
+<li>(1)求r=6.6cm的球的体积和面积</li>
+<li>面积s=4<em>pi</em>r^2</li>
+<li>体积v=4/3<em>pi</em>r^3</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pi = <span class="number">3.1415926</span></span><br><span class="line">r = <span class="number">6.6</span></span><br><span class="line">s = <span class="number">4</span>*pi*r**<span class="number">2</span></span><br><span class="line">v = <span class="number">4</span>/<span class="number">3</span>*pi*r**<span class="number">3</span></span><br><span class="line">print(<span class="string">"面积为%f;体积为%f"</span> % (s,v))</span><br></pre></td></tr></table></figure>
+
+<pre><code>面积为547.391095;体积为1204.260408</code></pre><ul>
+<li>(2)求当前时间<ul>
+<li>从7：00：00开始已经过去476589s，求现在的时间</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
+
+<pre><code>现在的时间：05:23:09</code></pre><h3 id="3、比较运算符"><a href="#3、比较运算符" class="headerlink" title="3、比较运算符"></a>3、比较运算符</h3><ul>
+<li>&lt; &gt; &lt;= &gt;= == !=</li>
+<li>比较的结果是bool值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span> &gt; <span class="number">1</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">6</span> != <span class="number">6</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><h3 id="4、逻辑运算符"><a href="#4、逻辑运算符" class="headerlink" title="4、逻辑运算符"></a>4、逻辑运算符</h3><ul>
+<li><p>and逻辑与,短路与</p>
+</li>
+<li><p>or 逻辑或</p>
+</li>
+<li><p>not 逻辑非</p>
+</li>
+<li><p>and从左往右运算值时，都为真则返回最后一个值</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">6</span> <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">1111</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1111</code></pre><ul>
+<li>or只要第一个值为真，就直接返回第一个值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">111</span> <span class="keyword">or</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>111</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">9</span></span><br><span class="line">a &gt; b <span class="keyword">and</span> a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><h3 id="5、特殊运算符"><a href="#5、特殊运算符" class="headerlink" title="5、特殊运算符"></a>5、特殊运算符</h3><ul>
+<li><p>is 判断两个对象的内存地址是否相同</p>
+</li>
+<li><p>is not 与is相反</p>
+</li>
+<li><p>del 删除某个对象，解除对象的绑定值，可能释放掉它的内存（视情况）</p>
+</li>
+<li><p>在python中，对于一些初级的，常用的对象，无论把它赋值给几个变量，它会被存储在相同的内存中；而其他才会重新开辟内存存储</p>
+</li>
+<li><p>例子如下</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><ul>
+<li>查看地址用  id()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id(a)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id(b)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="number">456</span></span><br><span class="line">d = <span class="number">456</span></span><br><span class="line">c <span class="keyword">is</span> d</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id(c)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2069301952784</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id(d)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2069301953168</code></pre><ul>
+<li>del</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">em = <span class="number">678</span></span><br><span class="line"><span class="comment"># 删除em</span></span><br><span class="line"><span class="keyword">del</span> em</span><br><span class="line">id(em)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-34-aa4fc6229635&gt; in &lt;module&gt;()
+      2 # 删除em
+      3 del em
+----&gt; 4 id(em)
+
+
+NameError: name &apos;em&apos; is not defined</code></pre>
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-4.html" rel="bookmark">程序结构、分支语句、条件、列表、循环</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-5.html" rel="bookmark">函数、return、函数参数、列表字典传入函数、函数文档</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018-08-10-python-3.html" rel="prev" title="标准输入输出">
+      <i class="fa fa-chevron-left"></i> 标准输入输出
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018-08-10-python-4.html" rel="next" title="程序结构、分支语句、条件、列表、循环">
+      程序结构、分支语句、条件、列表、循环 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的运算符"><span class="nav-number">1.</span> <span class="nav-text">python中的运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、算数运算符"><span class="nav-number">1.1.</span> <span class="nav-text">1、算数运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算数运算符的优先级"><span class="nav-number">1.2.</span> <span class="nav-text">算数运算符的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算中出现浮点数，结果一定是浮点数"><span class="nav-number">1.3.</span> <span class="nav-text">运算中出现浮点数，结果一定是浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算小练习"><span class="nav-number">1.4.</span> <span class="nav-text">运算小练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、赋值运算符"><span class="nav-number">1.5.</span> <span class="nav-text">2、赋值运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值运算练习"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值运算练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、比较运算符"><span class="nav-number">1.6.</span> <span class="nav-text">3、比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、逻辑运算符"><span class="nav-number">1.7.</span> <span class="nav-text">4、逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、特殊运算符"><span class="nav-number">1.8.</span> <span class="nav-text">5、特殊运算符</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">223k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+</body>
+</html>

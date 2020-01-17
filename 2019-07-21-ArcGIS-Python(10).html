@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
@@ -46,20 +46,29 @@
   };
 </script>
 
-  <meta name="description" content="热爱之所爱  学思之所学  lemon  米津玄師">
+  <meta name="description" content="学习日志10 使用add-in定制Arcgis界面 书籍：基于ArcGIS的Python编程秘笈(第2版);  学习第十章  Python Add-in Wizard 下载,解压运行&#x2F;bin&#x2F;..exe   http:&#x2F;&#x2F;www.arcgis.com&#x2F;home&#x2F;item.html?id&#x3D;5f3aefe77f6b4f61ad3e4c62f30bff3b   Python Add-in Wizard是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lemon">
-<meta property="og:url" content="http://innozh.com/archives/9e780924.html">
+<meta property="og:title" content="Arcgis中的python编程(10)">
+<meta property="og:url" content="http://innozh.com/2019-07-21-ArcGIS-Python(10).html">
 <meta property="og:site_name" content="inno">
-<meta property="og:description" content="热爱之所爱  学思之所学  lemon  米津玄師">
+<meta property="og:description" content="学习日志10 使用add-in定制Arcgis界面 书籍：基于ArcGIS的Python编程秘笈(第2版);  学习第十章  Python Add-in Wizard 下载,解压运行&#x2F;bin&#x2F;..exe   http:&#x2F;&#x2F;www.arcgis.com&#x2F;home&#x2F;item.html?id&#x3D;5f3aefe77f6b4f61ad3e4c62f30bff3b   Python Add-in Wizard是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-20T00:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-16T01:50:54.659Z">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin1.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin2.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin3.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin4.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin5.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin6.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin7.png">
+<meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin8.png">
+<meta property="article:published_time" content="2019-07-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:53:12.120Z">
 <meta property="article:author" content="inno">
-<meta property="article:tag" content="歌">
+<meta property="article:tag" content="pythonGIS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://innozh.com/assets/images/blog/pythonAddin1.png">
 
-<link rel="canonical" href="http://innozh.com/archives/9e780924.html">
+<link rel="canonical" href="http://innozh.com/2019-07-21-ArcGIS-Python(10).html">
 
 
 <script id="page-configurations">
@@ -71,7 +80,7 @@
   };
 </script>
 
-  <title>lemon | inno</title>
+  <title>Arcgis中的python编程(10) | inno</title>
   
 
 
@@ -120,7 +129,8 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</p>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -151,9 +161,9 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
-        <li class="menu-item menu-item-friendsites">
+        <li class="menu-item menu-item-links">
 
-    <a href="/friendSites/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>links</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -212,7 +222,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://innozh.com/archives/9e780924.html">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2019-07-21-ArcGIS-Python(10).html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -224,9 +234,9 @@
       <meta itemprop="name" content="inno">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          lemon
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          Arcgis中的python编程(10)
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -235,14 +245,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-06-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-20T00:00:00Z">2019-06-20</time>
+              <time title="创建时间：2019-07-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-21T00:00:00Z">2019-07-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 01:50:54" itemprop="dateModified" datetime="2020-01-16T01:50:54Z">2020-01-16</time>
+                <time title="修改时间：2020-01-15 12:53:12" itemprop="dateModified" datetime="2020-01-15T12:53:12Z">2020-01-15</time>
               </span>
 
           
@@ -258,7 +268,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>2.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -277,288 +287,96 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <ul>
-<li><p>热爱之所爱</p>
-</li>
-<li><p>学思之所学</p>
-</li>
-<li><p>lemon</p>
-</li>
-<li><p>米津玄師</p>
-</li>
+        <p>学习日志10 使用add-in定制Arcgis界面</p>
+<p>书籍：基于ArcGIS的Python编程秘笈(第2版); </p>
+<p>学习<b>第十章</b></p>
+<blockquote>
+<p>Python Add-in Wizard 下载,解压运行/bin/..exe</p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.arcgis.com/home/item.html?id=5f3aefe77f6b4f61ad3e4c62f30bff3b" target="_blank" rel="noopener external nofollow noreferrer">http://www.arcgis.com/home/item.html?id=5f3aefe77f6b4f61ad3e4c62f30bff3b</a></p>
+</blockquote>
+<blockquote>
+<p>Python Add-in Wizard是一个可视化界面工具,用于创建桌面Arcgis加载项</p>
+</blockquote>
+<ul>
+<li>创建按钮加载项和使用Python加载项</li>
+<li>安装测试加载项</li>
+<li>创建工具加载项</li>
 </ul>
 <a id="more"></a>
 
-<h2 id="lemon"><a href="#lemon" class="headerlink" title="lemon"></a>lemon</h2><ul>
-<li><p>lemon</p>
-</li>
-<li><p>米津玄師</p>
-</li>
-<li><p><a href="https://www.youtube.com/watch?v=SX_ViT4Ra7k" target="_blank" rel="noopener external nofollow noreferrer">MV(youtube)</a></p>
-</li>
-<li><p>梦（ゆめ）ならばどれほどよかったでしょう</p>
-<blockquote>
-<p>yume naraba dore hodo yokatta deshou</p>
-<p>如果这一切都是梦境该有多好</p>
-</blockquote>
-</li>
-<li><p>未（いま）だにあなたのことを梦（ゆめ）にみる</p>
-<blockquote>
-<p>imada ni anata no koto wo yume ni miru</p>
-<p>至今仍能与你在梦中相遇</p>
-</blockquote>
-</li>
-<li><p>忘（わす）れた物（もの）を取（と）りに帰（かえ）るように</p>
-<blockquote>
-<p>wasureta mono wo tori ni kaeru youni</p>
-<p>如同取回遗忘之物一般</p>
-</blockquote>
-</li>
-<li><p>古（ふる）びた思（おも）い出（で）の埃（ほこり）を払（はら）う</p>
-<blockquote>
-<p>furubita omoide no hokori wo harau</p>
-<p>细细拂去将回忆覆盖的尘埃</p>
-</blockquote>
-</li>
-<li><p>戻（もど）らない幸（しあわ）せがあることを</p>
-<blockquote>
-<p>modora nai shiawase ga aru koto wo</p>
-<p>这世间亦有无法挽回的幸福</p>
-</blockquote>
-</li>
-<li><p>最後（さいご）にあなたが教（おし）えてくれた</p>
-<blockquote>
-<p>saigo ni anata ga oshiete kureta</p>
-<p>最终是你让我懂得这一点</p>
-</blockquote>
-</li>
-<li><p>言（い）えずに隠（かくし）してた昏（くら）い过去（かこ）も</p>
-<blockquote>
-<p>iezu ni kakushiteta kurai kako mo</p>
-<p>那些未对他人提及过的黑暗往事</p>
-</blockquote>
-</li>
-<li><p>あなたがいなきゃ永远（えいえん）に昏（くら）いまま</p>
-<blockquote>
-<p>anata ga inakya eien ni kurai mama</p>
-<p>如果不曾有你的话 它们将永远沉睡在黑暗中</p>
-</blockquote>
-</li>
-<li><p>きっともうこれ以上 伤（きず）つくことなど</p>
-<blockquote>
-<p>kitto mou kore ijou kizu tsuku koto nado</p>
-<p>比这更令人难过的事情</p>
-</blockquote>
-</li>
-<li><p>ありはしないとわかっている</p>
-<blockquote>
-<p>ari wa shinai to wakatte iru</p>
-<p>我知道不可能存在</p>
-</blockquote>
-</li>
-<li><p>あの日（ひ）の悲（かな）しみさえ</p>
-<blockquote>
-<p>ano hi no kanashimi sae</p>
-<p>那日的悲伤</p>
-</blockquote>
-</li>
-<li><p>あの日（ひ）の苦（くる）しみさえ</p>
-<blockquote>
-<p>ano hi no kurushimi sae</p>
-<p>与那日的痛苦</p>
-</blockquote>
-</li>
-<li><p>そのすべてを爱（あい）してた あなたとともに</p>
-<blockquote>
-<p>sono subete wo aishiteta anata to tomoni</p>
-<p>连同深爱着这一切的你</p>
-</blockquote>
-</li>
-<li><p>胸（むね）に残（のこ）り离（はな）れない</p>
-<blockquote>
-<p>mune ni nokori hanare nai</p>
-<p>化作了深深烙印在我心中的</p>
-</blockquote>
-</li>
-<li><p>苦（にが）いレモンの匂（にお）い</p>
-<blockquote>
-<p>nigai remon no nioi</p>
-<p>苦涩柠檬的香气</p>
-</blockquote>
-</li>
-<li><p>雨（あめ）が降（ふ）り止（や）むまでは帰（かえ）れない</p>
-<blockquote>
-<p>ame ga furiyamu made wa kaere nai</p>
-<p>在雨过天晴前都无法归去</p>
-</blockquote>
-</li>
-<li><p>今（いま）でもあなたはわたしの光（ひかり）</p>
-<blockquote>
-<p>ima demo anata wa watashi no hikari</p>
-<p>时至今日 你仍是我的光芒</p>
-</blockquote>
-</li>
-<li><p>暗闇（くらやみ）であなたの背（せ）をなぞった</p>
-<blockquote>
-<p>kurayami de anata no se wo nazotta</p>
-<p>在黑暗中追寻着你的身影</p>
-</blockquote>
-</li>
-<li><p>その轮郭（りんかく）を鲜明（せんめい）に覚（おぼ）えている</p>
-<blockquote>
-<p>sono rinkaku wo senmei ni oboete iru</p>
-<p>那轮廓至今仍鲜明地刻印于心</p>
-</blockquote>
-</li>
-<li><p>受（う）け止（と）めきれないものと出会（であ）うたび</p>
-<blockquote>
-<p>uketome kire nai mono to deau tabi</p>
-<p>每当遇到无法承受的苦痛时</p>
-</blockquote>
-</li>
-<li><p>溢（あふ）れてやまないのは涙だけ</p>
-<blockquote>
-<p>afurete yama nai no wa namida dake</p>
-<p>总不禁泪如泉涌</p>
-</blockquote>
-</li>
-<li><p>何（なに）をしていたの</p>
-<blockquote>
-<p>nani wo shite ita no</p>
-<p>你都经历过什么</p>
-</blockquote>
-</li>
-<li><p>何（なに）を见（み）ていたの</p>
-<blockquote>
-<p>nani wo mite ita no</p>
-<p>又目睹过什么呢</p>
-</blockquote>
-</li>
-<li><p>わたしの知（し）らない横颜（よこがお）で</p>
-<blockquote>
-<p>watashi no shira nai yokogao de</p>
-<p>脸上浮现着我不曾见过的神情</p>
-</blockquote>
-</li>
-<li><p>どこかであなたが今（いま）</p>
-<blockquote>
-<p>dokoka de anata ga ima</p>
-<p>如果你正在什么地方</p>
-</blockquote>
-</li>
-<li><p>わたしと同（おな）じ様（よう）な</p>
-<blockquote>
-<p>watashi to onaji youna</p>
-<p>与我一样</p>
-</blockquote>
-</li>
-<li><p>涙（なみだ）にくれ 淋（さび）しさの中（なか）にいるなら</p>
-<blockquote>
-<p>namida ni kure samishisa no naka ni iru nara</p>
-<p>终日过着以泪洗面的寂寞生活的话</p>
-</blockquote>
-</li>
-<li><p>わたしのことなどどうか 忘（わす）れてください</p>
-<blockquote>
-<p>watashi no koto nado douka wasurete kudasai</p>
-<p>就请你将我的一切全部遗忘吧</p>
-</blockquote>
-</li>
-<li><p>そんなことを心（こころ）から愿（ねが）うほどに</p>
-<blockquote>
-<p>sonna koto wo kokoro kara negau hodo ni</p>
-<p>这是我发自内深处唯一的祈愿</p>
-</blockquote>
-</li>
-<li><p>今（いま）でもあなたはわたしの光（ひかり）</p>
-<blockquote>
-<p>ima demo anata wa watashi no hikari</p>
-<p>时至今日 你仍是我的光芒</p>
-</blockquote>
-</li>
-<li><p>自分（じぶん）が思（おも）うより 恋（こい）をしていたあなたに</p>
-<blockquote>
-<p>jibun ga omou yori koi wo shite ita anata ni</p>
-<p>我深深地恋慕着你 甚至超出了我自己的想象</p>
-</blockquote>
-</li>
-<li><p>あれから思（おも）うように 息（いき）ができない</p>
-<blockquote>
-<p>are kara omou youni iki ga deki nai</p>
-<p>自此每当想起你 都如同窒息般痛苦</p>
-</blockquote>
-</li>
-<li><p>あんなに侧（そば）にいたのにまるで嘘（うそ）みたい</p>
-<blockquote>
-<p>annani soba ni ita noni marude uso mitai</p>
-<p>你曾亲密伴我身旁 如今却如烟云般消散</p>
-</blockquote>
-</li>
-<li><p>とても忘（わす）れられないそれだけが确（たし）か</p>
-<blockquote>
-<p>totemo wasurerare nai sore dake ga tashika</p>
-<p>唯一能确定的是 我永远都不会将你遗忘</p>
-</blockquote>
-</li>
-<li><p>あの日（ひ）の悲（かな）しみさえ</p>
-<blockquote>
-<p>ano hi no kanashimi sae</p>
-<p>那日的悲伤</p>
-</blockquote>
-</li>
-<li><p>あの日（ひ）の苦（くる）しみさえ</p>
-<blockquote>
-<p>ano hi no kurushimi sae</p>
-<p>与那日的痛苦</p>
-</blockquote>
-</li>
-<li><p>その全（すべ）てを爱（あい）してたあなたと共（とも）に</p>
-<blockquote>
-<p>sono subete wo aishiteta anata to tomoni</p>
-<p>连同深爱着这一切的你</p>
-</blockquote>
-</li>
-<li><p>胸（むね）に残（のこ）り离（はな）れない</p>
-<blockquote>
-<p>mune ni nokori hanare nai</p>
-<p>化作了深深烙印在我心中的</p>
-</blockquote>
-</li>
-<li><p>苦（にが）いレモンの匂（にお）い</p>
-<blockquote>
-<p>nigai remon no nioi</p>
-<p>苦涩柠檬的香气</p>
-</blockquote>
-</li>
-<li><p>雨（あめ）が降（ふ）り止（や）むまでは帰（かえ）れない</p>
-<blockquote>
-<p>ame ga furiyamu made wa kaere nai</p>
-<p>在雨过天晴前都无法归去</p>
-</blockquote>
-</li>
-<li><p>切（き）り分（わ）けた果実（かじつ）の片方（かたほう）の様（よう）に</p>
-<blockquote>
-<p>kiriwaketa kajitsu no katahou no youni</p>
-<p>如同被切开的半个柠檬一般</p>
-</blockquote>
-</li>
-<li><p>今（いま）でもあなたはわたしの光（ひかり）</p>
-<blockquote>
-<p>ima demo anata wa watashi no hikari</p>
-<p>时至今日你仍是我的光芒</p>
-</blockquote>
-</li>
+<h3 id="1-创建按钮加载项和使用Python加载项"><a href="#1-创建按钮加载项和使用Python加载项" class="headerlink" title="1.创建按钮加载项和使用Python加载项"></a>1.创建按钮加载项和使用Python加载项</h3><p>本例创建一个按钮加载项,添加一些数据到数据框</p>
+<ul>
+<li>运行addin_assistant.exe</li>
 </ul>
+<p><img src="/assets/images/blog/pythonAddin1.png" alt="image"></p>
+<p><img src="/assets/images/blog/pythonAddin2.png" alt="image"></p>
+<p>添加按钮<br><img src="/assets/images/blog/pythonAddin3.png" alt="image"></p>
+<p>保存文件/install中编辑addin-rootfile_addin.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">import pythonaddins</span><br><span class="line"></span><br><span class="line">class ButtonClassImportWildfires(object):</span><br><span class="line">    &quot;&quot;&quot;Implementation for addin-rootfile_addin.button (Button)&quot;&quot;&quot;</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.enabled &#x3D; True</span><br><span class="line">        self.checked &#x3D; False</span><br><span class="line">    def onClick(self):</span><br><span class="line">        layer_files &#x3D; pythonaddins.OpenDialog(&quot;Select layer to add&quot;, True, </span><br><span class="line">                r&quot;H:\ArcpyBook\data\Wildfires&quot;, &quot;Add&quot;)</span><br><span class="line">        mxd &#x3D; arcpy.mapping.MapDocument(&quot;current&quot;) # 获取mxd文档</span><br><span class="line">        df &#x3D; pythonaddins.GetSelectedTOCLayerOrDataFrame() # 获取数据框</span><br><span class="line">        if not isinstance(df, layer_files): # 判断类型是否相同</span><br><span class="line">            for layer_file in layer_files:</span><br><span class="line">                layer &#x3D; arcpy.mapping.Layer(layer_file)</span><br><span class="line">                # 往数据框添加layer</span><br><span class="line">                arcpy.mapping.AddLayer(df, layer)</span><br><span class="line">            else:</span><br><span class="line">                pythonaddins.MessageBox(&#39;Select a dataframe&#39;, &#39;info&#39;, 0)</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装测试加载项"><a href="#2-安装测试加载项" class="headerlink" title="2. 安装测试加载项"></a>2. 安装测试加载项</h3><ol>
+<li>打开加载项工作目录</li>
+</ol>
+<p><img src="/assets/images/blog/pythonAddin4.png" alt="image"></p>
+<ol start="2">
+<li>双击makeaddin.py以创建addin-rootfile.esriaddin</li>
+<li>双击addin-rootfile.esriaddin</li>
+</ol>
+<p><img src="/assets/images/blog/pythonAddin5.png" alt="image"></p>
+<p><img src="/assets/images/blog/pythonAddin6.png" alt="image"></p>
+<p><img src="/assets/images/blog/pythonAddin7.png" alt="image"></p>
+<ol start="4">
+<li><b>注意</b><br>工具条出现<b>缺失</b>问题</li>
+</ol>
+<p><b>解决:将生成的xxxx.esriaddin文件放到C:\Users\username\Documents\ArcGIS\AddIns\Desktop10.6(对应版本下)</b></p>
+<h3 id="3-创建工具加载项"><a href="#3-创建工具加载项" class="headerlink" title="3. 创建工具加载项"></a>3. 创建工具加载项</h3><ul>
+<li>功能: 在一个面要素内部创建随机点</li>
+</ul>
+<ol>
+<li>同样使用Python Add-in工具</li>
+<li>右击添加工具</li>
+</ol>
+<p><img src="/assets/images/blog/pythonAddin8.png" alt="image"></p>
+<ol start="3">
+<li>/install/下编辑Generate Random Point_addin.py文件，更改以下部分</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">import pythonaddins</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line">  self.enabled &#x3D; True</span><br><span class="line">  self.cursor &#x3D; 3</span><br><span class="line">  self.shape &#x3D; &#39;Rectangle&#39;</span><br><span class="line"></span><br><span class="line">def onRectangle(self, rectangle_geometry):</span><br><span class="line">    extent &#x3D; rectangle_geometry</span><br><span class="line">    arcpy.env.workspace &#x3D; r&#39;c:\ArcpyBook\Ch10&#39;</span><br><span class="line">    if arcpy.Exists(&#39;randompts.shp&#39;):</span><br><span class="line">        arcpy.Delete_management(&#39;randompts.shp&#39;)</span><br><span class="line">        randompts &#x3D; arcpy.CreateRandomPoints_management(arcpy.env.workspace,&#39;randompts.shp&#39;,&quot;&quot;,rectangle_geometry)</span><br><span class="line">        arcpy.RefreshActiveView()</span><br><span class="line">    return randompts</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>运行makeaddin.py生成Generate Random Point.esriaddin</li>
+<li>将Generate Random Point.esriaddin复制到C:\Users\username\Documents\ArcGIS\AddIns\Desktop10.6(对应版本下)</li>
+<li>打开ArcMap10.6测试</li>
+</ol>
 
     </div>
 
     
     
     
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-16-ArcGIS-Python(7).html" rel="bookmark">Arcgis中的python编程(7)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-13-ArcGIS-Python(1).html" rel="bookmark">Arcgis中的python编程(1)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-13-ArcGIS-Python(2).html" rel="bookmark">Arcgis中的python编程(2)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-06-23-ArcGIS-Python(5).html" rel="bookmark">Arcgis中的python编程(5)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+    </li>
+  </ul>
+
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%AD%8C/" rel="tag"># 歌</a>
+              <a href="/tags/pythonGIS/" rel="tag"># pythonGIS</a>
           </div>
 
         
@@ -567,12 +385,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/archives/undefined.html" rel="prev" title="Arcgis中的python编程(3)">
-      <i class="fa fa-chevron-left"></i> Arcgis中的python编程(3)
+    <a href="/2019-07-19-ArcGIS-Python(9).html" rel="prev" title="Arcgis中的python编程(9)">
+      <i class="fa fa-chevron-left"></i> Arcgis中的python编程(9)
     </a></div>
       <div class="post-nav-item">
-    <a href="/archives/undefined.html" rel="next" title="今日から思い出">
-      今日から思い出 <i class="fa fa-chevron-right"></i>
+    <a href="/2019-07-21-ArcGIS-Python(11).html" rel="next" title="Arcgis中的python编程(11)">
+      Arcgis中的python编程(11) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -633,7 +451,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lemon"><span class="nav-number">1.</span> <span class="nav-text">lemon</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建按钮加载项和使用Python加载项"><span class="nav-number">1.</span> <span class="nav-text">1.创建按钮加载项和使用Python加载项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装测试加载项"><span class="nav-number">2.</span> <span class="nav-text">2. 安装测试加载项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建工具加载项"><span class="nav-number">3.</span> <span class="nav-text">3. 创建工具加载项</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
