@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>inno</title>
+  <title>inno的博客</title>
   <icon>http://innozh.com/icon.png</icon>
   <subtitle>生活不止眼前的苟且，还有看不懂的诗和到不了的远方</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-03-06T06:44:43.350Z</updated>
+  <updated>2020-03-08T06:28:41.942Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>1984</title>
+    <link href="http://innozh.com/2020-3-8-1984.html"/>
+    <id>http://innozh.com/2020-3-8-1984.html</id>
+    <published>2020-03-08T00:00:00.000Z</published>
+    <updated>2020-03-08T06:28:41.942Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;读后感&lt;/p&gt;
+&lt;p&gt;书屋&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;离读完1984已有月余，感概此时书中角色名称我已忘记。脑海中却隐约浮现那几个字句：&lt;strong&gt;老大哥&lt;/strong&gt;、&lt;strong&gt;电幕&lt;/strong&gt;、&lt;strong&gt;双重思想&lt;/strong&gt;、&lt;strong&gt;101号房&lt;/strong&gt;、&lt;strong&gt;谁控制了过去，谁就控制了未来，谁控制了现在，谁就控制了过去&lt;/strong&gt;…&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="随笔" scheme="http://innozh.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="树屋" scheme="http://innozh.com/tags/%E6%A0%91%E5%B1%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>React + Ant Design 豆瓣电影学习实例</title>
     <link href="http://innozh.com/2020-3-6-react-antd.html"/>
     <id>http://innozh.com/2020-3-6-react-antd.html</id>
     <published>2020-03-06T00:00:00.000Z</published>
-    <updated>2020-03-06T06:44:43.350Z</updated>
+    <updated>2020-03-08T06:29:48.012Z</updated>
     
     <summary type="html">
     
@@ -34,7 +59,9 @@
     
     
     
-      <category term="React Antd" scheme="http://innozh.com/tags/React-Antd/"/>
+      <category term="React" scheme="http://innozh.com/tags/React/"/>
+    
+      <category term="Antd" scheme="http://innozh.com/tags/Antd/"/>
     
   </entry>
   
@@ -43,7 +70,7 @@
     <link href="http://innozh.com/2020-2-2-wu-han-fei-yan-shi-jian-r.i.p.html"/>
     <id>http://innozh.com/2020-2-2-wu-han-fei-yan-shi-jian-r.i.p.html</id>
     <published>2020-02-02T00:00:00.000Z</published>
-    <updated>2020-03-06T06:54:56.240Z</updated>
+    <updated>2020-03-08T06:30:42.441Z</updated>
     
     <summary type="html">
     
@@ -64,7 +91,9 @@
     
     
     
-      <category term="随笔 思考" scheme="http://innozh.com/tags/%E9%9A%8F%E7%AC%94-%E6%80%9D%E8%80%83/"/>
+      <category term="随笔" scheme="http://innozh.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="思考" scheme="http://innozh.com/tags/%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
@@ -99,7 +128,7 @@
     <link href="http://innozh.com/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html"/>
     <id>http://innozh.com/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html</id>
     <published>2019-12-14T00:00:00.000Z</published>
-    <updated>2020-01-16T08:01:49.779Z</updated>
+    <updated>2020-03-08T06:30:55.341Z</updated>
     
     <summary type="html">
     
@@ -117,7 +146,9 @@
     
     
     
-      <category term="PHPMailer 邮件" scheme="http://innozh.com/tags/PHPMailer-%E9%82%AE%E4%BB%B6/"/>
+      <category term="PHPMailer" scheme="http://innozh.com/tags/PHPMailer/"/>
+    
+      <category term="邮件" scheme="http://innozh.com/tags/%E9%82%AE%E4%BB%B6/"/>
     
   </entry>
   
@@ -126,7 +157,7 @@
     <link href="http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html"/>
     <id>http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html</id>
     <published>2019-12-11T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:05.016Z</updated>
+    <updated>2020-03-08T06:31:05.323Z</updated>
     
     <summary type="html">
     
@@ -155,7 +186,9 @@
     
     
     
-      <category term="php 邮箱验证" scheme="http://innozh.com/tags/php-%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81/"/>
+      <category term="php" scheme="http://innozh.com/tags/php/"/>
+    
+      <category term="邮箱验证" scheme="http://innozh.com/tags/%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81/"/>
     
   </entry>
   
@@ -164,7 +197,7 @@
     <link href="http://innozh.com/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html"/>
     <id>http://innozh.com/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html</id>
     <published>2019-11-12T00:00:00.000Z</published>
-    <updated>2020-01-15T12:21:03.689Z</updated>
+    <updated>2020-03-08T06:31:16.136Z</updated>
     
     <summary type="html">
     
@@ -178,7 +211,11 @@
     
     
     
-      <category term="VPN IPSec 虚拟局域网" scheme="http://innozh.com/tags/VPN-IPSec-%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91/"/>
+      <category term="VPN" scheme="http://innozh.com/tags/VPN/"/>
+    
+      <category term="IPSec" scheme="http://innozh.com/tags/IPSec/"/>
+    
+      <category term="虚拟局域网" scheme="http://innozh.com/tags/%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91/"/>
     
   </entry>
   
@@ -187,7 +224,7 @@
     <link href="http://innozh.com/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html"/>
     <id>http://innozh.com/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html</id>
     <published>2019-09-23T00:00:00.000Z</published>
-    <updated>2020-01-16T02:49:28.963Z</updated>
+    <updated>2020-03-08T06:31:35.902Z</updated>
     
     <summary type="html">
     
@@ -218,7 +255,9 @@
     
     
     
-      <category term="ArcMapEngine VS" scheme="http://innozh.com/tags/ArcMapEngine-VS/"/>
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="VS" scheme="http://innozh.com/tags/VS/"/>
     
   </entry>
   
@@ -227,7 +266,7 @@
     <link href="http://innozh.com/2019-09-23-cshape-arcengine-addin.html"/>
     <id>http://innozh.com/2019-09-23-cshape-arcengine-addin.html</id>
     <published>2019-09-23T00:00:00.000Z</published>
-    <updated>2020-01-16T02:49:16.732Z</updated>
+    <updated>2020-03-08T06:31:26.739Z</updated>
     
     <summary type="html">
     
@@ -246,7 +285,11 @@
     
     
     
-      <category term="ArcMapEngine VS addin" scheme="http://innozh.com/tags/ArcMapEngine-VS-addin/"/>
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="VS" scheme="http://innozh.com/tags/VS/"/>
+    
+      <category term="addin" scheme="http://innozh.com/tags/addin/"/>
     
   </entry>
   
@@ -255,7 +298,7 @@
     <link href="http://innozh.com/2019-09-19-python-arcpy-ji-suan-mian-de-zhou-chang.html"/>
     <id>http://innozh.com/2019-09-19-python-arcpy-ji-suan-mian-de-zhou-chang.html</id>
     <published>2019-09-19T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:13.893Z</updated>
+    <updated>2020-03-08T06:31:55.159Z</updated>
     
     <summary type="html">
     
@@ -268,72 +311,9 @@
     
     
     
-      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Python 计算要素图层面积</title>
-    <link href="http://innozh.com/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html"/>
-    <id>http://innozh.com/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html</id>
-    <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:25.868Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;arcpy&lt;/li&gt;
-&lt;li&gt;获取矢量面图层，添加字段，实现面积的计算&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python arcpy 计算曲线长度与弯曲度</title>
-    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html"/>
-    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html</id>
-    <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:20.533Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;arcpy&lt;/li&gt;
-&lt;li&gt;获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python arcpy 计算点经纬度坐标</title>
-    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html"/>
-    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</id>
-    <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:22.817Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;arcpy&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine arcpy" scheme="http://innozh.com/tags/ArcMapEngine-arcpy/"/>
+      <category term="arcpy" scheme="http://innozh.com/tags/arcpy/"/>
     
   </entry>
   
@@ -342,7 +322,7 @@
     <link href="http://innozh.com/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html"/>
     <id>http://innozh.com/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html</id>
     <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:17.493Z</updated>
+    <updated>2020-03-08T06:32:15.517Z</updated>
     
     <summary type="html">
     
@@ -355,7 +335,80 @@
     
     
     
-      <category term="ArcMapEngine vba" scheme="http://innozh.com/tags/ArcMapEngine-vba/"/>
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="vba" scheme="http://innozh.com/tags/vba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python arcpy 计算点经纬度坐标</title>
+    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html"/>
+    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</id>
+    <published>2019-09-18T00:00:00.000Z</published>
+    <updated>2020-03-08T06:32:58.113Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;arcpy&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="arcpy" scheme="http://innozh.com/tags/arcpy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python arcpy 计算曲线长度与弯曲度</title>
+    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html"/>
+    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html</id>
+    <published>2019-09-18T00:00:00.000Z</published>
+    <updated>2020-03-08T06:32:49.143Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;arcpy&lt;/li&gt;
+&lt;li&gt;获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="arcpy" scheme="http://innozh.com/tags/arcpy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 计算要素图层面积</title>
+    <link href="http://innozh.com/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html"/>
+    <id>http://innozh.com/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html</id>
+    <published>2019-09-18T00:00:00.000Z</published>
+    <updated>2020-03-08T06:33:06.938Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;arcpy&lt;/li&gt;
+&lt;li&gt;获取矢量面图层，添加字段，实现面积的计算&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="arcpy" scheme="http://innozh.com/tags/arcpy/"/>
     
   </entry>
   
@@ -364,7 +417,7 @@
     <link href="http://innozh.com/2019-09-16-vba-xian-tu-ceng-xian-chang-yu-wan-qu-du.html"/>
     <id>http://innozh.com/2019-09-16-vba-xian-tu-ceng-xian-chang-yu-wan-qu-du.html</id>
     <published>2019-09-16T00:00:00.000Z</published>
-    <updated>2020-01-15T12:52:29.106Z</updated>
+    <updated>2020-03-08T06:33:25.875Z</updated>
     
     <summary type="html">
     
@@ -380,7 +433,9 @@
     
     
     
-      <category term="ArcMapEngine vba" scheme="http://innozh.com/tags/ArcMapEngine-vba/"/>
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="vba" scheme="http://innozh.com/tags/vba/"/>
     
   </entry>
   
@@ -389,7 +444,7 @@
     <link href="http://innozh.com/2019-09-16-vba-arcmap-ui-kong-jian-ji-suan-yao-su-tu-ceng-mian-ji.html"/>
     <id>http://innozh.com/2019-09-16-vba-arcmap-ui-kong-jian-ji-suan-yao-su-tu-ceng-mian-ji.html</id>
     <published>2019-09-16T00:00:00.000Z</published>
-    <updated>2020-01-15T12:51:43.131Z</updated>
+    <updated>2020-03-08T06:33:15.271Z</updated>
     
     <summary type="html">
     
@@ -403,7 +458,9 @@
     
     
     
-      <category term="ArcMapEngine vba" scheme="http://innozh.com/tags/ArcMapEngine-vba/"/>
+      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
+    
+      <category term="vba" scheme="http://innozh.com/tags/vba/"/>
     
   </entry>
   
@@ -412,7 +469,7 @@
     <link href="http://innozh.com/2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html"/>
     <id>http://innozh.com/2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html</id>
     <published>2019-08-15T00:00:00.000Z</published>
-    <updated>2020-01-15T12:20:34.458Z</updated>
+    <updated>2020-03-08T06:33:35.633Z</updated>
     
     <summary type="html">
     
@@ -434,7 +491,9 @@
     
     
     
-      <category term="JavaScript jQuery" scheme="http://innozh.com/tags/JavaScript-jQuery/"/>
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
   </entry>
   
@@ -507,37 +566,6 @@
 &lt;p&gt;内容包括:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;自动、手动播放图片&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript学习实例(3)</title>
-    <link href="http://innozh.com/2019-08-05-javascript-xue-xi-shi-li-3.html"/>
-    <id>http://innozh.com/2019-08-05-javascript-xue-xi-shi-li-3.html</id>
-    <published>2019-08-05T00:00:00.000Z</published>
-    <updated>2020-01-15T12:19:52.626Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;高级JavaScript实例&quot;&gt;&lt;a href=&quot;#高级JavaScript实例&quot; class=&quot;headerlink&quot; title=&quot;高级JavaScript实例&quot;&gt;&lt;/a&gt;高级JavaScript实例&lt;/h2&gt;&lt;p&gt;参考：&lt;a href=&quot;http://www.runoob.com/js/js-examples.html&quot; target=&quot;_blank&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;菜鸟教程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;环境:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;html&lt;/li&gt;
-&lt;li&gt;代码为主要部分&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;内容包括:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Cookie保存用户信息&lt;/li&gt;
-&lt;li&gt;简单的计时&lt;/li&gt;
-&lt;li&gt;无限循环的计时&lt;/li&gt;
-&lt;li&gt;创建用于对象的模版&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>

@@ -50,13 +50,16 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="php+Apache+mysql用户登录系统(1)">
 <meta property="og:url" content="http://innozh.com/2019-08-01-php-apache-mysql-uls-1-yong-hu-deng-lu-xi-tong.html">
-<meta property="og:site_name" content="inno">
+<meta property="og:site_name" content="inno的博客">
 <meta property="og:description" content="php+Apache+mysql用户登录系统 说明:  php7.0 apache2 数据库设计主键id为自动递增，插入数据时才能不手动插入id主键  文件树:  register.html注册 register.php login.html登陆 login.php  下篇文章: PHP中password_hash()密码加密">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-08-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-15T12:52:48.687Z">
+<meta property="article:modified_time" content="2020-03-08T06:34:14.249Z">
 <meta property="article:author" content="inno">
-<meta property="article:tag" content="php apache mysql 用户登陆系统">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="apache">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="用户登陆系统">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://innozh.com/2019-08-01-php-apache-mysql-uls-1-yong-hu-deng-lu-xi-tong.html">
@@ -71,7 +74,7 @@
   };
 </script>
 
-  <title>php+Apache+mysql用户登录系统(1) | inno</title>
+  <title>php+Apache+mysql用户登录系统(1) | inno的博客</title>
   
 
 
@@ -102,7 +105,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="inno" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="inno的博客" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -116,7 +119,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">inno</span>
+        <span class="site-title">inno的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -221,7 +224,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="inno">
+      <meta itemprop="name" content="inno的博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -242,7 +245,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 12:52:48" itemprop="dateModified" datetime="2020-01-15T12:52:48Z">2020-01-15</time>
+                <time title="修改时间：2020-03-08 06:34:14" itemprop="dateModified" datetime="2020-03-08T06:34:14Z">2020-03-08</time>
               </span>
 
           
@@ -337,6 +340,15 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-31-php-mysql-create.html" rel="bookmark">PHP新建用户数据库和表</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-31-ubuntu-php-mysql.html" rel="bookmark">ubuntu16.04, Apache+PHP+Mysql安装与卸载</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-31-php-password-hash.html" rel="bookmark">PHP中password_hash()密码加密</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
     </li>
     <li class="popular-posts-item">
@@ -348,7 +360,10 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/php-apache-mysql-%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> php apache mysql 用户登陆系统</a>
+              <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+              <a href="/tags/apache/" rel="tag"><i class="fa fa-tag"></i> apache</a>
+              <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+              <a href="/tags/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 用户登陆系统</a>
           </div>
 
         
@@ -440,14 +455,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -492,12 +507,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">225k</span>
+    <span title="站点总字数">226k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:24</span>
+    <span title="站点阅读时长">3:25</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
