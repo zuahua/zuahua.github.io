@@ -107,7 +107,7 @@
 <p>时间: 2019年</p>
 </blockquote>
 <p>12月,开始从推上了解到武汉肺炎,有可能大范围传播言论出现。国内一片祥和,然后武汉当局抓了几个所谓“造谣者”(有人说是医生在微信群讨论被抓)。</p>
-<p><img src="../images/note/2.png" alt="image"></p>
+<p><img src="../images/note/22.png" alt="image"></p>
 <blockquote>
 <p>时间:2020年</p>
 </blockquote>
@@ -125,7 +125,7 @@
 <p>2月1日,数据<strong>破万</strong>了啊。</p>
 <p>…</p>
 <p>惊闻红十字会当年汶川物资烂在仓库</p>
-<p><img src="../images/note/1.png" alt="image"></p>
+<p><img src="../images/note/11.png" alt="image"></p>
 <p>莆田医院获得上万口罩物资,武汉领导人的车出现与红会仓库门口,又带走多少口罩?武汉市长甩锅,卫健委甩锅,疫情指挥部和红十字会相互甩锅<br>某:我将亲自部署,亲自指挥(在北京,可能)</p>
 <p>谁又垃圾堆里捡起口罩?谁又高价卖起口罩发国难财?谁在造谣?中药又可以抑制病毒了?<br>谁辟自己造的谣?谁又交了智商税?谁又没事出去?</p>
 <p>而那些现在依旧奋斗在一线的医生,护士,其他工作者。志愿者,捐赠物资的人,修建医院的工人,等等。</p>
@@ -396,22 +396,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python arcpy 计算点经纬度坐标</title>
-    <url>/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</url>
-    <content><![CDATA[<ul>
-<li>arcpy</li>
-</ul>
-<a id="more"></a>
-
-<h3><span id="脚本">脚本</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 功能：添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 作者：inno</span><br><span class="line"># 说明：添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 日期：2019&#x2F;9&#x2F;18</span><br><span class="line">import arcpy as ap</span><br><span class="line">import arcpy.mapping as mp</span><br><span class="line">mxd &#x3D; mp.MapDocument(&#39;current&#39;)</span><br><span class="line"></span><br><span class="line">df &#x3D; mp.ListDataFrames(mxd)[0]</span><br><span class="line">lyr &#x3D; mp.ListLayers(df)[2] # 此文档点图层在第三个位置</span><br><span class="line"># 添加两个字段</span><br><span class="line">ap.AddField_management(lyr, &quot;pyX&quot;, &quot;DOUBLE&quot;)</span><br><span class="line">ap.AddField_management(lyr, &quot;pyY&quot;, &quot;DOUBLE&quot;)</span><br><span class="line"># 使用arcpy.da.UpdateCursor() &quot;shape@XY&quot;几何令牌获取经纬度坐标x,y</span><br><span class="line"># [&quot;shape@XY&quot;, &quot;pyX&quot;, &quot;pyY&quot;] 后两个参数是传入的字段</span><br><span class="line">with ap.da.UpdateCursor(lyr, [&quot;shape@XY&quot;, &quot;pyX&quot;, &quot;pyY&quot;]) as cur:</span><br><span class="line">    for row in cur:</span><br><span class="line">        x, y &#x3D; row[0] </span><br><span class="line">        row[1] &#x3D; x        </span><br><span class="line">        row[2] &#x3D; y</span><br><span class="line">        cur.updateRow(row)</span><br></pre></td></tr></table></figure>
-
-<h3><span id="工具脚本">工具脚本</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 功能：添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 作者：inno</span><br><span class="line"># 说明：工具脚本，添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 日期：2019&#x2F;9&#x2F;18</span><br><span class="line">import arcpy as ap</span><br><span class="line">import arcpy.mapping as mp</span><br><span class="line"></span><br><span class="line"># 获取参数</span><br><span class="line">lyr &#x3D; ap.GetParameterAsText(0)</span><br><span class="line">fldX &#x3D; ap.GetParameterAsText(1)</span><br><span class="line">fldY &#x3D; ap.GetParameterAsText(2)</span><br><span class="line"></span><br><span class="line"># 添加两个字段</span><br><span class="line">ap.AddField_management(lyr, fldX, &quot;DOUBLE&quot;)</span><br><span class="line">ap.AddField_management(lyr, fldY, &quot;DOUBLE&quot;)</span><br><span class="line"># 使用arcpy.da.UpdateCursor() &quot;shape@XY&quot;几何令牌获取经纬度坐标x,y</span><br><span class="line"># [&quot;shape@XY&quot;, &quot;pyX&quot;, &quot;pyY&quot;] 后两个参数是传入的字段</span><br><span class="line">with ap.da.UpdateCursor(lyr, [&quot;shape@XY&quot;, fldX, fldY]) as cur:</span><br><span class="line">    for row in cur:</span><br><span class="line">        x, y &#x3D; row[0] </span><br><span class="line">        row[1] &#x3D; x        </span><br><span class="line">        row[2] &#x3D; y</span><br><span class="line">        cur.updateRow(row)</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>ArcMapEngine</tag>
-        <tag>arcpy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python arcpy 计算曲线长度与弯曲度</title>
     <url>/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html</url>
     <content><![CDATA[<ul>
@@ -423,6 +407,22 @@
 <h3><span id="脚本">脚本</span></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 功能：计算曲线长度与弯曲度</span></span><br><span class="line"><span class="comment"># 作者：inno</span></span><br><span class="line"><span class="comment"># 说明：获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段</span></span><br><span class="line"><span class="comment"># 日期：2019/9/18</span></span><br><span class="line"><span class="keyword">import</span> arcpy <span class="keyword">as</span> ap</span><br><span class="line"><span class="keyword">import</span> arcpy.mapping <span class="keyword">as</span> mp</span><br><span class="line">mxd = mp.MapDocument(<span class="string">'current'</span>)</span><br><span class="line">df = mp.ListDataFrames(mxd)[<span class="number">0</span>]</span><br><span class="line">lyr = mp.ListLayers(df)[<span class="number">1</span>] <span class="comment"># 此文档线图层在第二个位置 #</span></span><br><span class="line"><span class="comment"># 添加两个字段</span></span><br><span class="line">ap.AddField_management(lyr, <span class="string">"pyLength"</span>, <span class="string">"DOUBLE"</span>)</span><br><span class="line">ap.AddField_management(lyr, <span class="string">"pyWqd"</span>, <span class="string">"DOUBLE"</span>)</span><br><span class="line"><span class="comment"># 获取游标</span></span><br><span class="line">cursor = ap.UpdateCursor(lyr)</span><br><span class="line"><span class="comment"># 遍历表中每一行的要素，并计算赋值</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> cursor:</span><br><span class="line">    line = row.shape <span class="comment"># 获取要素形状</span></span><br><span class="line">    row.setValue(<span class="string">"pyLength"</span>, line.length) <span class="comment"># 曲线长度赋值</span></span><br><span class="line">    fPnt = ap.PointGeometry(line.firstPoint)</span><br><span class="line">    lPnt = ap.PointGeometry(line.lastPoint) <span class="comment"># 获取曲线首末点</span></span><br><span class="line">    dis = fPnt.distanceTo(lPnt) <span class="comment"># 计算两点之间直线距离</span></span><br><span class="line">    row.setValue(<span class="string">"pyWqd"</span>, dis/line.length) <span class="comment"># 弯曲度赋值</span></span><br><span class="line">    cursor.updateRow(row) <span class="comment"># 更新行</span></span><br></pre></td></tr></table></figure>
 
 <h3><span id="工具脚本">工具脚本</span></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 功能：计算曲线长度与弯曲度</span></span><br><span class="line"><span class="comment"># 作者：inno</span></span><br><span class="line"><span class="comment"># 说明：工具脚本，获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段</span></span><br><span class="line"><span class="comment"># 日期：2019/9/18</span></span><br><span class="line"><span class="keyword">import</span> arcpy <span class="keyword">as</span> ap</span><br><span class="line"><span class="keyword">import</span> arcpy.mapping <span class="keyword">as</span> mp</span><br><span class="line"></span><br><span class="line">lyr = ap.GetParameterAsText(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 获取要创建的字段名称</span></span><br><span class="line">fldLen = ap.GetParameterAsText(<span class="number">1</span>) </span><br><span class="line">fldWqd = ap.GetParameterAsText(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加两个字段</span></span><br><span class="line">ap.AddField_management(lyr, fldLen, <span class="string">"DOUBLE"</span>)</span><br><span class="line">ap.AddField_management(lyr, fldWqd, <span class="string">"DOUBLE"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取游标</span></span><br><span class="line">cursor = ap.UpdateCursor(lyr)</span><br><span class="line"><span class="comment"># 遍历表中每一行的要素，并计算赋值</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> cursor:</span><br><span class="line">    line = row.shape <span class="comment"># 获取要素形状</span></span><br><span class="line">    row.setValue(fldLen, line.length) <span class="comment"># 曲线长度赋值</span></span><br><span class="line">    fPnt = ap.PointGeometry(line.firstPoint)</span><br><span class="line">    lPnt = ap.PointGeometry(line.lastPoint) <span class="comment"># 获取曲线首末点</span></span><br><span class="line">    dis = fPnt.distanceTo(lPnt) <span class="comment"># 计算两点之间直线距离</span></span><br><span class="line">    row.setValue(fldWqd, dis/line.length) <span class="comment"># 弯曲度赋值</span></span><br><span class="line">    cursor.updateRow(row) <span class="comment"># 更新行</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>ArcMapEngine</tag>
+        <tag>arcpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python arcpy 计算点经纬度坐标</title>
+    <url>/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</url>
+    <content><![CDATA[<ul>
+<li>arcpy</li>
+</ul>
+<a id="more"></a>
+
+<h3><span id="脚本">脚本</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 功能：添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 作者：inno</span><br><span class="line"># 说明：添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 日期：2019&#x2F;9&#x2F;18</span><br><span class="line">import arcpy as ap</span><br><span class="line">import arcpy.mapping as mp</span><br><span class="line">mxd &#x3D; mp.MapDocument(&#39;current&#39;)</span><br><span class="line"></span><br><span class="line">df &#x3D; mp.ListDataFrames(mxd)[0]</span><br><span class="line">lyr &#x3D; mp.ListLayers(df)[2] # 此文档点图层在第三个位置</span><br><span class="line"># 添加两个字段</span><br><span class="line">ap.AddField_management(lyr, &quot;pyX&quot;, &quot;DOUBLE&quot;)</span><br><span class="line">ap.AddField_management(lyr, &quot;pyY&quot;, &quot;DOUBLE&quot;)</span><br><span class="line"># 使用arcpy.da.UpdateCursor() &quot;shape@XY&quot;几何令牌获取经纬度坐标x,y</span><br><span class="line"># [&quot;shape@XY&quot;, &quot;pyX&quot;, &quot;pyY&quot;] 后两个参数是传入的字段</span><br><span class="line">with ap.da.UpdateCursor(lyr, [&quot;shape@XY&quot;, &quot;pyX&quot;, &quot;pyY&quot;]) as cur:</span><br><span class="line">    for row in cur:</span><br><span class="line">        x, y &#x3D; row[0] </span><br><span class="line">        row[1] &#x3D; x        </span><br><span class="line">        row[2] &#x3D; y</span><br><span class="line">        cur.updateRow(row)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="工具脚本">工具脚本</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 功能：添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 作者：inno</span><br><span class="line"># 说明：工具脚本，添加两个字段，计算点的经纬度坐标</span><br><span class="line"># 日期：2019&#x2F;9&#x2F;18</span><br><span class="line">import arcpy as ap</span><br><span class="line">import arcpy.mapping as mp</span><br><span class="line"></span><br><span class="line"># 获取参数</span><br><span class="line">lyr &#x3D; ap.GetParameterAsText(0)</span><br><span class="line">fldX &#x3D; ap.GetParameterAsText(1)</span><br><span class="line">fldY &#x3D; ap.GetParameterAsText(2)</span><br><span class="line"></span><br><span class="line"># 添加两个字段</span><br><span class="line">ap.AddField_management(lyr, fldX, &quot;DOUBLE&quot;)</span><br><span class="line">ap.AddField_management(lyr, fldY, &quot;DOUBLE&quot;)</span><br><span class="line"># 使用arcpy.da.UpdateCursor() &quot;shape@XY&quot;几何令牌获取经纬度坐标x,y</span><br><span class="line"># [&quot;shape@XY&quot;, &quot;pyX&quot;, &quot;pyY&quot;] 后两个参数是传入的字段</span><br><span class="line">with ap.da.UpdateCursor(lyr, [&quot;shape@XY&quot;, fldX, fldY]) as cur:</span><br><span class="line">    for row in cur:</span><br><span class="line">        x, y &#x3D; row[0] </span><br><span class="line">        row[1] &#x3D; x        </span><br><span class="line">        row[2] &#x3D; y</span><br><span class="line">        cur.updateRow(row)</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>ArcMapEngine</tag>
         <tag>arcpy</tag>
@@ -642,65 +642,19 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript应用实例-自动、手动播放图片</title>
-    <url>/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html</url>
-    <content><![CDATA[<h2><span id="javascript应用实例1">JavaScript应用实例(1)</span></h2><p>参考：<a href="http://www.runoob.com/js/js-examples.html" target="_blank" rel="noopener external nofollow noreferrer">菜鸟教程</a></p>
-<p>环境:</p>
+    <title>CSS图片居中</title>
+    <url>/2019-08-05-tu-pian-ju-zhong-css.html</url>
+    <content><![CDATA[<h2><span id="css-图片居中方式">CSS-图片居中方式</span></h2><h3><span id="html">html</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;1.png&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>html</li>
-<li>代码为主要部分</li>
-</ul>
-<p>内容包括:</p>
-<ul>
-<li>自动、手动播放图片</li>
+<li>控制父级元素高、宽;</li>
+<li>设置img占满父级元素</li>
 </ul>
 <a id="more"></a>
 
-<h3><span id="1-自动-手动播放图片">1. 自动、手动播放图片</span></h3><ul>
-<li>html</li>
-<li>CSS</li>
-<li>javascript</li>
-<li>存放三张图片</li>
-<li>初始状态图片不显示</li>
-<li>调用JS显示图片</li>
-<li>每隔4s图片自动滑动</li>
-<li>可手动点击切换图片</li>
-</ul>
-<h4><span id="1-html页面">1. html页面</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">    &lt;title&gt;JavaScript测试&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;link type&#x3D;&quot;text&#x2F;css&quot; rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;slidePic.css&quot;&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;slidePic.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;    </span><br><span class="line">    &lt;div class&#x3D;&quot;slideshow-container&quot;&gt;</span><br><span class="line">        &lt;!-- 三个&lt;div&gt;&lt;&#x2F;div&gt;存放三张图片 --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div id&#x3D;&quot;pic&quot; class&#x3D;&quot;mySlides fade&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;numbertext&quot;&gt;1 &#x2F; 3&lt;&#x2F;div&gt;</span><br><span class="line">          &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;1.png&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;text&quot;&gt;手 机 端 app&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      </span><br><span class="line">        &lt;div id&#x3D;&quot;pic&quot; class&#x3D;&quot;mySlides fade&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;numbertext&quot;&gt;2 &#x2F; 3&lt;&#x2F;div&gt;</span><br><span class="line">          &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;2.png&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;text&quot;&gt;航 拍 系 统&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      </span><br><span class="line">        &lt;div id&#x3D;&quot;pic&quot; class&#x3D;&quot;mySlides fade&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;numbertext&quot;&gt;3 &#x2F; 3&lt;&#x2F;div&gt;</span><br><span class="line">          &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;3.png&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;text&quot;&gt;航 线 设 置&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      </span><br><span class="line">        &lt;!-- 图片左右滑动链接 --&gt;</span><br><span class="line">        &lt;a class&#x3D;&quot;prev&quot; onclick&#x3D;&quot;plusSlides(-1)&quot;&gt;❮&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;a class&#x3D;&quot;next&quot; onclick&#x3D;&quot;plusSlides(1)&quot;&gt;❯&lt;&#x2F;a&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;br&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;!-- 底部符号 --&gt;</span><br><span class="line">      &lt;div style&#x3D;&quot;text-align:center&quot;&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;dot&quot; onclick&#x3D;&quot;currentSlide(1)&quot;&gt;&lt;&#x2F;span&gt; </span><br><span class="line">        &lt;span class&#x3D;&quot;dot&quot; onclick&#x3D;&quot;currentSlide(2)&quot;&gt;&lt;&#x2F;span&gt; </span><br><span class="line">        &lt;span class&#x3D;&quot;dot&quot; onclick&#x3D;&quot;currentSlide(3)&quot;&gt;&lt;&#x2F;span&gt; </span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;script&gt;auto_showSlides();&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2-css页面slidepiccss">2. CSS页面；slidePic.css</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* &#123;box-sizing:border-box&#125;</span><br><span class="line">body &#123;font-family: Verdana,sans-serif;&#125;</span><br><span class="line">.mySlides &#123;display:none&#125;</span><br><span class="line">&#x2F;* 幻灯片容器 *&#x2F;</span><br><span class="line">.slideshow-container &#123;</span><br><span class="line">  max-width: 800px;</span><br><span class="line">  max-height: 400px;</span><br><span class="line">  position: relative;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 图片大小 *&#x2F;</span><br><span class="line">#pic&#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width: 800px;</span><br><span class="line">    height: 400px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 下一张 &amp; 上一张 按钮 *&#x2F;</span><br><span class="line">.prev, .next &#123;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 50%;</span><br><span class="line">  width: auto;</span><br><span class="line">  margin-top: -22px;</span><br><span class="line">  padding: 16px;</span><br><span class="line">  color: black;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  transition: 0.6s ease;</span><br><span class="line">  border-radius: 0 3px 3px 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定位 &quot;下一张&quot; 按钮靠右 *&#x2F;</span><br><span class="line">.next &#123;</span><br><span class="line">  right: 0;</span><br><span class="line">  border-radius: 3px 0 0 3px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* On hover, add a black background color with a little bit see-through *&#x2F;</span><br><span class="line">.prev:hover, .next:hover &#123;</span><br><span class="line">  background-color: rgba(0,0,0,0.8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 标题文本 *&#x2F;</span><br><span class="line">.text &#123;</span><br><span class="line">  color: blue;</span><br><span class="line">  font-size: 1.25em;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  padding: 8px 12px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  bottom: 8px;</span><br><span class="line">  width: 100%;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 数字文本 (1&#x2F;3 等) *&#x2F;</span><br><span class="line">.numbertext &#123;</span><br><span class="line">  color: #302c2c;</span><br><span class="line">  font-size: 1em;</span><br><span class="line">  padding: 8px 12px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 标记符号 *&#x2F;</span><br><span class="line">.dot &#123;</span><br><span class="line">  cursor:pointer;</span><br><span class="line">  height: 13px;</span><br><span class="line">  width: 13px;</span><br><span class="line">  margin: 0 2px;</span><br><span class="line">  background-color: #bbb;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  transition: background-color 0.6s ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.active, .dot:hover &#123;</span><br><span class="line">  background-color: #717171;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 淡出动画 *&#x2F;</span><br><span class="line">.fade &#123;</span><br><span class="line">  -webkit-animation-name: fade;</span><br><span class="line">  -webkit-animation-duration: 1.5s;</span><br><span class="line">  animation-name: fade;</span><br><span class="line">  animation-duration: 1.5s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-webkit-keyframes fade &#123;</span><br><span class="line">  from &#123;opacity: .4&#125; </span><br><span class="line">  to &#123;opacity: 1&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@keyframes fade &#123;</span><br><span class="line">  from &#123;opacity: .4&#125; </span><br><span class="line">  to &#123;opacity: 1&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3-js-slidepicjs">3. JS; slidePic.js</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var slideIndex &#x3D; 1; &#x2F;&#x2F; 索引页码</span><br><span class="line">showSlides(slideIndex);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 控制左右翻页</span><br><span class="line">function plusSlides(n) &#123;</span><br><span class="line">  showSlides(slideIndex +&#x3D; n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 控制点翻页</span><br><span class="line">function currentSlide(n) &#123;</span><br><span class="line">  showSlides(slideIndex &#x3D; n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 手动翻页函数</span><br><span class="line">function showSlides(n) &#123;</span><br><span class="line">  var i;</span><br><span class="line">  var slides &#x3D; document.getElementsByClassName(&quot;mySlides&quot;);</span><br><span class="line">  var dots &#x3D; document.getElementsByClassName(&quot;dot&quot;);</span><br><span class="line">  if (n &gt; slides.length) &#123;slideIndex &#x3D; 1&#125; </span><br><span class="line">  if (n &lt; 1) &#123;slideIndex &#x3D; slides.length&#125;</span><br><span class="line">  for (i &#x3D; 0; i &lt; slides.length; i++) &#123;</span><br><span class="line">      slides[i].style.display &#x3D; &quot;none&quot;; </span><br><span class="line">  &#125;</span><br><span class="line">  for (i &#x3D; 0; i &lt; dots.length; i++) &#123;</span><br><span class="line">      dots[i].className &#x3D; dots[i].className.replace(&quot; active&quot;, &quot;&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  slides[slideIndex-1].style.display &#x3D; &quot;block&quot;; </span><br><span class="line">  dots[slideIndex-1].className +&#x3D; &quot; active&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 自动翻页函数, 在html页面调用了</span><br><span class="line">function auto_showSlides() &#123;</span><br><span class="line">  var i;</span><br><span class="line">  var slides &#x3D; document.getElementsByClassName(&quot;mySlides&quot;);</span><br><span class="line">  var dots &#x3D; document.getElementsByClassName(&quot;dot&quot;);</span><br><span class="line">  for (i &#x3D; 0; i &lt; slides.length; i++) &#123;</span><br><span class="line">     slides[i].style.display &#x3D; &quot;none&quot;;  </span><br><span class="line">  &#125;</span><br><span class="line">  slideIndex++;</span><br><span class="line">  if (slideIndex &gt; slides.length) &#123;slideIndex &#x3D; 1&#125;    </span><br><span class="line">  for (i &#x3D; 0; i &lt; dots.length; i++) &#123;</span><br><span class="line">      dots[i].className &#x3D; dots[i].className.replace(&quot; active&quot;, &quot;&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  slides[slideIndex-1].style.display &#x3D; &quot;block&quot;;  </span><br><span class="line">  dots[slideIndex-1].className +&#x3D; &quot; active&quot;;</span><br><span class="line">  setTimeout(auto_showSlides, 4000); &#x2F;&#x2F; 切换时间为 4 秒</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h3><span id="css">css</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#pic&#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width: 800px;</span><br><span class="line">    height: 400px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript应用实例-下拉框</title>
-    <url>/2019-08-05-xia-la-kuang-javascript.html</url>
-    <content><![CDATA[<h2><span id="javascript应用实例2-下拉菜单">JavaScript应用实例(2)-下拉菜单</span></h2><p>参考：<a href="https://blog.csdn.net/u014175572/article/details/50325929" target="_blank" rel="noopener external nofollow noreferrer">js实现简单的下拉菜单</a></p>
-<ul>
-<li>html</li>
-<li>css</li>
-<li>javascript</li>
-</ul>
-<p>效果:</p>
-<p><img src="/assets/images/blog/subMenu.png" alt="image"></p>
-<a id="more"></a>
-
-<h3><span id="html">html</span></h3><ul>
-<li>使用结构</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;li&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  	&lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">  	&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br><span class="line">  </span><br><span class="line">  	&lt;link type&#x3D;&quot;text&#x2F;css&quot; rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;xiala.css&quot;&gt; </span><br><span class="line">	&lt;script src&#x3D;&quot;xiala.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;nav&quot;&gt;</span><br><span class="line">		&lt;ul&gt;</span><br><span class="line">			&lt;li&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;一部分&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;li&gt;</span><br><span class="line"></span><br><span class="line">			&lt;li onmouseover&#x3D;&quot;displaySubMenu(this)&quot; onmouseout&#x3D;&quot;hideSubMenu(this)&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;二部分&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;2.1部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;2.2部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;li&gt;</span><br><span class="line"></span><br><span class="line">			&lt;li onmouseover&#x3D;&quot;displaySubMenu(this)&quot; onmouseout&#x3D;&quot;hideSubMenu(this)&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;三部分&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;3.1部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;3.2部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;li&gt;</span><br><span class="line">		&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="css">css</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*&#123; margin:0px; padding:0px;&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;</span><br><span class="line">    font-size: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#nav&#123;</span><br><span class="line">    width: 600px;</span><br><span class="line">    height: 40px;</span><br><span class="line">    background-color: blanchedalmond;</span><br><span class="line">    text-align: center;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 列表前的点消失 *&#x2F;</span><br><span class="line">ul&#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul li&#123;</span><br><span class="line">    float: left;</span><br><span class="line">    line-height: 40px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width: 100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* a去下划线 *&#x2F;</span><br><span class="line">a&#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    color: black;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a:hover&#123;</span><br><span class="line">    color: aqua;</span><br><span class="line">    background-color: azure;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ul li ul li&#123;</span><br><span class="line">    float: none;</span><br><span class="line">    text-align: center;</span><br><span class="line">    background-color: bisque;</span><br><span class="line">    margin: 2px 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul li ul&#123;</span><br><span class="line">    &#x2F;* 下拉部分消失 *&#x2F;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="3-js">3. js</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function displaySubMenu(li)&#123;</span><br><span class="line">    var subMenu &#x3D; li.getElementsByTagName(&quot;ul&quot;)[0];</span><br><span class="line">    subMenu.style.display &#x3D; &quot;block&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function hideSubMenu(li)&#123;</span><br><span class="line">    var subMenu &#x3D; li.getElementsByTagName(&quot;ul&quot;)[0];</span><br><span class="line">    subMenu.style.display &#x3D; &quot;none&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -752,19 +706,65 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS图片居中</title>
-    <url>/2019-08-05-tu-pian-ju-zhong-css.html</url>
-    <content><![CDATA[<h2><span id="css-图片居中方式">CSS-图片居中方式</span></h2><h3><span id="html">html</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;1.png&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
+    <title>JavaScript应用实例-下拉框</title>
+    <url>/2019-08-05-xia-la-kuang-javascript.html</url>
+    <content><![CDATA[<h2><span id="javascript应用实例2-下拉菜单">JavaScript应用实例(2)-下拉菜单</span></h2><p>参考：<a href="https://blog.csdn.net/u014175572/article/details/50325929" target="_blank" rel="noopener external nofollow noreferrer">js实现简单的下拉菜单</a></p>
 <ul>
-<li>控制父级元素高、宽;</li>
-<li>设置img占满父级元素</li>
+<li>html</li>
+<li>css</li>
+<li>javascript</li>
+</ul>
+<p>效果:</p>
+<p><img src="/assets/images/blog/subMenu.png" alt="image"></p>
+<a id="more"></a>
+
+<h3><span id="html">html</span></h3><ul>
+<li>使用结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;li&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a&gt;&lt;&#x2F;a&gt;&lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  	&lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">  	&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br><span class="line">  </span><br><span class="line">  	&lt;link type&#x3D;&quot;text&#x2F;css&quot; rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;xiala.css&quot;&gt; </span><br><span class="line">	&lt;script src&#x3D;&quot;xiala.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;nav&quot;&gt;</span><br><span class="line">		&lt;ul&gt;</span><br><span class="line">			&lt;li&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;一部分&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;li&gt;</span><br><span class="line"></span><br><span class="line">			&lt;li onmouseover&#x3D;&quot;displaySubMenu(this)&quot; onmouseout&#x3D;&quot;hideSubMenu(this)&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;二部分&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;2.1部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;2.2部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;li&gt;</span><br><span class="line"></span><br><span class="line">			&lt;li onmouseover&#x3D;&quot;displaySubMenu(this)&quot; onmouseout&#x3D;&quot;hideSubMenu(this)&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;三部分&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;3.1部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;3.2部分&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;li&gt;</span><br><span class="line">		&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="css">css</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*&#123; margin:0px; padding:0px;&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;</span><br><span class="line">    font-size: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#nav&#123;</span><br><span class="line">    width: 600px;</span><br><span class="line">    height: 40px;</span><br><span class="line">    background-color: blanchedalmond;</span><br><span class="line">    text-align: center;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 列表前的点消失 *&#x2F;</span><br><span class="line">ul&#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul li&#123;</span><br><span class="line">    float: left;</span><br><span class="line">    line-height: 40px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width: 100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* a去下划线 *&#x2F;</span><br><span class="line">a&#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    color: black;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a:hover&#123;</span><br><span class="line">    color: aqua;</span><br><span class="line">    background-color: azure;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ul li ul li&#123;</span><br><span class="line">    float: none;</span><br><span class="line">    text-align: center;</span><br><span class="line">    background-color: bisque;</span><br><span class="line">    margin: 2px 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul li ul&#123;</span><br><span class="line">    &#x2F;* 下拉部分消失 *&#x2F;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="3-js">3. js</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function displaySubMenu(li)&#123;</span><br><span class="line">    var subMenu &#x3D; li.getElementsByTagName(&quot;ul&quot;)[0];</span><br><span class="line">    subMenu.style.display &#x3D; &quot;block&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function hideSubMenu(li)&#123;</span><br><span class="line">    var subMenu &#x3D; li.getElementsByTagName(&quot;ul&quot;)[0];</span><br><span class="line">    subMenu.style.display &#x3D; &quot;none&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript应用实例-自动、手动播放图片</title>
+    <url>/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html</url>
+    <content><![CDATA[<h2><span id="javascript应用实例1">JavaScript应用实例(1)</span></h2><p>参考：<a href="http://www.runoob.com/js/js-examples.html" target="_blank" rel="noopener external nofollow noreferrer">菜鸟教程</a></p>
+<p>环境:</p>
+<ul>
+<li>html</li>
+<li>代码为主要部分</li>
+</ul>
+<p>内容包括:</p>
+<ul>
+<li>自动、手动播放图片</li>
 </ul>
 <a id="more"></a>
 
-<h3><span id="css">css</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#pic&#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width: 800px;</span><br><span class="line">    height: 400px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h3><span id="1-自动-手动播放图片">1. 自动、手动播放图片</span></h3><ul>
+<li>html</li>
+<li>CSS</li>
+<li>javascript</li>
+<li>存放三张图片</li>
+<li>初始状态图片不显示</li>
+<li>调用JS显示图片</li>
+<li>每隔4s图片自动滑动</li>
+<li>可手动点击切换图片</li>
+</ul>
+<h4><span id="1-html页面">1. html页面</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">    &lt;title&gt;JavaScript测试&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;link type&#x3D;&quot;text&#x2F;css&quot; rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;slidePic.css&quot;&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;slidePic.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;    </span><br><span class="line">    &lt;div class&#x3D;&quot;slideshow-container&quot;&gt;</span><br><span class="line">        &lt;!-- 三个&lt;div&gt;&lt;&#x2F;div&gt;存放三张图片 --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div id&#x3D;&quot;pic&quot; class&#x3D;&quot;mySlides fade&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;numbertext&quot;&gt;1 &#x2F; 3&lt;&#x2F;div&gt;</span><br><span class="line">          &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;1.png&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;text&quot;&gt;手 机 端 app&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      </span><br><span class="line">        &lt;div id&#x3D;&quot;pic&quot; class&#x3D;&quot;mySlides fade&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;numbertext&quot;&gt;2 &#x2F; 3&lt;&#x2F;div&gt;</span><br><span class="line">          &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;2.png&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;text&quot;&gt;航 拍 系 统&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      </span><br><span class="line">        &lt;div id&#x3D;&quot;pic&quot; class&#x3D;&quot;mySlides fade&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;numbertext&quot;&gt;3 &#x2F; 3&lt;&#x2F;div&gt;</span><br><span class="line">          &lt;img src&#x3D;&quot;&#x2F;php&#x2F;images&#x2F;3.png&quot;&gt;</span><br><span class="line">          &lt;div class&#x3D;&quot;text&quot;&gt;航 线 设 置&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      </span><br><span class="line">        &lt;!-- 图片左右滑动链接 --&gt;</span><br><span class="line">        &lt;a class&#x3D;&quot;prev&quot; onclick&#x3D;&quot;plusSlides(-1)&quot;&gt;❮&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;a class&#x3D;&quot;next&quot; onclick&#x3D;&quot;plusSlides(1)&quot;&gt;❯&lt;&#x2F;a&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;br&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;!-- 底部符号 --&gt;</span><br><span class="line">      &lt;div style&#x3D;&quot;text-align:center&quot;&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;dot&quot; onclick&#x3D;&quot;currentSlide(1)&quot;&gt;&lt;&#x2F;span&gt; </span><br><span class="line">        &lt;span class&#x3D;&quot;dot&quot; onclick&#x3D;&quot;currentSlide(2)&quot;&gt;&lt;&#x2F;span&gt; </span><br><span class="line">        &lt;span class&#x3D;&quot;dot&quot; onclick&#x3D;&quot;currentSlide(3)&quot;&gt;&lt;&#x2F;span&gt; </span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;script&gt;auto_showSlides();&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2-css页面slidepiccss">2. CSS页面；slidePic.css</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* &#123;box-sizing:border-box&#125;</span><br><span class="line">body &#123;font-family: Verdana,sans-serif;&#125;</span><br><span class="line">.mySlides &#123;display:none&#125;</span><br><span class="line">&#x2F;* 幻灯片容器 *&#x2F;</span><br><span class="line">.slideshow-container &#123;</span><br><span class="line">  max-width: 800px;</span><br><span class="line">  max-height: 400px;</span><br><span class="line">  position: relative;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 图片大小 *&#x2F;</span><br><span class="line">#pic&#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width: 800px;</span><br><span class="line">    height: 400px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 下一张 &amp; 上一张 按钮 *&#x2F;</span><br><span class="line">.prev, .next &#123;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 50%;</span><br><span class="line">  width: auto;</span><br><span class="line">  margin-top: -22px;</span><br><span class="line">  padding: 16px;</span><br><span class="line">  color: black;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  transition: 0.6s ease;</span><br><span class="line">  border-radius: 0 3px 3px 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定位 &quot;下一张&quot; 按钮靠右 *&#x2F;</span><br><span class="line">.next &#123;</span><br><span class="line">  right: 0;</span><br><span class="line">  border-radius: 3px 0 0 3px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* On hover, add a black background color with a little bit see-through *&#x2F;</span><br><span class="line">.prev:hover, .next:hover &#123;</span><br><span class="line">  background-color: rgba(0,0,0,0.8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 标题文本 *&#x2F;</span><br><span class="line">.text &#123;</span><br><span class="line">  color: blue;</span><br><span class="line">  font-size: 1.25em;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  padding: 8px 12px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  bottom: 8px;</span><br><span class="line">  width: 100%;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 数字文本 (1&#x2F;3 等) *&#x2F;</span><br><span class="line">.numbertext &#123;</span><br><span class="line">  color: #302c2c;</span><br><span class="line">  font-size: 1em;</span><br><span class="line">  padding: 8px 12px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 标记符号 *&#x2F;</span><br><span class="line">.dot &#123;</span><br><span class="line">  cursor:pointer;</span><br><span class="line">  height: 13px;</span><br><span class="line">  width: 13px;</span><br><span class="line">  margin: 0 2px;</span><br><span class="line">  background-color: #bbb;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  transition: background-color 0.6s ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.active, .dot:hover &#123;</span><br><span class="line">  background-color: #717171;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 淡出动画 *&#x2F;</span><br><span class="line">.fade &#123;</span><br><span class="line">  -webkit-animation-name: fade;</span><br><span class="line">  -webkit-animation-duration: 1.5s;</span><br><span class="line">  animation-name: fade;</span><br><span class="line">  animation-duration: 1.5s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-webkit-keyframes fade &#123;</span><br><span class="line">  from &#123;opacity: .4&#125; </span><br><span class="line">  to &#123;opacity: 1&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@keyframes fade &#123;</span><br><span class="line">  from &#123;opacity: .4&#125; </span><br><span class="line">  to &#123;opacity: 1&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3-js-slidepicjs">3. JS; slidePic.js</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var slideIndex &#x3D; 1; &#x2F;&#x2F; 索引页码</span><br><span class="line">showSlides(slideIndex);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 控制左右翻页</span><br><span class="line">function plusSlides(n) &#123;</span><br><span class="line">  showSlides(slideIndex +&#x3D; n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 控制点翻页</span><br><span class="line">function currentSlide(n) &#123;</span><br><span class="line">  showSlides(slideIndex &#x3D; n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 手动翻页函数</span><br><span class="line">function showSlides(n) &#123;</span><br><span class="line">  var i;</span><br><span class="line">  var slides &#x3D; document.getElementsByClassName(&quot;mySlides&quot;);</span><br><span class="line">  var dots &#x3D; document.getElementsByClassName(&quot;dot&quot;);</span><br><span class="line">  if (n &gt; slides.length) &#123;slideIndex &#x3D; 1&#125; </span><br><span class="line">  if (n &lt; 1) &#123;slideIndex &#x3D; slides.length&#125;</span><br><span class="line">  for (i &#x3D; 0; i &lt; slides.length; i++) &#123;</span><br><span class="line">      slides[i].style.display &#x3D; &quot;none&quot;; </span><br><span class="line">  &#125;</span><br><span class="line">  for (i &#x3D; 0; i &lt; dots.length; i++) &#123;</span><br><span class="line">      dots[i].className &#x3D; dots[i].className.replace(&quot; active&quot;, &quot;&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  slides[slideIndex-1].style.display &#x3D; &quot;block&quot;; </span><br><span class="line">  dots[slideIndex-1].className +&#x3D; &quot; active&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 自动翻页函数, 在html页面调用了</span><br><span class="line">function auto_showSlides() &#123;</span><br><span class="line">  var i;</span><br><span class="line">  var slides &#x3D; document.getElementsByClassName(&quot;mySlides&quot;);</span><br><span class="line">  var dots &#x3D; document.getElementsByClassName(&quot;dot&quot;);</span><br><span class="line">  for (i &#x3D; 0; i &lt; slides.length; i++) &#123;</span><br><span class="line">     slides[i].style.display &#x3D; &quot;none&quot;;  </span><br><span class="line">  &#125;</span><br><span class="line">  slideIndex++;</span><br><span class="line">  if (slideIndex &gt; slides.length) &#123;slideIndex &#x3D; 1&#125;    </span><br><span class="line">  for (i &#x3D; 0; i &lt; dots.length; i++) &#123;</span><br><span class="line">      dots[i].className &#x3D; dots[i].className.replace(&quot; active&quot;, &quot;&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  slides[slideIndex-1].style.display &#x3D; &quot;block&quot;;  </span><br><span class="line">  dots[slideIndex-1].className +&#x3D; &quot; active&quot;;</span><br><span class="line">  setTimeout(auto_showSlides, 4000); &#x2F;&#x2F; 切换时间为 4 秒</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>CSS</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -924,8 +924,8 @@
 ]]></content>
       <tags>
         <tag>php</tag>
-        <tag>apache</tag>
         <tag>mysql</tag>
+        <tag>apache</tag>
         <tag>用户登陆系统</tag>
       </tags>
   </entry>
@@ -1052,9 +1052,9 @@
 
 <h2><span id="2php新建数据库与表时设置编码">2.PHP新建数据库与表时设置编码</span></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 创建数据库</span><br><span class="line">$sqlCdb &#x3D; &quot;CREATE DATABASE users CHARACTER SET &#39;utf8&#39; COLLATE &#39;utf8_general_ci&#39;&quot;;</span><br><span class="line">&#x2F;&#x2F; 判断创建结果</span><br><span class="line">$resultCdb &#x3D;  $con-&gt;query($sqlCdb);</span><br><span class="line">if($resultCdb &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">	echo &quot;数据库创建成功&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;数据库创建失败&quot; . $con-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 连接新建数据库</span><br><span class="line">$con-&gt;select_db(&#39;users&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建表</span><br><span class="line">$sqlCt &#x3D; &quot;CREATE TABLE user(</span><br><span class="line">	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">	username VARCHAR(30) NOT NULL,</span><br><span class="line">	password VARCHAR(60) NOT NULL) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8&quot;;</span><br><span class="line">&#x2F;&#x2F; 判断建表结果</span><br><span class="line">$resultCt &#x3D; $con-&gt;query($sqlCt);</span><br><span class="line">if($resultCt &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">	echo &quot;&lt;br&gt;&quot; . &quot;建表成功&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;建表失败&quot; . $con-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
+        <tag>php连接mysql</tag>
         <tag>php</tag>
         <tag>mysql</tag>
-        <tag>php连接mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -1658,6 +1658,217 @@
       </tags>
   </entry>
   <entry>
+    <title>今日から思い出</title>
+    <url>/2019-06-20-jin-ri-karasi-ichu.html</url>
+    <content><![CDATA[<ul>
+<li>热爱之所爱</li>
+<li>学思之所学</li>
+</ul>
+<ul>
+<li>今日から思い出</li>
+<li>Aimer</li>
+</ul>
+<a id="more"></a>
+
+
+<ul>
+<li>今日から思い出<blockquote>
+<p>kyou kara omoide</p>
+<p>从今天开始的回忆</p>
+</blockquote>
+</li>
+<li>素敌な思い出<blockquote>
+<p>suteki na omoide</p>
+<p>美好的回忆</p>
+</blockquote>
+</li>
+<li>明日はもう一人だ<blockquote>
+<p>ashita wa mou hitori da</p>
+<p>明天开始就孤单一人了</p>
+</blockquote>
+</li>
+<li>これから　一人だ<blockquote>
+<p>kore kara hitori da</p>
+<p>从今往后 独自一人</p>
+</blockquote>
+</li>
+<li>すべては思い出<blockquote>
+<p>subete wa omoide</p>
+<p>一切都是回忆</p>
+</blockquote>
+</li>
+<li>悲しい思い出<blockquote>
+<p>kanashii omoide</p>
+<p>伤感的回忆</p>
+</blockquote>
+</li>
+<li>明日は そう どこかへ<blockquote>
+<p>ashita wa sou dokokahe</p>
+<p>明天也不知该去哪里</p>
+</blockquote>
+</li>
+<li>どこかへ 远くへ<blockquote>
+<p>dokokahe toukuhe</p>
+<p>肯定是遥远的某个地方</p>
+</blockquote>
+</li>
+<li>电话のむこう<blockquote>
+<p>denwa no mukou</p>
+<p>在电话的另一头</p>
+</blockquote>
+</li>
+<li>ママが泣いてた<blockquote>
+<p>mama ga naiteta</p>
+<p>妈妈哭了起来</p>
+</blockquote>
+</li>
+<li>「大丈夫？」って いった<blockquote>
+<p>daijoubu tte itta</p>
+<p>我问了一声「没事吧?」</p>
+</blockquote>
+</li>
+<li>ズルイな 先に泣くから<blockquote>
+<p>zuruina saki ni naku kara</p>
+<p>好狡猾啊 因为你先哭了起来</p>
+</blockquote>
+</li>
+<li>私はもう 泣けなくなるよ<blockquote>
+<p>watashi wa mou nake naku naru yo</p>
+<p>我就已经无法哭泣</p>
+</blockquote>
+</li>
+<li>今 あなたの声を 闻くことできるなら<blockquote>
+<p>ima anata no koe wo kiku koto dekiru nara</p>
+<p>如果现在 能听到你的声音的话</p>
+</blockquote>
+</li>
+<li>「爱してる」の一言を<blockquote>
+<p>aishiteru no hitokoto wo</p>
+<p>「我爱你」这一句话</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>今 あなたに言叶 送ることできるなら<blockquote>
+<p>ima anata ni kotoba okuru koto dekiru nara</p>
+<p>如果现在 我说的话语还能传达给你</p>
+</blockquote>
+</li>
+<li>「生まれ変わっても<blockquote>
+<p>umare kawatte mo</p>
+<p>「就算转世以后</p>
+</blockquote>
+</li>
+<li>また一绪にいたい」<blockquote>
+<p>mata isshyoni itai</p>
+<p>我还是想和你在一起」</p>
+</blockquote>
+</li>
+<li>もう会えないなんて…<blockquote>
+<p>mou aenai nante …</p>
+<p>不想相信再也无法见面什么的…</p>
+</blockquote>
+</li>
+<li>今日から思い出<blockquote>
+<p>kyou kara omoide</p>
+<p>从今天起一切都是回忆</p>
+</blockquote>
+</li>
+<li>それでも思い出<blockquote>
+<p>sore demo omoide</p>
+<p>尽管如此 也是回忆</p>
+</blockquote>
+</li>
+<li>いつかは そう 一人だ<blockquote>
+<p>itsuka wa sou hitori da</p>
+<p>不知何时 只剩下我一个人</p>
+</blockquote>
+</li>
+<li>それなら どうして<blockquote>
+<p>sore nara doushite</p>
+<p>如果是这样 那为什么</p>
+</blockquote>
+</li>
+<li>窓のむこう  あなたが见えた<blockquote>
+<p>mado no mukou anata ga mieta</p>
+<p>在窗户的另一边 我看到了你</p>
+</blockquote>
+</li>
+<li>「大丈夫？」って いうの？<blockquote>
+<p>daijoubu tte iuno</p>
+<p>是否在问我 「没事吧?」</p>
+</blockquote>
+</li>
+<li>ヒドイな そう闻かれたら<blockquote>
+<p>hidoi na sou kikare tara</p>
+<p>好过分啊 如果被这样问的话</p>
+</blockquote>
+</li>
+<li>私はもう 泣けなくなるよ<blockquote>
+<p>watashi wa mou nake naku naru yo</p>
+<p>我就无法哭泣了</p>
+</blockquote>
+</li>
+<li>今 あなたの声を 闻くことできるなら<blockquote>
+<p>ima anata no koe wo kiku koto dekiru nara</p>
+<p>如果现在 能听到你的声音的话</p>
+</blockquote>
+</li>
+<li>「爱してる」の一言を<blockquote>
+<p>aishiteru no hitokoto wo</p>
+<p>「我爱你」这一句话</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>言ってほしい<blockquote>
+<p>itte hoshii</p>
+<p>希望你能说出来</p>
+</blockquote>
+</li>
+<li>今 あなたに言叶 送ることできるなら<blockquote>
+<p>ima anatani kotoba okuru koto dekiru nara</p>
+<p>如果现在 我说的话语还能传达给你</p>
+</blockquote>
+</li>
+<li>「生まれ変わっても<blockquote>
+<p>umare kawatte mo</p>
+<p>「就算转世以后</p>
+</blockquote>
+</li>
+<li>また一绪にいたい」<blockquote>
+<p>mata isshyoni itai</p>
+<p>我还是想和你在一起」</p>
+</blockquote>
+</li>
+<li>もう会えないなんて…<blockquote>
+<p>mou aenai nante …</p>
+<p>不想相信再也无法见面什么的…</p>
+</blockquote>
+</li>
+<li>もう会えないなんて…<blockquote>
+<p>mou aenai nante …</p>
+<p>不想相信再也无法见面什么的 …</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>歌</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lemon</title>
     <url>/2019-06-20-music-lemon.html</url>
     <content><![CDATA[<ul>
@@ -1938,217 +2149,6 @@
       </tags>
   </entry>
   <entry>
-    <title>今日から思い出</title>
-    <url>/2019-06-20-jin-ri-karasi-ichu.html</url>
-    <content><![CDATA[<ul>
-<li>热爱之所爱</li>
-<li>学思之所学</li>
-</ul>
-<ul>
-<li>今日から思い出</li>
-<li>Aimer</li>
-</ul>
-<a id="more"></a>
-
-
-<ul>
-<li>今日から思い出<blockquote>
-<p>kyou kara omoide</p>
-<p>从今天开始的回忆</p>
-</blockquote>
-</li>
-<li>素敌な思い出<blockquote>
-<p>suteki na omoide</p>
-<p>美好的回忆</p>
-</blockquote>
-</li>
-<li>明日はもう一人だ<blockquote>
-<p>ashita wa mou hitori da</p>
-<p>明天开始就孤单一人了</p>
-</blockquote>
-</li>
-<li>これから　一人だ<blockquote>
-<p>kore kara hitori da</p>
-<p>从今往后 独自一人</p>
-</blockquote>
-</li>
-<li>すべては思い出<blockquote>
-<p>subete wa omoide</p>
-<p>一切都是回忆</p>
-</blockquote>
-</li>
-<li>悲しい思い出<blockquote>
-<p>kanashii omoide</p>
-<p>伤感的回忆</p>
-</blockquote>
-</li>
-<li>明日は そう どこかへ<blockquote>
-<p>ashita wa sou dokokahe</p>
-<p>明天也不知该去哪里</p>
-</blockquote>
-</li>
-<li>どこかへ 远くへ<blockquote>
-<p>dokokahe toukuhe</p>
-<p>肯定是遥远的某个地方</p>
-</blockquote>
-</li>
-<li>电话のむこう<blockquote>
-<p>denwa no mukou</p>
-<p>在电话的另一头</p>
-</blockquote>
-</li>
-<li>ママが泣いてた<blockquote>
-<p>mama ga naiteta</p>
-<p>妈妈哭了起来</p>
-</blockquote>
-</li>
-<li>「大丈夫？」って いった<blockquote>
-<p>daijoubu tte itta</p>
-<p>我问了一声「没事吧?」</p>
-</blockquote>
-</li>
-<li>ズルイな 先に泣くから<blockquote>
-<p>zuruina saki ni naku kara</p>
-<p>好狡猾啊 因为你先哭了起来</p>
-</blockquote>
-</li>
-<li>私はもう 泣けなくなるよ<blockquote>
-<p>watashi wa mou nake naku naru yo</p>
-<p>我就已经无法哭泣</p>
-</blockquote>
-</li>
-<li>今 あなたの声を 闻くことできるなら<blockquote>
-<p>ima anata no koe wo kiku koto dekiru nara</p>
-<p>如果现在 能听到你的声音的话</p>
-</blockquote>
-</li>
-<li>「爱してる」の一言を<blockquote>
-<p>aishiteru no hitokoto wo</p>
-<p>「我爱你」这一句话</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>今 あなたに言叶 送ることできるなら<blockquote>
-<p>ima anata ni kotoba okuru koto dekiru nara</p>
-<p>如果现在 我说的话语还能传达给你</p>
-</blockquote>
-</li>
-<li>「生まれ変わっても<blockquote>
-<p>umare kawatte mo</p>
-<p>「就算转世以后</p>
-</blockquote>
-</li>
-<li>また一绪にいたい」<blockquote>
-<p>mata isshyoni itai</p>
-<p>我还是想和你在一起」</p>
-</blockquote>
-</li>
-<li>もう会えないなんて…<blockquote>
-<p>mou aenai nante …</p>
-<p>不想相信再也无法见面什么的…</p>
-</blockquote>
-</li>
-<li>今日から思い出<blockquote>
-<p>kyou kara omoide</p>
-<p>从今天起一切都是回忆</p>
-</blockquote>
-</li>
-<li>それでも思い出<blockquote>
-<p>sore demo omoide</p>
-<p>尽管如此 也是回忆</p>
-</blockquote>
-</li>
-<li>いつかは そう 一人だ<blockquote>
-<p>itsuka wa sou hitori da</p>
-<p>不知何时 只剩下我一个人</p>
-</blockquote>
-</li>
-<li>それなら どうして<blockquote>
-<p>sore nara doushite</p>
-<p>如果是这样 那为什么</p>
-</blockquote>
-</li>
-<li>窓のむこう  あなたが见えた<blockquote>
-<p>mado no mukou anata ga mieta</p>
-<p>在窗户的另一边 我看到了你</p>
-</blockquote>
-</li>
-<li>「大丈夫？」って いうの？<blockquote>
-<p>daijoubu tte iuno</p>
-<p>是否在问我 「没事吧?」</p>
-</blockquote>
-</li>
-<li>ヒドイな そう闻かれたら<blockquote>
-<p>hidoi na sou kikare tara</p>
-<p>好过分啊 如果被这样问的话</p>
-</blockquote>
-</li>
-<li>私はもう 泣けなくなるよ<blockquote>
-<p>watashi wa mou nake naku naru yo</p>
-<p>我就无法哭泣了</p>
-</blockquote>
-</li>
-<li>今 あなたの声を 闻くことできるなら<blockquote>
-<p>ima anata no koe wo kiku koto dekiru nara</p>
-<p>如果现在 能听到你的声音的话</p>
-</blockquote>
-</li>
-<li>「爱してる」の一言を<blockquote>
-<p>aishiteru no hitokoto wo</p>
-<p>「我爱你」这一句话</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>言ってほしい<blockquote>
-<p>itte hoshii</p>
-<p>希望你能说出来</p>
-</blockquote>
-</li>
-<li>今 あなたに言叶 送ることできるなら<blockquote>
-<p>ima anatani kotoba okuru koto dekiru nara</p>
-<p>如果现在 我说的话语还能传达给你</p>
-</blockquote>
-</li>
-<li>「生まれ変わっても<blockquote>
-<p>umare kawatte mo</p>
-<p>「就算转世以后</p>
-</blockquote>
-</li>
-<li>また一绪にいたい」<blockquote>
-<p>mata isshyoni itai</p>
-<p>我还是想和你在一起」</p>
-</blockquote>
-</li>
-<li>もう会えないなんて…<blockquote>
-<p>mou aenai nante …</p>
-<p>不想相信再也无法见面什么的…</p>
-</blockquote>
-</li>
-<li>もう会えないなんて…<blockquote>
-<p>mou aenai nante …</p>
-<p>不想相信再也无法见面什么的 …</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>歌</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Arcgis中的python编程(3)</title>
     <url>/2019-06-16-arcgis-python-3.html</url>
     <content><![CDATA[<p>学习日志 3    </p>
@@ -2168,6 +2168,19 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br><span class="line">import os</span><br><span class="line">## 写文件操作 循环目录内容,找到mxd文档判断内部是否有丢失源</span><br><span class="line">## 并把丢失源的图层保存在文件中 ##</span><br><span class="line">## 注意：os.walk(&#39;路径&#39;) 路径过深导致失败，或有中文字符</span><br><span class="line">f &#x3D; open(&quot;BrokenDataList.txt&quot;, &quot;w&quot;)</span><br><span class="line"># os.walk()遍历目录树</span><br><span class="line">for root, dirs, files in os.walk(&#39;H:\ArcpyBook&#39;):</span><br><span class="line">    for name in files:</span><br><span class="line">        filename &#x3D; os.path.join(root, name)</span><br><span class="line">        </span><br><span class="line">        if &quot;.mxd&quot; in filename:</span><br><span class="line">            mxd &#x3D; mapping.MapDocument(filename)</span><br><span class="line">            f.write(&quot;MXD: &quot; + filename + &quot;\n&quot;)</span><br><span class="line">            brknList &#x3D; mapping.ListBrokenDataSources(mxd)</span><br><span class="line">            for brknItem in brknList:</span><br><span class="line">                print(&quot;Broken data item: &quot; + brknItem.name + &quot; in &quot; + filename)</span><br><span class="line">                f.write(&quot;\t&quot; + brknItem.name + &quot;\n&quot;)</span><br><span class="line">print(&quot;All done\n&quot;)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>pythonGIS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git指令</title>
+    <url>/2019-06-12-git-shang-chuan-xiang-mu.html</url>
+    <content><![CDATA[<h4><span id="1新建项目后">1.新建项目后</span></h4><h4><span id="or-create-a-new-repository-on-the-command-line">…or create a new repository on the command line</span></h4><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# emmm&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h5><span id="or-push-an-existing-repository-from-the-command-line">…or push an existing repository from the command line</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h4><span id="2流程">2.流程</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加此文件全部</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -2232,54 +2245,6 @@
       </tags>
   </entry>
   <entry>
-    <title>记录使用这个 blog theme</title>
-    <url>/2019-06-12-essay1.html</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>使用github page 来作为blog已经快有一年时间了;</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>最开始使用hexo+github来搭建blog环境，也比较好用，但弄得最后”花里胡哨”，有违blog的本质;</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>之后尝试wordpress(懒，发现需要部署到服务器上，直接放弃);</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-
-<blockquote>
-<ul>
-<li>一个契机(浏览我为数不多的Line好友动态)，让我发现的这个sites theme;</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>给我最大的感觉是”简洁”吧(最初想着theme花里胡哨的好看，最后还是想着单一的简洁，人生啊).</li>
-</ul>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git指令</title>
-    <url>/2019-06-12-git-shang-chuan-xiang-mu.html</url>
-    <content><![CDATA[<h4><span id="1新建项目后">1.新建项目后</span></h4><h4><span id="or-create-a-new-repository-on-the-command-line">…or create a new repository on the command line</span></h4><a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# emmm&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<h5><span id="or-push-an-existing-repository-from-the-command-line">…or push an existing repository from the command line</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h4><span id="2流程">2.流程</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加此文件全部</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu16.04安装vsftpd</title>
     <url>/2019-06-12-ubuntu16.04-vsftpd.html</url>
     <content><![CDATA[<p><a href="https://cnaning.iteye.com/blog/335797" target="_blank" rel="noopener external nofollow noreferrer">配置文件中详细配置说明</a></p>
@@ -2328,6 +2293,41 @@
 <h4><span id="12mc服务器崩溃自启脚本">12MC服务器崩溃自启脚本</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Minecraft</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录使用这个 blog theme</title>
+    <url>/2019-06-12-essay1.html</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>使用github page 来作为blog已经快有一年时间了;</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>最开始使用hexo+github来搭建blog环境，也比较好用，但弄得最后”花里胡哨”，有违blog的本质;</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>之后尝试wordpress(懒，发现需要部署到服务器上，直接放弃);</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<ul>
+<li>一个契机(浏览我为数不多的Line好友动态)，让我发现的这个sites theme;</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>给我最大的感觉是”简洁”吧(最初想着theme花里胡哨的好看，最后还是想着单一的简洁，人生啊).</li>
+</ul>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -2962,6 +2962,19 @@
       </tags>
   </entry>
   <entry>
+    <title>vc6.0;MFC；画笔与填充</title>
+    <url>/2018-10-22-vc6.0-mfc-hua-bi-yu-ju-xing-tian-chong.html</url>
+    <content><![CDATA[<p>C语言MFC中画笔与矩形填充</p>
+<a id="more"></a>
+
+<hr>
+<h3><span id="画笔与填充">画笔与填充</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CDC *pDC &#x3D; GetDC();</span><br><span class="line">&#x2F;&#x2F;绘制红线</span><br><span class="line">CPen pen;</span><br><span class="line">pen.CreatePen(PS_SOLID,2,RGB(255,0,0));</span><br><span class="line">pDC-&gt;SelectObject(&amp;pen);</span><br><span class="line">&#x2F;&#x2F;矩形透明</span><br><span class="line">CBrush *pBrush &#x3D; CBrush::FromHandle((HBRUSH)GetStockObject(NULL_BRUSH));</span><br><span class="line">CBrush *pOldBrush &#x3D; pDC-&gt;SelectObject(pBrush);</span><br><span class="line">pDC-&gt;Rectangle(xmin,ymin,xmax,ymax);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 矩形填充</span><br><span class="line">CRect rt(x1+i*b1,y1+j*b2,x2+i*b1,y2+j*b2);</span><br><span class="line">pdc-&gt;FillSolidRect(&amp;rt,RGB(255,0,0));</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言的写入文件数据与读取文件数据</title>
     <url>/2018-10-22-c-yu-yan-de-xie-ru-wen-jian-shu-ju-yu-du-qu-wen-jian-shu-ju.html</url>
     <content><![CDATA[<p>C语言的写入文件数据与读取文件数据</p>
@@ -2972,19 +2985,6 @@
 <hr>
 <h3><span id="c语言的写入文件">C语言的写入文件</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FILE *fp;</span><br><span class="line">fp &#x3D; fopen(&quot;F:\\Clanuage\\GISALG\\dataFile\\fffffff.txt&quot;,&quot;w&quot;);</span><br><span class="line">&#x2F;&#x2F; 第一行输出点的个数</span><br><span class="line">fprintf(fp,&quot;%d\n&quot;,num);</span><br><span class="line">&#x2F;&#x2F; 输出点的坐标</span><br><span class="line">for(int i&#x3D;0;i&lt;num;i++)</span><br><span class="line">&#123;</span><br><span class="line">	fprintf(fp,&quot;%d,%d\n&quot;,p[i].x,p[i].y);</span><br><span class="line">&#125;</span><br><span class="line">fclose(fp);</span><br></pre></td></tr></table></figure>
 <h3><span id="读取文件数据">读取文件数据</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FILE *fp;</span><br><span class="line">fp &#x3D; fopen(&quot;F:\\Clanuage\\GISALG\\dataFile\\fffffff.txt&quot;,&quot;r&quot;);</span><br><span class="line">fscanf(fp,&quot;%d&quot;,&amp;num);</span><br><span class="line">for(int i&#x3D;0;i&lt;num;i++)</span><br><span class="line">&#123;</span><br><span class="line">	fscanf(fp,&quot;%d,%d&quot;,&amp;p[i].x,&amp;p[i].y);</span><br><span class="line">&#125;</span><br><span class="line">fclose(fp);</span><br><span class="line">&#x2F;&#x2F; 绘制</span><br><span class="line">CDC *pdc &#x3D; GetDC();</span><br><span class="line">for(int j&#x3D;0;j&lt;num;j++)</span><br><span class="line">&#123;</span><br><span class="line">	pdc-&gt;Ellipse(p[j].x-5,p[j].y-5,p[j].x+5,p[j].y+5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vc6.0;MFC；画笔与填充</title>
-    <url>/2018-10-22-vc6.0-mfc-hua-bi-yu-ju-xing-tian-chong.html</url>
-    <content><![CDATA[<p>C语言MFC中画笔与矩形填充</p>
-<a id="more"></a>
-
-<hr>
-<h3><span id="画笔与填充">画笔与填充</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CDC *pDC &#x3D; GetDC();</span><br><span class="line">&#x2F;&#x2F;绘制红线</span><br><span class="line">CPen pen;</span><br><span class="line">pen.CreatePen(PS_SOLID,2,RGB(255,0,0));</span><br><span class="line">pDC-&gt;SelectObject(&amp;pen);</span><br><span class="line">&#x2F;&#x2F;矩形透明</span><br><span class="line">CBrush *pBrush &#x3D; CBrush::FromHandle((HBRUSH)GetStockObject(NULL_BRUSH));</span><br><span class="line">CBrush *pOldBrush &#x3D; pDC-&gt;SelectObject(pBrush);</span><br><span class="line">pDC-&gt;Rectangle(xmin,ymin,xmax,ymax);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 矩形填充</span><br><span class="line">CRect rt(x1+i*b1,y1+j*b2,x2+i*b1,y2+j*b2);</span><br><span class="line">pdc-&gt;FillSolidRect(&amp;rt,RGB(255,0,0));</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>C语言</tag>
       </tags>
@@ -3173,233 +3173,6 @@
 ]]></content>
       <tags>
         <tag>pygame</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python中的运算符</title>
-    <url>/2018-08-10-python-2.html</url>
-    <content><![CDATA[<p>python自学第二节<br>运算符</p>
-<h2><span id="python中的运算符">python中的运算符</span></h2><h3><span id="1-算数运算符">1、算数运算符</span></h3><ul>
-<li>+</li>
-<li>-</li>
-<li>*</li>
-<li>/</li>
-<li>//地板除,得到整的结果：如：4   8   9.0  ….</li>
-<li>% 取余</li>
-<li>** 指数幂</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5.0</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.6666666666666667</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 得到结果为整！</span></span><br><span class="line">a = <span class="number">22</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>11</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">22.9</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>11.0</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">17</span></span><br><span class="line">a // <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>5</code></pre><ul>
-<li>** 指数幂</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span> ** <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>256</code></pre><h3><span id="算数运算符的优先级">算数运算符的优先级</span></h3><ul>
-<li>（）</li>
-<li>**</li>
-<li>/ *   //  %</li>
-<li>+,-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span> + <span class="number">4</span> ** <span class="number">2</span> - <span class="number">7</span> // <span class="number">4</span> - (<span class="number">5</span> % <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>19</code></pre><h3><span id="运算中出现浮点数结果一定是浮点数">运算中出现浮点数，结果一定是浮点数</span></h3><h3><span id="运算小练习">运算小练习</span></h3><ul>
-<li>摄氏度、华氏温度、开氏温度的转换</li>
-<li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
-<li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
-<li>今天32摄氏度，求华氏温度，开氏温度</li>
-<li>华氏温度=摄氏度*9.0/5.0+32</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
-
-<pre><code>华氏温度h: 89.600000
-开氏温度k: 305.150000</code></pre><h3><span id="2-赋值运算符">2、赋值运算符</span></h3><ul>
-<li>=，+=，-=,*=,/=</li>
-<li>** = ,//=</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">a **= <span class="number">6</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">b //= <span class="number">3</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-
-<pre><code>729
-1</code></pre><ul>
-<li>批量赋值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = <span class="number">100</span>,<span class="number">234</span>,<span class="number">456</span></span><br><span class="line">print(<span class="string">"%d\n%d\n%d"</span> %(a,b,c))</span><br></pre></td></tr></table></figure>
-
-<pre><code>100
-234
-456</code></pre><ul>
-<li>数值交换</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
-
-<pre><code>456
-123</code></pre><h4><span id="数值运算练习">数值运算练习</span></h4><ul>
-<li>(1)求r=6.6cm的球的体积和面积</li>
-<li>面积s=4<em>pi</em>r^2</li>
-<li>体积v=4/3<em>pi</em>r^3</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pi = <span class="number">3.1415926</span></span><br><span class="line">r = <span class="number">6.6</span></span><br><span class="line">s = <span class="number">4</span>*pi*r**<span class="number">2</span></span><br><span class="line">v = <span class="number">4</span>/<span class="number">3</span>*pi*r**<span class="number">3</span></span><br><span class="line">print(<span class="string">"面积为%f;体积为%f"</span> % (s,v))</span><br></pre></td></tr></table></figure>
-
-<pre><code>面积为547.391095;体积为1204.260408</code></pre><ul>
-<li>(2)求当前时间<ul>
-<li>从7：00：00开始已经过去476589s，求现在的时间</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
-
-<pre><code>现在的时间：05:23:09</code></pre><h3><span id="3-比较运算符">3、比较运算符</span></h3><ul>
-<li>&lt; &gt; &lt;= &gt;= == !=</li>
-<li>比较的结果是bool值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span> &gt; <span class="number">1</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> != <span class="number">6</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>False</code></pre><h3><span id="4-逻辑运算符">4、逻辑运算符</span></h3><ul>
-<li><p>and逻辑与,短路与</p>
-</li>
-<li><p>or 逻辑或</p>
-</li>
-<li><p>not 逻辑非</p>
-</li>
-<li><p>and从左往右运算值时，都为真则返回最后一个值</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">1111</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1111</code></pre><ul>
-<li>or只要第一个值为真，就直接返回第一个值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">111</span> <span class="keyword">or</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>111</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">9</span></span><br><span class="line">a &gt; b <span class="keyword">and</span> a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>False</code></pre><h3><span id="5-特殊运算符">5、特殊运算符</span></h3><ul>
-<li><p>is 判断两个对象的内存地址是否相同</p>
-</li>
-<li><p>is not 与is相反</p>
-</li>
-<li><p>del 删除某个对象，解除对象的绑定值，可能释放掉它的内存（视情况）</p>
-</li>
-<li><p>在python中，对于一些初级的，常用的对象，无论把它赋值给几个变量，它会被存储在相同的内存中；而其他才会重新开辟内存存储</p>
-</li>
-<li><p>例子如下</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True</code></pre><ul>
-<li>查看地址用  id()</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(a)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(b)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = <span class="number">456</span></span><br><span class="line">d = <span class="number">456</span></span><br><span class="line">c <span class="keyword">is</span> d</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>False</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(c)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2069301952784</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(d)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2069301953168</code></pre><ul>
-<li>del</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">em = <span class="number">678</span></span><br><span class="line"><span class="comment"># 删除em</span></span><br><span class="line"><span class="keyword">del</span> em</span><br><span class="line">id(em)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-NameError                                 Traceback (most recent call last)
-
-&lt;ipython-input-34-aa4fc6229635&gt; in &lt;module&gt;()
-      2 # 删除em
-      3 del em
-----&gt; 4 id(em)
-
-
-NameError: name &apos;em&apos; is not defined</code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -4115,6 +3888,211 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
       </tags>
   </entry>
   <entry>
+    <title>标准输入输出</title>
+    <url>/2018-08-10-python-3.html</url>
+    <content><![CDATA[<p>python自学第三节<br>标准输入输出</p>
+<h2><span id="标准输入输出">标准输入输出</span></h2><ul>
+<li>input（） 要求用户键入</li>
+<li>print（） 屏幕输出</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = input(<span class="string">"请输入你的年龄，按回车键结束"</span>)</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure>
+
+<pre><code>请输入你的年龄，按回车键结束20
+20</code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序结构、分支语句、条件、列表、循环</title>
+    <url>/2018-08-10-python-4.html</url>
+    <content><![CDATA[<p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
+<h2><span id="程序结构">程序结构</span></h2><ul>
+<li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
+<li>顺序</li>
+<li>分支：即选择条件</li>
+<li>循环</li>
+</ul>
+<h3><span id="1-条件语句">1、条件语句</span></h3><ul>
+<li>语法如下：<pre><code>if (条件表达式)：
+    程序处理模块</code></pre></li>
+<li>python用缩进来表示代码层级关系<ul>
+<li>python2空格和tab可混用</li>
+<li>python3不能混用</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre><ul>
+<li>在python中  pass语句，占位，不执行任何语句，不起任何作用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h4><span id="练习判断学生成绩的等级">练习：判断学生成绩的等级</span></h4><ul>
+<li>90及以上为A</li>
+<li>80-90为B</li>
+<li>70-80为C</li>
+<li>60-70为D</li>
+<li>其余为E</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>键入学生成绩：70
+C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入成绩：99
+及格
+优</code></pre><h3><span id="2-三元运算符">2、三元运算符</span></h3><ul>
+<li>语法： x if 条件 else y</li>
+<li>表示如果条件成立则输出x；否则输出y</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"优秀"</span> <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> <span class="keyword">else</span> <span class="string">"不行"</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&apos;优秀&apos;</code></pre><h4><span id="运用三元运算符求最大值">运用三元运算符求最大值</span></h4><ul>
+<li>a,b,c由用户输入</li>
+<li>输出最大值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = int(input(<span class="string">"输入a:"</span>))</span><br><span class="line">b = int(input(<span class="string">"输入b:"</span>))</span><br><span class="line">c = int(input(<span class="string">"输入c:"</span>))</span><br><span class="line">d = (a <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b) <span class="keyword">if</span> ((a <span class="keyword">if</span> a &gt;b <span class="keyword">else</span> b)&gt;c) <span class="keyword">else</span> c</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入a:23
+输入b:45
+输入c:11
+45</code></pre><h3><span id="3-列表-list">3、列表 list</span></h3><ul>
+<li>可以放数字、字符串、列表、和其他结构</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3><span id="4-range">4、range</span></h3><ul>
+<li>可以看成一个函数</li>
+<li>产生一个有规律的有数字组成的列表</li>
+<li>语法： range(start,end,step)</li>
+<li>start:开始数字，生成列表包含start,默认为0；end:结束值，结果列表不包含end;</li>
+<li>step:步长，默认为1</li>
+<li>python2中range()生成的是列表，同时有xrange()函数，功能类似</li>
+<li>python3中，生成结果是迭代器，不是列表，可粗略地认为是列表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = range(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#   可看成L1 == [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="5-for循环">5、for循环</span></h3><ul>
+<li>一般明确循环次数</li>
+<li>语法：    for i in xxx:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">5</span>,<span class="number">9</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">77</span>,<span class="string">"fuck"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L1:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5
+9
+55
+99
+77
+fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">1</span>,<span class="number">100</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">for</span> a1 <span class="keyword">in</span> a:</span><br><span class="line">    print(a1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+20
+39
+58
+77
+96</code></pre><h4><span id="运用循环求和">运用循环求和</span></h4><ul>
+<li>求从1加到100</li>
+<li>使用range</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5050</code></pre><h3><span id="6-while循环">6、while循环</span></h3><ul>
+<li>不明确循环次数，却满足一定条件</li>
+<li>语法；      while (条件):<pre><code>循环体</code></pre></li>
+</ul>
+<h4><span id="示例银行存款">示例：银行存款</span></h4><ul>
+<li>本金10000</li>
+<li>年利率： %2.5</li>
+<li>多少年总金额超过20000<ul>
+<li>分析：没有明确循环次数</li>
+<li>条件：总金额超过20000</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year is 29</code></pre><h4><span id="累加求和">累加求和</span></h4><ul>
+<li>1-100</li>
+<li>while循环</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5050</code></pre><h3><span id="7-break语句">7、 break语句</span></h3><ul>
+<li>无条件终止循环，并跳出循环体</li>
+</ul>
+<h4><span id="示例">示例</span></h4><ul>
+<li>在200-300中找到第一个可以被9整除的数</li>
+<li>使用break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>207</code></pre><h4><span id="对于嵌套多重循环break跳出离他最近的循环">对于嵌套多重循环，break跳出离他最近的循环</span></h4><h4><span id="打印99乘法表">打印9*9乘法表</span></h4><ul>
+<li>要求最大值为36</li>
+<li>典型 for 嵌套循环</li>
+<li>break</li>
+<li>调用sys模块中write可以在打印时不会换行</li>
+<li>sys.stdout.write();括号内只能用字符型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">36</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9  
+2 4 6 8 10 12 14 16 18  
+3 6 9 12 15 18 21 24 27  
+4 8 12 16 20 24 28 32 36  
+5 10 15 20 25 30 35  
+6 12 18 24 30 36  
+7 14 21 28 35  
+8 16 24 32  
+9 18 27 36  </code></pre><h3><span id="8-continue">8、continue</span></h3><ul>
+<li>含义：继续下一轮循环</li>
+<li>当我们已经确定不需要此轮循环时使用</li>
+</ul>
+<h4><span id="例累加求和">例：累加求和</span></h4><ul>
+<li>当数为偶数时才求和</li>
+<li>1-100</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2550</code></pre><h4><span id="例99乘法表">例：9*9乘法表</span></h4><ul>
+<li>要求：打印值小于12的数</li>
+<li>嵌套for循环</li>
+<li>使用continue</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9 
+
+2 4 6 8 10 12 
+
+3 6 9 12 
+
+4 8 12 
+
+5 10 
+
+6 12 
+
+7 
+
+8 
+
+9</code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数、return、函数参数、列表字典传入函数、函数文档</title>
     <url>/2018-08-10-python-5.html</url>
     <content><![CDATA[<p>python自学第五节<br>函数、return、函数参数、列表字典传入函数、函数文档</p>
@@ -4312,206 +4290,228 @@ Sum(one, two)
       </tags>
   </entry>
   <entry>
-    <title>程序结构、分支语句、条件、列表、循环</title>
-    <url>/2018-08-10-python-4.html</url>
-    <content><![CDATA[<p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
-<h2><span id="程序结构">程序结构</span></h2><ul>
-<li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
-<li>顺序</li>
-<li>分支：即选择条件</li>
-<li>循环</li>
-</ul>
-<h3><span id="1-条件语句">1、条件语句</span></h3><ul>
-<li>语法如下：<pre><code>if (条件表达式)：
-    程序处理模块</code></pre></li>
-<li>python用缩进来表示代码层级关系<ul>
-<li>python2空格和tab可混用</li>
-<li>python3不能混用</li>
-</ul>
-</li>
+    <title>python中的运算符</title>
+    <url>/2018-08-10-python-2.html</url>
+    <content><![CDATA[<p>python自学第二节<br>运算符</p>
+<h2><span id="python中的运算符">python中的运算符</span></h2><h3><span id="1-算数运算符">1、算数运算符</span></h3><ul>
+<li>+</li>
+<li>-</li>
+<li>*</li>
+<li>/</li>
+<li>//地板除,得到整的结果：如：4   8   9.0  ….</li>
+<li>% 取余</li>
+<li>** 指数幂</li>
 </ul>
 <a id="more"></a>
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5.0</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.25</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">a/<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.6666666666666667</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 得到结果为整！</span></span><br><span class="line">a = <span class="number">22</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>11</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">22.9</span></span><br><span class="line">a // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>11.0</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">17</span></span><br><span class="line">a // <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>5</code></pre><ul>
+<li>** 指数幂</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span> ** <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>256</code></pre><h3><span id="算数运算符的优先级">算数运算符的优先级</span></h3><ul>
+<li>（）</li>
+<li>**</li>
+<li>/ *   //  %</li>
+<li>+,-</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span> + <span class="number">4</span> ** <span class="number">2</span> - <span class="number">7</span> // <span class="number">4</span> - (<span class="number">5</span> % <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>19</code></pre><h3><span id="运算中出现浮点数结果一定是浮点数">运算中出现浮点数，结果一定是浮点数</span></h3><h3><span id="运算小练习">运算小练习</span></h3><ul>
+<li>摄氏度、华氏温度、开氏温度的转换</li>
+<li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
+<li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
+<li>今天32摄氏度，求华氏温度，开氏温度</li>
+<li>华氏温度=摄氏度*9.0/5.0+32</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
+
+<pre><code>华氏温度h: 89.600000
+开氏温度k: 305.150000</code></pre><h3><span id="2-赋值运算符">2、赋值运算符</span></h3><ul>
+<li>=，+=，-=,*=,/=</li>
+<li>** = ,//=</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">a **= <span class="number">6</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">b //= <span class="number">3</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+<pre><code>729
+1</code></pre><ul>
+<li>批量赋值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = <span class="number">100</span>,<span class="number">234</span>,<span class="number">456</span></span><br><span class="line">print(<span class="string">"%d\n%d\n%d"</span> %(a,b,c))</span><br></pre></td></tr></table></figure>
+
+<pre><code>100
+234
+456</code></pre><ul>
+<li>数值交换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
+
+<pre><code>456
+123</code></pre><h4><span id="数值运算练习">数值运算练习</span></h4><ul>
+<li>(1)求r=6.6cm的球的体积和面积</li>
+<li>面积s=4<em>pi</em>r^2</li>
+<li>体积v=4/3<em>pi</em>r^3</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pi = <span class="number">3.1415926</span></span><br><span class="line">r = <span class="number">6.6</span></span><br><span class="line">s = <span class="number">4</span>*pi*r**<span class="number">2</span></span><br><span class="line">v = <span class="number">4</span>/<span class="number">3</span>*pi*r**<span class="number">3</span></span><br><span class="line">print(<span class="string">"面积为%f;体积为%f"</span> % (s,v))</span><br></pre></td></tr></table></figure>
+
+<pre><code>面积为547.391095;体积为1204.260408</code></pre><ul>
+<li>(2)求当前时间<ul>
+<li>从7：00：00开始已经过去476589s，求现在的时间</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
+
+<pre><code>现在的时间：05:23:09</code></pre><h3><span id="3-比较运算符">3、比较运算符</span></h3><ul>
+<li>&lt; &gt; &lt;= &gt;= == !=</li>
+<li>比较的结果是bool值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span> &gt; <span class="number">1</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> != <span class="number">6</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><h3><span id="4-逻辑运算符">4、逻辑运算符</span></h3><ul>
+<li><p>and逻辑与,短路与</p>
+</li>
+<li><p>or 逻辑或</p>
+</li>
+<li><p>not 逻辑非</p>
+</li>
+<li><p>and从左往右运算值时，都为真则返回最后一个值</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">6</span> <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">1111</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1111</code></pre><ul>
+<li>or只要第一个值为真，就直接返回第一个值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">111</span> <span class="keyword">or</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>111</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">9</span></span><br><span class="line">a &gt; b <span class="keyword">and</span> a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><h3><span id="5-特殊运算符">5、特殊运算符</span></h3><ul>
+<li><p>is 判断两个对象的内存地址是否相同</p>
+</li>
+<li><p>is not 与is相反</p>
+</li>
+<li><p>del 删除某个对象，解除对象的绑定值，可能释放掉它的内存（视情况）</p>
+</li>
+<li><p>在python中，对于一些初级的，常用的对象，无论把它赋值给几个变量，它会被存储在相同的内存中；而其他才会重新开辟内存存储</p>
+</li>
+<li><p>例子如下</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
+
+
+
 
 <pre><code>True</code></pre><ul>
-<li>在python中  pass语句，占位，不执行任何语句，不起任何作用</li>
+<li>查看地址用  id()</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br></pre></td></tr></table></figure>
 
-<h4><span id="练习判断学生成绩的等级">练习：判断学生成绩的等级</span></h4><ul>
-<li>90及以上为A</li>
-<li>80-90为B</li>
-<li>70-80为C</li>
-<li>60-70为D</li>
-<li>其余为E</li>
+
+
+
+<pre><code>True</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(a)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(b)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2012965952</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = <span class="number">456</span></span><br><span class="line">d = <span class="number">456</span></span><br><span class="line">c <span class="keyword">is</span> d</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(c)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2069301952784</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">id(d)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2069301953168</code></pre><ul>
+<li>del</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>键入学生成绩：70
-C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入成绩：99
-及格
-优</code></pre><h3><span id="2-三元运算符">2、三元运算符</span></h3><ul>
-<li>语法： x if 条件 else y</li>
-<li>表示如果条件成立则输出x；否则输出y</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"优秀"</span> <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> <span class="keyword">else</span> <span class="string">"不行"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">em = <span class="number">678</span></span><br><span class="line"><span class="comment"># 删除em</span></span><br><span class="line"><span class="keyword">del</span> em</span><br><span class="line">id(em)</span><br></pre></td></tr></table></figure>
 
 
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-34-aa4fc6229635&gt; in &lt;module&gt;()
+      2 # 删除em
+      3 del em
+----&gt; 4 id(em)
 
 
-<pre><code>&apos;优秀&apos;</code></pre><h4><span id="运用三元运算符求最大值">运用三元运算符求最大值</span></h4><ul>
-<li>a,b,c由用户输入</li>
-<li>输出最大值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = int(input(<span class="string">"输入a:"</span>))</span><br><span class="line">b = int(input(<span class="string">"输入b:"</span>))</span><br><span class="line">c = int(input(<span class="string">"输入c:"</span>))</span><br><span class="line">d = (a <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b) <span class="keyword">if</span> ((a <span class="keyword">if</span> a &gt;b <span class="keyword">else</span> b)&gt;c) <span class="keyword">else</span> c</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入a:23
-输入b:45
-输入c:11
-45</code></pre><h3><span id="3-列表-list">3、列表 list</span></h3><ul>
-<li>可以放数字、字符串、列表、和其他结构</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3><span id="4-range">4、range</span></h3><ul>
-<li>可以看成一个函数</li>
-<li>产生一个有规律的有数字组成的列表</li>
-<li>语法： range(start,end,step)</li>
-<li>start:开始数字，生成列表包含start,默认为0；end:结束值，结果列表不包含end;</li>
-<li>step:步长，默认为1</li>
-<li>python2中range()生成的是列表，同时有xrange()函数，功能类似</li>
-<li>python3中，生成结果是迭代器，不是列表，可粗略地认为是列表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = range(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#   可看成L1 == [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
-
-<h3><span id="5-for循环">5、for循环</span></h3><ul>
-<li>一般明确循环次数</li>
-<li>语法：    for i in xxx:</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">5</span>,<span class="number">9</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">77</span>,<span class="string">"fuck"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L1:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5
-9
-55
-99
-77
-fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">1</span>,<span class="number">100</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">for</span> a1 <span class="keyword">in</span> a:</span><br><span class="line">    print(a1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-20
-39
-58
-77
-96</code></pre><h4><span id="运用循环求和">运用循环求和</span></h4><ul>
-<li>求从1加到100</li>
-<li>使用range</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5050</code></pre><h3><span id="6-while循环">6、while循环</span></h3><ul>
-<li>不明确循环次数，却满足一定条件</li>
-<li>语法；      while (条件):<pre><code>循环体</code></pre></li>
-</ul>
-<h4><span id="示例银行存款">示例：银行存款</span></h4><ul>
-<li>本金10000</li>
-<li>年利率： %2.5</li>
-<li>多少年总金额超过20000<ul>
-<li>分析：没有明确循环次数</li>
-<li>条件：总金额超过20000</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
-
-<pre><code>year is 29</code></pre><h4><span id="累加求和">累加求和</span></h4><ul>
-<li>1-100</li>
-<li>while循环</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5050</code></pre><h3><span id="7-break语句">7、 break语句</span></h3><ul>
-<li>无条件终止循环，并跳出循环体</li>
-</ul>
-<h4><span id="示例">示例</span></h4><ul>
-<li>在200-300中找到第一个可以被9整除的数</li>
-<li>使用break</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>207</code></pre><h4><span id="对于嵌套多重循环break跳出离他最近的循环">对于嵌套多重循环，break跳出离他最近的循环</span></h4><h4><span id="打印99乘法表">打印9*9乘法表</span></h4><ul>
-<li>要求最大值为36</li>
-<li>典型 for 嵌套循环</li>
-<li>break</li>
-<li>调用sys模块中write可以在打印时不会换行</li>
-<li>sys.stdout.write();括号内只能用字符型</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">36</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9  
-2 4 6 8 10 12 14 16 18  
-3 6 9 12 15 18 21 24 27  
-4 8 12 16 20 24 28 32 36  
-5 10 15 20 25 30 35  
-6 12 18 24 30 36  
-7 14 21 28 35  
-8 16 24 32  
-9 18 27 36  </code></pre><h3><span id="8-continue">8、continue</span></h3><ul>
-<li>含义：继续下一轮循环</li>
-<li>当我们已经确定不需要此轮循环时使用</li>
-</ul>
-<h4><span id="例累加求和">例：累加求和</span></h4><ul>
-<li>当数为偶数时才求和</li>
-<li>1-100</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>2550</code></pre><h4><span id="例99乘法表">例：9*9乘法表</span></h4><ul>
-<li>要求：打印值小于12的数</li>
-<li>嵌套for循环</li>
-<li>使用continue</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9 
-
-2 4 6 8 10 12 
-
-3 6 9 12 
-
-4 8 12 
-
-5 10 
-
-6 12 
-
-7 
-
-8 
-
-9</code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>标准输入输出</title>
-    <url>/2018-08-10-python-3.html</url>
-    <content><![CDATA[<p>python自学第三节<br>标准输入输出</p>
-<h2><span id="标准输入输出">标准输入输出</span></h2><ul>
-<li>input（） 要求用户键入</li>
-<li>print（） 屏幕输出</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = input(<span class="string">"请输入你的年龄，按回车键结束"</span>)</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure>
-
-<pre><code>请输入你的年龄，按回车键结束20
-20</code></pre>]]></content>
+NameError: name &apos;em&apos; is not defined</code></pre>]]></content>
       <tags>
         <tag>python</tag>
       </tags>

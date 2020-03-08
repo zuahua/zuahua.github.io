@@ -70,7 +70,7 @@
     <link href="http://innozh.com/2020-2-2-wu-han-fei-yan-shi-jian-r.i.p.html"/>
     <id>http://innozh.com/2020-2-2-wu-han-fei-yan-shi-jian-r.i.p.html</id>
     <published>2020-02-02T00:00:00.000Z</published>
-    <updated>2020-03-08T06:30:42.441Z</updated>
+    <updated>2020-03-08T07:25:35.724Z</updated>
     
     <summary type="html">
     
@@ -81,7 +81,7 @@
 &lt;p&gt;时间: 2019年&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;12月,开始从推上了解到武汉肺炎,有可能大范围传播言论出现。国内一片祥和,然后武汉当局抓了几个所谓“造谣者”(有人说是医生在微信群讨论被抓)。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/note/2.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/note/22.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;时间:2020年&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -342,16 +342,17 @@
   </entry>
   
   <entry>
-    <title>Python arcpy 计算点经纬度坐标</title>
-    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html"/>
-    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</id>
+    <title>Python arcpy 计算曲线长度与弯曲度</title>
+    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html"/>
+    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html</id>
     <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-03-08T06:32:58.113Z</updated>
+    <updated>2020-03-08T06:32:49.143Z</updated>
     
     <summary type="html">
     
       &lt;ul&gt;
 &lt;li&gt;arcpy&lt;/li&gt;
+&lt;li&gt;获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -365,17 +366,16 @@
   </entry>
   
   <entry>
-    <title>Python arcpy 计算曲线长度与弯曲度</title>
-    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html"/>
-    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-qu-xian-chang-du-yu-wan-qu-du.html</id>
+    <title>Python arcpy 计算点经纬度坐标</title>
+    <link href="http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html"/>
+    <id>http://innozh.com/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html</id>
     <published>2019-09-18T00:00:00.000Z</published>
-    <updated>2020-03-08T06:32:49.143Z</updated>
+    <updated>2020-03-08T06:32:58.113Z</updated>
     
     <summary type="html">
     
       &lt;ul&gt;
 &lt;li&gt;arcpy&lt;/li&gt;
-&lt;li&gt;获取线图层，新建两个字段，将计算得到的曲线长度与弯曲度保存在字段&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -549,30 +549,26 @@
   </entry>
   
   <entry>
-    <title>JavaScript应用实例-自动、手动播放图片</title>
-    <link href="http://innozh.com/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html"/>
-    <id>http://innozh.com/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html</id>
+    <title>CSS图片居中</title>
+    <link href="http://innozh.com/2019-08-05-tu-pian-ju-zhong-css.html"/>
+    <id>http://innozh.com/2019-08-05-tu-pian-ju-zhong-css.html</id>
     <published>2019-08-05T00:00:00.000Z</published>
-    <updated>2020-01-15T12:20:12.110Z</updated>
+    <updated>2020-01-15T12:26:39.825Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;JavaScript应用实例-1&quot;&gt;&lt;a href=&quot;#JavaScript应用实例-1&quot; class=&quot;headerlink&quot; title=&quot;JavaScript应用实例(1)&quot;&gt;&lt;/a&gt;JavaScript应用实例(1)&lt;/h2&gt;&lt;p&gt;参考：&lt;a href=&quot;http://www.runoob.com/js/js-examples.html&quot; target=&quot;_blank&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;菜鸟教程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;环境:&lt;/p&gt;
+      &lt;h2 id=&quot;CSS-图片居中方式&quot;&gt;&lt;a href=&quot;#CSS-图片居中方式&quot; class=&quot;headerlink&quot; title=&quot;CSS-图片居中方式&quot;&gt;&lt;/a&gt;CSS-图片居中方式&lt;/h2&gt;&lt;h3 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;div id&amp;#x3D;&amp;quot;pic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;img src&amp;#x3D;&amp;quot;&amp;#x2F;php&amp;#x2F;images&amp;#x2F;1.png&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;&amp;#x2F;div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
 &lt;ul&gt;
-&lt;li&gt;html&lt;/li&gt;
-&lt;li&gt;代码为主要部分&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;内容包括:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;自动、手动播放图片&lt;/li&gt;
+&lt;li&gt;控制父级元素高、宽;&lt;/li&gt;
+&lt;li&gt;设置img占满父级元素&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
     
     
     
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+      <category term="CSS" scheme="http://innozh.com/tags/CSS/"/>
     
   </entry>
   

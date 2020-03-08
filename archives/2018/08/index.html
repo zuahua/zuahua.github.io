@@ -290,26 +290,6 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2018-08-10-python-2.html" itemprop="url">
-            <span itemprop="name">python中的运算符</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-08-10T00:00:00Z"
-              content="2018-08-10">
-          08-10
-        </time>
-      </div>
-
-      <h3 class="post-title">
           <a class="post-title-link" href="/2018-08-10-python-1.html" itemprop="url">
             <span itemprop="name">python数据类型</span>
           </a>
@@ -330,8 +310,8 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2018-08-10-python-5.html" itemprop="url">
-            <span itemprop="name">函数、return、函数参数、列表字典传入函数、函数文档</span>
+          <a class="post-title-link" href="/2018-08-10-python-3.html" itemprop="url">
+            <span itemprop="name">标准输入输出</span>
           </a>
       </h3>
 
@@ -370,8 +350,28 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2018-08-10-python-3.html" itemprop="url">
-            <span itemprop="name">标准输入输出</span>
+          <a class="post-title-link" href="/2018-08-10-python-5.html" itemprop="url">
+            <span itemprop="name">函数、return、函数参数、列表字典传入函数、函数文档</span>
+          </a>
+      </h3>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-10T00:00:00Z"
+              content="2018-08-10">
+          08-10
+        </time>
+      </div>
+
+      <h3 class="post-title">
+          <a class="post-title-link" href="/2018-08-10-python-2.html" itemprop="url">
+            <span itemprop="name">python中的运算符</span>
           </a>
       </h3>
 
@@ -591,6 +591,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -690,35 +719,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 

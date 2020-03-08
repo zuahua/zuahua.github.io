@@ -310,8 +310,8 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2019-06-20-music-lemon.html" itemprop="url">
-            <span itemprop="name">lemon</span>
+          <a class="post-title-link" href="/2019-06-20-jin-ri-karasi-ichu.html" itemprop="url">
+            <span itemprop="name">今日から思い出</span>
           </a>
       </h3>
 
@@ -330,8 +330,8 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2019-06-20-jin-ri-karasi-ichu.html" itemprop="url">
-            <span itemprop="name">今日から思い出</span>
+          <a class="post-title-link" href="/2019-06-20-music-lemon.html" itemprop="url">
+            <span itemprop="name">lemon</span>
           </a>
       </h3>
 
@@ -370,6 +370,26 @@
       </div>
 
       <h3 class="post-title">
+          <a class="post-title-link" href="/2019-06-12-git-shang-chuan-xiang-mu.html" itemprop="url">
+            <span itemprop="name">Git指令</span>
+          </a>
+      </h3>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2019-06-12T00:00:00Z"
+              content="2019-06-12">
+          06-12
+        </time>
+      </div>
+
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019-06-13-arcgis-python-2.html" itemprop="url">
             <span itemprop="name">Arcgis中的python编程(2)</span>
           </a>
@@ -390,28 +410,8 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2019-06-12-essay1.html" itemprop="url">
-            <span itemprop="name">记录使用这个 blog theme</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-06-12T00:00:00Z"
-              content="2019-06-12">
-          06-12
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2019-06-12-git-shang-chuan-xiang-mu.html" itemprop="url">
-            <span itemprop="name">Git指令</span>
+          <a class="post-title-link" href="/2019-06-12-ubuntu16.04-vsftpd.html" itemprop="url">
+            <span itemprop="name">ubuntu16.04安装vsftpd</span>
           </a>
       </h3>
 
@@ -614,6 +614,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -713,35 +742,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 

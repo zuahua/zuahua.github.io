@@ -290,28 +290,8 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html" itemprop="url">
-            <span itemprop="name">JavaScript应用实例-自动、手动播放图片</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-05T00:00:00Z"
-              content="2019-08-05">
-          08-05
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2019-08-05-xia-la-kuang-javascript.html" itemprop="url">
-            <span itemprop="name">JavaScript应用实例-下拉框</span>
+          <a class="post-title-link" href="/2019-08-05-tu-pian-ju-zhong-css.html" itemprop="url">
+            <span itemprop="name">CSS图片居中</span>
           </a>
       </h3>
 
@@ -350,8 +330,28 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2019-08-05-tu-pian-ju-zhong-css.html" itemprop="url">
-            <span itemprop="name">CSS图片居中</span>
+          <a class="post-title-link" href="/2019-08-05-xia-la-kuang-javascript.html" itemprop="url">
+            <span itemprop="name">JavaScript应用实例-下拉框</span>
+          </a>
+      </h3>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2019-08-05T00:00:00Z"
+              content="2019-08-05">
+          08-05
+        </time>
+      </div>
+
+      <h3 class="post-title">
+          <a class="post-title-link" href="/2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html" itemprop="url">
+            <span itemprop="name">JavaScript应用实例-自动、手动播放图片</span>
           </a>
       </h3>
 
@@ -611,6 +611,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -710,35 +739,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 

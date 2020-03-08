@@ -319,10 +319,10 @@
       <div class="popular-posts-title"><a href="\2019-09-19-python-arcpy-ji-suan-mian-de-zhou-chang.html" rel="bookmark">Python 计算面的周长</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-16-arcgis-python-7.html" rel="bookmark">Arcgis中的python编程(7)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
   </ul>
 
@@ -340,12 +340,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html" rel="prev" title="Python 计算要素图层面积">
-      <i class="fa fa-chevron-left"></i> Python 计算要素图层面积
+    <a href="/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html" rel="prev" title="Python arcpy 计算点经纬度坐标">
+      <i class="fa fa-chevron-left"></i> Python arcpy 计算点经纬度坐标
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019-09-18-python-arcpy-ji-suan-dian-jing-wei-du-zuo-biao.html" rel="next" title="Python arcpy 计算点经纬度坐标">
-      Python arcpy 计算点经纬度坐标 <i class="fa fa-chevron-right"></i>
+    <a href="/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html" rel="next" title="vba ArcMap UI控件  计算要素图层面积">
+      vba ArcMap UI控件  计算要素图层面积 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -542,6 +542,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -641,35 +670,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 
