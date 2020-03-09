@@ -363,7 +363,7 @@
       <div class="popular-posts-title"><a href="\2019-06-21-arcgis-python-4.html" rel="bookmark">Arcgis中的python编程(4)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-16-arcgis-python-7.html" rel="bookmark">Arcgis中的python编程(7)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-26-arcgis-python-13.html" rel="bookmark">Arcgis中的python编程(附录)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
@@ -383,12 +383,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-06-12-ubuntu16.04-vsftpd.html" rel="prev" title="ubuntu16.04安装vsftpd">
-      <i class="fa fa-chevron-left"></i> ubuntu16.04安装vsftpd
+    <a href="/2019-06-13-arcgis-python-1.html" rel="prev" title="Arcgis中的python编程(1)">
+      <i class="fa fa-chevron-left"></i> Arcgis中的python编程(1)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019-06-12-git-shang-chuan-xiang-mu.html" rel="next" title="Git指令">
-      Git指令 <i class="fa fa-chevron-right"></i>
+    <a href="/2019-06-12-ubuntu-minecraft-server.html" rel="next" title="minecraft服务器搭建">
+      minecraft服务器搭建 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -466,7 +466,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -518,12 +518,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">226k</span>
+    <span title="站点总字数">256k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:25</span>
+    <span title="站点阅读时长">3:52</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
@@ -585,35 +585,6 @@
   
 
   
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
-</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -713,6 +684,35 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
 </script>
 
 
