@@ -1,65 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>jQuery实例1-防止连续触发的导航栏</title>
-    <url>/2020-3-9-jquery-shi-li-1.html</url>
+    <title>fetch的简单使用</title>
+    <url>/2020-3-11-fetch.html</url>
     <content><![CDATA[<blockquote>
-<p>笔记整理</p>
-<p>jQuery实例</p>
-<p>下拉导航栏</p>
-<p>防止下拉事件连续触发</p>
+<p>fetch的简单使用</p>
+<p>promise对象</p>
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="jquery实例1-防止连续触发的导航栏">jQuery实例1-防止连续触发的导航栏</span></h3><h3><span id="主要方法">主要方法</span></h3><p>使用鼠标移入移出事件</p>
-<ul>
-<li>防止事件连续触发</li>
-<li>mouseenter()</li>
-<li>mouseleave()</li>
+<h3><span id="fetch的使用">fetch的使用</span></h3><ul>
+<li>IE不支持</li>
 </ul>
-<p>普通移入移出事件</p>
+<h3><span id="方法">方法</span></h3><ul>
+<li>new Promise()</li>
+<li>fetch(url, obj) </li>
+<li>.then((response) =&gt; {})</li>
+</ul>
+<h3><span id="promise对象">promise对象</span></h3><p>回调参数</p>
 <ul>
-<li>mouseover()</li>
-<li>mouseout()</li>
+<li>resolve 下决定去做(成功)</li>
+<li>reject 拒绝做(失败)</li>
+<li>.then(fun1, fun2)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F;resolve(&#39;123&#39;);</span><br><span class="line">        reject(&#39;456&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((num) &#x3D;&gt; &#123; &#x2F;&#x2F; 成功</span><br><span class="line">        alert(num)</span><br><span class="line">    &#125;, (err) &#x3D;&gt; &#123; &#x2F;&#x2F; 失败</span><br><span class="line">        alert(err)</span><br><span class="line">    &#125;)</span><br><span class="line">    &#x2F;&#x2F; .catch((num) &#x3D;&gt; &#123; &#x2F;&#x2F; 失败2</span><br><span class="line">    &#x2F;&#x2F;     alert(num)</span><br><span class="line">    &#x2F;&#x2F; &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="get">GET</span></h3><p>简单使用例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fetch(&#96;http:&#x2F;&#x2F;localhost&#x2F;fetch&#x2F;fetch.php?user&#x3D;$&#123;user&#125;&amp;password&#x3D;$&#123;password&#125;&#96;, &#123;</span><br><span class="line">    method: &#39;GET&#39;</span><br><span class="line">&#125;)</span><br><span class="line">.then((response) &#x3D;&gt; &#123;</span><br><span class="line">    response.json(() &#x3D;&gt; &#123;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((result) &#x3D;&gt; &#123; &#x2F;&#x2F; 获取返回数据</span><br><span class="line">        console.log(result)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) &#x3D;&gt; &#123;</span><br><span class="line">        console.log(&#39;服务器错误&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="post">POST</span></h3><ul>
+<li>obj</li>
+<li><ul>
+<li>method</li>
+</ul>
+</li>
+<li><ul>
+<li>headers // (头文件)</li>
+</ul>
+</li>
+<li><ul>
+<li>body // (post数据)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fetch(&#96;http:&#x2F;&#x2F;localhost&#x2F;fetch&#x2F;fetch.php&#96;, &#123;</span><br><span class="line">    method: &#39;POST&#39;,</span><br><span class="line">    headers: &#123; &#39;Content-Type&#39;: &#39;application&#x2F;x-www-form-urlencoded&#39;&#125;,</span><br><span class="line">    body: &#96;user&#x3D;$&#123;user&#125;&amp;password&#x3D;$&#123;password&#125;&#96;</span><br><span class="line">&#125;)</span><br><span class="line">.then((response) &#x3D;&gt; &#123;</span><br><span class="line">    response.json(() &#x3D;&gt; &#123;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((result) &#x3D;&gt; &#123;</span><br><span class="line">        console.log(result.status)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) &#x3D;&gt; &#123;</span><br><span class="line">        console.log(&#39;服务器错误&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>fetch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原生JS封装AJAX</title>
+    <url>/2020-3-11-ajax-js.html</url>
+    <content><![CDATA[<blockquote>
+<p>原生JS封装AJAX为一个外部文件</p>
+<p>实现直接调用</p>
+<p>GET、POST传输方式</p>
+</blockquote>
+<a id="more"></a>
+
+<h3><span id="原生js封装ajax">原生JS封装AJAX</span></h3><h3><span id="方法">方法</span></h3><ul>
+<li>XMLHttpRequest()</li>
+<li>ActiveXObject(“Microsoft.XMLHTTP”) // 兼容IE</li>
+<li>xmlhttp.onreadystatechange</li>
+<li>.readyState == 4</li>
+<li>.status == 200</li>
+<li>xmlhttp.open()</li>
+<li>xmlhttp.setRequestHeader(‘Content-Type’, “application/x-www-form-urlencoded”) // POST时，设置头</li>
+<li>xmlhttp.send()</li>
+</ul>
+<h3><span id="代码">代码</span></h3><p>封装: <strong>AJAXloadDoc.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 封装AJAX获取数据 函数名：AJAXloadDoc</span><br><span class="line"> * @param &#123;请求方式：string &quot;GET&quot;、&quot;POST&quot;&#125; requestWay </span><br><span class="line"> * @param &#123;请求链接：string&#125; url </span><br><span class="line"> * @param &#123;发送值：string &quot;&quot;、 &quot;value1&#x3D;1&amp;value2&#x3D;2&quot;&#125; sendValue </span><br><span class="line"> * @param &#123;回调：参数为得到的结果数据&#125; callback </span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">function AJAXloadDoc(requestWay, url, sendValue, callback) &#123;</span><br><span class="line">    var xmlhttp</span><br><span class="line">    &#x2F;&#x2F; 兼容写法</span><br><span class="line">    if (window.XMLHttpRequest) &#123;</span><br><span class="line">        xmlhttp &#x3D; new window.XMLHttpRequest()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        xmlhttp &#x3D; new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    var response &#x2F;&#x2F; 数据</span><br><span class="line"></span><br><span class="line">    xmlhttp.onreadystatechange &#x3D; function () &#123;</span><br><span class="line">        if (this.readyState &#x3D;&#x3D; 4 &amp;&amp; this.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">            response &#x3D; this.responseText</span><br><span class="line">            &#x2F;&#x2F; 调用 callback 传入 结果数据</span><br><span class="line">            callback(response)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (requestWay &#x3D;&#x3D; &quot;GET&quot;) &#123;</span><br><span class="line">        var urlAndSend &#x3D; url + &quot;?&quot; + sendValue</span><br><span class="line">        xmlhttp.open(&#39;GET&#39;, urlAndSend, true)</span><br><span class="line">        xmlhttp.send()</span><br><span class="line">    &#125;</span><br><span class="line">    if(requestWay &#x3D;&#x3D; &quot;POST&quot;) &#123;</span><br><span class="line">        xmlhttp.open(&#39;POST&#39;, url, true)</span><br><span class="line">        xmlhttp.setRequestHeader(&#39;Content-Type&#39;, &quot;application&#x2F;x-www-form-urlencoded&quot;)</span><br><span class="line">        xmlhttp.send(sendValue)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="参数说明">参数说明</span></h3><ul>
+<li>requestWay</li>
+<li><ul>
+<li>请求方式：string “GET”、”POST”</li>
+</ul>
+</li>
+<li>url </li>
+<li><ul>
+<li>请求链接：string</li>
+</ul>
+</li>
+<li>sendValue </li>
+<li><ul>
+<li>发送值：string 例：””（空）、 “value1=1&amp;value2=2”</li>
+</ul>
+</li>
+<li>callback</li>
+<li><ul>
+<li>回调：参数为得到的结果数据</li>
+</ul>
+</li>
+</ul>
+<h3><span id="调用方式">调用方式</span></h3><p>引入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;.&#x2F;AJAXloadDoc.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<ol>
+<li>sendValue参数为空字符串 GET</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AJAXloadDoc(&quot;GET&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;&quot;, function(res) &#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>有sendValue参数 GET</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AJAXloadDoc(&quot;GET&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;x&#x3D;1&amp;y&#x3D;3&quot;, function(res) &#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>sendValue参数为空字符串 POST</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AJAXloadDoc(&quot;POST&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;&quot;, function(res) &#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>有sendValue参数 POST</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AJAXloadDoc(&quot;POST&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;x&#x3D;1&amp;y&#x3D;3&quot;, function(res) &#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3><span id="实例根据ajax传回数据建立表格">实例：根据AJAX传回数据建立表格</span></h3><p>html</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot; &#x2F;&gt;</span><br><span class="line">    &lt;title&gt;test_ajax JS&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;.&#x2F;AJAXloadDoc.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;    </span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id&#x3D;&quot;btn&quot;&gt;获取数据&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btn &#x3D; document.getElementById(&#39;btn&#39;);</span><br><span class="line">        var box &#x3D; document.getElementById(&#39;box&#39;);</span><br><span class="line">        btn.onclick &#x3D; function() &#123;</span><br><span class="line">            &#x2F;&#x2F; sendValue参数为空字符串 POST</span><br><span class="line">            AJAXloadDoc(&quot;POST&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;&quot;, function(res) &#123;</span><br><span class="line">                box.innerHTML &#x3D; JSON.parse(res).join(&#39;-&#39;);</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>php</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    &#x2F;&#x2F; sendValue参数为空字符串 POST</span><br><span class="line">    $data &#x3D; array(&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;);</span><br><span class="line">    echo json_encode($data);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>AJAX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery中使用AJAX</title>
+    <url>/2020-3-11-ajax-jquery.html</url>
+    <content><![CDATA[<p>主要内容：</p>
+<blockquote>
+<p>load()</p>
+<p>get()</p>
+<p>post()</p>
+</blockquote>
+<a id="more"></a>
+
+<h3><span id="jquery中使用ajax">jQuery中使用AJAX</span></h3><h3><span id="方法">方法</span></h3><ul>
+<li>load()</li>
+<li>get()</li>
+<li>post()</li>
+</ul>
+<h3><span id="load">load()</span></h3><ul>
+<li><p>给页面加载数据</p>
+</li>
+<li><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(selector).load(URL,data,callback);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;load jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;p id&#x3D;&quot;content&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            &#x2F;&#x2F; 给标签加载数据</span><br><span class="line">            $(&#39;#container&#39;).load(&#39;http:&#x2F;&#x2F;localhost&#x2F;AJAX&#x2F;load.txt&#39;, function (responseTxt, statusTxt, xhr) &#123;</span><br><span class="line">                if (statusTxt &#x3D;&#x3D; &quot;success&quot;)</span><br><span class="line">                    alert(&quot;外部内容加载成功!&quot;);</span><br><span class="line">                if (statusTxt &#x3D;&#x3D; &quot;error&quot;)</span><br><span class="line">                    alert(&quot;Error: &quot; + xhr.status + &quot;: &quot; + xhr.statusText);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="get">get()</span></h3><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.get(URL,callback);</span><br></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;.get() jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            $.get(&quot;get.php?x&#x3D;1&amp;y&#x3D;2&quot;, function(data, status) &#123;</span><br><span class="line">                $(&#39;#box&#39;).html(data + &quot;-&quot; + status);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="post">post()</span></h3><ul>
+<li>语法:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;post() jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            $.post(&#39;post.php&#39;, &quot;x&#x3D;1&amp;y&#x3D;2&quot;, function (data) &#123;</span><br><span class="line">                $(&quot;#box&quot;).html(data);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>jQuery</tag>
+        <tag>AJAX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery使用JSONP</title>
+    <url>/2020-3-10-jsonp-jquery.html</url>
+    <content><![CDATA[<blockquote>
+<p>服务端php</p>
+<p>jQuery</p>
+<p>JSONP</p>
+<p>根据JSON数据创建表格</p>
+</blockquote>
+<a id="more"></a>
+
+<h3><span id="jquery使用jsonp">jQuery使用JSONP</span></h3><h3><span id="方法">方法</span></h3><ul>
+<li><p>jQuery使用JSONP</p>
+</li>
+<li><p>$.getJSON(url, callback)</p>
+</li>
+<li><p>url</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;JSONP&#x2F;testJSONP.php?jsoncallback&#x3D;?&quot;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="效果">效果</span></h3><p><img src="../images/json/jsonp.png" alt="image"></p>
+<h3><span id="服务器端php文件">服务器端php文件</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    &#x2F;&#x2F;header(&quot;Content-type: application&#x2F;json&quot;);</span><br><span class="line">    &#x2F;&#x2F; 获取回调函数名</span><br><span class="line">    $jsoncallback &#x3D; htmlspecialchars($_REQUEST[&#39;jsoncallback&#39;]);</span><br><span class="line">    &#x2F;&#x2F; 构造json数据</span><br><span class="line">    $json_data &#x3D; &#39;[</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 1,</span><br><span class="line">                &quot;name&quot;: &quot;Jone&quot;,</span><br><span class="line">                &quot;age&quot;: 16,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 2,</span><br><span class="line">                &quot;name&quot;: &quot;Kong&quot;,</span><br><span class="line">                &quot;age&quot;: 18, </span><br><span class="line">            &#125;</span><br><span class="line">        ]&#39;;</span><br><span class="line">    echo $jsoncallback .&quot;(&quot; . $json_data . &quot;)&quot;; </span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="客户端代码">客户端代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;JSONP JQ&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.4&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        table &#123;</span><br><span class="line">            border-collapse: collapse;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        td &#123;</span><br><span class="line">            border: 1px solid #aaa;</span><br><span class="line">            padding: 5px 10px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;&#x2F; 使用jQuery的方式</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            $.getJSON(&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;JSONP&#x2F;testJSONP.php?jsoncallback&#x3D;?&quot;, function (data) &#123;</span><br><span class="line">                var list &#x3D; [];</span><br><span class="line">                list.push(&#39;&lt;table&gt;&#39;);</span><br><span class="line">                list.push(&#39;&lt;tr&gt;&lt;td&gt;id&lt;&#x2F;td&gt;&lt;td&gt;姓名&lt;&#x2F;td&gt;&lt;td&gt;年龄&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;&#39;);</span><br><span class="line">                data.map((item) &#x3D;&gt; &#123;</span><br><span class="line">                    var tr &#x3D; &quot;&lt;tr&gt;&lt;td&gt;&quot; + item.id + &quot;&lt;&#x2F;td&gt;&lt;td&gt;&quot; + item.name + &quot;&lt;&#x2F;td&gt;&lt;td&gt;&quot; + item</span><br><span class="line">                        .age + &quot;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">                    list.push(tr);</span><br><span class="line">                &#125;);</span><br><span class="line">                list.push(&#39;&lt;&#x2F;table&gt;&#39;);</span><br><span class="line">                var $table &#x3D; $(list.join(&#39;&#39;));</span><br><span class="line">                $(&#39;#box&#39;).append($table);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>jQuery</tag>
+        <tag>JSONP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用JSONP</title>
+    <url>/2020-3-10-jsonp-js.html</url>
+    <content><![CDATA[<blockquote>
+<p>服务端php</p>
+<p>原生JS</p>
+<p>JSONP</p>
+<p>根据JSON数据创建表格</p>
+</blockquote>
+<a id="more"></a>
+
+<h3><span id="使用jsonp">使用JSONP</span></h3><h3><span id="方法">方法</span></h3><ul>
+<li>原生JS方法</li>
+<li>script <strong>标签形式</strong>引入php</li>
+<li>src中发送回调函数名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;JSONP&#x2F;testJSONP.php?jsoncallback&#x3D;callbackfunction&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>客户端构造回调函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function callbackfunction(result) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>服务端获取回调函数； 并传入json数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取回调函数名</span><br><span class="line">$jsoncallback &#x3D; htmlspecialchars($_REQUEST[&#39;jsoncallback&#39;]);</span><br></pre></td></tr></table></figure>
+
+<h3><span id="效果">效果</span></h3><p><img src="../images/json/jsonp.png" alt="image"></p>
+<h3><span id="服务器端php文件">服务器端php文件</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    &#x2F;&#x2F;header(&quot;Content-type: application&#x2F;json&quot;);</span><br><span class="line">    &#x2F;&#x2F; 获取回调函数名</span><br><span class="line">    $jsoncallback &#x3D; htmlspecialchars($_REQUEST[&#39;jsoncallback&#39;]);</span><br><span class="line">    &#x2F;&#x2F; 构造json数据</span><br><span class="line">    $json_data &#x3D; &#39;[</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 1,</span><br><span class="line">                &quot;name&quot;: &quot;Jone&quot;,</span><br><span class="line">                &quot;age&quot;: 16,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 2,</span><br><span class="line">                &quot;name&quot;: &quot;Kong&quot;,</span><br><span class="line">                &quot;age&quot;: 18, </span><br><span class="line">            &#125;</span><br><span class="line">        ]&#39;;</span><br><span class="line">    echo $jsoncallback .&quot;(&quot; . $json_data . &quot;)&quot;; </span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="客户端代码">客户端代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;JSONP JS&lt;&#x2F;title&gt;    </span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        table &#123;</span><br><span class="line">            border-collapse: collapse;</span><br><span class="line">        &#125;</span><br><span class="line">        td &#123;</span><br><span class="line">            border: 1px solid #aaa;</span><br><span class="line">            padding: 5px 10px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function callbackfunction(result) &#123;</span><br><span class="line">            var table &#x3D; document.createElement(&#39;table&#39;);    </span><br><span class="line">            var tr &#x3D; document.createElement(&#39;tr&#39;);</span><br><span class="line">            var td &#x3D; &#39;&lt;td&gt;id&lt;&#x2F;td&gt;&lt;td&gt;姓名&lt;&#x2F;td&gt;&lt;td&gt;年龄&lt;&#x2F;td&gt;&#39;;     </span><br><span class="line">            tr.innerHTML &#x3D; td;</span><br><span class="line">            table.appendChild(tr);   </span><br><span class="line">            for(var i &#x3D; 0; i &lt; result.length; i++) &#123;</span><br><span class="line">                var tr &#x3D; document.createElement(&#39;tr&#39;);</span><br><span class="line">                var td1 &#x3D; document.createElement(&#39;td&#39;);</span><br><span class="line">                var td2 &#x3D;  document.createElement(&#39;td&#39;);</span><br><span class="line">                var td3 &#x3D; document.createElement(&#39;td&#39;);</span><br><span class="line">                td1.innerHTML &#x3D; result[i].id;</span><br><span class="line">                td2.innerHTML &#x3D; result[i].name;</span><br><span class="line">                td3.innerHTML &#x3D; result[i].age;</span><br><span class="line">                tr.appendChild(td1);</span><br><span class="line">                tr.appendChild(td2);</span><br><span class="line">                tr.appendChild(td3);</span><br><span class="line">                table.appendChild(tr);</span><br><span class="line">            &#125;</span><br><span class="line">            var box &#x3D; document.getElementById(&quot;box&quot;);</span><br><span class="line">            box.appendChild(table);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;JSONP&#x2F;testJSONP.php?jsoncallback&#x3D;callbackfunction&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>JSONP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery实例8-表格全选和反选</title>
+    <url>/2020-3-9-jquery-shi-li-8.html</url>
+    <content><![CDATA[<blockquote>
+<p>笔记整理</p>
+<p>jQuery实例</p>
+<p>表格全选和反选</p>
+</blockquote>
+<a id="more"></a>
+
+<h3><span id="jquery实例8-表格全选和反选">jQuery实例8-表格全选和反选</span></h3><h3><span id="主要方法">主要方法</span></h3><ul>
+<li>checkbox</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>prop(‘checked’, true) // 布尔属性使用 prop()设置和获取</li>
+<li>$(‘tbody input:checked’).length</li>
 </ul>
 <h3><span id="需求">需求</span></h3><blockquote>
-<p>导航栏；鼠标悬停在 一级标题时，显示二级标题；离开时，隐藏二级标题</p>
+<p>表格中有一个没选中 全选就不选中 ；表格中全被选中时，全选就选中</p>
 </blockquote>
-<h3><span id="效果">效果</span></h3><p><img src="../images/gif/nav.gif" alt="image"></p>
-<h3><span id="代码">代码</span></h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>导航栏 jQuery<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.container</span>&gt;<span class="selector-tag">ul</span>&#123;</span></span><br><span class="line">            float: left;</span><br><span class="line">        &#125;</span><br><span class="line">        ul &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        ul li&#123;</span><br><span class="line">            list-style: none; </span><br><span class="line">            background-color: aqua;</span><br><span class="line">            border: 1px solid yellow;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 30px;   </span><br><span class="line">            text-align: center;        </span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line">        a &#123;</span><br><span class="line">            line-height: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        li ul &#123;</span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 需求：导航栏；鼠标悬停在 一级标题时，显示二级标题；离开时，隐藏二级标题</span></span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'.container&gt;ul&gt;li'</span>).mouseenter(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).children(<span class="string">'ul'</span>).show();</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">'.container&gt;ul&gt;li'</span>).mouseleave(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).children(<span class="string">'ul'</span>).hide();</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+<h3><span id="效果">效果</span></h3><p><img src="../images/gif/allSele.gif" alt="image"></p>
+<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;表格的全选反选 jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        table &#123;</span><br><span class="line">            border-collapse:collapse;</span><br><span class="line">            margin: auto;</span><br><span class="line">        &#125;</span><br><span class="line">        td &#123;</span><br><span class="line">            border: 1px solid #aaa;</span><br><span class="line">            padding: 5px 10px;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">        thead &#123;</span><br><span class="line">            background-color: #8DEEEE;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input id&#x3D;&quot;allSlt&quot; type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;课程名&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;任课老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;地理学&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;张老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;计算机原理&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;何老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;前端课程&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;黎老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;环境学&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;莫老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;tbody&gt;</span><br><span class="line">    &lt;&#x2F;table&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            &#x2F;&#x2F; 全选和全反选</span><br><span class="line">            $(&#39;#allSlt&#39;).click(function() &#123;</span><br><span class="line">                var $allSlt &#x3D; $(this).prop(&#39;checked&#39;);</span><br><span class="line">                if($allSlt) &#123; &#x2F;&#x2F; 选中后 表格中全选</span><br><span class="line">                    $(&#39;tbody input&#39;).prop(&#39;checked&#39;, true);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    $(&#39;tbody input&#39;).prop(&#39;checked&#39;, false);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 表格中有一个没选中 全选就不选中 ；表格中全被选中时，全选就选中</span><br><span class="line">            $(&#39;tbody input&#39;).click(function() &#123;</span><br><span class="line">                &#x2F;&#x2F; 获取 单选框个数</span><br><span class="line">                var $numOfSelect &#x3D; $(&#39;tbody input&#39;).length;</span><br><span class="line">                &#x2F;&#x2F; 获取 单选框 被 选中的 个数</span><br><span class="line">                var $numOfSelected &#x3D; $(&#39;tbody input:checked&#39;).length;</span><br><span class="line">                &#x2F;&#x2F; 判断是否全选 再操作</span><br><span class="line">                if($numOfSelect &#x3D;&#x3D; $numOfSelected) &#123; &#x2F;&#x2F; 全选</span><br><span class="line">                    $(&#39;#allSlt&#39;).prop(&#39;checked&#39;, true);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    $(&#39;#allSlt&#39;).prop(&#39;checked&#39;, false);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
       <tags>
         <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
-    <title>jQuery实例9-固定导航栏</title>
-    <url>/2020-3-9-jquery-shi-li-9.html</url>
+    <title>jQuery实例7-城市选择案例</title>
+    <url>/2020-3-9-jquery-shi-li-7.html</url>
     <content><![CDATA[<blockquote>
 <p>笔记整理</p>
 <p>jQuery实例</p>
-<p>固定导航栏</p>
+<p>城市选择案例</p>
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="jquery实例9-固定导航栏">jQuery实例9-固定导航栏</span></h3><h3><span id="主要方法">主要方法</span></h3><ul>
-<li>css()</li>
-<li>height() // 获取元素高度</li>
-<li>$(window).scrollTop() //获取滚轮卷曲高度</li>
-<li>$(window).scroll() //监听滚轮事件</li>
-<li>注意 fixed 的<strong>脱离标准流</strong>特点;需要防止main主体突然冒出</li>
+<h3><span id="jquery实例7-城市选择案例">jQuery实例7-城市选择案例</span></h3><h3><span id="主要方法">主要方法</span></h3><ul>
+<li>appendTo()</li>
+<li>select标签的multiple属性，占多行</li>
+<li><strong>$(‘#city2&gt;option:selected’)</strong> 选择器</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 固定导航栏</span><br><span class="line">$(&#39;#nav&#39;).css(&#123;</span><br><span class="line">    position: &#39;fixed&#39;,</span><br><span class="line">    top: 0</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 还原导航栏</span><br><span class="line">$(&#39;#nav&#39;).css(&#123;</span><br><span class="line">    position: &#39;static&#39;,</span><br><span class="line">    top: 0</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <h3><span id="需求">需求</span></h3><blockquote>
-<p>固定导航栏</p>
-<p>还原导航栏</p>
-<p>由于 fixed 定位脱离标准流；需要防止main主体突然冒出</p>
+<p>把城市全部移动到右边</p>
+<p>把城市全部移动到左边</p>
+<p>把选中的城市移动到右边</p>
+<p>把选中的城市移动到左边</p>
 </blockquote>
-<h3><span id="效果">效果</span></h3><p><img src="../images/gif/fixedNav.gif" alt="image"></p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;固定导航栏 jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">        #main &#123;</span><br><span class="line">            border: 2px solid red;</span><br><span class="line">            margin: 50px 0;</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;top&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307180120.png&quot; alt&#x3D;&quot;top&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;nav&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307175929.png&quot; alt&#x3D;&quot;nav&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307180010.png&quot; alt&#x3D;&quot;main1&quot; &#x2F;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307180044.png&quot; alt&#x3D;&quot;main2&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;&#x2F; 固定导航栏</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            &#x2F;&#x2F; 获取 top 栏的高度</span><br><span class="line">            var $top &#x3D; $(&#39;#top&#39;).height(); </span><br><span class="line">            &#x2F;&#x2F; 获取nav导航栏的高度</span><br><span class="line">            var $navHeight &#x3D; $(&#39;#nav&#39;).height();         </span><br><span class="line">            &#x2F;&#x2F; 监听滚轮事件</span><br><span class="line">            $(window).scroll(function () &#123;</span><br><span class="line">                &#x2F;&#x2F; 获取滚轮卷曲高度</span><br><span class="line">                var $scrTop &#x3D; $(window).scrollTop();</span><br><span class="line">                if($scrTop &gt; $top) &#123; </span><br><span class="line">                    &#x2F;&#x2F; 固定导航栏</span><br><span class="line">                    $(&#39;#nav&#39;).css(&#123;</span><br><span class="line">                        position: &#39;fixed&#39;,</span><br><span class="line">                        top: 0</span><br><span class="line">                    &#125;);</span><br><span class="line">                    &#x2F;&#x2F; 由于 fixed 定位脱离标准流；需要防止main主体突然冒出</span><br><span class="line">                    $(&#39;#main&#39;).css(&#123;</span><br><span class="line">                        marginTop: $navHeight+50</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    &#x2F;&#x2F; 还原导航栏</span><br><span class="line">                    $(&#39;#nav&#39;).css(&#123;</span><br><span class="line">                        position: &#39;static&#39;,</span><br><span class="line">                        top: 0</span><br><span class="line">                    &#125;);</span><br><span class="line">                    &#x2F;&#x2F; 还原 main主体 marginTop</span><br><span class="line">                    $(&#39;#main&#39;).css(&#123;</span><br><span class="line">                        marginTop: 50</span><br><span class="line">                    &#125;)</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
+<h3><span id="效果">效果</span></h3><p><img src="../images/gif/city_sele.gif" alt="image"></p>
+<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;城市选择案例&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        select &#123;</span><br><span class="line">            height: 100px;</span><br><span class="line">            width: 100px;</span><br><span class="line">            background-color: #ccc;</span><br><span class="line">        &#125;</span><br><span class="line">        .sBox &#123;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            height: 100px;</span><br><span class="line">            width: 50px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;城市选择&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;city1&quot; multiple&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;1&quot;&gt;北京&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;2&quot;&gt;深圳&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;3&quot;&gt;上海&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;4&quot;&gt;广州&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;sBox&quot;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;allToR&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&gt;&gt;&gt;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;allToL&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&lt;&lt;&lt;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;sToR&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&gt;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;sToL&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&lt;&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;city2&quot; multiple&gt;&lt;&#x2F;select&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            &#x2F;&#x2F; 把城市全部移动到右边</span><br><span class="line">            $(&#39;#allToR&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city1&gt;option&#39;).appendTo($(&#39;#city2&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">            &#x2F;&#x2F; 把城市全部移动到左边</span><br><span class="line">            $(&#39;#allToL&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city2&gt;option&#39;).appendTo($(&#39;#city1&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">            &#x2F;&#x2F; 把选中的城市移动到右边</span><br><span class="line">            $(&#39;#sToR&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city1&gt;option:selected&#39;).appendTo($(&#39;#city2&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">            &#x2F;&#x2F; 把选中的城市移动到左边</span><br><span class="line">            $(&#39;#sToL&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city2&gt;option:selected&#39;).appendTo($(&#39;#city1&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>jQuery</tag>
       </tags>
@@ -294,56 +528,64 @@
       </tags>
   </entry>
   <entry>
-    <title>jQuery实例7-城市选择案例</title>
-    <url>/2020-3-9-jquery-shi-li-7.html</url>
+    <title>jQuery实例1-防止连续触发的导航栏</title>
+    <url>/2020-3-9-jquery-shi-li-1.html</url>
     <content><![CDATA[<blockquote>
 <p>笔记整理</p>
 <p>jQuery实例</p>
-<p>城市选择案例</p>
+<p>下拉导航栏</p>
+<p>防止下拉事件连续触发</p>
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="jquery实例7-城市选择案例">jQuery实例7-城市选择案例</span></h3><h3><span id="主要方法">主要方法</span></h3><ul>
-<li>appendTo()</li>
-<li>select标签的multiple属性，占多行</li>
-<li><strong>$(‘#city2&gt;option:selected’)</strong> 选择器</li>
+<h3><span id="jquery实例1-防止连续触发的导航栏">jQuery实例1-防止连续触发的导航栏</span></h3><h3><span id="主要方法">主要方法</span></h3><p>使用鼠标移入移出事件</p>
+<ul>
+<li>防止事件连续触发</li>
+<li>mouseenter()</li>
+<li>mouseleave()</li>
+</ul>
+<p>普通移入移出事件</p>
+<ul>
+<li>mouseover()</li>
+<li>mouseout()</li>
 </ul>
 <h3><span id="需求">需求</span></h3><blockquote>
-<p>把城市全部移动到右边</p>
-<p>把城市全部移动到左边</p>
-<p>把选中的城市移动到右边</p>
-<p>把选中的城市移动到左边</p>
+<p>导航栏；鼠标悬停在 一级标题时，显示二级标题；离开时，隐藏二级标题</p>
 </blockquote>
-<h3><span id="效果">效果</span></h3><p><img src="../images/gif/city_sele.gif" alt="image"></p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;城市选择案例&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        select &#123;</span><br><span class="line">            height: 100px;</span><br><span class="line">            width: 100px;</span><br><span class="line">            background-color: #ccc;</span><br><span class="line">        &#125;</span><br><span class="line">        .sBox &#123;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            height: 100px;</span><br><span class="line">            width: 50px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;城市选择&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;city1&quot; multiple&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;1&quot;&gt;北京&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;2&quot;&gt;深圳&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;3&quot;&gt;上海&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;4&quot;&gt;广州&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;sBox&quot;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;allToR&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&gt;&gt;&gt;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;allToL&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&lt;&lt;&lt;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;sToR&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&gt;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;sToL&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;&lt;&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;city2&quot; multiple&gt;&lt;&#x2F;select&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            &#x2F;&#x2F; 把城市全部移动到右边</span><br><span class="line">            $(&#39;#allToR&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city1&gt;option&#39;).appendTo($(&#39;#city2&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">            &#x2F;&#x2F; 把城市全部移动到左边</span><br><span class="line">            $(&#39;#allToL&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city2&gt;option&#39;).appendTo($(&#39;#city1&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">            &#x2F;&#x2F; 把选中的城市移动到右边</span><br><span class="line">            $(&#39;#sToR&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city1&gt;option:selected&#39;).appendTo($(&#39;#city2&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">            &#x2F;&#x2F; 把选中的城市移动到左边</span><br><span class="line">            $(&#39;#sToL&#39;).click(function() &#123;</span><br><span class="line">                $(&#39;#city2&gt;option:selected&#39;).appendTo($(&#39;#city1&#39;));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+<h3><span id="效果">效果</span></h3><p><img src="../images/gif/nav.gif" alt="image"></p>
+<h3><span id="代码">代码</span></h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>导航栏 jQuery<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.container</span>&gt;<span class="selector-tag">ul</span>&#123;</span></span><br><span class="line">            float: left;</span><br><span class="line">        &#125;</span><br><span class="line">        ul &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        ul li&#123;</span><br><span class="line">            list-style: none; </span><br><span class="line">            background-color: aqua;</span><br><span class="line">            border: 1px solid yellow;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 30px;   </span><br><span class="line">            text-align: center;        </span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line">        a &#123;</span><br><span class="line">            line-height: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        li ul &#123;</span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 需求：导航栏；鼠标悬停在 一级标题时，显示二级标题；离开时，隐藏二级标题</span></span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'.container&gt;ul&gt;li'</span>).mouseenter(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).children(<span class="string">'ul'</span>).show();</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="javascript">            $(<span class="string">'.container&gt;ul&gt;li'</span>).mouseleave(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).children(<span class="string">'ul'</span>).hide();</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
-    <title>jQuery实例8-表格全选和反选</title>
-    <url>/2020-3-9-jquery-shi-li-8.html</url>
+    <title>jQuery实例9-固定导航栏</title>
+    <url>/2020-3-9-jquery-shi-li-9.html</url>
     <content><![CDATA[<blockquote>
 <p>笔记整理</p>
 <p>jQuery实例</p>
-<p>表格全选和反选</p>
+<p>固定导航栏</p>
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="jquery实例8-表格全选和反选">jQuery实例8-表格全选和反选</span></h3><h3><span id="主要方法">主要方法</span></h3><ul>
-<li>checkbox</li>
+<h3><span id="jquery实例9-固定导航栏">jQuery实例9-固定导航栏</span></h3><h3><span id="主要方法">主要方法</span></h3><ul>
+<li>css()</li>
+<li>height() // 获取元素高度</li>
+<li>$(window).scrollTop() //获取滚轮卷曲高度</li>
+<li>$(window).scroll() //监听滚轮事件</li>
+<li>注意 fixed 的<strong>脱离标准流</strong>特点;需要防止main主体突然冒出</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 固定导航栏</span><br><span class="line">$(&#39;#nav&#39;).css(&#123;</span><br><span class="line">    position: &#39;fixed&#39;,</span><br><span class="line">    top: 0</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>prop(‘checked’, true) // 布尔属性使用 prop()设置和获取</li>
-<li>$(‘tbody input:checked’).length</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 还原导航栏</span><br><span class="line">$(&#39;#nav&#39;).css(&#123;</span><br><span class="line">    position: &#39;static&#39;,</span><br><span class="line">    top: 0</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h3><span id="需求">需求</span></h3><blockquote>
-<p>表格中有一个没选中 全选就不选中 ；表格中全被选中时，全选就选中</p>
+<p>固定导航栏</p>
+<p>还原导航栏</p>
+<p>由于 fixed 定位脱离标准流；需要防止main主体突然冒出</p>
 </blockquote>
-<h3><span id="效果">效果</span></h3><p><img src="../images/gif/allSele.gif" alt="image"></p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;表格的全选反选 jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        table &#123;</span><br><span class="line">            border-collapse:collapse;</span><br><span class="line">            margin: auto;</span><br><span class="line">        &#125;</span><br><span class="line">        td &#123;</span><br><span class="line">            border: 1px solid #aaa;</span><br><span class="line">            padding: 5px 10px;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">        thead &#123;</span><br><span class="line">            background-color: #8DEEEE;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input id&#x3D;&quot;allSlt&quot; type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;课程名&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;任课老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;地理学&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;张老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;计算机原理&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;何老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;前端课程&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;黎老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;环境学&lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt;莫老师&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;tbody&gt;</span><br><span class="line">    &lt;&#x2F;table&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            &#x2F;&#x2F; 全选和全反选</span><br><span class="line">            $(&#39;#allSlt&#39;).click(function() &#123;</span><br><span class="line">                var $allSlt &#x3D; $(this).prop(&#39;checked&#39;);</span><br><span class="line">                if($allSlt) &#123; &#x2F;&#x2F; 选中后 表格中全选</span><br><span class="line">                    $(&#39;tbody input&#39;).prop(&#39;checked&#39;, true);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    $(&#39;tbody input&#39;).prop(&#39;checked&#39;, false);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 表格中有一个没选中 全选就不选中 ；表格中全被选中时，全选就选中</span><br><span class="line">            $(&#39;tbody input&#39;).click(function() &#123;</span><br><span class="line">                &#x2F;&#x2F; 获取 单选框个数</span><br><span class="line">                var $numOfSelect &#x3D; $(&#39;tbody input&#39;).length;</span><br><span class="line">                &#x2F;&#x2F; 获取 单选框 被 选中的 个数</span><br><span class="line">                var $numOfSelected &#x3D; $(&#39;tbody input:checked&#39;).length;</span><br><span class="line">                &#x2F;&#x2F; 判断是否全选 再操作</span><br><span class="line">                if($numOfSelect &#x3D;&#x3D; $numOfSelected) &#123; &#x2F;&#x2F; 全选</span><br><span class="line">                    $(&#39;#allSlt&#39;).prop(&#39;checked&#39;, true);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    $(&#39;#allSlt&#39;).prop(&#39;checked&#39;, false);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h3><span id="效果">效果</span></h3><p><img src="../images/gif/fixedNav.gif" alt="image"></p>
+<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;固定导航栏 jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">        #main &#123;</span><br><span class="line">            border: 2px solid red;</span><br><span class="line">            margin: 50px 0;</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;top&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307180120.png&quot; alt&#x3D;&quot;top&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;nav&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307175929.png&quot; alt&#x3D;&quot;nav&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307180010.png&quot; alt&#x3D;&quot;main1&quot; &#x2F;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;2&#x2F;20200307180044.png&quot; alt&#x3D;&quot;main2&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;&#x2F; 固定导航栏</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            &#x2F;&#x2F; 获取 top 栏的高度</span><br><span class="line">            var $top &#x3D; $(&#39;#top&#39;).height(); </span><br><span class="line">            &#x2F;&#x2F; 获取nav导航栏的高度</span><br><span class="line">            var $navHeight &#x3D; $(&#39;#nav&#39;).height();         </span><br><span class="line">            &#x2F;&#x2F; 监听滚轮事件</span><br><span class="line">            $(window).scroll(function () &#123;</span><br><span class="line">                &#x2F;&#x2F; 获取滚轮卷曲高度</span><br><span class="line">                var $scrTop &#x3D; $(window).scrollTop();</span><br><span class="line">                if($scrTop &gt; $top) &#123; </span><br><span class="line">                    &#x2F;&#x2F; 固定导航栏</span><br><span class="line">                    $(&#39;#nav&#39;).css(&#123;</span><br><span class="line">                        position: &#39;fixed&#39;,</span><br><span class="line">                        top: 0</span><br><span class="line">                    &#125;);</span><br><span class="line">                    &#x2F;&#x2F; 由于 fixed 定位脱离标准流；需要防止main主体突然冒出</span><br><span class="line">                    $(&#39;#main&#39;).css(&#123;</span><br><span class="line">                        marginTop: $navHeight+50</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    &#x2F;&#x2F; 还原导航栏</span><br><span class="line">                    $(&#39;#nav&#39;).css(&#123;</span><br><span class="line">                        position: &#39;static&#39;,</span><br><span class="line">                        top: 0</span><br><span class="line">                    &#125;);</span><br><span class="line">                    &#x2F;&#x2F; 还原 main主体 marginTop</span><br><span class="line">                    $(&#39;#main&#39;).css(&#123;</span><br><span class="line">                        marginTop: 50</span><br><span class="line">                    &#125;)</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>jQuery</tag>
@@ -730,6 +972,21 @@
       </tags>
   </entry>
   <entry>
+    <title>vba ArcMap UI控件  计算要素图层面积</title>
+    <url>/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html</url>
+    <content><![CDATA[<ul>
+<li>计算点坐标</li>
+<li>添加两个字段，X和Y，X为经度，Y为纬度</li>
+</ul>
+<a id="more"></a>
+
+<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Private Sub UIButtonControl3_Click()</span><br><span class="line">&#39;功能：计算点坐标</span><br><span class="line">&#39;作者：inno</span><br><span class="line">&#39;说明：代码实现新建两个字段，X和Y，X为经度，Y为纬度</span><br><span class="line">&#39;日期：2019&#x2F;9&#x2F;18</span><br><span class="line"></span><br><span class="line">&#39;IApplicatin开始</span><br><span class="line">Dim pApp As IApplication</span><br><span class="line">Set pApp &#x3D; Application</span><br><span class="line"></span><br><span class="line">&#39;获取文档 MxDocument</span><br><span class="line">Dim pMxDoc As IMxDocument</span><br><span class="line">Set pMxDoc &#x3D; pApp.Document</span><br><span class="line"></span><br><span class="line">&#39;获取当前地图 IMap</span><br><span class="line">Dim pMap As IMap</span><br><span class="line">Set pMap &#x3D; pMxDoc.FocusMap</span><br><span class="line"></span><br><span class="line">&#39;获取点图层 ILayer</span><br><span class="line">Dim pLayer As ILayer</span><br><span class="line">Set pLayer &#x3D; pMap.Layer(2) &#39;点图层在第三个位置</span><br><span class="line"></span><br><span class="line">&#39;判断图层是否为矢量</span><br><span class="line">If Not TypeOf pLayer Is IFeatureLayer Then</span><br><span class="line">    MsgBox &quot;图层不是矢量，已退出&quot;</span><br><span class="line">    Exit Sub</span><br><span class="line">End If</span><br><span class="line"></span><br><span class="line">&#39;获取矢量图层 IFeatureLayer</span><br><span class="line">Dim pFeatLyr As IFeatureLayer</span><br><span class="line">Set pFeatLyr &#x3D; pLayer</span><br><span class="line"></span><br><span class="line">&#39;获取表 IFeatureClass</span><br><span class="line">Dim pFeatCls As IFeatureClass</span><br><span class="line">Set pFeatCls &#x3D; pFeatLyr.FeatureClass</span><br><span class="line"></span><br><span class="line">&#39;定义添加的字段名</span><br><span class="line">Dim sXField As String</span><br><span class="line">Dim sYField As String</span><br><span class="line">sXField &#x3D; &quot;X&quot;</span><br><span class="line">sYField &#x3D; &quot;Y&quot;</span><br><span class="line">&#39;判断属性表中是否存在需要创建的字段</span><br><span class="line">If pFeatCls.FindField(sXField) &lt;&gt; -1 Or pFeatCls.FindField(sYField) &lt;&gt; -1 Then</span><br><span class="line">    MsgBox &quot;需要创建的字段已存在，请重试&quot;</span><br><span class="line">    Exit Sub</span><br><span class="line">End If</span><br><span class="line">&#39;创建字段并添加字段属性</span><br><span class="line">Dim xField As IFieldEdit</span><br><span class="line">Dim yField As IFieldEdit</span><br><span class="line">Set xField &#x3D; New Field</span><br><span class="line">Set yField &#x3D; New Field</span><br><span class="line">xField.Name &#x3D; sXField</span><br><span class="line">yField.Name &#x3D; sYField</span><br><span class="line">xField.Type &#x3D; esriFieldTypeDouble</span><br><span class="line">yField.Type &#x3D; esriFieldTypeDouble</span><br><span class="line"></span><br><span class="line">&#39;将字段添加到属性表</span><br><span class="line">pFeatCls.AddField xField &#39;加括号报错</span><br><span class="line">pFeatCls.AddField yField</span><br><span class="line"></span><br><span class="line">&#39;获取cursor IFeatureCursor</span><br><span class="line">Dim pFeatCur As IFeatureCursor</span><br><span class="line">Set pFeatCur &#x3D; pFeatCls.Update(Nothing, False)</span><br><span class="line"></span><br><span class="line">&#39;获取要素 IFeature</span><br><span class="line">Dim pFeat As IFeature</span><br><span class="line">Set pFeat &#x3D; pFeatCur.NextFeature</span><br><span class="line"></span><br><span class="line">Dim pnt As IPoint &#39;IPoint 存储点</span><br><span class="line">Dim s As String &#39;字符串，用于打印</span><br><span class="line">Dim idX As Integer &#39;X字段索引</span><br><span class="line">Dim idY As Integer &#39;Y字段索引</span><br><span class="line">Dim idName As Integer &#39;NAME 字段索引</span><br><span class="line"></span><br><span class="line">&#39;给索引赋值</span><br><span class="line">idX &#x3D; pFeatCls.FindField(sXField)</span><br><span class="line">idY &#x3D; pFeatCls.FindField(sYField)</span><br><span class="line">idName &#x3D; pFeatCls.FindField(&quot;NAME&quot;)</span><br><span class="line"></span><br><span class="line">&#39;循环赋值</span><br><span class="line">Do While Not pFeat Is Nothing</span><br><span class="line">    Set pnt &#x3D; pFeat.Shape</span><br><span class="line">    &#39;为字段赋值</span><br><span class="line">    pFeat.Value(idX) &#x3D; pnt.X</span><br><span class="line">    pFeat.Value(idY) &#x3D; pnt.Y</span><br><span class="line">    pFeatCur.UpdateFeature pFeat &#39;更新每一行</span><br><span class="line">    </span><br><span class="line">    s &#x3D; s + pFeat.Value(idName) + &quot;: X &quot; + Str(pnt.X) + &quot; Y &quot; + Str(pnt.Y) + vbNewLine</span><br><span class="line">    </span><br><span class="line">    Set pFeat &#x3D; pFeatCur.NextFeature &#39;循环</span><br><span class="line">Loop</span><br><span class="line"></span><br><span class="line">MsgBox s</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>ArcMapEngine</tag>
+        <tag>vba</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python 计算要素图层面积</title>
     <url>/2019-09-18-py-tian-jia-zi-duan-ji-suan-mian-ji.html</url>
     <content><![CDATA[<ul>
@@ -777,21 +1034,6 @@
       <tags>
         <tag>ArcMapEngine</tag>
         <tag>arcpy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vba ArcMap UI控件  计算要素图层面积</title>
-    <url>/2019-09-18-vba-arcmap-ui-kong-jian-ji-suan-dian-zuo-biao.html</url>
-    <content><![CDATA[<ul>
-<li>计算点坐标</li>
-<li>添加两个字段，X和Y，X为经度，Y为纬度</li>
-</ul>
-<a id="more"></a>
-
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Private Sub UIButtonControl3_Click()</span><br><span class="line">&#39;功能：计算点坐标</span><br><span class="line">&#39;作者：inno</span><br><span class="line">&#39;说明：代码实现新建两个字段，X和Y，X为经度，Y为纬度</span><br><span class="line">&#39;日期：2019&#x2F;9&#x2F;18</span><br><span class="line"></span><br><span class="line">&#39;IApplicatin开始</span><br><span class="line">Dim pApp As IApplication</span><br><span class="line">Set pApp &#x3D; Application</span><br><span class="line"></span><br><span class="line">&#39;获取文档 MxDocument</span><br><span class="line">Dim pMxDoc As IMxDocument</span><br><span class="line">Set pMxDoc &#x3D; pApp.Document</span><br><span class="line"></span><br><span class="line">&#39;获取当前地图 IMap</span><br><span class="line">Dim pMap As IMap</span><br><span class="line">Set pMap &#x3D; pMxDoc.FocusMap</span><br><span class="line"></span><br><span class="line">&#39;获取点图层 ILayer</span><br><span class="line">Dim pLayer As ILayer</span><br><span class="line">Set pLayer &#x3D; pMap.Layer(2) &#39;点图层在第三个位置</span><br><span class="line"></span><br><span class="line">&#39;判断图层是否为矢量</span><br><span class="line">If Not TypeOf pLayer Is IFeatureLayer Then</span><br><span class="line">    MsgBox &quot;图层不是矢量，已退出&quot;</span><br><span class="line">    Exit Sub</span><br><span class="line">End If</span><br><span class="line"></span><br><span class="line">&#39;获取矢量图层 IFeatureLayer</span><br><span class="line">Dim pFeatLyr As IFeatureLayer</span><br><span class="line">Set pFeatLyr &#x3D; pLayer</span><br><span class="line"></span><br><span class="line">&#39;获取表 IFeatureClass</span><br><span class="line">Dim pFeatCls As IFeatureClass</span><br><span class="line">Set pFeatCls &#x3D; pFeatLyr.FeatureClass</span><br><span class="line"></span><br><span class="line">&#39;定义添加的字段名</span><br><span class="line">Dim sXField As String</span><br><span class="line">Dim sYField As String</span><br><span class="line">sXField &#x3D; &quot;X&quot;</span><br><span class="line">sYField &#x3D; &quot;Y&quot;</span><br><span class="line">&#39;判断属性表中是否存在需要创建的字段</span><br><span class="line">If pFeatCls.FindField(sXField) &lt;&gt; -1 Or pFeatCls.FindField(sYField) &lt;&gt; -1 Then</span><br><span class="line">    MsgBox &quot;需要创建的字段已存在，请重试&quot;</span><br><span class="line">    Exit Sub</span><br><span class="line">End If</span><br><span class="line">&#39;创建字段并添加字段属性</span><br><span class="line">Dim xField As IFieldEdit</span><br><span class="line">Dim yField As IFieldEdit</span><br><span class="line">Set xField &#x3D; New Field</span><br><span class="line">Set yField &#x3D; New Field</span><br><span class="line">xField.Name &#x3D; sXField</span><br><span class="line">yField.Name &#x3D; sYField</span><br><span class="line">xField.Type &#x3D; esriFieldTypeDouble</span><br><span class="line">yField.Type &#x3D; esriFieldTypeDouble</span><br><span class="line"></span><br><span class="line">&#39;将字段添加到属性表</span><br><span class="line">pFeatCls.AddField xField &#39;加括号报错</span><br><span class="line">pFeatCls.AddField yField</span><br><span class="line"></span><br><span class="line">&#39;获取cursor IFeatureCursor</span><br><span class="line">Dim pFeatCur As IFeatureCursor</span><br><span class="line">Set pFeatCur &#x3D; pFeatCls.Update(Nothing, False)</span><br><span class="line"></span><br><span class="line">&#39;获取要素 IFeature</span><br><span class="line">Dim pFeat As IFeature</span><br><span class="line">Set pFeat &#x3D; pFeatCur.NextFeature</span><br><span class="line"></span><br><span class="line">Dim pnt As IPoint &#39;IPoint 存储点</span><br><span class="line">Dim s As String &#39;字符串，用于打印</span><br><span class="line">Dim idX As Integer &#39;X字段索引</span><br><span class="line">Dim idY As Integer &#39;Y字段索引</span><br><span class="line">Dim idName As Integer &#39;NAME 字段索引</span><br><span class="line"></span><br><span class="line">&#39;给索引赋值</span><br><span class="line">idX &#x3D; pFeatCls.FindField(sXField)</span><br><span class="line">idY &#x3D; pFeatCls.FindField(sYField)</span><br><span class="line">idName &#x3D; pFeatCls.FindField(&quot;NAME&quot;)</span><br><span class="line"></span><br><span class="line">&#39;循环赋值</span><br><span class="line">Do While Not pFeat Is Nothing</span><br><span class="line">    Set pnt &#x3D; pFeat.Shape</span><br><span class="line">    &#39;为字段赋值</span><br><span class="line">    pFeat.Value(idX) &#x3D; pnt.X</span><br><span class="line">    pFeat.Value(idY) &#x3D; pnt.Y</span><br><span class="line">    pFeatCur.UpdateFeature pFeat &#39;更新每一行</span><br><span class="line">    </span><br><span class="line">    s &#x3D; s + pFeat.Value(idName) + &quot;: X &quot; + Str(pnt.X) + &quot; Y &quot; + Str(pnt.Y) + vbNewLine</span><br><span class="line">    </span><br><span class="line">    Set pFeat &#x3D; pFeatCur.NextFeature &#39;循环</span><br><span class="line">Loop</span><br><span class="line"></span><br><span class="line">MsgBox s</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>ArcMapEngine</tag>
-        <tag>vba</tag>
       </tags>
   </entry>
   <entry>
@@ -1279,6 +1521,69 @@
       </tags>
   </entry>
   <entry>
+    <title>PHP中password_hash()密码加密</title>
+    <url>/2019-07-31-php-password-hash.html</url>
+    <content><![CDATA[<h2><span id="php对登陆密码加密的方法">PHP对登陆密码加密的方法</span></h2><p>环境说明：</p>
+<ul>
+<li>php7.0</li>
+<li>apache2</li>
+<li><?php 代码 ?>
+
+</li>
+</ul>
+<p>加密方法:</p>
+<blockquote>
+<ul>
+<li>password_hash ($password, PASSWORD_BCRYPT, $options)</li>
+<li>$password 需要加密的密码</li>
+<li>PASSWORD_BCRYPT 加密方式</li>
+<li>$options 可用于设置cost值和 salt值</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;例:</span><br><span class="line">$options &#x3D; [</span><br><span class="line">        &#39;cost&#39; &#x3D;&gt; 11,</span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
+
+<p>验证哈希值与密码是否匹配</p>
+<ul>
+<li>password_verify($password, $hash)</li>
+<li>参数为密码和加密后的哈希值</li>
+</ul>
+<a id="more"></a>
+
+<h3><span id="1-查看服务器在不拖慢速度的最高cost值">1. 查看服务器在不拖慢速度的最高cost值</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;测试机器能够达到的最高cost</span><br><span class="line">	$time &#x3D; 0.1; &#x2F;&#x2F; 100毫秒</span><br><span class="line">	$cost &#x3D; 8;</span><br><span class="line">	do&#123;</span><br><span class="line">		$cost++;</span><br><span class="line">		$start &#x3D; microtime(true);</span><br><span class="line">		password_hash($password, PASSWORD_BCRYPT, [&#39;cost&#39; &#x3D;&gt; $cost]);</span><br><span class="line">		$end &#x3D; microtime(true);</span><br><span class="line"></span><br><span class="line">	&#125;while(($end - $start) &lt; $time);</span><br></pre></td></tr></table></figure>
+<h3><span id="2-加密与验证加密后的哈希值与密码是否匹配">2. 加密与验证加密后的哈希值与密码是否匹配</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 加密</span><br><span class="line">$hash &#x3D; password_hash($password, PASSWORD_BCRYPT, [&quot;cost&quot; &#x3D;&gt; 11]);</span><br><span class="line"></span><br><span class="line">echo &quot;$hash&quot; . &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">&#x2F;&#x2F; 验证</span><br><span class="line">if(password_verify($password, $hash))&#123;</span><br><span class="line">	echo &quot;匹配&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;不匹配&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>php</tag>
+        <tag>php密码加密</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP新建用户数据库和表</title>
+    <url>/2019-07-31-php-mysql-create.html</url>
+    <content><![CDATA[<p>环境说明: </p>
+<ul>
+<li>php7.0</li>
+<li>apache2</li>
+<li>以下代码均在<?php ?>标签中</li>
+</ul>
+<p>建库注意事项:</p>
+<ul>
+<li>数据库编码的设置</li>
+<li>建表时引擎的设置</li>
+</ul>
+<a id="more"></a>
+
+<h2><span id="1连接数据库">1.连接数据库</span></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$server &#x3D; &quot;xxx.xx.xxx.xxx&quot;;</span><br><span class="line">	$user &#x3D; &quot;xx&quot;;</span><br><span class="line">	$password &#x3D; &quot;xxxxxxx&quot;;</span><br><span class="line">	&#x2F;&#x2F; 连接数据库服务</span><br><span class="line">	$con &#x3D; new mysqli($server, $user, $password);</span><br><span class="line">	&#x2F;&#x2F; 判断连接状态</span><br><span class="line">	if($con-&gt;connect_error)&#123;</span><br><span class="line">		die(&quot;数据库连接服务失败&quot; . $con-&gt;connect_error);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;数据库连接服务成功&quot;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="2php新建数据库与表时设置编码">2.PHP新建数据库与表时设置编码</span></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 创建数据库</span><br><span class="line">$sqlCdb &#x3D; &quot;CREATE DATABASE users CHARACTER SET &#39;utf8&#39; COLLATE &#39;utf8_general_ci&#39;&quot;;</span><br><span class="line">&#x2F;&#x2F; 判断创建结果</span><br><span class="line">$resultCdb &#x3D;  $con-&gt;query($sqlCdb);</span><br><span class="line">if($resultCdb &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">	echo &quot;数据库创建成功&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;数据库创建失败&quot; . $con-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 连接新建数据库</span><br><span class="line">$con-&gt;select_db(&#39;users&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建表</span><br><span class="line">$sqlCt &#x3D; &quot;CREATE TABLE user(</span><br><span class="line">	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">	username VARCHAR(30) NOT NULL,</span><br><span class="line">	password VARCHAR(60) NOT NULL) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8&quot;;</span><br><span class="line">&#x2F;&#x2F; 判断建表结果</span><br><span class="line">$resultCt &#x3D; $con-&gt;query($sqlCt);</span><br><span class="line">if($resultCt &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">	echo &quot;&lt;br&gt;&quot; . &quot;建表成功&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;建表失败&quot; . $con-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>php连接mysql</tag>
+        <tag>php</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu16.04, Apache+PHP+Mysql安装与卸载</title>
     <url>/2019-07-31-ubuntu-php-mysql.html</url>
     <content><![CDATA[<p>ubuntu16.04, Apache+PHP+Mysql的安装与卸载</p>
@@ -1341,69 +1646,6 @@
         <tag>mysql</tag>
         <tag>ubuntu-php-mysql</tag>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP中password_hash()密码加密</title>
-    <url>/2019-07-31-php-password-hash.html</url>
-    <content><![CDATA[<h2><span id="php对登陆密码加密的方法">PHP对登陆密码加密的方法</span></h2><p>环境说明：</p>
-<ul>
-<li>php7.0</li>
-<li>apache2</li>
-<li><?php 代码 ?>
-
-</li>
-</ul>
-<p>加密方法:</p>
-<blockquote>
-<ul>
-<li>password_hash ($password, PASSWORD_BCRYPT, $options)</li>
-<li>$password 需要加密的密码</li>
-<li>PASSWORD_BCRYPT 加密方式</li>
-<li>$options 可用于设置cost值和 salt值</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;例:</span><br><span class="line">$options &#x3D; [</span><br><span class="line">        &#39;cost&#39; &#x3D;&gt; 11,</span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
-
-<p>验证哈希值与密码是否匹配</p>
-<ul>
-<li>password_verify($password, $hash)</li>
-<li>参数为密码和加密后的哈希值</li>
-</ul>
-<a id="more"></a>
-
-<h3><span id="1-查看服务器在不拖慢速度的最高cost值">1. 查看服务器在不拖慢速度的最高cost值</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;测试机器能够达到的最高cost</span><br><span class="line">	$time &#x3D; 0.1; &#x2F;&#x2F; 100毫秒</span><br><span class="line">	$cost &#x3D; 8;</span><br><span class="line">	do&#123;</span><br><span class="line">		$cost++;</span><br><span class="line">		$start &#x3D; microtime(true);</span><br><span class="line">		password_hash($password, PASSWORD_BCRYPT, [&#39;cost&#39; &#x3D;&gt; $cost]);</span><br><span class="line">		$end &#x3D; microtime(true);</span><br><span class="line"></span><br><span class="line">	&#125;while(($end - $start) &lt; $time);</span><br></pre></td></tr></table></figure>
-<h3><span id="2-加密与验证加密后的哈希值与密码是否匹配">2. 加密与验证加密后的哈希值与密码是否匹配</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 加密</span><br><span class="line">$hash &#x3D; password_hash($password, PASSWORD_BCRYPT, [&quot;cost&quot; &#x3D;&gt; 11]);</span><br><span class="line"></span><br><span class="line">echo &quot;$hash&quot; . &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">&#x2F;&#x2F; 验证</span><br><span class="line">if(password_verify($password, $hash))&#123;</span><br><span class="line">	echo &quot;匹配&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;不匹配&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>php</tag>
-        <tag>php密码加密</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP新建用户数据库和表</title>
-    <url>/2019-07-31-php-mysql-create.html</url>
-    <content><![CDATA[<p>环境说明: </p>
-<ul>
-<li>php7.0</li>
-<li>apache2</li>
-<li>以下代码均在<?php ?>标签中</li>
-</ul>
-<p>建库注意事项:</p>
-<ul>
-<li>数据库编码的设置</li>
-<li>建表时引擎的设置</li>
-</ul>
-<a id="more"></a>
-
-<h2><span id="1连接数据库">1.连接数据库</span></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$server &#x3D; &quot;xxx.xx.xxx.xxx&quot;;</span><br><span class="line">	$user &#x3D; &quot;xx&quot;;</span><br><span class="line">	$password &#x3D; &quot;xxxxxxx&quot;;</span><br><span class="line">	&#x2F;&#x2F; 连接数据库服务</span><br><span class="line">	$con &#x3D; new mysqli($server, $user, $password);</span><br><span class="line">	&#x2F;&#x2F; 判断连接状态</span><br><span class="line">	if($con-&gt;connect_error)&#123;</span><br><span class="line">		die(&quot;数据库连接服务失败&quot; . $con-&gt;connect_error);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;数据库连接服务成功&quot;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h2><span id="2php新建数据库与表时设置编码">2.PHP新建数据库与表时设置编码</span></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   &#x2F;&#x2F; 创建数据库</span><br><span class="line">$sqlCdb &#x3D; &quot;CREATE DATABASE users CHARACTER SET &#39;utf8&#39; COLLATE &#39;utf8_general_ci&#39;&quot;;</span><br><span class="line">&#x2F;&#x2F; 判断创建结果</span><br><span class="line">$resultCdb &#x3D;  $con-&gt;query($sqlCdb);</span><br><span class="line">if($resultCdb &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">	echo &quot;数据库创建成功&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;数据库创建失败&quot; . $con-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 连接新建数据库</span><br><span class="line">$con-&gt;select_db(&#39;users&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建表</span><br><span class="line">$sqlCt &#x3D; &quot;CREATE TABLE user(</span><br><span class="line">	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">	username VARCHAR(30) NOT NULL,</span><br><span class="line">	password VARCHAR(60) NOT NULL) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8&quot;;</span><br><span class="line">&#x2F;&#x2F; 判断建表结果</span><br><span class="line">$resultCt &#x3D; $con-&gt;query($sqlCt);</span><br><span class="line">if($resultCt &#x3D;&#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">	echo &quot;&lt;br&gt;&quot; . &quot;建表成功&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;建表失败&quot; . $con-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>php连接mysql</tag>
-        <tag>php</tag>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -2520,37 +2762,6 @@
       </tags>
   </entry>
   <entry>
-    <title>minecraft服务器搭建</title>
-    <url>/2019-06-12-ubuntu-minecraft-server.html</url>
-    <content><![CDATA[<p>暑假玩网易代理我的世界；</p>
-<p>玩得不爽，模组太少；</p>
-<p>想着自己用服务器搭一个玩玩</p>
-<p>参考：<br><a href="https://linux.cn/article-9480-1.html" target="_blank" rel="noopener external nofollow noreferrer">在ubuntu搭建minecraft服务器</a></p>
-<a id="more"></a>
-
-<h4><span id="安装java18">安装java1.8</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install openjdk-8-jdk</span><br></pre></td></tr></table></figure>
-<h4><span id="卸载java">卸载java</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove openjdk*</span><br></pre></td></tr></table></figure>
-<h4><span id="1screen进入screen">1.screen进入screen</span></h4><h5><span id="11-新建screen">1.1 新建screen</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S newscreen</span><br></pre></td></tr></table></figure>
-<h5><span id="12-打开screen进程">1.2 打开screen进程</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -r</span><br></pre></td></tr></table></figure>
-<h4><span id="2kill-pid退出screen某个进程">2.kill pid退出screen某个进程</span></h4><h4><span id="3运行minecraft">3.运行minecraft</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
-<h4><span id="4执行sh脚本">4.执行.sh脚本</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
-<h4><span id="5进入服务器控制台">5.进入服务器控制台</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -r minecraft</span><br></pre></td></tr></table></figure>
-<h4><span id="6下载新版本minecraft">6.下载新版本minecraft</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;s3.amazonaws.com&#x2F;Minecraft.Download&#x2F;versions&#x2F;1.12.2&#x2F;minecraft_server.1.12.2.jar</span><br></pre></td></tr></table></figure>
-<h5><span id="61接下来运行并构建新服务端">6.1接下来，运行并构建新服务端：</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
-<h5><span id="62最后更新你的启动脚本">6.2最后，更新你的启动脚本：</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
-<h5><span id="63更新版本号数字">6.3更新版本号数字：</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
-<h4><span id="7serverproperties参数">7.server.properties参数</span></h4><p><a href="https://minecraft-zh.gamepedia.com/index.php?title=Server.properties&variant=zh" target="_blank" rel="noopener external nofollow noreferrer">server.properties参数</a></p>
-<h4><span id="8">8.</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br></pre></td></tr></table></figure>
-<h4><span id="9minecraft服务端指令">9.minecraft服务端指令</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;op 玩家名    &#x2F;&#x2F; 给权限</span><br><span class="line">&#x2F;gamemode 模式 玩家名</span><br></pre></td></tr></table></figure>
-<h4><span id="10forge安装">10.forge安装</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;files.minecraftforge.net&#x2F;maven&#x2F;net&#x2F;minecraftforge&#x2F;forge&#x2F;1.12.2-14.23.5.2808&#x2F;forge-1.12.2-14.23.5.2808-installer.jar</span><br><span class="line">java -jar forge文件.jar --insatll</span><br></pre></td></tr></table></figure>
-<h5><span id="101运行forge">10.1运行forge</span></h5><h5><span id="运行forge需要java18">运行forge需要java1.8</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -server -jar forge-1.12.2-14.23.5.2808-universal.jar -nogui</span><br></pre></td></tr></table></figure>
-<h4><span id="11赋予sh文件权限">11赋予.sh文件权限</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x start.sh</span><br></pre></td></tr></table></figure>
-<h4><span id="12mc服务器崩溃自启脚本">12MC服务器崩溃自启脚本</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Minecraft</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Arcgis中的python编程(2)</title>
     <url>/2019-06-13-arcgis-python-2.html</url>
     <content><![CDATA[<p>学习日志 2:   </p>
@@ -2612,32 +2823,16 @@
       </tags>
   </entry>
   <entry>
-    <title>Arcgis中的python编程(1)</title>
-    <url>/2019-06-13-arcgis-python-1.html</url>
-    <content><![CDATA[<h3><span id="学习日志-1">学习日志 1:</span></h3><p>书籍：基于ArcGIS的Python编程秘笈(第2版);   </p>
-<ul>
-<li>arcpy库  </li>
-<li>引用mxd文档、数据框、图层  </li>
-<li>改变地图范围  </li>
-<li>添加图层文件到数据框  </li>
-<li>插入一个图层到某个位置  </li>
-</ul>
-<a id="more"></a>
+    <title>Git指令</title>
+    <url>/2019-06-12-git-shang-chuan-xiang-mu.html</url>
+    <content><![CDATA[<h4><span id="1新建项目后">1.新建项目后</span></h4><h4><span id="or-create-a-new-repository-on-the-command-line">…or create a new repository on the command line</span></h4><a id="more"></a>
 
-<h3><span id="1-arcpy库">1. arcpy库</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br></pre></td></tr></table></figure>
-<h3><span id="2-引用mxd文档-数据框-图层">2. 引用mxd文档、数据框、图层</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mxd &#x3D; mapping.MapDocument(&quot;H:\\upUpStudy\\pythonGis\\text\\text.mxd&quot;)</span><br><span class="line"></span><br><span class="line">#或</span><br><span class="line"></span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">df &#x3D; mapping.ListDataFrames(mxd)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">layers &#x3D; mapping.ListLayers(mxd, &quot;p&quot;, df)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# emmm&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 
-<h3><span id="3-改变地图范围">3. 改变地图范围</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... </span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; for df in mapping.ListDataFrames(mxd):</span><br><span class="line">...     if df &#x3D;&#x3D; &quot;df1&quot;:</span><br><span class="line">...         layers &#x3D; mapping.ListLayers(mxd, &#39;counties&#39;, df)</span><br><span class="line">...         for layer in layers:</span><br><span class="line">...             query &#x3D; &#39;&quot;county&quot; &#x3D; &quot;HAYS&quot;&#39;</span><br><span class="line">...             layer.definitionQuery &#x3D; query</span><br><span class="line">...             df.extent &#x3D; layer.getExtent()</span><br></pre></td></tr></table></figure>
-
-<h3><span id="4-添加图层文件到数据框">4. 添加图层文件到数据框</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">#########</span><br><span class="line">... layer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\counties.lyr&#39;)</span><br><span class="line">... mapping.AddLayer(df, layer, &quot;AUTO_ARRANGE&quot;)</span><br><span class="line">##########</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h4><span id="41-添加到图层组-移除图层">4.1 添加到图层组、移除图层</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.AddLayerToGroup()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.RemoveLayer()</span><br></pre></td></tr></table></figure>
-<h3><span id="5-插入一个图层到某个位置">5. 插入一个图层到某个位置</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.InsertLayer()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">&gt;&gt;&gt; mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">&gt;&gt;&gt; df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">&gt;&gt;&gt; # 参考图层</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; reflayer &#x3D; mapping.ListLayers(mxd, &#39;boun*&#39;, df)[0]</span><br><span class="line">&gt;&gt;&gt; # 插入的图层</span><br><span class="line">&gt;&gt;&gt; insertLayer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\streets.shp&#39;)</span><br><span class="line">&gt;&gt;&gt; # 插入</span><br><span class="line">&gt;&gt;&gt; mapping.InsertLayer(df, reflayer, insertLayer, &quot;BEFORE&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+<h5><span id="or-push-an-existing-repository-from-the-command-line">…or push an existing repository from the command line</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h4><span id="2流程">2.流程</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加此文件全部</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>pythonGIS</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -2676,6 +2871,37 @@
       </tags>
   </entry>
   <entry>
+    <title>minecraft服务器搭建</title>
+    <url>/2019-06-12-ubuntu-minecraft-server.html</url>
+    <content><![CDATA[<p>暑假玩网易代理我的世界；</p>
+<p>玩得不爽，模组太少；</p>
+<p>想着自己用服务器搭一个玩玩</p>
+<p>参考：<br><a href="https://linux.cn/article-9480-1.html" target="_blank" rel="noopener external nofollow noreferrer">在ubuntu搭建minecraft服务器</a></p>
+<a id="more"></a>
+
+<h4><span id="安装java18">安装java1.8</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install openjdk-8-jdk</span><br></pre></td></tr></table></figure>
+<h4><span id="卸载java">卸载java</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove openjdk*</span><br></pre></td></tr></table></figure>
+<h4><span id="1screen进入screen">1.screen进入screen</span></h4><h5><span id="11-新建screen">1.1 新建screen</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S newscreen</span><br></pre></td></tr></table></figure>
+<h5><span id="12-打开screen进程">1.2 打开screen进程</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -r</span><br></pre></td></tr></table></figure>
+<h4><span id="2kill-pid退出screen某个进程">2.kill pid退出screen某个进程</span></h4><h4><span id="3运行minecraft">3.运行minecraft</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
+<h4><span id="4执行sh脚本">4.执行.sh脚本</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
+<h4><span id="5进入服务器控制台">5.进入服务器控制台</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -r minecraft</span><br></pre></td></tr></table></figure>
+<h4><span id="6下载新版本minecraft">6.下载新版本minecraft</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;s3.amazonaws.com&#x2F;Minecraft.Download&#x2F;versions&#x2F;1.12.2&#x2F;minecraft_server.1.12.2.jar</span><br></pre></td></tr></table></figure>
+<h5><span id="61接下来运行并构建新服务端">6.1接下来，运行并构建新服务端：</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
+<h5><span id="62最后更新你的启动脚本">6.2最后，更新你的启动脚本：</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim minecraft&#x2F;start.sh</span><br></pre></td></tr></table></figure>
+<h5><span id="63更新版本号数字">6.3更新版本号数字：</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br></pre></td></tr></table></figure>
+<h4><span id="7serverproperties参数">7.server.properties参数</span></h4><p><a href="https://minecraft-zh.gamepedia.com/index.php?title=Server.properties&variant=zh" target="_blank" rel="noopener external nofollow noreferrer">server.properties参数</a></p>
+<h4><span id="8">8.</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br></pre></td></tr></table></figure>
+<h4><span id="9minecraft服务端指令">9.minecraft服务端指令</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;op 玩家名    &#x2F;&#x2F; 给权限</span><br><span class="line">&#x2F;gamemode 模式 玩家名</span><br></pre></td></tr></table></figure>
+<h4><span id="10forge安装">10.forge安装</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;files.minecraftforge.net&#x2F;maven&#x2F;net&#x2F;minecraftforge&#x2F;forge&#x2F;1.12.2-14.23.5.2808&#x2F;forge-1.12.2-14.23.5.2808-installer.jar</span><br><span class="line">java -jar forge文件.jar --insatll</span><br></pre></td></tr></table></figure>
+<h5><span id="101运行forge">10.1运行forge</span></h5><h5><span id="运行forge需要java18">运行forge需要java1.8</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Xms500M -Xmx1300M -server -jar forge-1.12.2-14.23.5.2808-universal.jar -nogui</span><br></pre></td></tr></table></figure>
+<h4><span id="11赋予sh文件权限">11赋予.sh文件权限</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x start.sh</span><br></pre></td></tr></table></figure>
+<h4><span id="12mc服务器崩溃自启脚本">12MC服务器崩溃自启脚本</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">cd &#x2F;minecraft&#x2F; &amp;&amp; java -Xms500M -Xmx1300M -jar minecraft_server.1.12.2.jar nogui</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Minecraft</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu16.04安装vsftpd</title>
     <url>/2019-06-12-ubuntu16.04-vsftpd.html</url>
     <content><![CDATA[<p><a href="https://cnaning.iteye.com/blog/335797" target="_blank" rel="noopener external nofollow noreferrer">配置文件中详细配置说明</a></p>
@@ -2696,16 +2922,32 @@
       </tags>
   </entry>
   <entry>
-    <title>Git指令</title>
-    <url>/2019-06-12-git-shang-chuan-xiang-mu.html</url>
-    <content><![CDATA[<h4><span id="1新建项目后">1.新建项目后</span></h4><h4><span id="or-create-a-new-repository-on-the-command-line">…or create a new repository on the command line</span></h4><a id="more"></a>
+    <title>Arcgis中的python编程(1)</title>
+    <url>/2019-06-13-arcgis-python-1.html</url>
+    <content><![CDATA[<h3><span id="学习日志-1">学习日志 1:</span></h3><p>书籍：基于ArcGIS的Python编程秘笈(第2版);   </p>
+<ul>
+<li>arcpy库  </li>
+<li>引用mxd文档、数据框、图层  </li>
+<li>改变地图范围  </li>
+<li>添加图层文件到数据框  </li>
+<li>插入一个图层到某个位置  </li>
+</ul>
+<a id="more"></a>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# emmm&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3><span id="1-arcpy库">1. arcpy库</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br></pre></td></tr></table></figure>
+<h3><span id="2-引用mxd文档-数据框-图层">2. 引用mxd文档、数据框、图层</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mxd &#x3D; mapping.MapDocument(&quot;H:\\upUpStudy\\pythonGis\\text\\text.mxd&quot;)</span><br><span class="line"></span><br><span class="line">#或</span><br><span class="line"></span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">df &#x3D; mapping.ListDataFrames(mxd)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">layers &#x3D; mapping.ListLayers(mxd, &quot;p&quot;, df)</span><br></pre></td></tr></table></figure>
 
-<h5><span id="or-push-an-existing-repository-from-the-command-line">…or push an existing repository from the command line</span></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h4><span id="2流程">2.流程</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加此文件全部</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zuahua&#x2F;pythonGame.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+<h3><span id="3-改变地图范围">3. 改变地图范围</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... </span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; for df in mapping.ListDataFrames(mxd):</span><br><span class="line">...     if df &#x3D;&#x3D; &quot;df1&quot;:</span><br><span class="line">...         layers &#x3D; mapping.ListLayers(mxd, &#39;counties&#39;, df)</span><br><span class="line">...         for layer in layers:</span><br><span class="line">...             query &#x3D; &#39;&quot;county&quot; &#x3D; &quot;HAYS&quot;&#39;</span><br><span class="line">...             layer.definitionQuery &#x3D; query</span><br><span class="line">...             df.extent &#x3D; layer.getExtent()</span><br></pre></td></tr></table></figure>
+
+<h3><span id="4-添加图层文件到数据框">4. 添加图层文件到数据框</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">... mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">... df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">#########</span><br><span class="line">... layer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\counties.lyr&#39;)</span><br><span class="line">... mapping.AddLayer(df, layer, &quot;AUTO_ARRANGE&quot;)</span><br><span class="line">##########</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4><span id="41-添加到图层组-移除图层">4.1 添加到图层组、移除图层</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.AddLayerToGroup()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.RemoveLayer()</span><br></pre></td></tr></table></figure>
+<h3><span id="5-插入一个图层到某个位置">5. 插入一个图层到某个位置</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mapping.InsertLayer()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import arcpy.mapping as mapping</span><br><span class="line">&gt;&gt;&gt; mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">&gt;&gt;&gt; df &#x3D; mapping.ListDataFrames(mxd)[0]</span><br><span class="line">&gt;&gt;&gt; # 参考图层</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; reflayer &#x3D; mapping.ListLayers(mxd, &#39;boun*&#39;, df)[0]</span><br><span class="line">&gt;&gt;&gt; # 插入的图层</span><br><span class="line">&gt;&gt;&gt; insertLayer &#x3D; mapping.Layer(r&#39;H:\upUpStudy\pythonGis\data\streets.shp&#39;)</span><br><span class="line">&gt;&gt;&gt; # 插入</span><br><span class="line">&gt;&gt;&gt; mapping.InsertLayer(df, reflayer, insertLayer, &quot;BEFORE&quot;)</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Git</tag>
+        <tag>pythonGIS</tag>
       </tags>
   </entry>
   <entry>
@@ -3299,6 +3541,18 @@
       </tags>
   </entry>
   <entry>
+    <title>C_ALG坐标变换公式</title>
+    <url>/2019-06-12-c-alg-zuo-biao-bian-huan-gong-shi.html</url>
+    <content><![CDATA[<p>C语言实现GIS算法中的坐标变换</p>
+<p>平移变换、比例变换、旋转变换</p>
+<a id="more"></a>
+
+<h3><span id="c_alg坐标变换公式">C_ALG坐标变换公式</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; X, Y    </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 平移</span><br><span class="line">X +&#x3D; Xm;</span><br><span class="line">Y +&#x3D; Ym;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 比例</span><br><span class="line">&#x2F;&#x2F; 以坐标原点为参照点</span><br><span class="line">X *&#x3D; Xs;</span><br><span class="line">Y *&#x3D; Ys;</span><br><span class="line">&#x2F;&#x2F; 以x0y0为参照点的比例变换</span><br><span class="line">X &#x3D; (X-x0)*Xs + x0;</span><br><span class="line">Y &#x3D; (Y-y0)*Ys + y0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 旋转</span><br><span class="line">X &#x3D; X*cosA + Y*sinA</span><br><span class="line">Y &#x3D; X*sinA - Y*cosA</span><br><span class="line"></span><br><span class="line">******如果是屏幕坐标，顺时针旋转，</span><br><span class="line">&#x2F;&#x2F; 以坐标原点</span><br><span class="line">X &#x3D; X*cosA - Y*sinA;</span><br><span class="line">Y &#x3D; X*sinA + Y*cosA;</span><br><span class="line">&#x2F;&#x2F; 以指定点旋转</span><br><span class="line">X &#x3D; (X-x0)*cos(A) - (Y-y0)*sin(A);</span><br><span class="line">Y &#x3D; (X-x0)*sin(A) + (Y-y0)*cos(A);</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vc6.0;MFC；画笔与填充</title>
     <url>/2018-10-22-vc6.0-mfc-hua-bi-yu-ju-xing-tian-chong.html</url>
     <content><![CDATA[<p>C语言MFC中画笔与矩形填充</p>
@@ -3309,18 +3563,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 矩形填充</span><br><span class="line">CRect rt(x1+i*b1,y1+j*b2,x2+i*b1,y2+j*b2);</span><br><span class="line">pdc-&gt;FillSolidRect(&amp;rt,RGB(255,0,0));</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C_ALG坐标变换公式</title>
-    <url>/2019-06-12-c-alg-zuo-biao-bian-huan-gong-shi.html</url>
-    <content><![CDATA[<p>C语言实现GIS算法中的坐标变换</p>
-<p>平移变换、比例变换、旋转变换</p>
-<a id="more"></a>
-
-<h3><span id="c_alg坐标变换公式">C_ALG坐标变换公式</span></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; X, Y    </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 平移</span><br><span class="line">X +&#x3D; Xm;</span><br><span class="line">Y +&#x3D; Ym;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 比例</span><br><span class="line">&#x2F;&#x2F; 以坐标原点为参照点</span><br><span class="line">X *&#x3D; Xs;</span><br><span class="line">Y *&#x3D; Ys;</span><br><span class="line">&#x2F;&#x2F; 以x0y0为参照点的比例变换</span><br><span class="line">X &#x3D; (X-x0)*Xs + x0;</span><br><span class="line">Y &#x3D; (Y-y0)*Ys + y0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 旋转</span><br><span class="line">X &#x3D; X*cosA + Y*sinA</span><br><span class="line">Y &#x3D; X*sinA - Y*cosA</span><br><span class="line"></span><br><span class="line">******如果是屏幕坐标，顺时针旋转，</span><br><span class="line">&#x2F;&#x2F; 以坐标原点</span><br><span class="line">X &#x3D; X*cosA - Y*sinA;</span><br><span class="line">Y &#x3D; X*sinA + Y*cosA;</span><br><span class="line">&#x2F;&#x2F; 以指定点旋转</span><br><span class="line">X &#x3D; (X-x0)*cos(A) - (Y-y0)*sin(A);</span><br><span class="line">Y &#x3D; (X-x0)*sin(A) + (Y-y0)*cos(A);</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>算法笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -3522,6 +3764,24 @@
 ]]></content>
       <tags>
         <tag>pygame</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>标准输入输出</title>
+    <url>/2018-08-10-python-3.html</url>
+    <content><![CDATA[<p>python自学第三节<br>标准输入输出</p>
+<h2><span id="标准输入输出">标准输入输出</span></h2><ul>
+<li>input（） 要求用户键入</li>
+<li>print（） 屏幕输出</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = input(<span class="string">"请输入你的年龄，按回车键结束"</span>)</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure>
+
+<pre><code>请输入你的年龄，按回车键结束20
+20</code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -4237,6 +4497,193 @@ TypeError: &apos;&gt;&apos; not supported between instances of &apos;NoneType&ap
       </tags>
   </entry>
   <entry>
+    <title>程序结构、分支语句、条件、列表、循环</title>
+    <url>/2018-08-10-python-4.html</url>
+    <content><![CDATA[<p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
+<h2><span id="程序结构">程序结构</span></h2><ul>
+<li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
+<li>顺序</li>
+<li>分支：即选择条件</li>
+<li>循环</li>
+</ul>
+<h3><span id="1-条件语句">1、条件语句</span></h3><ul>
+<li>语法如下：<pre><code>if (条件表达式)：
+    程序处理模块</code></pre></li>
+<li>python用缩进来表示代码层级关系<ul>
+<li>python2空格和tab可混用</li>
+<li>python3不能混用</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre><ul>
+<li>在python中  pass语句，占位，不执行任何语句，不起任何作用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h4><span id="练习判断学生成绩的等级">练习：判断学生成绩的等级</span></h4><ul>
+<li>90及以上为A</li>
+<li>80-90为B</li>
+<li>70-80为C</li>
+<li>60-70为D</li>
+<li>其余为E</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>键入学生成绩：70
+C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入成绩：99
+及格
+优</code></pre><h3><span id="2-三元运算符">2、三元运算符</span></h3><ul>
+<li>语法： x if 条件 else y</li>
+<li>表示如果条件成立则输出x；否则输出y</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"优秀"</span> <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> <span class="keyword">else</span> <span class="string">"不行"</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&apos;优秀&apos;</code></pre><h4><span id="运用三元运算符求最大值">运用三元运算符求最大值</span></h4><ul>
+<li>a,b,c由用户输入</li>
+<li>输出最大值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = int(input(<span class="string">"输入a:"</span>))</span><br><span class="line">b = int(input(<span class="string">"输入b:"</span>))</span><br><span class="line">c = int(input(<span class="string">"输入c:"</span>))</span><br><span class="line">d = (a <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b) <span class="keyword">if</span> ((a <span class="keyword">if</span> a &gt;b <span class="keyword">else</span> b)&gt;c) <span class="keyword">else</span> c</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>输入a:23
+输入b:45
+输入c:11
+45</code></pre><h3><span id="3-列表-list">3、列表 list</span></h3><ul>
+<li>可以放数字、字符串、列表、和其他结构</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3><span id="4-range">4、range</span></h3><ul>
+<li>可以看成一个函数</li>
+<li>产生一个有规律的有数字组成的列表</li>
+<li>语法： range(start,end,step)</li>
+<li>start:开始数字，生成列表包含start,默认为0；end:结束值，结果列表不包含end;</li>
+<li>step:步长，默认为1</li>
+<li>python2中range()生成的是列表，同时有xrange()函数，功能类似</li>
+<li>python3中，生成结果是迭代器，不是列表，可粗略地认为是列表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = range(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#   可看成L1 == [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="5-for循环">5、for循环</span></h3><ul>
+<li>一般明确循环次数</li>
+<li>语法：    for i in xxx:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">5</span>,<span class="number">9</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">77</span>,<span class="string">"fuck"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L1:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5
+9
+55
+99
+77
+fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">1</span>,<span class="number">100</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">for</span> a1 <span class="keyword">in</span> a:</span><br><span class="line">    print(a1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+20
+39
+58
+77
+96</code></pre><h4><span id="运用循环求和">运用循环求和</span></h4><ul>
+<li>求从1加到100</li>
+<li>使用range</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5050</code></pre><h3><span id="6-while循环">6、while循环</span></h3><ul>
+<li>不明确循环次数，却满足一定条件</li>
+<li>语法；      while (条件):<pre><code>循环体</code></pre></li>
+</ul>
+<h4><span id="示例银行存款">示例：银行存款</span></h4><ul>
+<li>本金10000</li>
+<li>年利率： %2.5</li>
+<li>多少年总金额超过20000<ul>
+<li>分析：没有明确循环次数</li>
+<li>条件：总金额超过20000</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year is 29</code></pre><h4><span id="累加求和">累加求和</span></h4><ul>
+<li>1-100</li>
+<li>while循环</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5050</code></pre><h3><span id="7-break语句">7、 break语句</span></h3><ul>
+<li>无条件终止循环，并跳出循环体</li>
+</ul>
+<h4><span id="示例">示例</span></h4><ul>
+<li>在200-300中找到第一个可以被9整除的数</li>
+<li>使用break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>207</code></pre><h4><span id="对于嵌套多重循环break跳出离他最近的循环">对于嵌套多重循环，break跳出离他最近的循环</span></h4><h4><span id="打印99乘法表">打印9*9乘法表</span></h4><ul>
+<li>要求最大值为36</li>
+<li>典型 for 嵌套循环</li>
+<li>break</li>
+<li>调用sys模块中write可以在打印时不会换行</li>
+<li>sys.stdout.write();括号内只能用字符型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">36</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9  
+2 4 6 8 10 12 14 16 18  
+3 6 9 12 15 18 21 24 27  
+4 8 12 16 20 24 28 32 36  
+5 10 15 20 25 30 35  
+6 12 18 24 30 36  
+7 14 21 28 35  
+8 16 24 32  
+9 18 27 36  </code></pre><h3><span id="8-continue">8、continue</span></h3><ul>
+<li>含义：继续下一轮循环</li>
+<li>当我们已经确定不需要此轮循环时使用</li>
+</ul>
+<h4><span id="例累加求和">例：累加求和</span></h4><ul>
+<li>当数为偶数时才求和</li>
+<li>1-100</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2550</code></pre><h4><span id="例99乘法表">例：9*9乘法表</span></h4><ul>
+<li>要求：打印值小于12的数</li>
+<li>嵌套for循环</li>
+<li>使用continue</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9 
+
+2 4 6 8 10 12 
+
+3 6 9 12 
+
+4 8 12 
+
+5 10 
+
+6 12 
+
+7 
+
+8 
+
+9</code></pre>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数、return、函数参数、列表字典传入函数、函数文档</title>
     <url>/2018-08-10-python-5.html</url>
     <content><![CDATA[<p>python自学第五节<br>函数、return、函数参数、列表字典传入函数、函数文档</p>
@@ -4429,211 +4876,6 @@ tuple</code></pre><figure class="highlight python"><table><tr><td class="code"><
 Sum(one, two)
     这是函数文档，解释函数的作用
     这个函数是用来求one到two值的求和</code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序结构、分支语句、条件、列表、循环</title>
-    <url>/2018-08-10-python-4.html</url>
-    <content><![CDATA[<p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
-<h2><span id="程序结构">程序结构</span></h2><ul>
-<li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
-<li>顺序</li>
-<li>分支：即选择条件</li>
-<li>循环</li>
-</ul>
-<h3><span id="1-条件语句">1、条件语句</span></h3><ul>
-<li>语法如下：<pre><code>if (条件表达式)：
-    程序处理模块</code></pre></li>
-<li>python用缩进来表示代码层级关系<ul>
-<li>python2空格和tab可混用</li>
-<li>python3不能混用</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>True</code></pre><ul>
-<li>在python中  pass语句，占位，不执行任何语句，不起任何作用</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<h4><span id="练习判断学生成绩的等级">练习：判断学生成绩的等级</span></h4><ul>
-<li>90及以上为A</li>
-<li>80-90为B</li>
-<li>70-80为C</li>
-<li>60-70为D</li>
-<li>其余为E</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>键入学生成绩：70
-C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入成绩：99
-及格
-优</code></pre><h3><span id="2-三元运算符">2、三元运算符</span></h3><ul>
-<li>语法： x if 条件 else y</li>
-<li>表示如果条件成立则输出x；否则输出y</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"优秀"</span> <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> <span class="keyword">else</span> <span class="string">"不行"</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&apos;优秀&apos;</code></pre><h4><span id="运用三元运算符求最大值">运用三元运算符求最大值</span></h4><ul>
-<li>a,b,c由用户输入</li>
-<li>输出最大值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = int(input(<span class="string">"输入a:"</span>))</span><br><span class="line">b = int(input(<span class="string">"输入b:"</span>))</span><br><span class="line">c = int(input(<span class="string">"输入c:"</span>))</span><br><span class="line">d = (a <span class="keyword">if</span> a&gt;b <span class="keyword">else</span> b) <span class="keyword">if</span> ((a <span class="keyword">if</span> a &gt;b <span class="keyword">else</span> b)&gt;c) <span class="keyword">else</span> c</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-
-<pre><code>输入a:23
-输入b:45
-输入c:11
-45</code></pre><h3><span id="3-列表-list">3、列表 list</span></h3><ul>
-<li>可以放数字、字符串、列表、和其他结构</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3><span id="4-range">4、range</span></h3><ul>
-<li>可以看成一个函数</li>
-<li>产生一个有规律的有数字组成的列表</li>
-<li>语法： range(start,end,step)</li>
-<li>start:开始数字，生成列表包含start,默认为0；end:结束值，结果列表不包含end;</li>
-<li>step:步长，默认为1</li>
-<li>python2中range()生成的是列表，同时有xrange()函数，功能类似</li>
-<li>python3中，生成结果是迭代器，不是列表，可粗略地认为是列表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = range(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#   可看成L1 == [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
-
-<h3><span id="5-for循环">5、for循环</span></h3><ul>
-<li>一般明确循环次数</li>
-<li>语法：    for i in xxx:</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L1 = [<span class="number">5</span>,<span class="number">9</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">77</span>,<span class="string">"fuck"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> L1:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5
-9
-55
-99
-77
-fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = range(<span class="number">1</span>,<span class="number">100</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">for</span> a1 <span class="keyword">in</span> a:</span><br><span class="line">    print(a1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-20
-39
-58
-77
-96</code></pre><h4><span id="运用循环求和">运用循环求和</span></h4><ul>
-<li>求从1加到100</li>
-<li>使用range</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5050</code></pre><h3><span id="6-while循环">6、while循环</span></h3><ul>
-<li>不明确循环次数，却满足一定条件</li>
-<li>语法；      while (条件):<pre><code>循环体</code></pre></li>
-</ul>
-<h4><span id="示例银行存款">示例：银行存款</span></h4><ul>
-<li>本金10000</li>
-<li>年利率： %2.5</li>
-<li>多少年总金额超过20000<ul>
-<li>分析：没有明确循环次数</li>
-<li>条件：总金额超过20000</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
-
-<pre><code>year is 29</code></pre><h4><span id="累加求和">累加求和</span></h4><ul>
-<li>1-100</li>
-<li>while循环</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>5050</code></pre><h3><span id="7-break语句">7、 break语句</span></h3><ul>
-<li>无条件终止循环，并跳出循环体</li>
-</ul>
-<h4><span id="示例">示例</span></h4><ul>
-<li>在200-300中找到第一个可以被9整除的数</li>
-<li>使用break</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>207</code></pre><h4><span id="对于嵌套多重循环break跳出离他最近的循环">对于嵌套多重循环，break跳出离他最近的循环</span></h4><h4><span id="打印99乘法表">打印9*9乘法表</span></h4><ul>
-<li>要求最大值为36</li>
-<li>典型 for 嵌套循环</li>
-<li>break</li>
-<li>调用sys模块中write可以在打印时不会换行</li>
-<li>sys.stdout.write();括号内只能用字符型</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">36</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">" "</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9  
-2 4 6 8 10 12 14 16 18  
-3 6 9 12 15 18 21 24 27  
-4 8 12 16 20 24 28 32 36  
-5 10 15 20 25 30 35  
-6 12 18 24 30 36  
-7 14 21 28 35  
-8 16 24 32  
-9 18 27 36  </code></pre><h3><span id="8-continue">8、continue</span></h3><ul>
-<li>含义：继续下一轮循环</li>
-<li>当我们已经确定不需要此轮循环时使用</li>
-</ul>
-<h4><span id="例累加求和">例：累加求和</span></h4><ul>
-<li>当数为偶数时才求和</li>
-<li>1-100</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<pre><code>2550</code></pre><h4><span id="例99乘法表">例：9*9乘法表</span></h4><ul>
-<li>要求：打印值小于12的数</li>
-<li>嵌套for循环</li>
-<li>使用continue</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j&gt;<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        sys.stdout.write(str(i*j))</span><br><span class="line">        sys.stdout.write(<span class="string">" "</span>)</span><br><span class="line">    print(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9 
-
-2 4 6 8 10 12 
-
-3 6 9 12 
-
-4 8 12 
-
-5 10 
-
-6 12 
-
-7 
-
-8 
-
-9</code></pre>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>标准输入输出</title>
-    <url>/2018-08-10-python-3.html</url>
-    <content><![CDATA[<p>python自学第三节<br>标准输入输出</p>
-<h2><span id="标准输入输出">标准输入输出</span></h2><ul>
-<li>input（） 要求用户键入</li>
-<li>print（） 屏幕输出</li>
-</ul>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = input(<span class="string">"请输入你的年龄，按回车键结束"</span>)</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure>
-
-<pre><code>请输入你的年龄，按回车键结束20
-20</code></pre>]]></content>
       <tags>
         <tag>python</tag>
       </tags>

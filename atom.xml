@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-03-09T05:17:42.120Z</updated>
+  <updated>2020-03-11T04:08:01.091Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,19 +17,145 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>jQuery实例1-防止连续触发的导航栏</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-1.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-1.html</id>
+    <title>fetch的简单使用</title>
+    <link href="http://innozh.com/2020-3-11-fetch.html"/>
+    <id>http://innozh.com/2020-3-11-fetch.html</id>
+    <published>2020-03-11T00:00:00.000Z</published>
+    <updated>2020-03-11T04:08:01.091Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;fetch的简单使用&lt;/p&gt;
+&lt;p&gt;promise对象&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+    
+      <category term="fetch" scheme="http://innozh.com/tags/fetch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原生JS封装AJAX</title>
+    <link href="http://innozh.com/2020-3-11-ajax-js.html"/>
+    <id>http://innozh.com/2020-3-11-ajax-js.html</id>
+    <published>2020-03-11T00:00:00.000Z</published>
+    <updated>2020-03-11T04:07:45.112Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原生JS封装AJAX为一个外部文件&lt;/p&gt;
+&lt;p&gt;实现直接调用&lt;/p&gt;
+&lt;p&gt;GET、POST传输方式&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+    
+      <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery中使用AJAX</title>
+    <link href="http://innozh.com/2020-3-11-ajax-jquery.html"/>
+    <id>http://innozh.com/2020-3-11-ajax-jquery.html</id>
+    <published>2020-03-11T00:00:00.000Z</published>
+    <updated>2020-03-11T04:05:59.542Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;load()&lt;/p&gt;
+&lt;p&gt;get()&lt;/p&gt;
+&lt;p&gt;post()&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+      <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery使用JSONP</title>
+    <link href="http://innozh.com/2020-3-10-jsonp-jquery.html"/>
+    <id>http://innozh.com/2020-3-10-jsonp-jquery.html</id>
+    <published>2020-03-10T00:00:00.000Z</published>
+    <updated>2020-03-10T03:05:20.964Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;服务端php&lt;/p&gt;
+&lt;p&gt;jQuery&lt;/p&gt;
+&lt;p&gt;JSONP&lt;/p&gt;
+&lt;p&gt;根据JSON数据创建表格&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+      <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用JSONP</title>
+    <link href="http://innozh.com/2020-3-10-jsonp-js.html"/>
+    <id>http://innozh.com/2020-3-10-jsonp-js.html</id>
+    <published>2020-03-10T00:00:00.000Z</published>
+    <updated>2020-03-11T04:08:15.942Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;服务端php&lt;/p&gt;
+&lt;p&gt;原生JS&lt;/p&gt;
+&lt;p&gt;JSONP&lt;/p&gt;
+&lt;p&gt;根据JSON数据创建表格&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+    
+      <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery实例8-表格全选和反选</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-8.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-8.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:17:42.120Z</updated>
+    <updated>2020-03-09T07:30:04.757Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;下拉导航栏&lt;/p&gt;
-&lt;p&gt;防止下拉事件连续触发&lt;/p&gt;
+&lt;p&gt;表格全选和反选&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -41,18 +167,18 @@
   </entry>
   
   <entry>
-    <title>jQuery实例9-固定导航栏</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-9.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-9.html</id>
+    <title>jQuery实例7-城市选择案例</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-7.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-7.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:25:23.841Z</updated>
+    <updated>2020-03-09T07:18:06.643Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;固定导航栏&lt;/p&gt;
+&lt;p&gt;城市选择案例&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -225,18 +351,19 @@
   </entry>
   
   <entry>
-    <title>jQuery实例7-城市选择案例</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-7.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-7.html</id>
+    <title>jQuery实例1-防止连续触发的导航栏</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-1.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-1.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:18:06.643Z</updated>
+    <updated>2020-03-09T05:17:42.120Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;城市选择案例&lt;/p&gt;
+&lt;p&gt;下拉导航栏&lt;/p&gt;
+&lt;p&gt;防止下拉事件连续触发&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -248,18 +375,18 @@
   </entry>
   
   <entry>
-    <title>jQuery实例8-表格全选和反选</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-8.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-8.html</id>
+    <title>jQuery实例9-固定导航栏</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-9.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-9.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:30:04.757Z</updated>
+    <updated>2020-03-09T07:25:23.841Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;表格全选和反选&lt;/p&gt;
+&lt;p&gt;固定导航栏&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -374,176 +501,6 @@
     
     
       <category term="PHP" scheme="http://innozh.com/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用PHPMailer库发送邮件支持ssl方式</title>
-    <link href="http://innozh.com/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html"/>
-    <id>http://innozh.com/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html</id>
-    <published>2019-12-14T00:00:00.000Z</published>
-    <updated>2020-03-08T06:30:55.341Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;说明：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PHP7..&lt;/li&gt;
-&lt;li&gt;PHPMailer 6.1.4 Github下载 &lt;a href=&quot;https://github.com/PHPMailer/PHPMailer&quot; target=&quot;_blank&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;PHPMailer&lt;/a&gt;，直接克隆下来就ok&lt;/li&gt;
-&lt;li&gt;开启PHP扩展：sockets、openssl；方法:PHP.ini文件中搜索对应名，去掉使用扩展前的注释(不细说了)&lt;/li&gt;
-&lt;li&gt;本文使用ssl方式&lt;/li&gt;
-&lt;li&gt;网易邮箱&lt;/li&gt;
-&lt;li&gt;端口 465&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="PHPMailer" scheme="http://innozh.com/tags/PHPMailer/"/>
-    
-      <category term="邮件" scheme="http://innozh.com/tags/%E9%82%AE%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP实现注册时邮箱验证</title>
-    <link href="http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html"/>
-    <id>http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html</id>
-    <published>2019-12-11T00:00:00.000Z</published>
-    <updated>2020-03-08T06:31:05.323Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;说明：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PHP7&lt;/li&gt;
-&lt;li&gt;使用smtp&lt;/li&gt;
-&lt;li&gt;163邮箱&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;实现思路：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;注册时利用用户名、加密密码、时间戳构建激活识别码存入数据库，数据库中active_status=0&lt;/li&gt;
-&lt;li&gt;发送邮件给用户，激活识别码传入 激活链接，点击链接GET方式将激活识别码交给后台处理&lt;/li&gt;
-&lt;li&gt;激活将active_status=1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;文件目录:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;register.html&lt;/li&gt;
-&lt;li&gt;register.php&lt;/li&gt;
-&lt;li&gt;sql.php&lt;/li&gt;
-&lt;li&gt;Smtp.class.php&lt;/li&gt;
-&lt;li&gt;active.php&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="php" scheme="http://innozh.com/tags/php/"/>
-    
-      <category term="邮箱验证" scheme="http://innozh.com/tags/%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建IPSec VPN 虚拟局域网</title>
-    <link href="http://innozh.com/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html"/>
-    <id>http://innozh.com/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html</id>
-    <published>2019-11-12T00:00:00.000Z</published>
-    <updated>2020-03-08T06:31:16.136Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;环境: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;服务器：阿里云 ubuntu&lt;/li&gt;
-&lt;li&gt;客户端：其他设备&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="VPN" scheme="http://innozh.com/tags/VPN/"/>
-    
-      <category term="IPSec" scheme="http://innozh.com/tags/IPSec/"/>
-    
-      <category term="虚拟局域网" scheme="http://innozh.com/tags/%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>arcEngine C# 独立的地理信息系统程序 计算点坐标、线长、面积</title>
-    <link href="http://innozh.com/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html"/>
-    <id>http://innozh.com/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html</id>
-    <published>2019-09-23T00:00:00.000Z</published>
-    <updated>2020-03-08T06:31:35.902Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;功能说明：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;计算面的面积、线的长度、点的坐标&lt;/li&gt;
-&lt;li&gt;保存在新建的字段&lt;/li&gt;
-&lt;li&gt;将功能封装为几个函数&lt;/li&gt;
-&lt;li&gt;函数包括：&lt;/li&gt;
-&lt;li&gt;AddField() 添加字段&lt;/li&gt;
-&lt;li&gt;calcArea() 计算面积&lt;/li&gt;
-&lt;li&gt;calcLine() 计算线长&lt;/li&gt;
-&lt;li&gt;calcXY() 计算点坐标&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;独立的地理信息系统程序&quot;&gt;&lt;a href=&quot;#独立的地理信息系统程序&quot; class=&quot;headerlink&quot; title=&quot;独立的地理信息系统程序&quot;&gt;&lt;/a&gt;独立的地理信息系统程序&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;建立窗体应用程序&lt;/li&gt;
-&lt;li&gt;添加控件&lt;/li&gt;
-&lt;li&gt;添加服务代码&lt;/li&gt;
-&lt;li&gt;新建项classLibrary-&amp;gt;Base Command&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;command1-cs&quot;&gt;&lt;a href=&quot;#command1-cs&quot; class=&quot;headerlink&quot; title=&quot;command1.cs&quot;&gt;&lt;/a&gt;command1.cs&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;主要在public command1(){}&lt;/li&gt;
-&lt;li&gt;OnClick(){}&lt;/li&gt;
-&lt;li&gt;新建的其他函数&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
-    
-      <category term="VS" scheme="http://innozh.com/tags/VS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>arcEngine 计算点坐标、线长、面积</title>
-    <link href="http://innozh.com/2019-09-23-cshape-arcengine-addin.html"/>
-    <id>http://innozh.com/2019-09-23-cshape-arcengine-addin.html</id>
-    <published>2019-09-23T00:00:00.000Z</published>
-    <updated>2020-03-08T06:31:26.739Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;VS新建addin&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;C# 获取当前文档地图图层&lt;/li&gt;
-&lt;li&gt;添加字段, 计算面图层的面积&lt;/li&gt;
-&lt;li&gt;添加字段，计算线图层的长度&lt;/li&gt;
-&lt;li&gt;添加字段，计算点图层的经纬度&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="ArcMapEngine" scheme="http://innozh.com/tags/ArcMapEngine/"/>
-    
-      <category term="VS" scheme="http://innozh.com/tags/VS/"/>
-    
-      <category term="addin" scheme="http://innozh.com/tags/addin/"/>
     
   </entry>
   
