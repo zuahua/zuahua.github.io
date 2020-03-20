@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-03-11T04:05:59.542Z</updated>
+  <updated>2020-03-20T03:12:16.136Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,26 +17,76 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>jQuery中使用AJAX</title>
-    <link href="http://innozh.com/2020-3-11-ajax-jquery.html"/>
-    <id>http://innozh.com/2020-3-11-ajax-jquery.html</id>
-    <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-11T04:05:59.542Z</updated>
+    <title>php读文件目录名及文件夹列表</title>
+    <link href="http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html"/>
+    <id>http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html</id>
+    <published>2020-03-20T00:00:00.000Z</published>
+    <updated>2020-03-20T03:12:16.136Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;主要内容：&lt;/p&gt;
+      &lt;p&gt;环境说明：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;load()&lt;/p&gt;
-&lt;p&gt;get()&lt;/p&gt;
-&lt;p&gt;post()&lt;/p&gt;
+&lt;p&gt;php7.x&lt;/p&gt;
+&lt;p&gt;php函数读取文件夹目录&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+      <category term="php" scheme="http://innozh.com/tags/php/"/>
+    
+      <category term="读文件" scheme="http://innozh.com/tags/%E8%AF%BB%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php读取文件目录中文乱码</title>
+    <link href="http://innozh.com/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html"/>
+    <id>http://innozh.com/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html</id>
+    <published>2020-03-20T00:00:00.000Z</published>
+    <updated>2020-03-20T03:16:19.530Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;环境说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;php7.x&lt;/p&gt;
+&lt;p&gt;ubuntu18.04&lt;/p&gt;
+&lt;p&gt;Nginx&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="php" scheme="http://innozh.com/tags/php/"/>
+    
+      <category term="读文件" scheme="http://innozh.com/tags/%E8%AF%BB%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原生JS封装AJAX</title>
+    <link href="http://innozh.com/2020-3-11-ajax-js.html"/>
+    <id>http://innozh.com/2020-3-11-ajax-js.html</id>
+    <published>2020-03-11T00:00:00.000Z</published>
+    <updated>2020-03-11T04:07:45.112Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原生JS封装AJAX为一个外部文件&lt;/p&gt;
+&lt;p&gt;实现直接调用&lt;/p&gt;
+&lt;p&gt;GET、POST传输方式&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
       <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
     
@@ -67,25 +117,26 @@
   </entry>
   
   <entry>
-    <title>原生JS封装AJAX</title>
-    <link href="http://innozh.com/2020-3-11-ajax-js.html"/>
-    <id>http://innozh.com/2020-3-11-ajax-js.html</id>
+    <title>jQuery中使用AJAX</title>
+    <link href="http://innozh.com/2020-3-11-ajax-jquery.html"/>
+    <id>http://innozh.com/2020-3-11-ajax-jquery.html</id>
     <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-11T04:07:45.112Z</updated>
+    <updated>2020-03-11T04:05:59.542Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;原生JS封装AJAX为一个外部文件&lt;/p&gt;
-&lt;p&gt;实现直接调用&lt;/p&gt;
-&lt;p&gt;GET、POST传输方式&lt;/p&gt;
+      &lt;p&gt;主要内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;load()&lt;/p&gt;
+&lt;p&gt;get()&lt;/p&gt;
+&lt;p&gt;post()&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
       <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
     
@@ -144,6 +195,29 @@
   </entry>
   
   <entry>
+    <title>jQuery实例2-手风琴</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-2.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-2.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T05:18:19.027Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;手风琴&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
     <title>jQuery实例4-tab栏切换</title>
     <link href="http://innozh.com/2020-3-9-jquery-shi-li-4.html"/>
     <id>http://innozh.com/2020-3-9-jquery-shi-li-4.html</id>
@@ -156,29 +230,6 @@
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
 &lt;p&gt;tab栏切换&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例3-商品显示</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:28:37.015Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;商品显示&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -236,18 +287,42 @@
   </entry>
   
   <entry>
-    <title>jQuery实例6-动态添加和删除表格元素</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-6.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-6.html</id>
+    <title>jQuery实例1-防止连续触发的导航栏</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-1.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-1.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:18:06.584Z</updated>
+    <updated>2020-03-09T05:17:42.120Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;动态添加和删除表格元素&lt;/p&gt;
+&lt;p&gt;下拉导航栏&lt;/p&gt;
+&lt;p&gt;防止下拉事件连续触发&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery实例5-仿360关机动画</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-5.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-5.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T07:18:06.572Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;仿360关机动画&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -305,18 +380,18 @@
   </entry>
   
   <entry>
-    <title>jQuery实例5-仿360关机动画</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-5.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-5.html</id>
+    <title>jQuery实例6-动态添加和删除表格元素</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-6.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-6.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:18:06.572Z</updated>
+    <updated>2020-03-09T07:18:06.584Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;仿360关机动画&lt;/p&gt;
+&lt;p&gt;动态添加和删除表格元素&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -328,18 +403,18 @@
   </entry>
   
   <entry>
-    <title>jQuery实例2-手风琴</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-2.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-2.html</id>
+    <title>jQuery实例3-商品显示</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:18:19.027Z</updated>
+    <updated>2020-03-09T05:28:37.015Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;手风琴&lt;/p&gt;
+&lt;p&gt;商品显示&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -363,30 +438,6 @@
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
 &lt;p&gt;表格全选和反选&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例1-防止连续触发的导航栏</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-1.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-1.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:17:42.120Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;下拉导航栏&lt;/p&gt;
-&lt;p&gt;防止下拉事件连续触发&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -443,64 +494,6 @@
       <category term="React" scheme="http://innozh.com/tags/React/"/>
     
       <category term="Antd" scheme="http://innozh.com/tags/Antd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>武汉肺炎事件 R.I.P</title>
-    <link href="http://innozh.com/2020-2-2-wu-han-fei-yan-shi-jian-r.i.p.html"/>
-    <id>http://innozh.com/2020-2-2-wu-han-fei-yan-shi-jian-r.i.p.html</id>
-    <published>2020-02-02T00:00:00.000Z</published>
-    <updated>2020-03-08T07:25:35.724Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;声明:以下时间,地点,人物,事件,笔者都无法证明。如有错误,欢迎指正(请当故事看看)。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;时间: 2019年&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;12月,开始从推上了解到武汉肺炎,有可能大范围传播言论出现。国内一片祥和,然后武汉当局抓了几个所谓“造谣者”(有人说是医生在微信群讨论被抓)。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/note/22.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;时间:2020年&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;1月20日,官方正式发布新型冠状病毒感染事件,人数几十人似乎小事一桩,不足挂齿。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="随笔" scheme="http://innozh.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="思考" scheme="http://innozh.com/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP上传文件到服务器</title>
-    <link href="http://innozh.com/2020-1-19-php-shang-chuan-wen-jian-dao-fu-wu-qi.html"/>
-    <id>http://innozh.com/2020-1-19-php-shang-chuan-wen-jian-dao-fu-wu-qi.html</id>
-    <published>2020-01-18T00:00:00.000Z</published>
-    <updated>2020-02-02T07:23:18.450Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;环境：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PHP7&lt;/li&gt;
-&lt;li&gt;ubuntu&lt;/li&gt;
-&lt;li&gt;Apache&lt;/li&gt;
-&lt;li&gt;vsftp&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;遇到的坑：上传的ftp文件目录不可写入；导致上传没有结果&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="PHP" scheme="http://innozh.com/tags/PHP/"/>
     
   </entry>
   
