@@ -292,7 +292,7 @@
 
       
         <p>python自学第五节<br>函数、return、函数参数、列表字典传入函数、函数文档</p>
-<h2><span id="函数">函数</span></h2><ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
 <li>作用：<ul>
 <li>代码组织</li>
 <li>代码复用</li>
@@ -314,11 +314,11 @@
 2
 3
 4
-5</code></pre><h3><span id="1-函数返回return语句">1、函数返回，return语句</span></h3><ul>
+5</code></pre><h3 id="1、函数返回，return语句"><a href="#1、函数返回，return语句" class="headerlink" title="1、函数返回，return语句"></a>1、函数返回，return语句</h3><ul>
 <li>表示无条件结束函数并返回结果</li>
 <li>约定，任何函数都应该以return语句表示结束；无返回值可return None</li>
 </ul>
-<h4><span id="写一个求阶乘的函数">写一个求阶乘的函数</span></h4><ul>
+<h4 id="写一个求阶乘的函数"><a href="#写一个求阶乘的函数" class="headerlink" title="写一个求阶乘的函数"></a>写一个求阶乘的函数</h4><ul>
 <li>要求键入一个大于0的数</li>
 <li>返回它的阶乘值</li>
 </ul>
@@ -330,7 +330,7 @@
 
 
 
-120</code></pre><h3><span id="2-函数的参数">2、函数的参数</span></h3><ul>
+120</code></pre><h3 id="2、函数的参数"><a href="#2、函数的参数" class="headerlink" title="2、函数的参数"></a>2、函数的参数</h3><ul>
 <li>形参，函数定义时</li>
 <li>实参，函数调用时</li>
 </ul>
@@ -347,7 +347,7 @@
 
 <pre><code>Jony like eat fish</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可换位置</span></span><br><span class="line">Func2(food = <span class="string">"fish"</span>,name = <span class="string">"Jony"</span>)</span><br></pre></td></tr></table></figure>
 
-<pre><code>Jony like eat fish</code></pre><h3><span id="3-默认参数">3、默认参数</span></h3><ul>
+<pre><code>Jony like eat fish</code></pre><h3 id="3、默认参数"><a href="#3、默认参数" class="headerlink" title="3、默认参数"></a>3、默认参数</h3><ul>
 <li>函数在定义时，就给参数一个默认值</li>
 <li>注意：函数定义时，给某个参数默认值，其之后不能出现没有默认值的参数</li>
 </ul>
@@ -355,7 +355,7 @@
 
 <pre><code>60</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Func3(<span class="number">10</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
 
-<pre><code>30</code></pre><h3><span id="4-序列参数-字典参数即将序列字典传入函数">4、序列参数、字典参数（即将序列，字典传入函数）</span></h3><ul>
+<pre><code>30</code></pre><h3 id="4、序列参数、字典参数（即将序列，字典传入函数）"><a href="#4、序列参数、字典参数（即将序列，字典传入函数）" class="headerlink" title="4、序列参数、字典参数（即将序列，字典传入函数）"></a>4、序列参数、字典参数（即将序列，字典传入函数）</h3><ul>
 <li>列表参数：所有参数作为一个列表传入<ul>
 <li>在调用时列表前使用一个*号</li>
 <li>列表的参数个数与函数参数个数一致</li>
@@ -377,7 +377,7 @@ Value of c is three</code></pre><figure class="highlight python"><table><tr><td 
 
 <pre><code>Value of a is one
 Value of b is two
-Value of c is three</code></pre><h3><span id="5-星号元组参数">5、星号元组参数</span></h3><ul>
+Value of c is three</code></pre><h3 id="5、星号元组参数"><a href="#5、星号元组参数" class="headerlink" title="5、星号元组参数"></a>5、星号元组参数</h3><ul>
 <li>星号元组参数</li>
 <li>语法：<ul>
 <li>def 函数名(*元组形参):<br>   语句块</li>
@@ -394,7 +394,7 @@ Value of c is three</code></pre><h3><span id="5-星号元组参数">5、星号�
 ()</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可放多个参数</span></span><br><span class="line">Lfunc(<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>)</span><br></pre></td></tr></table></figure>
 
 <pre><code>进入元组参数
-(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;)</code></pre><h3><span id="6-双星号字典参数">6、双星号字典参数</span></h3><ul>
+(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;)</code></pre><h3 id="6、双星号字典参数"><a href="#6、双星号字典参数" class="headerlink" title="6、双星号字典参数"></a>6、双星号字典参数</h3><ul>
 <li>语法：<ul>
 <li>def 函数名(**元组参数):<br>   函数体</li>
 </ul>
@@ -410,14 +410,14 @@ Value of c is three</code></pre><h3><span id="5-星号元组参数">5、星号�
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DiFun(a=<span class="string">"one"</span>,b=<span class="string">"two"</span>,c=<span class="string">"three"</span>)</span><br></pre></td></tr></table></figure>
 
 <pre><code>进入字典
-{&apos;a&apos;: &apos;one&apos;, &apos;b&apos;: &apos;two&apos;, &apos;c&apos;: &apos;three&apos;}</code></pre><h3><span id="7-单星号元组参数与双星号字典参数都叫做-不定长参数">7、单星号元组参数与双星号字典参数都叫做 不定长参数</span></h3><ul>
+{&apos;a&apos;: &apos;one&apos;, &apos;b&apos;: &apos;two&apos;, &apos;c&apos;: &apos;three&apos;}</code></pre><h3 id="7、单星号元组参数与双星号字典参数都叫做-不定长参数"><a href="#7、单星号元组参数与双星号字典参数都叫做-不定长参数" class="headerlink" title="7、单星号元组参数与双星号字典参数都叫做 不定长参数"></a>7、单星号元组参数与双星号字典参数都叫做 不定长参数</h3><ul>
 <li>说明：<ul>
 <li>位置形参，单星号元组形参，双星号字典形参可以混用</li>
 <li>混用时，顺序必须是：位置形参，单星号元组形参，双星号字典形参</li>
 </ul>
 </li>
 </ul>
-<h3><span id="8-函数返回值">8、函数返回值</span></h3><ul>
+<h3 id="8、函数返回值"><a href="#8、函数返回值" class="headerlink" title="8、函数返回值"></a>8、函数返回值</h3><ul>
 <li>一般需要返回值，使用return</li>
 <li>函数的类型就是返回值的类型</li>
 <li>可以没有return，不建议去掉</li>
@@ -454,7 +454,7 @@ None</code></pre><ul>
 
 tuple</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o,t,h = nFunc(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">print(o,t,h)</span><br></pre></td></tr></table></figure>
 
-<pre><code>12 12 24</code></pre><h3><span id="9-函数文档">9、函数文档</span></h3><ul>
+<pre><code>12 12 24</code></pre><h3 id="9、函数文档"><a href="#9、函数文档" class="headerlink" title="9、函数文档"></a>9、函数文档</h3><ul>
 <li>函数文档值在函数开头起一定说明的文字</li>
 <li>例子如下：</li>
 </ul>
@@ -490,10 +490,10 @@ Sum(one, two)
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-4.html" rel="bookmark">程序结构、分支语句、条件、列表、循环</a></div>
@@ -502,7 +502,7 @@ Sum(one, two)
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-20-pygame-1.html" rel="bookmark">从0开始的python飞机外星人大战 (1)</a></div>
     </li>
   </ul>
 
@@ -523,8 +523,8 @@ Sum(one, two)
       <i class="fa fa-chevron-left"></i> python数据类型
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018-08-10-python-4.html" rel="next" title="程序结构、分支语句、条件、列表、循环">
-      程序结构、分支语句、条件、列表、循环 <i class="fa fa-chevron-right"></i>
+    <a href="/2018-08-10-python-3.html" rel="next" title="标准输入输出">
+      标准输入输出 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -586,7 +586,7 @@ Sum(one, two)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">1、函数返回，return语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.</span> <span class="nav-text">写一个求阶乘的函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">2、函数的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">3、默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">4、序列参数、字典参数（即将序列，字典传入函数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.5.</span> <span class="nav-text">5、星号元组参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.6.</span> <span class="nav-text">6、双星号字典参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.7.</span> <span class="nav-text">7、单星号元组参数与双星号字典参数都叫做 不定长参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.8.</span> <span class="nav-text">8、函数返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.9.</span> <span class="nav-text">9、函数文档</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、函数返回，return语句"><span class="nav-number">1.1.</span> <span class="nav-text">1、函数返回，return语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写一个求阶乘的函数"><span class="nav-number">1.1.1.</span> <span class="nav-text">写一个求阶乘的函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、函数的参数"><span class="nav-number">1.2.</span> <span class="nav-text">2、函数的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、默认参数"><span class="nav-number">1.3.</span> <span class="nav-text">3、默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、序列参数、字典参数（即将序列，字典传入函数）"><span class="nav-number">1.4.</span> <span class="nav-text">4、序列参数、字典参数（即将序列，字典传入函数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、星号元组参数"><span class="nav-number">1.5.</span> <span class="nav-text">5、星号元组参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、双星号字典参数"><span class="nav-number">1.6.</span> <span class="nav-text">6、双星号字典参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、单星号元组参数与双星号字典参数都叫做-不定长参数"><span class="nav-number">1.7.</span> <span class="nav-text">7、单星号元组参数与双星号字典参数都叫做 不定长参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、函数返回值"><span class="nav-number">1.8.</span> <span class="nav-text">8、函数返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、函数文档"><span class="nav-number">1.9.</span> <span class="nav-text">9、函数文档</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

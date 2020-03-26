@@ -292,7 +292,7 @@
 
       
         <p>python自学第二节<br>运算符</p>
-<h2><span id="python中的运算符">python中的运算符</span></h2><h3><span id="1-算数运算符">1、算数运算符</span></h3><ul>
+<h2 id="python中的运算符"><a href="#python中的运算符" class="headerlink" title="python中的运算符"></a>python中的运算符</h2><h3 id="1、算数运算符"><a href="#1、算数运算符" class="headerlink" title="1、算数运算符"></a>1、算数运算符</h3><ul>
 <li>+</li>
 <li>-</li>
 <li>*</li>
@@ -341,7 +341,7 @@
 
 
 
-<pre><code>256</code></pre><h3><span id="算数运算符的优先级">算数运算符的优先级</span></h3><ul>
+<pre><code>256</code></pre><h3 id="算数运算符的优先级"><a href="#算数运算符的优先级" class="headerlink" title="算数运算符的优先级"></a>算数运算符的优先级</h3><ul>
 <li>（）</li>
 <li>**</li>
 <li>/ *   //  %</li>
@@ -352,7 +352,7 @@
 
 
 
-<pre><code>19</code></pre><h3><span id="运算中出现浮点数结果一定是浮点数">运算中出现浮点数，结果一定是浮点数</span></h3><h3><span id="运算小练习">运算小练习</span></h3><ul>
+<pre><code>19</code></pre><h3 id="运算中出现浮点数，结果一定是浮点数"><a href="#运算中出现浮点数，结果一定是浮点数" class="headerlink" title="运算中出现浮点数，结果一定是浮点数"></a>运算中出现浮点数，结果一定是浮点数</h3><h3 id="运算小练习"><a href="#运算小练习" class="headerlink" title="运算小练习"></a>运算小练习</h3><ul>
 <li>摄氏度、华氏温度、开氏温度的转换</li>
 <li>摄氏度=5.0/9.0*(华氏温度 - 32)</li>
 <li>开氏温度=5.0/9.0*(华氏温度 - 32) + 273.15</li>
@@ -362,7 +362,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="number">32</span></span><br><span class="line">h = s*<span class="number">9.0</span>/<span class="number">5.0</span>+<span class="number">32</span></span><br><span class="line">k = <span class="number">5.0</span>/<span class="number">9.0</span>*(h - <span class="number">32</span>) + <span class="number">273.15</span></span><br><span class="line">print(<span class="string">"华氏温度h: %f"</span> % h)</span><br><span class="line">print(<span class="string">"开氏温度k: %f"</span> % k)</span><br></pre></td></tr></table></figure>
 
 <pre><code>华氏温度h: 89.600000
-开氏温度k: 305.150000</code></pre><h3><span id="2-赋值运算符">2、赋值运算符</span></h3><ul>
+开氏温度k: 305.150000</code></pre><h3 id="2、赋值运算符"><a href="#2、赋值运算符" class="headerlink" title="2、赋值运算符"></a>2、赋值运算符</h3><ul>
 <li>=，+=，-=,*=,/=</li>
 <li>** = ,//=</li>
 </ul>
@@ -382,7 +382,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b = <span class="number">123</span>,<span class="number">456</span></span><br><span class="line">a,b = b,a</span><br><span class="line">print(<span class="string">"%d\n%d"</span> %(a,b))</span><br></pre></td></tr></table></figure>
 
 <pre><code>456
-123</code></pre><h4><span id="数值运算练习">数值运算练习</span></h4><ul>
+123</code></pre><h4 id="数值运算练习"><a href="#数值运算练习" class="headerlink" title="数值运算练习"></a>数值运算练习</h4><ul>
 <li>(1)求r=6.6cm的球的体积和面积</li>
 <li>面积s=4<em>pi</em>r^2</li>
 <li>体积v=4/3<em>pi</em>r^3</li>
@@ -397,7 +397,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">startTime = <span class="number">7</span></span><br><span class="line">doneTimeS = <span class="number">476589</span></span><br><span class="line">minute = doneTimeS//<span class="number">60</span></span><br><span class="line">S = doneTimeS%<span class="number">60</span></span><br><span class="line">Time = minute//<span class="number">60</span></span><br><span class="line">M = minute%<span class="number">60</span></span><br><span class="line">nowTime = (startTime + Time)//<span class="number">24</span></span><br><span class="line">print(<span class="string">"现在的时间：%02d:%02d:%02d"</span> % (nowTime,M,S))</span><br></pre></td></tr></table></figure>
 
-<pre><code>现在的时间：05:23:09</code></pre><h3><span id="3-比较运算符">3、比较运算符</span></h3><ul>
+<pre><code>现在的时间：05:23:09</code></pre><h3 id="3、比较运算符"><a href="#3、比较运算符" class="headerlink" title="3、比较运算符"></a>3、比较运算符</h3><ul>
 <li>&lt; &gt; &lt;= &gt;= == !=</li>
 <li>比较的结果是bool值</li>
 </ul>
@@ -411,7 +411,7 @@
 
 
 
-<pre><code>False</code></pre><h3><span id="4-逻辑运算符">4、逻辑运算符</span></h3><ul>
+<pre><code>False</code></pre><h3 id="4、逻辑运算符"><a href="#4、逻辑运算符" class="headerlink" title="4、逻辑运算符"></a>4、逻辑运算符</h3><ul>
 <li><p>and逻辑与,短路与</p>
 </li>
 <li><p>or 逻辑或</p>
@@ -444,7 +444,7 @@
 
 
 
-<pre><code>False</code></pre><h3><span id="5-特殊运算符">5、特殊运算符</span></h3><ul>
+<pre><code>False</code></pre><h3 id="5、特殊运算符"><a href="#5、特殊运算符" class="headerlink" title="5、特殊运算符"></a>5、特殊运算符</h3><ul>
 <li><p>is 判断两个对象的内存地址是否相同</p>
 </li>
 <li><p>is not 与is相反</p>
@@ -532,7 +532,7 @@ NameError: name &apos;em&apos; is not defined</code></pre>
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-20-pygame-1.html" rel="bookmark">从0开始的python飞机外星人大战 (1)</a></div>
     </li>
   </ul>
 
@@ -549,12 +549,12 @@ NameError: name &apos;em&apos; is not defined</code></pre>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-08-02-session-brower.html" rel="prev" title="浏览器中session的使用，保存登陆状态与注销登陆">
-      <i class="fa fa-chevron-left"></i> 浏览器中session的使用，保存登陆状态与注销登陆
+    <a href="/2018-08-10-python-4.html" rel="prev" title="程序结构、分支语句、条件、列表、循环">
+      <i class="fa fa-chevron-left"></i> 程序结构、分支语句、条件、列表、循环
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018-08-10-python-1.html" rel="next" title="python数据类型">
-      python数据类型 <i class="fa fa-chevron-right"></i>
+    <a href="/2018-08-20-pygame-1.html" rel="next" title="从0开始的python飞机外星人大战 (1)">
+      从0开始的python飞机外星人大战 (1) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -616,7 +616,7 @@ NameError: name &apos;em&apos; is not defined</code></pre>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">python中的运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">1、算数运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">算数运算符的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">运算中出现浮点数，结果一定是浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">运算小练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.5.</span> <span class="nav-text">2、赋值运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值运算练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.6.</span> <span class="nav-text">3、比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.7.</span> <span class="nav-text">4、逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.8.</span> <span class="nav-text">5、特殊运算符</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的运算符"><span class="nav-number">1.</span> <span class="nav-text">python中的运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、算数运算符"><span class="nav-number">1.1.</span> <span class="nav-text">1、算数运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算数运算符的优先级"><span class="nav-number">1.2.</span> <span class="nav-text">算数运算符的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算中出现浮点数，结果一定是浮点数"><span class="nav-number">1.3.</span> <span class="nav-text">运算中出现浮点数，结果一定是浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算小练习"><span class="nav-number">1.4.</span> <span class="nav-text">运算小练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、赋值运算符"><span class="nav-number">1.5.</span> <span class="nav-text">2、赋值运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值运算练习"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值运算练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、比较运算符"><span class="nav-number">1.6.</span> <span class="nav-text">3、比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、逻辑运算符"><span class="nav-number">1.7.</span> <span class="nav-text">4、逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、特殊运算符"><span class="nav-number">1.8.</span> <span class="nav-text">5、特殊运算符</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

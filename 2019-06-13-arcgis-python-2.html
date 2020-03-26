@@ -302,12 +302,12 @@
 </ul>
 <a id="more"></a>
 
-<h3><span id="1-利用图层更新其他图层属性">1. 利用图层更新其他图层属性</span></h3><p>结果使将要更新的图层的属性变成与原图层一样</p>
+<h3 id="1-利用图层更新其他图层属性"><a href="#1-利用图层更新其他图层属性" class="headerlink" title="1. 利用图层更新其他图层属性"></a>1. 利用图层更新其他图层属性</h3><p>结果使将要更新的图层的属性变成与原图层一样</p>
 <p>更新图层与源图层拥有相同的属性</p>
 <p>更改的属性：例如 图层名、字段别名、定义查询等</p>
 <p>对于在多个数据框的相同的图层，需要对其进行属性更改设置，可通过这样的方法进行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">df &#x3D; mapping.ListDataFrames(mxd, &quot;Crime&quot;)[0]</span><br><span class="line"># 将要更新的图层</span><br><span class="line">updateLayer &#x3D; mapping.ListLayers(mxd, &quot;Crimes2009&quot;, df)[0]</span><br><span class="line"># 用于更新图层的源图层</span><br><span class="line">sourceLayer &#x3D; mapping.Layer(r&quot;H:\upUpStudy\pythonGis\data\BurglariesNoForcedEntry.lyr&quot;)</span><br><span class="line"># 更新符号系统</span><br><span class="line">mapping.UpdateLayer(df, updateLayer, sourceLayer, False)</span><br></pre></td></tr></table></figure>
-<h3><span id="2-操作数据框中启用时间属性的图层">2. 操作数据框中启用时间属性的图层</span></h3><ul>
+<h3 id="2-操作数据框中启用时间属性的图层"><a href="#2-操作数据框中启用时间属性的图层" class="headerlink" title="2. 操作数据框中启用时间属性的图层"></a>2. 操作数据框中启用时间属性的图层</h3><ul>
 <li>DataFrameTime对象(DataFrame.time属性返回的结果)</li>
 </ul>
 <p>可检索</p>
@@ -318,26 +318,26 @@
 <li>timeStepInterval (时间步长间隔)</li>
 </ul>
 <p>数据框中的图层必须 ==启用时间属性== 才能进行这些操作 </p>
-<h4><span id="以7天为间隔导出犯罪点的位置pdf">以7天为间隔导出犯罪点的位置PDF</span></h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">df &#x3D; mapping.ListDataFrames(mxd, &quot;Crime&quot;)[0]</span><br><span class="line">dft &#x3D; df.time</span><br><span class="line"># dft 为DataFrameTime对象 </span><br><span class="line"># 设置当前时间为开始时间</span><br><span class="line">dft.currentTime &#x3D; dft.startTime</span><br><span class="line"># 使用循环导出以7天为间隔的犯罪数据的PDF文件</span><br><span class="line">while dft.currentTime &lt;&#x3D; dft.endTime:</span><br><span class="line">    fileName &#x3D; str(dft.currentTime).split(&quot; &quot;)[0] + &quot;.pdf&quot;</span><br><span class="line">    # 导出地图</span><br><span class="line">    mapping.ExportToPDF(mxd, os.path.join(r&quot;H:\upUpStudy\pythonGis\data\Ch2&quot;, fileName), df)</span><br><span class="line">    print(&quot;Export&quot; + fileName)</span><br><span class="line">    # 循环控制</span><br><span class="line">    dft.currentTime &#x3D; dft.currentTime + dft.timeStepInterval</span><br></pre></td></tr></table></figure>
+<h4 id="以7天为间隔导出犯罪点的位置PDF"><a href="#以7天为间隔导出犯罪点的位置PDF" class="headerlink" title="以7天为间隔导出犯罪点的位置PDF"></a>以7天为间隔导出犯罪点的位置PDF</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line">df &#x3D; mapping.ListDataFrames(mxd, &quot;Crime&quot;)[0]</span><br><span class="line">dft &#x3D; df.time</span><br><span class="line"># dft 为DataFrameTime对象 </span><br><span class="line"># 设置当前时间为开始时间</span><br><span class="line">dft.currentTime &#x3D; dft.startTime</span><br><span class="line"># 使用循环导出以7天为间隔的犯罪数据的PDF文件</span><br><span class="line">while dft.currentTime &lt;&#x3D; dft.endTime:</span><br><span class="line">    fileName &#x3D; str(dft.currentTime).split(&quot; &quot;)[0] + &quot;.pdf&quot;</span><br><span class="line">    # 导出地图</span><br><span class="line">    mapping.ExportToPDF(mxd, os.path.join(r&quot;H:\upUpStudy\pythonGis\data\Ch2&quot;, fileName), df)</span><br><span class="line">    print(&quot;Export&quot; + fileName)</span><br><span class="line">    # 循环控制</span><br><span class="line">    dft.currentTime &#x3D; dft.currentTime + dft.timeStepInterval</span><br></pre></td></tr></table></figure>
 
-<h3><span id="3-查找地图文档和图层文件中丢失的数据源">3. 查找地图文档和图层文件中丢失的数据源</span></h3><p> 图层文件前有感叹号表示已丢失数据链接</p>
+<h3 id="3-查找地图文档和图层文件中丢失的数据源"><a href="#3-查找地图文档和图层文件中丢失的数据源" class="headerlink" title="3. 查找地图文档和图层文件中丢失的数据源"></a>3. 查找地图文档和图层文件中丢失的数据源</h3><p> 图层文件前有感叹号表示已丢失数据链接</p>
 <ul>
 <li>arcpy.mapping.ListBrokenDataSources() 返回已丢失数据源图层列表</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line"># 获取文档中丢失数据源图层列表</span><br><span class="line">listBrokenDS &#x3D; mapping.ListBrokenDataSources(mxd)</span><br><span class="line">for layer in listBrokenDS:</span><br><span class="line">    print(layer.name)</span><br></pre></td></tr></table></figure>
 
-<h3><span id="4-使用mapdocumentfindandreplaceworkplacepaths修复丢失的数据源">4. 使用MapDocument.findAndReplaceWorkplacePaths()修复丢失的数据源</span></h3><ul>
+<h3 id="4-使用MapDocument-findAndReplaceWorkplacePaths-修复丢失的数据源"><a href="#4-使用MapDocument-findAndReplaceWorkplacePaths-修复丢失的数据源" class="headerlink" title="4. 使用MapDocument.findAndReplaceWorkplacePaths()修复丢失的数据源"></a>4. 使用MapDocument.findAndReplaceWorkplacePaths()修复丢失的数据源</h3><ul>
 <li>MapDocument.findAndReplaceWorkspacePaths()</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import arcpy.mapping as mapping</span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line"># 获取文档中丢失数据源图层列表</span><br><span class="line">listBrokenDS &#x3D; mapping.ListBrokenDataSources(mxd)</span><br><span class="line">for layer in listBrokenDS:</span><br><span class="line">    print(layer.name)</span><br><span class="line">    </span><br><span class="line">import arcpy.mapping as mapping</span><br><span class="line">mxd &#x3D; mapping.MapDocument(&quot;current&quot;)</span><br><span class="line"># 修复文档中图层数据源</span><br><span class="line">mxd.findAndReplaceWorkspacePaths(r&quot;H:\upUpStudy\pythonGis\基于arcgis的python编程秘籍第二版数据文件\ArcpyBook\Ch3\Data\OldData\CityOfSanAntonio.gdb&quot;, r&quot;H:\upUpStudy\pythonGis\基于arcgis的python编程秘籍第二版数据文件\ArcpyBook\data\CityOfSanAntonio.gdb&quot;)</span><br><span class="line"># 结果保存到mxd</span><br><span class="line">mxd.saveACopy(r&quot;H:\upUpStudy\pythonGis\基于arcgis的python编程秘籍第二版数据文件\ArcpyBook\Ch3\Crime_DataLinksFixed.mxd&quot;)</span><br></pre></td></tr></table></figure>
 
-<h4><span id="layer和tableview对象的-findandreplacewokespacepaths">Layer和TableView对象的 findAndReplaceWokespacePaths()</span></h4><ul>
+<h4 id="Layer和TableView对象的-findAndReplaceWokespacePaths"><a href="#Layer和TableView对象的-findAndReplaceWokespacePaths" class="headerlink" title="Layer和TableView对象的 findAndReplaceWokespacePaths()"></a>Layer和TableView对象的 findAndReplaceWokespacePaths()</h4><ul>
 <li>Layer.findAndReplaceWokespacePaths()</li>
 <li>TableView.findAndReplaceWokespacePaths()</li>
 </ul>
 <p>只能用来修复单个丢失的数据源，不能进行全局查找并替换地图文档中所有丢失的数据源</p>
-<h4><span id="缺点-替换的数据源必须类型相同">缺点： 替换的数据源必须类型相同</span></h4><p>如原来的数据源是个人地理数据库，那么替换的数据源也必须是个人地理数据库，只是数据库路径改变了</p>
-<h3><span id="5-使用mapdocumentreplaceworkspaces方法修复丢失的数据源">5. 使用MapDocument.replaceWorkspaces()方法修复丢失的数据源</span></h3><ul>
+<h4 id="缺点：-替换的数据源必须类型相同"><a href="#缺点：-替换的数据源必须类型相同" class="headerlink" title="缺点： 替换的数据源必须类型相同"></a>缺点： 替换的数据源必须类型相同</h4><p>如原来的数据源是个人地理数据库，那么替换的数据源也必须是个人地理数据库，只是数据库路径改变了</p>
+<h3 id="5-使用MapDocument-replaceWorkspaces-方法修复丢失的数据源"><a href="#5-使用MapDocument-replaceWorkspaces-方法修复丢失的数据源" class="headerlink" title="5. 使用MapDocument.replaceWorkspaces()方法修复丢失的数据源"></a>5. 使用MapDocument.replaceWorkspaces()方法修复丢失的数据源</h3><ul>
 <li>MapDocument.replaceWorkspaces()</li>
 </ul>
 <p>允许从一种工作空间类型转换到另一种工作空间类型；</p>
@@ -354,7 +354,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-18-arcgis-python-8.html" rel="bookmark">Arcgis中的python编程(8)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-30-arcgis-python-6.html" rel="bookmark">Arcgis中的python编程(6)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
@@ -366,7 +366,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -383,12 +383,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-06-12-ubuntu16.04-vsftpd.html" rel="prev" title="ubuntu16.04安装vsftpd">
-      <i class="fa fa-chevron-left"></i> ubuntu16.04安装vsftpd
+    <a href="/2019-06-13-arcgis-python-1.html" rel="prev" title="Arcgis中的python编程(1)">
+      <i class="fa fa-chevron-left"></i> Arcgis中的python编程(1)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019-06-12-essay1.html" rel="next" title="记录使用这个 blog theme">
-      记录使用这个 blog theme <i class="fa fa-chevron-right"></i>
+    <a href="/2019-06-12-ubuntu-minecraft-server.html" rel="next" title="minecraft服务器搭建">
+      minecraft服务器搭建 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -450,7 +450,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">1. 利用图层更新其他图层属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">2. 操作数据框中启用时间属性的图层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">以7天为间隔导出犯罪点的位置PDF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">3. 查找地图文档和图层文件中丢失的数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">4. 使用MapDocument.findAndReplaceWorkplacePaths()修复丢失的数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.1.</span> <span class="nav-text">Layer和TableView对象的 findAndReplaceWokespacePaths()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.2.</span> <span class="nav-text">缺点： 替换的数据源必须类型相同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">5. 使用MapDocument.replaceWorkspaces()方法修复丢失的数据源</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-利用图层更新其他图层属性"><span class="nav-number">1.</span> <span class="nav-text">1. 利用图层更新其他图层属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-操作数据框中启用时间属性的图层"><span class="nav-number">2.</span> <span class="nav-text">2. 操作数据框中启用时间属性的图层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#以7天为间隔导出犯罪点的位置PDF"><span class="nav-number">2.1.</span> <span class="nav-text">以7天为间隔导出犯罪点的位置PDF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查找地图文档和图层文件中丢失的数据源"><span class="nav-number">3.</span> <span class="nav-text">3. 查找地图文档和图层文件中丢失的数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用MapDocument-findAndReplaceWorkplacePaths-修复丢失的数据源"><span class="nav-number">4.</span> <span class="nav-text">4. 使用MapDocument.findAndReplaceWorkplacePaths()修复丢失的数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Layer和TableView对象的-findAndReplaceWokespacePaths"><span class="nav-number">4.1.</span> <span class="nav-text">Layer和TableView对象的 findAndReplaceWokespacePaths()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点：-替换的数据源必须类型相同"><span class="nav-number">4.2.</span> <span class="nav-text">缺点： 替换的数据源必须类型相同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用MapDocument-replaceWorkspaces-方法修复丢失的数据源"><span class="nav-number">5.</span> <span class="nav-text">5. 使用MapDocument.replaceWorkspaces()方法修复丢失的数据源</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

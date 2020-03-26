@@ -292,13 +292,13 @@
 
       
         <p>python自学第四节<br>程序结构、分支语句、条件、列表、循环</p>
-<h2><span id="程序结构">程序结构</span></h2><ul>
+<h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><ul>
 <li>程序结构只需要由三种构成： 程序=顺序+分支+循环</li>
 <li>顺序</li>
 <li>分支：即选择条件</li>
 <li>循环</li>
 </ul>
-<h3><span id="1-条件语句">1、条件语句</span></h3><ul>
+<h3 id="1、条件语句"><a href="#1、条件语句" class="headerlink" title="1、条件语句"></a>1、条件语句</h3><ul>
 <li>语法如下：<pre><code>if (条件表达式)：
     程序处理模块</code></pre></li>
 <li>python用缩进来表示代码层级关系<ul>
@@ -316,7 +316,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">5</span> &gt; <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
-<h4><span id="练习判断学生成绩的等级">练习：判断学生成绩的等级</span></h4><ul>
+<h4 id="练习：判断学生成绩的等级"><a href="#练习：判断学生成绩的等级" class="headerlink" title="练习：判断学生成绩的等级"></a>练习：判断学生成绩的等级</h4><ul>
 <li>90及以上为A</li>
 <li>80-90为B</li>
 <li>70-80为C</li>
@@ -326,11 +326,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">score = input(<span class="string">"键入学生成绩："</span>)</span><br><span class="line">score1 = int(score)   <span class="comment">#input键入的是字符，这里强转为整型</span></span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">90</span> ):</span><br><span class="line">    print(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">80</span> <span class="keyword">and</span> score1 &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">70</span> <span class="keyword">and</span> score1 &lt; <span class="number">80</span>):</span><br><span class="line">    print(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &gt;= <span class="number">60</span> <span class="keyword">and</span> score1 &lt; <span class="number">70</span>):</span><br><span class="line">    print(<span class="string">"D"</span>)</span><br><span class="line"><span class="keyword">if</span> (score1 &lt; <span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"E"</span>)</span><br></pre></td></tr></table></figure>
 
 <pre><code>键入学生成绩：70
-C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
+C</code></pre><h3 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 60分以上及格，60分以下重考，90分以上为优，70-90为良；60-70为中；20-60为差；20分以下：请到老师办公室</span></span><br><span class="line">score = input(<span class="string">"输入成绩："</span>)</span><br><span class="line">score = int(score)</span><br><span class="line"><span class="keyword">if</span> (score &gt;<span class="number">60</span>):</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">90</span>):</span><br><span class="line">        print(<span class="string">"优"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> (score &gt; <span class="number">70</span>):</span><br><span class="line">            print(<span class="string">"良"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"中"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"重考"</span>)</span><br><span class="line">    <span class="keyword">if</span> (score &gt; <span class="number">20</span>):</span><br><span class="line">        print(<span class="string">"差"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"请到老师办公室"</span>)</span><br></pre></td></tr></table></figure>
 
 <pre><code>输入成绩：99
 及格
-优</code></pre><h3><span id="2-三元运算符">2、三元运算符</span></h3><ul>
+优</code></pre><h3 id="2、三元运算符"><a href="#2、三元运算符" class="headerlink" title="2、三元运算符"></a>2、三元运算符</h3><ul>
 <li>语法： x if 条件 else y</li>
 <li>表示如果条件成立则输出x；否则输出y</li>
 </ul>
@@ -339,7 +339,7 @@ C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highligh
 
 
 
-<pre><code>&apos;优秀&apos;</code></pre><h4><span id="运用三元运算符求最大值">运用三元运算符求最大值</span></h4><ul>
+<pre><code>&apos;优秀&apos;</code></pre><h4 id="运用三元运算符求最大值"><a href="#运用三元运算符求最大值" class="headerlink" title="运用三元运算符求最大值"></a>运用三元运算符求最大值</h4><ul>
 <li>a,b,c由用户输入</li>
 <li>输出最大值</li>
 </ul>
@@ -348,12 +348,12 @@ C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highligh
 <pre><code>输入a:23
 输入b:45
 输入c:11
-45</code></pre><h3><span id="3-列表-list">3、列表 list</span></h3><ul>
+45</code></pre><h3 id="3、列表-list"><a href="#3、列表-list" class="headerlink" title="3、列表 list"></a>3、列表 list</h3><ul>
 <li>可以放数字、字符串、列表、和其他结构</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"fuck shit"</span>,[<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>]]</span><br><span class="line">print(L1)</span><br></pre></td></tr></table></figure>
 
-<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3><span id="4-range">4、range</span></h3><ul>
+<pre><code>[1, 2, 3, &apos;fuck shit&apos;, [7, 9, 11]]</code></pre><h3 id="4、range"><a href="#4、range" class="headerlink" title="4、range"></a>4、range</h3><ul>
 <li>可以看成一个函数</li>
 <li>产生一个有规律的有数字组成的列表</li>
 <li>语法： range(start,end,step)</li>
@@ -366,7 +366,7 @@ C</code></pre><h3><span id="ifelse">if…else</span></h3><figure class="highligh
 
 <pre><code>range(1, 6)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = range(<span class="number">2</span>,<span class="number">15</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#  可看成a == [2,6,10,14]</span></span><br></pre></td></tr></table></figure>
 
-<h3><span id="5-for循环">5、for循环</span></h3><ul>
+<h3 id="5、for循环"><a href="#5、for循环" class="headerlink" title="5、for循环"></a>5、for循环</h3><ul>
 <li>一般明确循环次数</li>
 <li>语法：    for i in xxx:</li>
 </ul>
@@ -384,17 +384,17 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
 39
 58
 77
-96</code></pre><h4><span id="运用循环求和">运用循环求和</span></h4><ul>
+96</code></pre><h4 id="运用循环求和"><a href="#运用循环求和" class="headerlink" title="运用循环求和"></a>运用循环求和</h4><ul>
 <li>求从1加到100</li>
 <li>使用range</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">L = range(<span class="number">1</span>,<span class="number">101</span>)</span><br><span class="line">mySum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> L:</span><br><span class="line">    mySum += idx</span><br><span class="line">print(mySum)</span><br></pre></td></tr></table></figure>
 
-<pre><code>5050</code></pre><h3><span id="6-while循环">6、while循环</span></h3><ul>
+<pre><code>5050</code></pre><h3 id="6、while循环"><a href="#6、while循环" class="headerlink" title="6、while循环"></a>6、while循环</h3><ul>
 <li>不明确循环次数，却满足一定条件</li>
 <li>语法；      while (条件):<pre><code>循环体</code></pre></li>
 </ul>
-<h4><span id="示例银行存款">示例：银行存款</span></h4><ul>
+<h4 id="示例：银行存款"><a href="#示例：银行存款" class="headerlink" title="示例：银行存款"></a>示例：银行存款</h4><ul>
 <li>本金10000</li>
 <li>年利率： %2.5</li>
 <li>多少年总金额超过20000<ul>
@@ -405,22 +405,22 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">year = <span class="number">0</span></span><br><span class="line">money = <span class="number">10000</span></span><br><span class="line">ratio = <span class="number">0.025</span></span><br><span class="line"><span class="keyword">while</span> (money &lt; <span class="number">20000</span>):</span><br><span class="line">    year += <span class="number">1</span></span><br><span class="line">    money = money + money*ratio</span><br><span class="line">print(<span class="string">"year is %d"</span> %year)</span><br></pre></td></tr></table></figure>
 
-<pre><code>year is 29</code></pre><h4><span id="累加求和">累加求和</span></h4><ul>
+<pre><code>year is 29</code></pre><h4 id="累加求和"><a href="#累加求和" class="headerlink" title="累加求和"></a>累加求和</h4><ul>
 <li>1-100</li>
 <li>while循环</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">100</span>):</span><br><span class="line">    sum += i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
 
-<pre><code>5050</code></pre><h3><span id="7-break语句">7、 break语句</span></h3><ul>
+<pre><code>5050</code></pre><h3 id="7、-break语句"><a href="#7、-break语句" class="headerlink" title="7、 break语句"></a>7、 break语句</h3><ul>
 <li>无条件终止循环，并跳出循环体</li>
 </ul>
-<h4><span id="示例">示例</span></h4><ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ul>
 <li>在200-300中找到第一个可以被9整除的数</li>
 <li>使用break</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>,<span class="number">301</span>):</span><br><span class="line">    num = i%<span class="number">9</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
 
-<pre><code>207</code></pre><h4><span id="对于嵌套多重循环break跳出离他最近的循环">对于嵌套多重循环，break跳出离他最近的循环</span></h4><h4><span id="打印99乘法表">打印9*9乘法表</span></h4><ul>
+<pre><code>207</code></pre><h4 id="对于嵌套多重循环，break跳出离他最近的循环"><a href="#对于嵌套多重循环，break跳出离他最近的循环" class="headerlink" title="对于嵌套多重循环，break跳出离他最近的循环"></a>对于嵌套多重循环，break跳出离他最近的循环</h4><h4 id="打印9-9乘法表"><a href="#打印9-9乘法表" class="headerlink" title="打印9*9乘法表"></a>打印9*9乘法表</h4><ul>
 <li>要求最大值为36</li>
 <li>典型 for 嵌套循环</li>
 <li>break</li>
@@ -437,17 +437,17 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
 6 12 18 24 30 36  
 7 14 21 28 35  
 8 16 24 32  
-9 18 27 36  </code></pre><h3><span id="8-continue">8、continue</span></h3><ul>
+9 18 27 36  </code></pre><h3 id="8、continue"><a href="#8、continue" class="headerlink" title="8、continue"></a>8、continue</h3><ul>
 <li>含义：继续下一轮循环</li>
 <li>当我们已经确定不需要此轮循环时使用</li>
 </ul>
-<h4><span id="例累加求和">例：累加求和</span></h4><ul>
+<h4 id="例：累加求和"><a href="#例：累加求和" class="headerlink" title="例：累加求和"></a>例：累加求和</h4><ul>
 <li>当数为偶数时才求和</li>
 <li>1-100</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum += i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
 
-<pre><code>2550</code></pre><h4><span id="例99乘法表">例：9*9乘法表</span></h4><ul>
+<pre><code>2550</code></pre><h4 id="例：9-9乘法表"><a href="#例：9-9乘法表" class="headerlink" title="例：9*9乘法表"></a>例：9*9乘法表</h4><ul>
 <li>要求：打印值小于12的数</li>
 <li>嵌套for循环</li>
 <li>使用continue</li>
@@ -470,7 +470,7 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
 
 8 
 
-9</code></pre>
+9 </code></pre>
     </div>
 
     
@@ -480,10 +480,10 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2018-08-10-python-5.html" rel="bookmark">函数、return、函数参数、列表字典传入函数、函数文档</a></div>
@@ -492,7 +492,7 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-20-pygame-1.html" rel="bookmark">从0开始的python飞机外星人大战 (1)</a></div>
     </li>
   </ul>
 
@@ -509,12 +509,12 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018-08-10-python-5.html" rel="prev" title="函数、return、函数参数、列表字典传入函数、函数文档">
-      <i class="fa fa-chevron-left"></i> 函数、return、函数参数、列表字典传入函数、函数文档
+    <a href="/2018-08-10-python-3.html" rel="prev" title="标准输入输出">
+      <i class="fa fa-chevron-left"></i> 标准输入输出
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018-08-10-python-3.html" rel="next" title="标准输入输出">
-      标准输入输出 <i class="fa fa-chevron-right"></i>
+    <a href="/2018-08-10-python-2.html" rel="next" title="python中的运算符">
+      python中的运算符 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -576,7 +576,7 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="gutter">
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">1、条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.</span> <span class="nav-text">练习：判断学生成绩的等级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">if…else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">2、三元运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.1.</span> <span class="nav-text">运用三元运算符求最大值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">3、列表 list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.5.</span> <span class="nav-text">4、range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.6.</span> <span class="nav-text">5、for循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.6.1.</span> <span class="nav-text">运用循环求和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.7.</span> <span class="nav-text">6、while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.7.1.</span> <span class="nav-text">示例：银行存款</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.7.2.</span> <span class="nav-text">累加求和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.8.</span> <span class="nav-text">7、 break语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.8.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.8.2.</span> <span class="nav-text">对于嵌套多重循环，break跳出离他最近的循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.8.3.</span> <span class="nav-text">打印9*9乘法表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.9.</span> <span class="nav-text">8、continue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.9.1.</span> <span class="nav-text">例：累加求和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.9.2.</span> <span class="nav-text">例：9*9乘法表</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序结构"><span class="nav-number">1.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、条件语句"><span class="nav-number">1.1.</span> <span class="nav-text">1、条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习：判断学生成绩的等级"><span class="nav-number">1.1.1.</span> <span class="nav-text">练习：判断学生成绩的等级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if…else"><span class="nav-number">1.2.</span> <span class="nav-text">if…else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、三元运算符"><span class="nav-number">1.3.</span> <span class="nav-text">2、三元运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运用三元运算符求最大值"><span class="nav-number">1.3.1.</span> <span class="nav-text">运用三元运算符求最大值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、列表-list"><span class="nav-number">1.4.</span> <span class="nav-text">3、列表 list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、range"><span class="nav-number">1.5.</span> <span class="nav-text">4、range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、for循环"><span class="nav-number">1.6.</span> <span class="nav-text">5、for循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运用循环求和"><span class="nav-number">1.6.1.</span> <span class="nav-text">运用循环求和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、while循环"><span class="nav-number">1.7.</span> <span class="nav-text">6、while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例：银行存款"><span class="nav-number">1.7.1.</span> <span class="nav-text">示例：银行存款</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#累加求和"><span class="nav-number">1.7.2.</span> <span class="nav-text">累加求和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、-break语句"><span class="nav-number">1.8.</span> <span class="nav-text">7、 break语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">1.8.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对于嵌套多重循环，break跳出离他最近的循环"><span class="nav-number">1.8.2.</span> <span class="nav-text">对于嵌套多重循环，break跳出离他最近的循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打印9-9乘法表"><span class="nav-number">1.8.3.</span> <span class="nav-text">打印9*9乘法表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、continue"><span class="nav-number">1.9.</span> <span class="nav-text">8、continue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例：累加求和"><span class="nav-number">1.9.1.</span> <span class="nav-text">例：累加求和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例：9-9乘法表"><span class="nav-number">1.9.2.</span> <span class="nav-text">例：9*9乘法表</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

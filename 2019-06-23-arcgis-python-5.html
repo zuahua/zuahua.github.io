@@ -300,8 +300,8 @@
 </ul>
 <a id="more"></a>
 
-<h3><span id="1-使用脚本执行地理处理工具-clip_analysis为例">1. 使用脚本执行地理处理工具-Clip_analysis为例</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 使用工具箱工具</span><br><span class="line">import arcpy</span><br><span class="line"># 裁剪学区</span><br><span class="line"># 输入要素</span><br><span class="line">in_features &#x3D; r&quot;H:\ArcpyBook\data\CityOfSanAntonio.gdb\Burglary&quot;</span><br><span class="line"># 裁剪要素</span><br><span class="line">clip_features &#x3D; r&quot;H:\ArcpyBook\Ch5\EdgewoodSD.shp&quot;</span><br><span class="line"># 输出要素</span><br><span class="line">out_featuresClass &#x3D; r&quot;H:\ArcpyBook\Ch5\ClpBurglary&quot;</span><br><span class="line">arcpy.Clip_analysis(in_features, clip_features, out_featuresClass)</span><br></pre></td></tr></table></figure>
-<h3><span id="2-将一个工具的输出作为一个工具的输入">2. 将一个工具的输出作为一个工具的输入</span></h3><p>思路: 通过buffer工具输出距溪流半英里的缓冲区</p>
+<h3 id="1-使用脚本执行地理处理工具-Clip-analysis为例"><a href="#1-使用脚本执行地理处理工具-Clip-analysis为例" class="headerlink" title="1. 使用脚本执行地理处理工具-Clip_analysis为例"></a>1. 使用脚本执行地理处理工具-Clip_analysis为例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 使用工具箱工具</span><br><span class="line">import arcpy</span><br><span class="line"># 裁剪学区</span><br><span class="line"># 输入要素</span><br><span class="line">in_features &#x3D; r&quot;H:\ArcpyBook\data\CityOfSanAntonio.gdb\Burglary&quot;</span><br><span class="line"># 裁剪要素</span><br><span class="line">clip_features &#x3D; r&quot;H:\ArcpyBook\Ch5\EdgewoodSD.shp&quot;</span><br><span class="line"># 输出要素</span><br><span class="line">out_featuresClass &#x3D; r&quot;H:\ArcpyBook\Ch5\ClpBurglary&quot;</span><br><span class="line">arcpy.Clip_analysis(in_features, clip_features, out_featuresClass)</span><br></pre></td></tr></table></figure>
+<h3 id="2-将一个工具的输出作为一个工具的输入"><a href="#2-将一个工具的输出作为一个工具的输入" class="headerlink" title="2. 将一个工具的输出作为一个工具的输入"></a>2. 将一个工具的输出作为一个工具的输入</h3><p>思路: 通过buffer工具输出距溪流半英里的缓冲区</p>
 <p>再使用SelectLayerByLocation_management()工具选出在缓冲区中的学校点</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line"># 设置工作空间</span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\data\TravisCounty&quot;</span><br><span class="line"># 使用try语句添加溪流、溪流缓冲区、距离、学校等变量</span><br><span class="line">try:</span><br><span class="line">    streams &#x3D; &quot;Streams.shp&quot; # 溪流</span><br><span class="line">    streamsBuffer &#x3D; &quot;StreamsBuffer.shp&quot; # 溪流缓冲区变量</span><br><span class="line">    distance &#x3D; &quot;2640 feet&quot; # 距离</span><br><span class="line">    schools &#x3D; &quot;Schools.shp&quot; # 学校</span><br><span class="line">    schoolsLyrFile &#x3D; &quot;SchoolsLyr&quot; # 用来存放临时学校图层</span><br><span class="line">    arcpy.Buffer_analysis(streams, streamsBuffer, distance, &quot;FULL&quot;, &quot;ROUND&quot;, &quot;ALL&quot;)</span><br><span class="line">    # 创建一个临时图层</span><br><span class="line">    arcpy.MakeFeatureLayer_management(schools, schoolsLyrFile)</span><br><span class="line">    # 按位置选择图层</span><br><span class="line">    arcpy.SelectLayerByLocation_management(schoolsLyrFile, &quot;INTERSECT&quot;, streamsBuffer)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
 
@@ -315,10 +315,10 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-18-arcgis-python-8.html" rel="bookmark">Arcgis中的python编程(8)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-30-arcgis-python-6.html" rel="bookmark">Arcgis中的python编程(6)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-2.html" rel="bookmark">Arcgis中的python编程(2)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-16-arcgis-python-3.html" rel="bookmark">Arcgis中的python编程(3)</a></div>
@@ -327,7 +327,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -411,7 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">1. 使用脚本执行地理处理工具-Clip_analysis为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">2. 将一个工具的输出作为一个工具的输入</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用脚本执行地理处理工具-Clip-analysis为例"><span class="nav-number">1.</span> <span class="nav-text">1. 使用脚本执行地理处理工具-Clip_analysis为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-将一个工具的输出作为一个工具的输入"><span class="nav-number">2.</span> <span class="nav-text">2. 将一个工具的输出作为一个工具的输入</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

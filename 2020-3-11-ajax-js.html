@@ -293,7 +293,7 @@
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="原生js封装ajax">原生JS封装AJAX</span></h3><h3><span id="方法">方法</span></h3><ul>
+<h3 id="原生JS封装AJAX"><a href="#原生JS封装AJAX" class="headerlink" title="原生JS封装AJAX"></a>原生JS封装AJAX</h3><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
 <li>XMLHttpRequest()</li>
 <li>ActiveXObject(“Microsoft.XMLHTTP”) // 兼容IE</li>
 <li>xmlhttp.onreadystatechange</li>
@@ -303,10 +303,10 @@
 <li>xmlhttp.setRequestHeader(‘Content-Type’, “application/x-www-form-urlencoded”) // POST时，设置头</li>
 <li>xmlhttp.send()</li>
 </ul>
-<h3><span id="代码">代码</span></h3><p>封装: <strong>AJAXloadDoc.js</strong></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>封装: <strong>AJAXloadDoc.js</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 封装AJAX获取数据 函数名：AJAXloadDoc</span><br><span class="line"> * @param &#123;请求方式：string &quot;GET&quot;、&quot;POST&quot;&#125; requestWay </span><br><span class="line"> * @param &#123;请求链接：string&#125; url </span><br><span class="line"> * @param &#123;发送值：string &quot;&quot;、 &quot;value1&#x3D;1&amp;value2&#x3D;2&quot;&#125; sendValue </span><br><span class="line"> * @param &#123;回调：参数为得到的结果数据&#125; callback </span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">function AJAXloadDoc(requestWay, url, sendValue, callback) &#123;</span><br><span class="line">    var xmlhttp</span><br><span class="line">    &#x2F;&#x2F; 兼容写法</span><br><span class="line">    if (window.XMLHttpRequest) &#123;</span><br><span class="line">        xmlhttp &#x3D; new window.XMLHttpRequest()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        xmlhttp &#x3D; new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    var response &#x2F;&#x2F; 数据</span><br><span class="line"></span><br><span class="line">    xmlhttp.onreadystatechange &#x3D; function () &#123;</span><br><span class="line">        if (this.readyState &#x3D;&#x3D; 4 &amp;&amp; this.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">            response &#x3D; this.responseText</span><br><span class="line">            &#x2F;&#x2F; 调用 callback 传入 结果数据</span><br><span class="line">            callback(response)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (requestWay &#x3D;&#x3D; &quot;GET&quot;) &#123;</span><br><span class="line">        var urlAndSend &#x3D; url + &quot;?&quot; + sendValue</span><br><span class="line">        xmlhttp.open(&#39;GET&#39;, urlAndSend, true)</span><br><span class="line">        xmlhttp.send()</span><br><span class="line">    &#125;</span><br><span class="line">    if(requestWay &#x3D;&#x3D; &quot;POST&quot;) &#123;</span><br><span class="line">        xmlhttp.open(&#39;POST&#39;, url, true)</span><br><span class="line">        xmlhttp.setRequestHeader(&#39;Content-Type&#39;, &quot;application&#x2F;x-www-form-urlencoded&quot;)</span><br><span class="line">        xmlhttp.send(sendValue)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="参数说明">参数说明</span></h3><ul>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
 <li>requestWay</li>
 <li><ul>
 <li>请求方式：string “GET”、”POST”</li>
@@ -328,7 +328,7 @@
 </ul>
 </li>
 </ul>
-<h3><span id="调用方式">调用方式</span></h3><p>引入：</p>
+<h3 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h3><p>引入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;.&#x2F;AJAXloadDoc.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>使用：</p>
@@ -352,7 +352,7 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AJAXloadDoc(&quot;POST&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;x&#x3D;1&amp;y&#x3D;3&quot;, function(res) &#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h3><span id="实例根据ajax传回数据建立表格">实例：根据AJAX传回数据建立表格</span></h3><p>html</p>
+<h3 id="实例：根据AJAX传回数据建立表格"><a href="#实例：根据AJAX传回数据建立表格" class="headerlink" title="实例：根据AJAX传回数据建立表格"></a>实例：根据AJAX传回数据建立表格</h3><p>html</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot; &#x2F;&gt;</span><br><span class="line">    &lt;title&gt;test_ajax JS&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;.&#x2F;AJAXloadDoc.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;    </span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id&#x3D;&quot;btn&quot;&gt;获取数据&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btn &#x3D; document.getElementById(&#39;btn&#39;);</span><br><span class="line">        var box &#x3D; document.getElementById(&#39;box&#39;);</span><br><span class="line">        btn.onclick &#x3D; function() &#123;</span><br><span class="line">            &#x2F;&#x2F; sendValue参数为空字符串 POST</span><br><span class="line">            AJAXloadDoc(&quot;POST&quot;, &quot;.&#x2F;test_ajax.php&quot;, &quot;&quot;, function(res) &#123;</span><br><span class="line">                box.innerHTML &#x3D; JSON.parse(res).join(&#39;-&#39;);</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>php</p>
@@ -368,10 +368,10 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html" rel="bookmark">jQuery实现带下拉框导航栏</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-05-zi-dong-shou-dong-bo-fang-tu-pian-javascript.html" rel="bookmark">JavaScript应用实例-自动、手动播放图片</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-05-xia-la-kuang-javascript.html" rel="bookmark">JavaScript应用实例-下拉框</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-08-05-javascript-xue-xi-shi-li-3.html" rel="bookmark">JavaScript学习实例(3)</a></div>
@@ -380,7 +380,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -402,8 +402,8 @@
       <i class="fa fa-chevron-left"></i> jQuery使用JSONP
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020-3-11-fetch.html" rel="next" title="fetch的简单使用">
-      fetch的简单使用 <i class="fa fa-chevron-right"></i>
+    <a href="/2020-3-11-ajax-jquery.html" rel="next" title="jQuery中使用AJAX">
+      jQuery中使用AJAX <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -465,7 +465,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">原生JS封装AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">实例：根据AJAX传回数据建立表格</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原生JS封装AJAX"><span class="nav-number">1.</span> <span class="nav-text">原生JS封装AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数说明"><span class="nav-number">4.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用方式"><span class="nav-number">5.</span> <span class="nav-text">调用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例：根据AJAX传回数据建立表格"><span class="nav-number">6.</span> <span class="nav-text">实例：根据AJAX传回数据建立表格</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

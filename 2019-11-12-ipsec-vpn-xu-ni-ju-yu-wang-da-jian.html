@@ -304,23 +304,23 @@
 </ul>
 <a id="more"></a>
 
-<h3><span id="服务端">服务端</span></h3><p>参考github: <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md" target="_blank" rel="noopener external nofollow noreferrer">IPsec VPN 服务器一键安装脚本</a></p>
-<h3><span id="客户端">客户端</span></h3><ul>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>参考github: <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md" target="_blank" rel="noopener external nofollow noreferrer">IPsec VPN 服务器一键安装脚本</a></p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><ul>
 <li>win10</li>
 </ul>
 <p>所有问题都能在此找到：<br><a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4" target="_blank" rel="noopener external nofollow noreferrer">配置 IPsec/L2TP VPN 客户端</a></p>
-<h4><span id="网络设置里新建vpn">网络设置里新建VPN</span></h4><p>如下界面进行配置：</p>
+<h4 id="网络设置里新建VPN"><a href="#网络设置里新建VPN" class="headerlink" title="网络设置里新建VPN"></a>网络设置里新建VPN</h4><p>如下界面进行配置：</p>
 <p><img src="/assets/images/IPSec/1.png" alt="图片"></p>
-<h4><span id="点击新建的vpn进行连接">点击新建的vpn进行连接</span></h4><p>未成功连接时，使用以下方法</p>
-<h4><span id="查看服务">查看服务</span></h4><p><a href="https://www.tp-link.com/en/support/faq/1029/" target="_blank" rel="noopener external nofollow noreferrer">查看服务是否启动</a></p>
-<h4><span id="注册表里添加">注册表里添加</span></h4><p>方法：使用管理员打开CMD</p>
+<h4 id="点击新建的vpn进行连接"><a href="#点击新建的vpn进行连接" class="headerlink" title="点击新建的vpn进行连接"></a>点击新建的vpn进行连接</h4><p>未成功连接时，使用以下方法</p>
+<h4 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h4><p><a href="https://www.tp-link.com/en/support/faq/1029/" target="_blank" rel="noopener external nofollow noreferrer">查看服务是否启动</a></p>
+<h4 id="注册表里添加"><a href="#注册表里添加" class="headerlink" title="注册表里添加"></a>注册表里添加</h4><p>方法：使用管理员打开CMD</p>
 <p>输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent &#x2F;v AssumeUDPEncapsulationContextOnSendRule &#x2F;t REG_DWORD &#x2F;d 0x2 &#x2F;f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Services\RasMan\Parameters &#x2F;v ProhibitIpSec &#x2F;t REG_DWORD &#x2F;d 0x0 &#x2F;f</span><br></pre></td></tr></table></figure>
 <p>CMD提示操作完成</p>
 <p>重启计算机</p>
-<h4><span id="连接后无法使用网络的问题">连接后无法使用网络的问题</span></h4><p><img src="/assets/images/IPSec/2.png" alt="图片"></p>
+<h4 id="连接后无法使用网络的问题"><a href="#连接后无法使用网络的问题" class="headerlink" title="连接后无法使用网络的问题"></a>连接后无法使用网络的问题</h4><p><img src="/assets/images/IPSec/2.png" alt="图片"></p>
 <p><img src="/assets/images/IPSec/3.png" alt="图片"></p>
-<h4><span id="客户端在同一局域网无法ping通">客户端在同一局域网无法ping通</span></h4><p>关闭本地防火墙</p>
+<h4 id="客户端在同一局域网无法ping通"><a href="#客户端在同一局域网无法ping通" class="headerlink" title="客户端在同一局域网无法ping通"></a>客户端在同一局域网无法ping通</h4><p>关闭本地防火墙</p>
 
     </div>
 
@@ -334,7 +334,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -353,8 +353,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-09-23-cshape-arcengine-addin.html" rel="prev" title="arcEngine 计算点坐标、线长、面积">
-      <i class="fa fa-chevron-left"></i> arcEngine 计算点坐标、线长、面积
+    <a href="/2019-09-23-cshape-du-li-de-di-li-xin-xi-xi-tong-cheng-xu.html" rel="prev" title="arcEngine C# 独立的地理信息系统程序 计算点坐标、线长、面积">
+      <i class="fa fa-chevron-left"></i> arcEngine C# 独立的地理信息系统程序 计算点坐标、线长、面积
     </a></div>
       <div class="post-nav-item">
     <a href="/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html" rel="next" title="PHP实现注册时邮箱验证">
@@ -420,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">网络设置里新建VPN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">点击新建的vpn进行连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">查看服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.4.</span> <span class="nav-text">注册表里添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.5.</span> <span class="nav-text">连接后无法使用网络的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.6.</span> <span class="nav-text">客户端在同一局域网无法ping通</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端"><span class="nav-number">1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">2.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络设置里新建VPN"><span class="nav-number">2.1.</span> <span class="nav-text">网络设置里新建VPN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#点击新建的vpn进行连接"><span class="nav-number">2.2.</span> <span class="nav-text">点击新建的vpn进行连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看服务"><span class="nav-number">2.3.</span> <span class="nav-text">查看服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册表里添加"><span class="nav-number">2.4.</span> <span class="nav-text">注册表里添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接后无法使用网络的问题"><span class="nav-number">2.5.</span> <span class="nav-text">连接后无法使用网络的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端在同一局域网无法ping通"><span class="nav-number">2.6.</span> <span class="nav-text">客户端在同一局域网无法ping通</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

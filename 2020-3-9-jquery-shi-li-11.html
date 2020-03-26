@@ -294,16 +294,16 @@
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="jquery实例11-自定义tabs插件-实现tab切换">jQuery实例11-自定义tabs插件 实现tab切换</span></h3><h3><span id="主要方法">主要方法</span></h3><blockquote>
+<h3 id="jQuery实例11-自定义tabs插件-实现tab切换"><a href="#jQuery实例11-自定义tabs插件-实现tab切换" class="headerlink" title="jQuery实例11-自定义tabs插件 实现tab切换"></a>jQuery实例11-自定义tabs插件 实现tab切换</h3><h3 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h3><blockquote>
 <p>自定义jQuery插件</p>
 </blockquote>
-<h3><span id="需求">需求</span></h3><ul>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
 <li>tab栏的切换</li>
 </ul>
-<h3><span id="效果">效果</span></h3><p><img src="../images/gif/sd_tabs.gif" alt="image"></p>
-<h3><span id="代码">代码</span></h3><h4><span id="jquery-tabsjs-自定义tabs插件">jquery-tabs.js 自定义tabs插件</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(function($) &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加原型方法 tabs</span><br><span class="line">     * options.tabsId tab栏的标签选择器</span><br><span class="line">     * options.tabClass tab栏点击后的类</span><br><span class="line">     * options.tabBody tab主体页的标签选择器</span><br><span class="line">     *&#x2F;</span><br><span class="line">    $.fn.tabs &#x3D; function(options) &#123;</span><br><span class="line">        &#x2F;&#x2F; 保存 大盒子元素对象</span><br><span class="line">        var $bigBox &#x3D; this;</span><br><span class="line">        &#x2F;&#x2F; 点击tab栏</span><br><span class="line">        $(options.tabsId).find(&#39;li&#39;).click(function() &#123;</span><br><span class="line">            $(this).addClass(options.tabClass).siblings(&#39;li&#39;).removeClass(options.tabClass);</span><br><span class="line">            &#x2F;&#x2F; 记录点击元素索引</span><br><span class="line">            var idx &#x3D; $(this).index();</span><br><span class="line">            &#x2F;&#x2F; 显示tab主体</span><br><span class="line">            $(options.tabBody).find(&#39;div&#39;).eq(idx).fadeIn(500).siblings(&#39;div&#39;).hide();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(window.jQuery));</span><br></pre></td></tr></table></figure>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="../images/gif/sd_tabs.gif" alt="image"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="jquery-tabs-js-自定义tabs插件"><a href="#jquery-tabs-js-自定义tabs插件" class="headerlink" title="jquery-tabs.js 自定义tabs插件"></a>jquery-tabs.js 自定义tabs插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(function($) &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加原型方法 tabs</span><br><span class="line">     * options.tabsId tab栏的标签选择器</span><br><span class="line">     * options.tabClass tab栏点击后的类</span><br><span class="line">     * options.tabBody tab主体页的标签选择器</span><br><span class="line">     *&#x2F;</span><br><span class="line">    $.fn.tabs &#x3D; function(options) &#123;</span><br><span class="line">        &#x2F;&#x2F; 保存 大盒子元素对象</span><br><span class="line">        var $bigBox &#x3D; this;</span><br><span class="line">        &#x2F;&#x2F; 点击tab栏</span><br><span class="line">        $(options.tabsId).find(&#39;li&#39;).click(function() &#123;</span><br><span class="line">            $(this).addClass(options.tabClass).siblings(&#39;li&#39;).removeClass(options.tabClass);</span><br><span class="line">            &#x2F;&#x2F; 记录点击元素索引</span><br><span class="line">            var idx &#x3D; $(this).index();</span><br><span class="line">            &#x2F;&#x2F; 显示tab主体</span><br><span class="line">            $(options.tabBody).find(&#39;div&#39;).eq(idx).fadeIn(500).siblings(&#39;div&#39;).hide();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(window.jQuery));</span><br></pre></td></tr></table></figure>
 
-<h4><span id="html文件">html文件</span></h4><p>引用</p>
+<h4 id="html文件"><a href="#html文件" class="headerlink" title="html文件"></a>html文件</h4><p>引用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;..&#x2F;plugin&#x2F;jquery-tabs.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>调用</p>
@@ -332,7 +332,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -349,12 +349,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020-3-9-jquery-shi-li-6.html" rel="prev" title="jQuery实例6-动态添加和删除表格元素">
-      <i class="fa fa-chevron-left"></i> jQuery实例6-动态添加和删除表格元素
+    <a href="/2020-3-9-jquery-shi-li-4.html" rel="prev" title="jQuery实例4-tab栏切换">
+      <i class="fa fa-chevron-left"></i> jQuery实例4-tab栏切换
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020-3-9-jquery-shi-li-10.html" rel="next" title="jQuery实例10-5颗心评分案例">
-      jQuery实例10-5颗心评分案例 <i class="fa fa-chevron-right"></i>
+    <a href="/2020-3-9-jquery-shi-li-2.html" rel="next" title="jQuery实例2-手风琴">
+      jQuery实例2-手风琴 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -416,7 +416,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">jQuery实例11-自定义tabs插件 实现tab切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">主要方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.1.</span> <span class="nav-text">jquery-tabs.js 自定义tabs插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.2.</span> <span class="nav-text">html文件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery实例11-自定义tabs插件-实现tab切换"><span class="nav-number">1.</span> <span class="nav-text">jQuery实例11-自定义tabs插件 实现tab切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要方法"><span class="nav-number">2.</span> <span class="nav-text">主要方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">3.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果"><span class="nav-number">4.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jquery-tabs-js-自定义tabs插件"><span class="nav-number">5.1.</span> <span class="nav-text">jquery-tabs.js 自定义tabs插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html文件"><span class="nav-number">5.2.</span> <span class="nav-text">html文件</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

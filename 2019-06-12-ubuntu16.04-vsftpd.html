@@ -296,12 +296,12 @@
 
 <a id="more"></a>
 
-<h4><span id="安装配置">安装配置</span></h4><p><a href="https://blog.csdn.net/qq_36095713/article/details/78024781" target="_blank" rel="noopener external nofollow noreferrer">教程1</a></p>
+<h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><p><a href="https://blog.csdn.net/qq_36095713/article/details/78024781" target="_blank" rel="noopener external nofollow noreferrer">教程1</a></p>
 <p>本地连接 503错误</p>
 <p><a href="https://blog.csdn.net/zhezhebie/article/details/78775323" target="_blank" rel="noopener external nofollow noreferrer">教程二</a></p>
 <p>远程连接超时</p>
 <p>在阿里云服务器里设置防火墙规则<br>FTP就能连接了</p>
-<h4><span id="发现连上很慢也出现连接超时">发现连上很慢，也出现连接超时</span></h4><p>在阿里云上防火墙规则添加 全部TCP</p>
+<h4 id="发现连上很慢，也出现连接超时"><a href="#发现连上很慢，也出现连接超时" class="headerlink" title="发现连上很慢，也出现连接超时"></a>发现连上很慢，也出现连接超时</h4><p>在阿里云上防火墙规则添加 全部TCP</p>
 <p>配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">listen_ipv6&#x3D;YES</span><br><span class="line">local_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">write_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">local_umask&#x3D;022</span><br><span class="line"></span><br><span class="line">dirmessage_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">use_localtime&#x3D;YES</span><br><span class="line"></span><br><span class="line">xferlog_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">connect_from_port_20&#x3D;YES</span><br><span class="line"></span><br><span class="line">xferlog_file&#x3D;&#x2F;var&#x2F;log&#x2F;vsftpd.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ascii_upload_enable&#x3D;YES</span><br><span class="line">ascii_download_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">chroot_local_user&#x3D;NO</span><br><span class="line"></span><br><span class="line">chroot_list_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">listen_ipv6&#x3D;YES</span><br><span class="line"></span><br><span class="line">anonymous_enable&#x3D;NO</span><br><span class="line"></span><br><span class="line">local_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">write_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line">dirmessage_enable&#x3D;YES</span><br><span class="line">use_localtime&#x3D;YES</span><br><span class="line">xferlog_enable&#x3D;YES</span><br><span class="line">connect_from_port_20&#x3D;YES</span><br><span class="line"></span><br><span class="line">xferlog_file&#x3D;&#x2F;var&#x2F;log&#x2F;vsftpd.log</span><br><span class="line">ascii_upload_enable&#x3D;YES</span><br><span class="line">ascii_download_enable&#x3D;YES</span><br><span class="line">chroot_local_user&#x3D;NO</span><br><span class="line">chroot_list_enable&#x3D;YES</span><br><span class="line">secure_chroot_dir&#x3D;&#x2F;var&#x2F;run&#x2F;vsftpd&#x2F;empty</span><br><span class="line"></span><br><span class="line">pam_service_name&#x3D;vsftpd</span><br><span class="line"></span><br><span class="line">rsa_cert_file&#x3D;&#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;ssl-cert-snakeoil.pem</span><br><span class="line">rsa_private_key_file&#x3D;&#x2F;etc&#x2F;ssl&#x2F;private&#x2F;ssl-cert-snakeoil.key</span><br><span class="line">ssl_enable&#x3D;NO</span><br><span class="line">pasv_enable&#x3D;YES</span><br><span class="line">pasv_min_port&#x3D;20000</span><br><span class="line">pasv_max_port&#x3D;20500</span><br><span class="line"></span><br><span class="line">max_clients&#x3D;5</span><br><span class="line">utf8_filesystem&#x3D;YES</span><br><span class="line"></span><br><span class="line">local_umask&#x3D;022</span><br></pre></td></tr></table></figure>
     </div>
@@ -316,7 +316,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -333,12 +333,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019-06-12-ubuntu-minecraft-server.html" rel="prev" title="minecraft服务器搭建">
-      <i class="fa fa-chevron-left"></i> minecraft服务器搭建
+    <a href="/2019-06-12-git-shang-chuan-xiang-mu.html" rel="prev" title="Git指令">
+      <i class="fa fa-chevron-left"></i> Git指令
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019-06-13-arcgis-python-2.html" rel="next" title="Arcgis中的python编程(2)">
-      Arcgis中的python编程(2) <i class="fa fa-chevron-right"></i>
+    <a href="/2019-06-13-arcgis-python-1.html" rel="next" title="Arcgis中的python编程(1)">
+      Arcgis中的python编程(1) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -400,7 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">发现连上很慢，也出现连接超时</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装配置"><span class="nav-number">1.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发现连上很慢，也出现连接超时"><span class="nav-number">2.</span> <span class="nav-text">发现连上很慢，也出现连接超时</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

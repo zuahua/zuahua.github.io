@@ -319,7 +319,7 @@
 </ul>
 <a id="more"></a>
 
-<h3><span id="1创建按钮加载项和使用python加载项">1.创建按钮加载项和使用Python加载项</span></h3><p>本例创建一个按钮加载项,添加一些数据到数据框</p>
+<h3 id="1-创建按钮加载项和使用Python加载项"><a href="#1-创建按钮加载项和使用Python加载项" class="headerlink" title="1.创建按钮加载项和使用Python加载项"></a>1.创建按钮加载项和使用Python加载项</h3><p>本例创建一个按钮加载项,添加一些数据到数据框</p>
 <ul>
 <li>运行addin_assistant.exe</li>
 </ul>
@@ -328,7 +328,7 @@
 <p>添加按钮<br><img src="/assets/images/blog/pythonAddin3.png" alt="image"></p>
 <p>保存文件/install中编辑addin-rootfile_addin.py</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">import pythonaddins</span><br><span class="line"></span><br><span class="line">class ButtonClassImportWildfires(object):</span><br><span class="line">    &quot;&quot;&quot;Implementation for addin-rootfile_addin.button (Button)&quot;&quot;&quot;</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.enabled &#x3D; True</span><br><span class="line">        self.checked &#x3D; False</span><br><span class="line">    def onClick(self):</span><br><span class="line">        layer_files &#x3D; pythonaddins.OpenDialog(&quot;Select layer to add&quot;, True, </span><br><span class="line">                r&quot;H:\ArcpyBook\data\Wildfires&quot;, &quot;Add&quot;)</span><br><span class="line">        mxd &#x3D; arcpy.mapping.MapDocument(&quot;current&quot;) # 获取mxd文档</span><br><span class="line">        df &#x3D; pythonaddins.GetSelectedTOCLayerOrDataFrame() # 获取数据框</span><br><span class="line">        if not isinstance(df, layer_files): # 判断类型是否相同</span><br><span class="line">            for layer_file in layer_files:</span><br><span class="line">                layer &#x3D; arcpy.mapping.Layer(layer_file)</span><br><span class="line">                # 往数据框添加layer</span><br><span class="line">                arcpy.mapping.AddLayer(df, layer)</span><br><span class="line">            else:</span><br><span class="line">                pythonaddins.MessageBox(&#39;Select a dataframe&#39;, &#39;info&#39;, 0)</span><br></pre></td></tr></table></figure>
-<h3><span id="2-安装测试加载项">2. 安装测试加载项</span></h3><ol>
+<h3 id="2-安装测试加载项"><a href="#2-安装测试加载项" class="headerlink" title="2. 安装测试加载项"></a>2. 安装测试加载项</h3><ol>
 <li>打开加载项工作目录</li>
 </ol>
 <p><img src="/assets/images/blog/pythonAddin4.png" alt="image"></p>
@@ -343,7 +343,7 @@
 <li><b>注意</b><br>工具条出现<b>缺失</b>问题</li>
 </ol>
 <p><b>解决:将生成的xxxx.esriaddin文件放到C:\Users\username\Documents\ArcGIS\AddIns\Desktop10.6(对应版本下)</b></p>
-<h3><span id="3-创建工具加载项">3. 创建工具加载项</span></h3><ul>
+<h3 id="3-创建工具加载项"><a href="#3-创建工具加载项" class="headerlink" title="3. 创建工具加载项"></a>3. 创建工具加载项</h3><ul>
 <li>功能: 在一个面要素内部创建随机点</li>
 </ul>
 <ol>
@@ -370,10 +370,10 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-16-arcgis-python-7.html" rel="bookmark">Arcgis中的python编程(7)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-2.html" rel="bookmark">Arcgis中的python编程(2)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-16-arcgis-python-3.html" rel="bookmark">Arcgis中的python编程(3)</a></div>
@@ -382,7 +382,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -466,7 +466,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">1.创建按钮加载项和使用Python加载项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">2. 安装测试加载项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">3. 创建工具加载项</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建按钮加载项和使用Python加载项"><span class="nav-number">1.</span> <span class="nav-text">1.创建按钮加载项和使用Python加载项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装测试加载项"><span class="nav-number">2.</span> <span class="nav-text">2. 安装测试加载项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建工具加载项"><span class="nav-number">3.</span> <span class="nav-text">3. 创建工具加载项</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

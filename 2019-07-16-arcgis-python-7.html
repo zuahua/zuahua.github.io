@@ -302,21 +302,21 @@
 </ul>
 <a id="more"></a>
 
-<h3><span id="1-查询前创建要素类或表视图的内存副本">1. 查询前，创建要素类或表视图的内存副本</span></h3><ul>
+<h3 id="1-查询前，创建要素类或表视图的内存副本"><a href="#1-查询前，创建要素类或表视图的内存副本" class="headerlink" title="1. 查询前，创建要素类或表视图的内存副本"></a>1. 查询前，创建要素类或表视图的内存副本</h3><ul>
 <li>arcpy.MakeFeatureLayer()</li>
 <li>arcpy.MakeTableView()</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line"># 设置工作空间</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:&#x2F;ArcpyBook&#x2F;data&#x2F;CityOfSanAntonio.gdb&quot;</span><br><span class="line">try:</span><br><span class="line">    # 调用创建要素图层工具</span><br><span class="line">    #flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;, &quot;Burglary_layer&quot;)</span><br><span class="line"></span><br><span class="line">    # 创建表视图</span><br><span class="line">    fview &#x3D; arcpy.MakeTableView_management(&quot;Crime2009Table&quot;, &quot;Crime2009_Table&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
-<h3><span id="2测试-按属性查询">2.测试 按属性查询</span></h3><ul>
+<h3 id="2-测试-按属性查询"><a href="#2-测试-按属性查询" class="headerlink" title="2.测试 按属性查询"></a>2.测试 按属性查询</h3><ul>
 <li>arcpy.SelectLayerByAttribute_management()</li>
 <li>arcpy.GetCount_management()  获取计数</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">测试 按属性查询</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:&#x2F;ArcpyBook&#x2F;data&#x2F;CityOfSanAntonio.gdb&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 查询语句</span><br><span class="line">    qry &#x3D; &#39;&quot;SVCAREA&quot; &#x3D; \&#39;North\&#39;&#39;</span><br><span class="line">    # 创建要素类的内存副本</span><br><span class="line">    flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;, &quot;Burglary_layer&quot;)</span><br><span class="line">    # 按属性查询</span><br><span class="line">    arcpy.SelectLayerByAttribute_management(flayer,&quot;NEW_SELECTION&quot;, qry)</span><br><span class="line">    # 获取结果数量</span><br><span class="line">    cnt &#x3D; arcpy.GetCount_management(flayer)</span><br><span class="line">    print(&quot;查询了&quot; + str(cnt) + &quot;条记录&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
-<h3><span id="3按位置选择图层">3.按位置选择图层</span></h3><ul>
+<h3 id="3-按位置选择图层"><a href="#3-按位置选择图层" class="headerlink" title="3.按位置选择图层"></a>3.按位置选择图层</h3><ul>
 <li>arcpy.SeletLayerByLocation()</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">按位置选择图层</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:\\ArcpyBook\\data\\CityOfSanAntonio.gdb&quot;</span><br><span class="line">try:</span><br><span class="line">    # 创建Burglary的内存副本</span><br><span class="line">    flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;, &quot;Burglary_layer&quot;)</span><br><span class="line">    # 选择完全位于输入图层的Burglary元素</span><br><span class="line">    # arcpy.SelectLayerByLocation_management(flayer,&quot;COMPLETELY_WITHIN&quot;,</span><br><span class="line">    #     &quot;H:\\ArcpyBook\\Ch7\\EdgewoodSD.shp&quot;)</span><br><span class="line">    </span><br><span class="line">    # 按距离选择</span><br><span class="line">    arcpy.SelectLayerByLocation_management(flayer, &quot;WITHIN_A_DISTANCE&quot;,</span><br><span class="line">        &quot;H:\\ArcpyBook\\Ch7\\EdgewoodSD.shp&quot;, &quot;1 MILES&quot;)</span><br><span class="line"></span><br><span class="line">    # 打印出选择的数量</span><br><span class="line">    cnt &#x3D; arcpy.GetCount_management(flayer) # 获取计数</span><br><span class="line">    print(&quot;选择了&quot; + str(cnt) + &quot;个元素&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
-<h3><span id="4-结合-按属性选择与按位置选择">4. 结合 按属性选择与按位置选择</span></h3><p>结合 按属性选择与按位置选择</p>
+<h3 id="4-结合-按属性选择与按位置选择"><a href="#4-结合-按属性选择与按位置选择" class="headerlink" title="4. 结合 按属性选择与按位置选择"></a>4. 结合 按属性选择与按位置选择</h3><p>结合 按属性选择与按位置选择</p>
 <p><b>选出在Edgewood范围内的星期一的犯罪记录</b></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line"># 设置工作空间</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:\\ArcpyBook\\data\\CityOfSanAntonio.gdb&quot;</span><br><span class="line">try:</span><br><span class="line">    # 创建犯罪记录图层副本</span><br><span class="line">    flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;,&quot;Burglary_layer&quot;)</span><br><span class="line">    # 按位置选择</span><br><span class="line">    arcpy.SelectLayerByLocation_management(flayer, &quot;COMPLETELY_WITHIN&quot;, </span><br><span class="line">        r&quot;H:\ArcpyBook\Ch7\EdgewoodSD.shp&quot;)</span><br><span class="line">    # 按属性选择</span><br><span class="line">    qry &#x3D; &#39;&quot;DOW&quot; &#x3D; \&#39;Mon\&#39;&#39;</span><br><span class="line">    arcpy.SelectLayerByAttribute_management(flayer, &quot;SUBSET_SELECTION&quot;, qry)</span><br><span class="line">    # 打印出选择出的数量</span><br><span class="line">    cnt &#x3D; arcpy.GetCount_management(flayer)</span><br><span class="line">    print(&quot;选择出了&quot; + str(cnt) + &quot;条记录&quot;)</span><br><span class="line"></span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
     </div>
@@ -328,10 +328,10 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-18-arcgis-python-8.html" rel="bookmark">Arcgis中的python编程(8)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-2.html" rel="bookmark">Arcgis中的python编程(2)</a></div>
+      <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-16-arcgis-python-3.html" rel="bookmark">Arcgis中的python编程(3)</a></div>
@@ -340,7 +340,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -424,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">1. 查询前，创建要素类或表视图的内存副本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">2.测试 按属性查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">3.按位置选择图层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">4. 结合 按属性选择与按位置选择</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查询前，创建要素类或表视图的内存副本"><span class="nav-number">1.</span> <span class="nav-text">1. 查询前，创建要素类或表视图的内存副本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-测试-按属性查询"><span class="nav-number">2.</span> <span class="nav-text">2.测试 按属性查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-按位置选择图层"><span class="nav-number">3.</span> <span class="nav-text">3.按位置选择图层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-结合-按属性选择与按位置选择"><span class="nav-number">4.</span> <span class="nav-text">4. 结合 按属性选择与按位置选择</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

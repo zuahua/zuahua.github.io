@@ -292,15 +292,15 @@
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="fetch的使用">fetch的使用</span></h3><ul>
+<h3 id="fetch的使用"><a href="#fetch的使用" class="headerlink" title="fetch的使用"></a>fetch的使用</h3><ul>
 <li>IE不支持</li>
 </ul>
-<h3><span id="方法">方法</span></h3><ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
 <li>new Promise()</li>
 <li>fetch(url, obj) </li>
 <li>.then((response) =&gt; {})</li>
 </ul>
-<h3><span id="promise对象">promise对象</span></h3><p>回调参数</p>
+<h3 id="promise对象"><a href="#promise对象" class="headerlink" title="promise对象"></a>promise对象</h3><p>回调参数</p>
 <ul>
 <li>resolve 下决定去做(成功)</li>
 <li>reject 拒绝做(失败)</li>
@@ -308,10 +308,10 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F;resolve(&#39;123&#39;);</span><br><span class="line">        reject(&#39;456&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((num) &#x3D;&gt; &#123; &#x2F;&#x2F; 成功</span><br><span class="line">        alert(num)</span><br><span class="line">    &#125;, (err) &#x3D;&gt; &#123; &#x2F;&#x2F; 失败</span><br><span class="line">        alert(err)</span><br><span class="line">    &#125;)</span><br><span class="line">    &#x2F;&#x2F; .catch((num) &#x3D;&gt; &#123; &#x2F;&#x2F; 失败2</span><br><span class="line">    &#x2F;&#x2F;     alert(num)</span><br><span class="line">    &#x2F;&#x2F; &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="get">GET</span></h3><p>简单使用例子：</p>
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>简单使用例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fetch(&#96;http:&#x2F;&#x2F;localhost&#x2F;fetch&#x2F;fetch.php?user&#x3D;$&#123;user&#125;&amp;password&#x3D;$&#123;password&#125;&#96;, &#123;</span><br><span class="line">    method: &#39;GET&#39;</span><br><span class="line">&#125;)</span><br><span class="line">.then((response) &#x3D;&gt; &#123;</span><br><span class="line">    response.json(() &#x3D;&gt; &#123;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((result) &#x3D;&gt; &#123; &#x2F;&#x2F; 获取返回数据</span><br><span class="line">        console.log(result)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) &#x3D;&gt; &#123;</span><br><span class="line">        console.log(&#39;服务器错误&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3><span id="post">POST</span></h3><ul>
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><ul>
 <li>obj</li>
 <li><ul>
 <li>method</li>
@@ -336,7 +336,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-05-xia-la-kuang-javascript.html" rel="bookmark">JavaScript应用实例-下拉框</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-08-03-javascript-xue-xi-shi-li-1.html" rel="bookmark">JavaScript学习实例(1)</a></div>
@@ -348,7 +348,7 @@
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -366,12 +366,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020-3-11-ajax-js.html" rel="prev" title="原生JS封装AJAX">
-      <i class="fa fa-chevron-left"></i> 原生JS封装AJAX
+    <a href="/2020-3-11-ajax-jquery.html" rel="prev" title="jQuery中使用AJAX">
+      <i class="fa fa-chevron-left"></i> jQuery中使用AJAX
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020-3-11-ajax-jquery.html" rel="next" title="jQuery中使用AJAX">
-      jQuery中使用AJAX <i class="fa fa-chevron-right"></i>
+    <a href="/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html" rel="next" title="php读取文件目录中文乱码">
+      php读取文件目录中文乱码 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -433,7 +433,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">fetch的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">promise对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">POST</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch的使用"><span class="nav-number">1.</span> <span class="nav-text">fetch的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#promise对象"><span class="nav-number">3.</span> <span class="nav-text">promise对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">4.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST"><span class="nav-number">5.</span> <span class="nav-text">POST</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

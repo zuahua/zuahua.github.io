@@ -294,12 +294,12 @@
 </blockquote>
 <a id="more"></a>
 
-<h3><span id="jquery中使用ajax">jQuery中使用AJAX</span></h3><h3><span id="方法">方法</span></h3><ul>
+<h3 id="jQuery中使用AJAX"><a href="#jQuery中使用AJAX" class="headerlink" title="jQuery中使用AJAX"></a>jQuery中使用AJAX</h3><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
 <li>load()</li>
 <li>get()</li>
 <li>post()</li>
 </ul>
-<h3><span id="load">load()</span></h3><ul>
+<h3 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h3><ul>
 <li><p>给页面加载数据</p>
 </li>
 <li><p>语法</p>
@@ -310,7 +310,7 @@
 <p>例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;load jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;p id&#x3D;&quot;content&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            &#x2F;&#x2F; 给标签加载数据</span><br><span class="line">            $(&#39;#container&#39;).load(&#39;http:&#x2F;&#x2F;localhost&#x2F;AJAX&#x2F;load.txt&#39;, function (responseTxt, statusTxt, xhr) &#123;</span><br><span class="line">                if (statusTxt &#x3D;&#x3D; &quot;success&quot;)</span><br><span class="line">                    alert(&quot;外部内容加载成功!&quot;);</span><br><span class="line">                if (statusTxt &#x3D;&#x3D; &quot;error&quot;)</span><br><span class="line">                    alert(&quot;Error: &quot; + xhr.status + &quot;: &quot; + xhr.statusText);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="get">get()</span></h3><ul>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><ul>
 <li>语法：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.get(URL,callback);</span><br></pre></td></tr></table></figure>
@@ -318,7 +318,7 @@
 <p>例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;.get() jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            $.get(&quot;get.php?x&#x3D;1&amp;y&#x3D;2&quot;, function(data, status) &#123;</span><br><span class="line">                $(&#39;#box&#39;).html(data + &quot;-&quot; + status);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="post">post()</span></h3><ul>
+<h3 id="post"><a href="#post" class="headerlink" title="post()"></a>post()</h3><ul>
 <li>语法:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;post() jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            $.post(&#39;post.php&#39;, &quot;x&#x3D;1&amp;y&#x3D;2&quot;, function (data) &#123;</span><br><span class="line">                $(&quot;#box&quot;).html(data);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
@@ -337,13 +337,13 @@
       <div class="popular-posts-title"><a href="\2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html" rel="bookmark">jQuery实现带下拉框导航栏</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020-3-9-jquery-shi-li-1.html" rel="bookmark">jQuery实例1-防止连续触发的导航栏</a></div>
+      <div class="popular-posts-title"><a href="\2020-3-26-ye-mian-zhi-tong-shi-bo-fang-yi-ge-yin-pin.html" rel="bookmark">页面只同时播放一个音频</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -361,12 +361,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020-3-11-fetch.html" rel="prev" title="fetch的简单使用">
-      <i class="fa fa-chevron-left"></i> fetch的简单使用
+    <a href="/2020-3-11-ajax-js.html" rel="prev" title="原生JS封装AJAX">
+      <i class="fa fa-chevron-left"></i> 原生JS封装AJAX
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020-3-20-php-du-wen-jian-mu-lu.html" rel="next" title="php读文件目录名及文件夹列表">
-      php读文件目录名及文件夹列表 <i class="fa fa-chevron-right"></i>
+    <a href="/2020-3-11-fetch.html" rel="next" title="fetch的简单使用">
+      fetch的简单使用 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -428,7 +428,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">jQuery中使用AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">load()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">post()</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中使用AJAX"><span class="nav-number">1.</span> <span class="nav-text">jQuery中使用AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load"><span class="nav-number">3.</span> <span class="nav-text">load()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">4.</span> <span class="nav-text">get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">5.</span> <span class="nav-text">post()</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
