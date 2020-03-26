@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-03-20T03:12:16.136Z</updated>
+  <updated>2020-03-26T06:31:19.688Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,27 +17,55 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>php读文件目录名及文件夹列表</title>
-    <link href="http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html"/>
-    <id>http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html</id>
-    <published>2020-03-20T00:00:00.000Z</published>
-    <updated>2020-03-20T03:12:16.136Z</updated>
+    <title>页面只同时播放一个音频</title>
+    <link href="http://innozh.com/2020-3-26-ye-mian-zhi-tong-shi-bo-fang-yi-ge-yin-pin.html"/>
+    <id>http://innozh.com/2020-3-26-ye-mian-zhi-tong-shi-bo-fang-yi-ge-yin-pin.html</id>
+    <published>2020-03-26T00:00:00.000Z</published>
+    <updated>2020-03-26T06:31:19.688Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;环境说明：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;php7.x&lt;/p&gt;
-&lt;p&gt;php函数读取文件夹目录&lt;/p&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;需求：页面只同时播放一个音频&lt;/p&gt;
+&lt;p&gt;使用三种方式&lt;/p&gt;
+&lt;p&gt;JavaScript&lt;/p&gt;
+&lt;p&gt;jQuery&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="php" scheme="http://innozh.com/tags/php/"/>
+      <category term="HTML" scheme="http://innozh.com/tags/HTML/"/>
     
-      <category term="读文件" scheme="http://innozh.com/tags/%E8%AF%BB%E6%96%87%E4%BB%B6/"/>
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html、CSS 文字两边居中横线</title>
+    <link href="http://innozh.com/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html"/>
+    <id>http://innozh.com/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html</id>
+    <published>2020-03-26T00:00:00.000Z</published>
+    <updated>2020-03-26T04:35:39.352Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;html、CSS &lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;文字两边居中横线&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="HTML" scheme="http://innozh.com/tags/HTML/"/>
+    
+      <category term="CSS" scheme="http://innozh.com/tags/CSS/"/>
     
   </entry>
   
@@ -68,25 +96,51 @@
   </entry>
   
   <entry>
-    <title>原生JS封装AJAX</title>
-    <link href="http://innozh.com/2020-3-11-ajax-js.html"/>
-    <id>http://innozh.com/2020-3-11-ajax-js.html</id>
-    <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-11T04:07:45.112Z</updated>
+    <title>php读文件目录名及文件夹列表</title>
+    <link href="http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html"/>
+    <id>http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html</id>
+    <published>2020-03-20T00:00:00.000Z</published>
+    <updated>2020-03-20T03:12:16.136Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;原生JS封装AJAX为一个外部文件&lt;/p&gt;
-&lt;p&gt;实现直接调用&lt;/p&gt;
-&lt;p&gt;GET、POST传输方式&lt;/p&gt;
+      &lt;p&gt;环境说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;php7.x&lt;/p&gt;
+&lt;p&gt;php函数读取文件夹目录&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+      <category term="php" scheme="http://innozh.com/tags/php/"/>
+    
+      <category term="读文件" scheme="http://innozh.com/tags/%E8%AF%BB%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery中使用AJAX</title>
+    <link href="http://innozh.com/2020-3-11-ajax-jquery.html"/>
+    <id>http://innozh.com/2020-3-11-ajax-jquery.html</id>
+    <published>2020-03-11T00:00:00.000Z</published>
+    <updated>2020-03-11T04:05:59.542Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;load()&lt;/p&gt;
+&lt;p&gt;get()&lt;/p&gt;
+&lt;p&gt;post()&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
       <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
     
@@ -117,26 +171,25 @@
   </entry>
   
   <entry>
-    <title>jQuery中使用AJAX</title>
-    <link href="http://innozh.com/2020-3-11-ajax-jquery.html"/>
-    <id>http://innozh.com/2020-3-11-ajax-jquery.html</id>
+    <title>原生JS封装AJAX</title>
+    <link href="http://innozh.com/2020-3-11-ajax-js.html"/>
+    <id>http://innozh.com/2020-3-11-ajax-js.html</id>
     <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-11T04:05:59.542Z</updated>
+    <updated>2020-03-11T04:07:45.112Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;主要内容：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;load()&lt;/p&gt;
-&lt;p&gt;get()&lt;/p&gt;
-&lt;p&gt;post()&lt;/p&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;原生JS封装AJAX为一个外部文件&lt;/p&gt;
+&lt;p&gt;实现直接调用&lt;/p&gt;
+&lt;p&gt;GET、POST传输方式&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
       <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
     
@@ -195,29 +248,6 @@
   </entry>
   
   <entry>
-    <title>jQuery实例2-手风琴</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-2.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-2.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:18:19.027Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;手风琴&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
     <title>jQuery实例4-tab栏切换</title>
     <link href="http://innozh.com/2020-3-9-jquery-shi-li-4.html"/>
     <id>http://innozh.com/2020-3-9-jquery-shi-li-4.html</id>
@@ -230,6 +260,29 @@
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
 &lt;p&gt;tab栏切换&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery实例3-商品显示</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T05:28:37.015Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;商品显示&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -287,42 +340,18 @@
   </entry>
   
   <entry>
-    <title>jQuery实例1-防止连续触发的导航栏</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-1.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-1.html</id>
+    <title>jQuery实例6-动态添加和删除表格元素</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-6.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-6.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:17:42.120Z</updated>
+    <updated>2020-03-09T07:18:06.584Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;下拉导航栏&lt;/p&gt;
-&lt;p&gt;防止下拉事件连续触发&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例5-仿360关机动画</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-5.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-5.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:18:06.572Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;仿360关机动画&lt;/p&gt;
+&lt;p&gt;动态添加和删除表格元素&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -357,75 +386,6 @@
   </entry>
   
   <entry>
-    <title>jQuery实例7-城市选择案例</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-7.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-7.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:18:06.643Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;城市选择案例&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例6-动态添加和删除表格元素</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-6.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-6.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T07:18:06.584Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;动态添加和删除表格元素&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例3-商品显示</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-09T05:28:37.015Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;商品显示&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
     <title>jQuery实例8-表格全选和反选</title>
     <link href="http://innozh.com/2020-3-9-jquery-shi-li-8.html"/>
     <id>http://innozh.com/2020-3-9-jquery-shi-li-8.html</id>
@@ -449,51 +409,95 @@
   </entry>
   
   <entry>
-    <title>1984</title>
-    <link href="http://innozh.com/2020-3-8-1984.html"/>
-    <id>http://innozh.com/2020-3-8-1984.html</id>
-    <published>2020-03-08T00:00:00.000Z</published>
-    <updated>2020-03-08T06:28:41.942Z</updated>
+    <title>jQuery实例7-城市选择案例</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-7.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-7.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T07:18:06.643Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;读后感&lt;/p&gt;
-&lt;p&gt;书屋&lt;/p&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;城市选择案例&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;离读完1984已有月余，感概此时书中角色名称我已忘记。脑海中却隐约浮现那几个字句：&lt;strong&gt;老大哥&lt;/strong&gt;、&lt;strong&gt;电幕&lt;/strong&gt;、&lt;strong&gt;双重思想&lt;/strong&gt;、&lt;strong&gt;101号房&lt;/strong&gt;、&lt;strong&gt;谁控制了过去，谁就控制了未来，谁控制了现在，谁就控制了过去&lt;/strong&gt;…&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="随笔" scheme="http://innozh.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="树屋" scheme="http://innozh.com/tags/%E6%A0%91%E5%B1%8B/"/>
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
   </entry>
   
   <entry>
-    <title>React + Ant Design 豆瓣电影学习实例</title>
-    <link href="http://innozh.com/2020-3-6-react-antd.html"/>
-    <id>http://innozh.com/2020-3-6-react-antd.html</id>
-    <published>2020-03-06T00:00:00.000Z</published>
-    <updated>2020-03-08T06:29:48.012Z</updated>
+    <title>jQuery实例5-仿360关机动画</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-5.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-5.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T07:18:06.572Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;版本说明:&lt;br&gt;webpack4.x&lt;br&gt;antd 3.x&lt;br&gt;react 16.x&lt;br&gt;其他插件版本 查看 &lt;strong&gt;package.json&lt;/strong&gt;配置文件&lt;/p&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;仿360关机动画&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;已上传至&lt;a href=&quot;https://github.com/zuahua/React_Antd_DouBanMovie&quot; target=&quot;_blank&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;GitHub仓库&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="React" scheme="http://innozh.com/tags/React/"/>
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
-      <category term="Antd" scheme="http://innozh.com/tags/Antd/"/>
+  </entry>
+  
+  <entry>
+    <title>jQuery实例2-手风琴</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-2.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-2.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T05:18:19.027Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;手风琴&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery实例1-防止连续触发的导航栏</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-1.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-1.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-09T05:17:42.120Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;下拉导航栏&lt;/p&gt;
+&lt;p&gt;防止下拉事件连续触发&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
   </entry>
   
