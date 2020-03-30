@@ -54,7 +54,7 @@
 <meta property="og:description" content="学习日志11 异常识别和错误处理 书籍：基于ArcGIS的Python编程秘笈(第2版);  学习第十一章  Python异常处理结构(try&#x2F;except&#x2F;else&#x2F;finally) 使用arcpy.GetMessages()捕获详细的消息信息 根据严重性级别筛选消息 测试和响应特定错误消息">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-21T00:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-15T12:53:09.552Z">
+<meta property="article:modified_time" content="2020-03-30T10:59:43.979Z">
 <meta property="article:author" content="inno">
 <meta property="article:tag" content="pythonGIS">
 <meta name="twitter:card" content="summary">
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 12:53:09" itemprop="dateModified" datetime="2020-01-15T12:53:09Z">2020-01-15</time>
+                <time title="修改时间：2020-03-30 10:59:43" itemprop="dateModified" datetime="2020-03-30T10:59:43Z">2020-03-30</time>
               </span>
 
           
@@ -272,14 +272,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -307,19 +307,19 @@
 <li>else语句是在try语句没有错误时执行</li>
 <li>finally语句无论try语句是否有错都会执行</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">try&#x2F;except捕获错误信息</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\data&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 构建一个错误,缺少距离参数</span><br><span class="line">    arcpy.Buffer_analysis(&#39;Streams.shp&#39;, &#39;Streams_bf.shp&#39;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br><span class="line"></span><br><span class="line"># 返回: ERROR 000735: 距离 [值或字段]: 值是必需的</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">try/except捕获错误信息</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line">arcpy.env.workspace = <span class="string">r"H:\ArcpyBook\data"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 构建一个错误,缺少距离参数</span></span><br><span class="line">    arcpy.Buffer_analysis(<span class="string">'Streams.shp'</span>, <span class="string">'Streams_bf.shp'</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e.message)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回: ERROR 000735: 距离 [值或字段]: 值是必需的</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-使用arcpy-GetMessages-捕获详细的消息信息"><a href="#2-使用arcpy-GetMessages-捕获详细的消息信息" class="headerlink" title="2. 使用arcpy.GetMessages()捕获详细的消息信息"></a>2. 使用arcpy.GetMessages()捕获详细的消息信息</h3><ul>
 <li>the function can’t really run in my PC.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">try&#x2F;except捕获错误信息</span><br><span class="line">使用arcpy.GetMessages()捕获详细的消息信息</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">try:</span><br><span class="line">    arcpy.env.workspace &#x3D; r&quot;H:\ArcpyBook\data&quot;</span><br><span class="line">    arcpy.Buffer_analysis(&quot;Streams.shp&quot;, &quot;streams_buffer.shp&quot;)</span><br><span class="line">except:</span><br><span class="line">    </span><br><span class="line">    print(arcpy.GetMessages())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">try/except捕获错误信息</span></span><br><span class="line"><span class="string">使用arcpy.GetMessages()捕获详细的消息信息</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    arcpy.env.workspace = <span class="string">r"H:\ArcpyBook\data"</span></span><br><span class="line">    arcpy.Buffer_analysis(<span class="string">"Streams.shp"</span>, <span class="string">"streams_buffer.shp"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    </span><br><span class="line">    print(arcpy.GetMessages())</span><br></pre></td></tr></table></figure>
 <h3 id="3-根据严重性级别筛选消息"><a href="#3-根据严重性级别筛选消息" class="headerlink" title="3. 根据严重性级别筛选消息"></a>3. 根据严重性级别筛选消息</h3><ul>
 <li>arcpy.GetMessages(0/1/2)</li>
 <li>0 :一般的消息</li>
 <li>1 :警告</li>
 <li>2 :错误</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">try:</span><br><span class="line">    arcpy.env.workspace &#x3D; &quot;c:&#x2F;ArcpyBook&#x2F;data&quot;</span><br><span class="line">    arcpy.Buffer_analysis(&quot;Streams.shp&quot;,&quot;Streams_Buff.shp&quot;)</span><br><span class="line">except:</span><br><span class="line">    print(arcpy.GetMessages(2))</span><br></pre></td></tr></table></figure>
-<h3 id="4-测试和响应特定错误消息"><a href="#4-测试和响应特定错误消息" class="headerlink" title="4. 测试和响应特定错误消息"></a>4. 测试和响应特定错误消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">try:</span><br><span class="line">    arcpy.env.workspace &#x3D; &quot;c:&#x2F;ArcpyBook&#x2F;data&quot;</span><br><span class="line">    arcpy.Buffer_analysis(&quot;Streams.shp&quot;, &quot;Streams_Buff.shp&quot;)</span><br><span class="line">except:</span><br><span class="line">    print(&quot;Error found in Buffer tool \n&quot;)</span><br><span class="line">    errCode &#x3D; arcpy.GetReturnCode(3)</span><br><span class="line">    if str(errCode) &#x3D;&#x3D; &quot;735&quot;:</span><br><span class="line">        print(&quot;Distance value not provided \n&quot;)</span><br><span class="line">        print(&quot;Running the buffer again with a default value \n&quot;)</span><br><span class="line">        defaultDistance &#x3D; &quot;100 Feet&quot;</span><br><span class="line">        arcpy.Buffer_analysis(&quot;Streams.shp&quot;, &quot;Streams_Buff&quot;, defaultDistance)</span><br><span class="line">        print(&quot;Buffer complete&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    arcpy.env.workspace = <span class="string">"c:/ArcpyBook/data"</span></span><br><span class="line">    arcpy.Buffer_analysis(<span class="string">"Streams.shp"</span>,<span class="string">"Streams_Buff.shp"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(arcpy.GetMessages(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="4-测试和响应特定错误消息"><a href="#4-测试和响应特定错误消息" class="headerlink" title="4. 测试和响应特定错误消息"></a>4. 测试和响应特定错误消息</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    arcpy.env.workspace = <span class="string">"c:/ArcpyBook/data"</span></span><br><span class="line">    arcpy.Buffer_analysis(<span class="string">"Streams.shp"</span>, <span class="string">"Streams_Buff.shp"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"Error found in Buffer tool \n"</span>)</span><br><span class="line">    errCode = arcpy.GetReturnCode(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">if</span> str(errCode) == <span class="string">"735"</span>:</span><br><span class="line">        print(<span class="string">"Distance value not provided \n"</span>)</span><br><span class="line">        print(<span class="string">"Running the buffer again with a default value \n"</span>)</span><br><span class="line">        defaultDistance = <span class="string">"100 Feet"</span></span><br><span class="line">        arcpy.Buffer_analysis(<span class="string">"Streams.shp"</span>, <span class="string">"Streams_Buff"</span>, defaultDistance)</span><br><span class="line">        print(<span class="string">"Buffer complete"</span>)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -329,7 +329,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-16-arcgis-python-7.html" rel="bookmark">Arcgis中的python编程(7)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
@@ -338,10 +338,10 @@
       <div class="popular-posts-title"><a href="\2019-06-16-arcgis-python-3.html" rel="bookmark">Arcgis中的python编程(3)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
   </ul>
 
@@ -441,7 +441,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -493,12 +493,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">272k</span>
+    <span title="站点总字数">235k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:07</span>
+    <span title="站点阅读时长">3:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
@@ -560,6 +560,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -659,35 +688,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 

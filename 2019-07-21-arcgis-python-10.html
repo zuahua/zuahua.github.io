@@ -62,7 +62,7 @@
 <meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin7.png">
 <meta property="og:image" content="http://innozh.com/assets/images/blog/pythonAddin8.png">
 <meta property="article:published_time" content="2019-07-21T00:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-15T12:53:12.120Z">
+<meta property="article:modified_time" content="2020-03-30T11:00:16.290Z">
 <meta property="article:author" content="inno">
 <meta property="article:tag" content="pythonGIS">
 <meta name="twitter:card" content="summary">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 12:53:12" itemprop="dateModified" datetime="2020-01-15T12:53:12Z">2020-01-15</time>
+                <time title="修改时间：2020-03-30 11:00:16" itemprop="dateModified" datetime="2020-03-30T11:00:16Z">2020-03-30</time>
               </span>
 
           
@@ -281,7 +281,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -327,7 +327,7 @@
 <p><img src="/assets/images/blog/pythonAddin2.png" alt="image"></p>
 <p>添加按钮<br><img src="/assets/images/blog/pythonAddin3.png" alt="image"></p>
 <p>保存文件/install中编辑addin-rootfile_addin.py</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">import pythonaddins</span><br><span class="line"></span><br><span class="line">class ButtonClassImportWildfires(object):</span><br><span class="line">    &quot;&quot;&quot;Implementation for addin-rootfile_addin.button (Button)&quot;&quot;&quot;</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.enabled &#x3D; True</span><br><span class="line">        self.checked &#x3D; False</span><br><span class="line">    def onClick(self):</span><br><span class="line">        layer_files &#x3D; pythonaddins.OpenDialog(&quot;Select layer to add&quot;, True, </span><br><span class="line">                r&quot;H:\ArcpyBook\data\Wildfires&quot;, &quot;Add&quot;)</span><br><span class="line">        mxd &#x3D; arcpy.mapping.MapDocument(&quot;current&quot;) # 获取mxd文档</span><br><span class="line">        df &#x3D; pythonaddins.GetSelectedTOCLayerOrDataFrame() # 获取数据框</span><br><span class="line">        if not isinstance(df, layer_files): # 判断类型是否相同</span><br><span class="line">            for layer_file in layer_files:</span><br><span class="line">                layer &#x3D; arcpy.mapping.Layer(layer_file)</span><br><span class="line">                # 往数据框添加layer</span><br><span class="line">                arcpy.mapping.AddLayer(df, layer)</span><br><span class="line">            else:</span><br><span class="line">                pythonaddins.MessageBox(&#39;Select a dataframe&#39;, &#39;info&#39;, 0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">import</span> pythonaddins</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ButtonClassImportWildfires</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Implementation for addin-rootfile_addin.button (Button)"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.enabled = <span class="literal">True</span></span><br><span class="line">        self.checked = <span class="literal">False</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClick</span><span class="params">(self)</span>:</span></span><br><span class="line">        layer_files = pythonaddins.OpenDialog(<span class="string">"Select layer to add"</span>, <span class="literal">True</span>, </span><br><span class="line">                <span class="string">r"H:\ArcpyBook\data\Wildfires"</span>, <span class="string">"Add"</span>)</span><br><span class="line">        mxd = arcpy.mapping.MapDocument(<span class="string">"current"</span>) <span class="comment"># 获取mxd文档</span></span><br><span class="line">        df = pythonaddins.GetSelectedTOCLayerOrDataFrame() <span class="comment"># 获取数据框</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(df, layer_files): <span class="comment"># 判断类型是否相同</span></span><br><span class="line">            <span class="keyword">for</span> layer_file <span class="keyword">in</span> layer_files:</span><br><span class="line">                layer = arcpy.mapping.Layer(layer_file)</span><br><span class="line">                <span class="comment"># 往数据框添加layer</span></span><br><span class="line">                arcpy.mapping.AddLayer(df, layer)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                pythonaddins.MessageBox(<span class="string">'Select a dataframe'</span>, <span class="string">'info'</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="2-安装测试加载项"><a href="#2-安装测试加载项" class="headerlink" title="2. 安装测试加载项"></a>2. 安装测试加载项</h3><ol>
 <li>打开加载项工作目录</li>
 </ol>
@@ -354,7 +354,7 @@
 <ol start="3">
 <li>/install/下编辑Generate Random Point_addin.py文件，更改以下部分</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">import pythonaddins</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line">  self.enabled &#x3D; True</span><br><span class="line">  self.cursor &#x3D; 3</span><br><span class="line">  self.shape &#x3D; &#39;Rectangle&#39;</span><br><span class="line"></span><br><span class="line">def onRectangle(self, rectangle_geometry):</span><br><span class="line">    extent &#x3D; rectangle_geometry</span><br><span class="line">    arcpy.env.workspace &#x3D; r&#39;c:\ArcpyBook\Ch10&#39;</span><br><span class="line">    if arcpy.Exists(&#39;randompts.shp&#39;):</span><br><span class="line">        arcpy.Delete_management(&#39;randompts.shp&#39;)</span><br><span class="line">        randompts &#x3D; arcpy.CreateRandomPoints_management(arcpy.env.workspace,&#39;randompts.shp&#39;,&quot;&quot;,rectangle_geometry)</span><br><span class="line">        arcpy.RefreshActiveView()</span><br><span class="line">    return randompts</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">import</span> pythonaddins</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">  self.enabled = <span class="literal">True</span></span><br><span class="line">  self.cursor = <span class="number">3</span></span><br><span class="line">  self.shape = <span class="string">'Rectangle'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">onRectangle</span><span class="params">(self, rectangle_geometry)</span>:</span></span><br><span class="line">    extent = rectangle_geometry</span><br><span class="line">    arcpy.env.workspace = <span class="string">r'c:\ArcpyBook\Ch10'</span></span><br><span class="line">    <span class="keyword">if</span> arcpy.Exists(<span class="string">'randompts.shp'</span>):</span><br><span class="line">        arcpy.Delete_management(<span class="string">'randompts.shp'</span>)</span><br><span class="line">        randompts = arcpy.CreateRandomPoints_management(arcpy.env.workspace,<span class="string">'randompts.shp'</span>,<span class="string">""</span>,rectangle_geometry)</span><br><span class="line">        arcpy.RefreshActiveView()</span><br><span class="line">    <span class="keyword">return</span> randompts</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>运行makeaddin.py生成Generate Random Point.esriaddin</li>
 <li>将Generate Random Point.esriaddin复制到C:\Users\username\Documents\ArcGIS\AddIns\Desktop10.6(对应版本下)</li>
@@ -370,7 +370,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-16-arcgis-python-7.html" rel="bookmark">Arcgis中的python编程(7)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
@@ -379,10 +379,10 @@
       <div class="popular-posts-title"><a href="\2019-06-16-arcgis-python-3.html" rel="bookmark">Arcgis中的python编程(3)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
   </ul>
 
@@ -482,7 +482,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -534,12 +534,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">272k</span>
+    <span title="站点总字数">235k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:07</span>
+    <span title="站点阅读时长">3:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
@@ -601,6 +601,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -700,35 +729,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 

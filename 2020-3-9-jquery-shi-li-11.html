@@ -55,7 +55,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://innozh.com/images/gif/sd_tabs.gif">
 <meta property="article:published_time" content="2020-03-09T00:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-09T07:18:06.524Z">
+<meta property="article:modified_time" content="2020-03-30T10:21:48.365Z">
 <meta property="article:author" content="inno">
 <meta property="article:tag" content="jQuery">
 <meta name="twitter:card" content="summary">
@@ -236,10 +236,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-09 00:00:00 / 修改时间：07:18:06" itemprop="dateCreated datePublished" datetime="2020-03-09T00:00:00Z">2020-03-09</time>
+              <time title="创建时间：2020-03-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-09T00:00:00Z">2020-03-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-30 10:21:48" itemprop="dateModified" datetime="2020-03-30T10:21:48Z">2020-03-30</time>
+              </span>
 
           
             <span id="/2020-3-9-jquery-shi-li-11.html" class="post-meta-item leancloud_visitors" data-flag-title="jQuery实例11-自定义tabs插件 实现tab切换" title="阅读次数">
@@ -268,14 +274,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -301,16 +307,16 @@
 <li>tab栏的切换</li>
 </ul>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="../images/gif/sd_tabs.gif" alt="image"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="jquery-tabs-js-自定义tabs插件"><a href="#jquery-tabs-js-自定义tabs插件" class="headerlink" title="jquery-tabs.js 自定义tabs插件"></a>jquery-tabs.js 自定义tabs插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(function($) &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加原型方法 tabs</span><br><span class="line">     * options.tabsId tab栏的标签选择器</span><br><span class="line">     * options.tabClass tab栏点击后的类</span><br><span class="line">     * options.tabBody tab主体页的标签选择器</span><br><span class="line">     *&#x2F;</span><br><span class="line">    $.fn.tabs &#x3D; function(options) &#123;</span><br><span class="line">        &#x2F;&#x2F; 保存 大盒子元素对象</span><br><span class="line">        var $bigBox &#x3D; this;</span><br><span class="line">        &#x2F;&#x2F; 点击tab栏</span><br><span class="line">        $(options.tabsId).find(&#39;li&#39;).click(function() &#123;</span><br><span class="line">            $(this).addClass(options.tabClass).siblings(&#39;li&#39;).removeClass(options.tabClass);</span><br><span class="line">            &#x2F;&#x2F; 记录点击元素索引</span><br><span class="line">            var idx &#x3D; $(this).index();</span><br><span class="line">            &#x2F;&#x2F; 显示tab主体</span><br><span class="line">            $(options.tabBody).find(&#39;div&#39;).eq(idx).fadeIn(500).siblings(&#39;div&#39;).hide();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(window.jQuery));</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="jquery-tabs-js-自定义tabs插件"><a href="#jquery-tabs-js-自定义tabs插件" class="headerlink" title="jquery-tabs.js 自定义tabs插件"></a>jquery-tabs.js 自定义tabs插件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加原型方法 tabs</span></span><br><span class="line"><span class="comment">     * options.tabsId tab栏的标签选择器</span></span><br><span class="line"><span class="comment">     * options.tabClass tab栏点击后的类</span></span><br><span class="line"><span class="comment">     * options.tabBody tab主体页的标签选择器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    $.fn.tabs = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 保存 大盒子元素对象</span></span><br><span class="line">        <span class="keyword">var</span> $bigBox = <span class="keyword">this</span>;</span><br><span class="line">        <span class="comment">// 点击tab栏</span></span><br><span class="line">        $(options.tabsId).find(<span class="string">'li'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="keyword">this</span>).addClass(options.tabClass).siblings(<span class="string">'li'</span>).removeClass(options.tabClass);</span><br><span class="line">            <span class="comment">// 记录点击元素索引</span></span><br><span class="line">            <span class="keyword">var</span> idx = $(<span class="keyword">this</span>).index();</span><br><span class="line">            <span class="comment">// 显示tab主体</span></span><br><span class="line">            $(options.tabBody).find(<span class="string">'div'</span>).eq(idx).fadeIn(<span class="number">500</span>).siblings(<span class="string">'div'</span>).hide();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(<span class="built_in">window</span>.jQuery));</span><br></pre></td></tr></table></figure>
 
 <h4 id="html文件"><a href="#html文件" class="headerlink" title="html文件"></a>html文件</h4><p>引用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;..&#x2F;plugin&#x2F;jquery-tabs.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"../plugin/jquery-tabs.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>调用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 调用 tabs方法</span><br><span class="line">$(&#39;#container&#39;).tabs(&#123;</span><br><span class="line">    tabsId: &#39;#tabs&#39;,</span><br><span class="line">    tabClass: &#39;active&#39;,</span><br><span class="line">    tabBody: &#39;#items&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;自定义tabs 插件实现tab jQuery&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.3&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;..&#x2F;plugin&#x2F;jquery-tabs.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .container &#123;</span><br><span class="line">            width: 750px;</span><br><span class="line">            height: 350px;</span><br><span class="line">            border: 2px solid yellow;</span><br><span class="line">            margin: 100px auto;</span><br><span class="line">        &#125;</span><br><span class="line">        #tabs &#123;</span><br><span class="line">            margin-top: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">        ul &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        ul li &#123;</span><br><span class="line">            list-style: none;</span><br><span class="line">            float: left;</span><br><span class="line">            border: 1px solid #aaa;</span><br><span class="line">            padding: 5px 10px;</span><br><span class="line">            background-color: #8DEEEE;</span><br><span class="line">        &#125;</span><br><span class="line">        ul li:hover &#123;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;       </span><br><span class="line">        #items &#123;</span><br><span class="line">            width: 700px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            border: 1px solid gray;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-top: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">        #items img &#123;</span><br><span class="line">            width: 700px;</span><br><span class="line">            height: 300px; </span><br><span class="line">        &#125;</span><br><span class="line">        .noDisplay &#123;</span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;* 点击tab后 tab上出现红杠 *&#x2F;</span><br><span class="line">        .active &#123;</span><br><span class="line">            border-top: 3px solid red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;container&quot; id&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;tabs&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li class&#x3D;&quot;active&quot;&gt;发现好货&lt;&#x2F;li&gt;</span><br><span class="line">                &lt;li&gt;品牌闪购&lt;&#x2F;li&gt;</span><br><span class="line">                &lt;li&gt;每日特价&lt;&#x2F;li&gt;</span><br><span class="line">                &lt;li&gt;精选&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;&#x2F;ul&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;items&quot;&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;tabs&#x2F;发现好货.png&quot; alt&#x3D;&quot;发现好货&quot; &#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;noDisplay&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;tabs&#x2F;品牌闪购.png&quot; alt&#x3D;&quot;品牌闪购&quot; &#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;noDisplay&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;tabs&#x2F;每日特价.png&quot; alt&#x3D;&quot;每日特价&quot; &#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;noDisplay&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;tabs&#x2F;精选.png&quot; alt&#x3D;&quot;精选&quot; &#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function() &#123;</span><br><span class="line">            &#x2F;&#x2F; 调用 tabs方法</span><br><span class="line">            $(&#39;#container&#39;).tabs(&#123;</span><br><span class="line">                tabsId: &#39;#tabs&#39;,</span><br><span class="line">                tabClass: &#39;active&#39;,</span><br><span class="line">                tabBody: &#39;#items&#39;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>自定义tabs 插件实现tab jQuery<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../plugin/jquery-tabs.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.container</span> &#123;</span></span><br><span class="line">            width: 750px;</span><br><span class="line">            height: 350px;</span><br><span class="line">            border: 2px solid yellow;</span><br><span class="line">            margin: 100px auto;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="selector-id">#tabs</span> &#123;</span></span><br><span class="line">            margin-top: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">        ul &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        ul li &#123;</span><br><span class="line">            list-style: none;</span><br><span class="line">            float: left;</span><br><span class="line"><span class="css">            <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#aaa</span>;</span></span><br><span class="line">            padding: 5px 10px;</span><br><span class="line"><span class="css">            <span class="selector-tag">background-color</span>: <span class="selector-id">#8DEEEE</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;       </span><br><span class="line"><span class="css">        <span class="selector-id">#items</span> &#123;</span></span><br><span class="line">            width: 700px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            border: 1px solid gray;</span><br><span class="line">            float: left;</span><br><span class="line">            margin-top: 5px;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="selector-id">#items</span> <span class="selector-tag">img</span> &#123;</span></span><br><span class="line">            width: 700px;</span><br><span class="line">            height: 300px; </span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="selector-class">.noDisplay</span> &#123;</span></span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="css">        <span class="comment">/* 点击tab后 tab上出现红杠 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-class">.active</span> &#123;</span></span><br><span class="line">            border-top: 3px solid red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"tabs"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>发现好货<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>品牌闪购<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>每日特价<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>精选<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"items"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/tabs/发现好货.png"</span> <span class="attr">alt</span>=<span class="string">"发现好货"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"noDisplay"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/tabs/品牌闪购.png"</span> <span class="attr">alt</span>=<span class="string">"品牌闪购"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"noDisplay"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/tabs/每日特价.png"</span> <span class="attr">alt</span>=<span class="string">"每日特价"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"noDisplay"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/tabs/精选.png"</span> <span class="attr">alt</span>=<span class="string">"精选"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">// 调用 tabs方法</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">'#container'</span>).tabs(&#123;</span></span><br><span class="line"><span class="actionscript">                tabsId: <span class="string">'#tabs'</span>,</span></span><br><span class="line"><span class="actionscript">                tabClass: <span class="string">'active'</span>,</span></span><br><span class="line"><span class="actionscript">                tabBody: <span class="string">'#items'</span></span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -320,7 +326,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020-3-9-jquery-shi-li-2.html" rel="bookmark">jQuery实例2-手风琴</a></div>
+      <div class="popular-posts-title"><a href="\2020-3-9-jquery-shi-li-3.html" rel="bookmark">jQuery实例3-商品显示</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-08-15-jquery-shi-xian-dai-xia-la-kuang-dao-hang-lan.html" rel="bookmark">jQuery实现带下拉框导航栏</a></div>
@@ -329,10 +335,10 @@
       <div class="popular-posts-title"><a href="\2020-3-11-ajax-jquery.html" rel="bookmark">jQuery中使用AJAX</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
   </ul>
 
@@ -349,8 +355,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020-3-9-jquery-shi-li-4.html" rel="prev" title="jQuery实例4-tab栏切换">
-      <i class="fa fa-chevron-left"></i> jQuery实例4-tab栏切换
+    <a href="/2020-3-9-jquery-shi-li-10.html" rel="prev" title="jQuery实例10-5颗心评分案例">
+      <i class="fa fa-chevron-left"></i> jQuery实例10-5颗心评分案例
     </a></div>
       <div class="post-nav-item">
     <a href="/2020-3-9-jquery-shi-li-2.html" rel="next" title="jQuery实例2-手风琴">
@@ -432,7 +438,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -484,12 +490,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">272k</span>
+    <span title="站点总字数">235k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:07</span>
+    <span title="站点阅读时长">3:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
@@ -551,6 +557,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -650,35 +685,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 

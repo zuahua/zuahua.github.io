@@ -54,7 +54,7 @@
 <meta property="og:description" content="学习日志7     查询和选择数据 书籍：基于ArcGIS的Python编程秘笈(第2版);  学习第七章  查询前，创建要素类或表视图的内存副本 测试 按属性查询 按位置选择图层 结合 按属性选择与按位置选择">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-16T00:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-15T12:19:05.799Z">
+<meta property="article:modified_time" content="2020-03-30T11:02:18.006Z">
 <meta property="article:author" content="inno">
 <meta property="article:tag" content="pythonGIS">
 <meta name="twitter:card" content="summary">
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 12:19:05" itemprop="dateModified" datetime="2020-01-15T12:19:05Z">2020-01-15</time>
+                <time title="修改时间：2020-03-30 11:02:18" itemprop="dateModified" datetime="2020-03-30T11:02:18Z">2020-03-30</time>
               </span>
 
           
@@ -272,7 +272,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
+              <span>2.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -306,19 +306,19 @@
 <li>arcpy.MakeFeatureLayer()</li>
 <li>arcpy.MakeTableView()</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line"># 设置工作空间</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:&#x2F;ArcpyBook&#x2F;data&#x2F;CityOfSanAntonio.gdb&quot;</span><br><span class="line">try:</span><br><span class="line">    # 调用创建要素图层工具</span><br><span class="line">    #flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;, &quot;Burglary_layer&quot;)</span><br><span class="line"></span><br><span class="line">    # 创建表视图</span><br><span class="line">    fview &#x3D; arcpy.MakeTableView_management(&quot;Crime2009Table&quot;, &quot;Crime2009_Table&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="comment"># 设置工作空间</span></span><br><span class="line">arcpy.env.workspace = <span class="string">"H:/ArcpyBook/data/CityOfSanAntonio.gdb"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 调用创建要素图层工具</span></span><br><span class="line">    <span class="comment">#flayer = arcpy.MakeFeatureLayer_management("Burglary", "Burglary_layer")</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建表视图</span></span><br><span class="line">    fview = arcpy.MakeTableView_management(<span class="string">"Crime2009Table"</span>, <span class="string">"Crime2009_Table"</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
 <h3 id="2-测试-按属性查询"><a href="#2-测试-按属性查询" class="headerlink" title="2.测试 按属性查询"></a>2.测试 按属性查询</h3><ul>
 <li>arcpy.SelectLayerByAttribute_management()</li>
 <li>arcpy.GetCount_management()  获取计数</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">测试 按属性查询</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:&#x2F;ArcpyBook&#x2F;data&#x2F;CityOfSanAntonio.gdb&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 查询语句</span><br><span class="line">    qry &#x3D; &#39;&quot;SVCAREA&quot; &#x3D; \&#39;North\&#39;&#39;</span><br><span class="line">    # 创建要素类的内存副本</span><br><span class="line">    flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;, &quot;Burglary_layer&quot;)</span><br><span class="line">    # 按属性查询</span><br><span class="line">    arcpy.SelectLayerByAttribute_management(flayer,&quot;NEW_SELECTION&quot;, qry)</span><br><span class="line">    # 获取结果数量</span><br><span class="line">    cnt &#x3D; arcpy.GetCount_management(flayer)</span><br><span class="line">    print(&quot;查询了&quot; + str(cnt) + &quot;条记录&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">测试 按属性查询</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line">arcpy.env.workspace = <span class="string">"H:/ArcpyBook/data/CityOfSanAntonio.gdb"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 查询语句</span></span><br><span class="line">    qry = <span class="string">'"SVCAREA" = \'North\''</span></span><br><span class="line">    <span class="comment"># 创建要素类的内存副本</span></span><br><span class="line">    flayer = arcpy.MakeFeatureLayer_management(<span class="string">"Burglary"</span>, <span class="string">"Burglary_layer"</span>)</span><br><span class="line">    <span class="comment"># 按属性查询</span></span><br><span class="line">    arcpy.SelectLayerByAttribute_management(flayer,<span class="string">"NEW_SELECTION"</span>, qry)</span><br><span class="line">    <span class="comment"># 获取结果数量</span></span><br><span class="line">    cnt = arcpy.GetCount_management(flayer)</span><br><span class="line">    print(<span class="string">"查询了"</span> + str(cnt) + <span class="string">"条记录"</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
 <h3 id="3-按位置选择图层"><a href="#3-按位置选择图层" class="headerlink" title="3.按位置选择图层"></a>3.按位置选择图层</h3><ul>
 <li>arcpy.SeletLayerByLocation()</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">按位置选择图层</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import arcpy</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:\\ArcpyBook\\data\\CityOfSanAntonio.gdb&quot;</span><br><span class="line">try:</span><br><span class="line">    # 创建Burglary的内存副本</span><br><span class="line">    flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;, &quot;Burglary_layer&quot;)</span><br><span class="line">    # 选择完全位于输入图层的Burglary元素</span><br><span class="line">    # arcpy.SelectLayerByLocation_management(flayer,&quot;COMPLETELY_WITHIN&quot;,</span><br><span class="line">    #     &quot;H:\\ArcpyBook\\Ch7\\EdgewoodSD.shp&quot;)</span><br><span class="line">    </span><br><span class="line">    # 按距离选择</span><br><span class="line">    arcpy.SelectLayerByLocation_management(flayer, &quot;WITHIN_A_DISTANCE&quot;,</span><br><span class="line">        &quot;H:\\ArcpyBook\\Ch7\\EdgewoodSD.shp&quot;, &quot;1 MILES&quot;)</span><br><span class="line"></span><br><span class="line">    # 打印出选择的数量</span><br><span class="line">    cnt &#x3D; arcpy.GetCount_management(flayer) # 获取计数</span><br><span class="line">    print(&quot;选择了&quot; + str(cnt) + &quot;个元素&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">按位置选择图层</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line">arcpy.env.workspace = <span class="string">"H:\\ArcpyBook\\data\\CityOfSanAntonio.gdb"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 创建Burglary的内存副本</span></span><br><span class="line">    flayer = arcpy.MakeFeatureLayer_management(<span class="string">"Burglary"</span>, <span class="string">"Burglary_layer"</span>)</span><br><span class="line">    <span class="comment"># 选择完全位于输入图层的Burglary元素</span></span><br><span class="line">    <span class="comment"># arcpy.SelectLayerByLocation_management(flayer,"COMPLETELY_WITHIN",</span></span><br><span class="line">    <span class="comment">#     "H:\\ArcpyBook\\Ch7\\EdgewoodSD.shp")</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 按距离选择</span></span><br><span class="line">    arcpy.SelectLayerByLocation_management(flayer, <span class="string">"WITHIN_A_DISTANCE"</span>,</span><br><span class="line">        <span class="string">"H:\\ArcpyBook\\Ch7\\EdgewoodSD.shp"</span>, <span class="string">"1 MILES"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 打印出选择的数量</span></span><br><span class="line">    cnt = arcpy.GetCount_management(flayer) <span class="comment"># 获取计数</span></span><br><span class="line">    print(<span class="string">"选择了"</span> + str(cnt) + <span class="string">"个元素"</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
 <h3 id="4-结合-按属性选择与按位置选择"><a href="#4-结合-按属性选择与按位置选择" class="headerlink" title="4. 结合 按属性选择与按位置选择"></a>4. 结合 按属性选择与按位置选择</h3><p>结合 按属性选择与按位置选择</p>
 <p><b>选出在Edgewood范围内的星期一的犯罪记录</b></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line"># 设置工作空间</span><br><span class="line">arcpy.env.workspace &#x3D; &quot;H:\\ArcpyBook\\data\\CityOfSanAntonio.gdb&quot;</span><br><span class="line">try:</span><br><span class="line">    # 创建犯罪记录图层副本</span><br><span class="line">    flayer &#x3D; arcpy.MakeFeatureLayer_management(&quot;Burglary&quot;,&quot;Burglary_layer&quot;)</span><br><span class="line">    # 按位置选择</span><br><span class="line">    arcpy.SelectLayerByLocation_management(flayer, &quot;COMPLETELY_WITHIN&quot;, </span><br><span class="line">        r&quot;H:\ArcpyBook\Ch7\EdgewoodSD.shp&quot;)</span><br><span class="line">    # 按属性选择</span><br><span class="line">    qry &#x3D; &#39;&quot;DOW&quot; &#x3D; \&#39;Mon\&#39;&#39;</span><br><span class="line">    arcpy.SelectLayerByAttribute_management(flayer, &quot;SUBSET_SELECTION&quot;, qry)</span><br><span class="line">    # 打印出选择出的数量</span><br><span class="line">    cnt &#x3D; arcpy.GetCount_management(flayer)</span><br><span class="line">    print(&quot;选择出了&quot; + str(cnt) + &quot;条记录&quot;)</span><br><span class="line"></span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="comment"># 设置工作空间</span></span><br><span class="line">arcpy.env.workspace = <span class="string">"H:\\ArcpyBook\\data\\CityOfSanAntonio.gdb"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 创建犯罪记录图层副本</span></span><br><span class="line">    flayer = arcpy.MakeFeatureLayer_management(<span class="string">"Burglary"</span>,<span class="string">"Burglary_layer"</span>)</span><br><span class="line">    <span class="comment"># 按位置选择</span></span><br><span class="line">    arcpy.SelectLayerByLocation_management(flayer, <span class="string">"COMPLETELY_WITHIN"</span>, </span><br><span class="line">        <span class="string">r"H:\ArcpyBook\Ch7\EdgewoodSD.shp"</span>)</span><br><span class="line">    <span class="comment"># 按属性选择</span></span><br><span class="line">    qry = <span class="string">'"DOW" = \'Mon\''</span></span><br><span class="line">    arcpy.SelectLayerByAttribute_management(flayer, <span class="string">"SUBSET_SELECTION"</span>, qry)</span><br><span class="line">    <span class="comment"># 打印出选择出的数量</span></span><br><span class="line">    cnt = arcpy.GetCount_management(flayer)</span><br><span class="line">    print(<span class="string">"选择出了"</span> + str(cnt) + <span class="string">"条记录"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e.message)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -328,7 +328,7 @@
   <div class="popular-posts-header">推荐文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-07-19-arcgis-python-9.html" rel="bookmark">Arcgis中的python编程(9)</a></div>
+      <div class="popular-posts-title"><a href="\2019-07-18-arcgis-python-8.html" rel="bookmark">Arcgis中的python编程(8)</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2019-06-13-arcgis-python-1.html" rel="bookmark">Arcgis中的python编程(1)</a></div>
@@ -337,10 +337,10 @@
       <div class="popular-posts-title"><a href="\2019-06-16-arcgis-python-3.html" rel="bookmark">Arcgis中的python编程(3)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2019-08-02-session-brower.html" rel="bookmark">浏览器中session的使用，保存登陆状态与注销登陆</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
     </li>
   </ul>
 
@@ -440,7 +440,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -492,12 +492,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">272k</span>
+    <span title="站点总字数">235k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:07</span>
+    <span title="站点阅读时长">3:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
@@ -559,6 +559,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -658,35 +687,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 
