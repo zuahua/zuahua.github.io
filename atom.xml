@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-04-23T01:49:02.081Z</updated>
+  <updated>2020-04-23T23:43:15.865Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>mysql navicat 定时任务</title>
+    <title>mysql navicat 创建定时任务</title>
     <link href="http://innozh.com/2020-04-23-mysql-ding-shi-ren-wu.html"/>
     <id>http://innozh.com/2020-04-23-mysql-ding-shi-ren-wu.html</id>
     <published>2020-04-23T00:00:00.000Z</published>
-    <updated>2020-04-23T01:49:02.081Z</updated>
+    <updated>2020-04-23T23:43:15.865Z</updated>
     
     <summary type="html">
     

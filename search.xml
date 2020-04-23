@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>mysql navicat 定时任务</title>
+    <title>mysql navicat 创建定时任务</title>
     <url>/2020-04-23-mysql-ding-shi-ren-wu.html</url>
     <content><![CDATA[<p>说明：</p>
 <ul>
@@ -18,10 +18,10 @@
 </ol>
 <p><img src="../images/navicat-mysql/1.png" alt="image"></p>
 <ol start="2">
-<li>输入<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%event_scheduler%'</span>;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>输入</li>
 </ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%event_scheduler%'</span>;</span><br></pre></td></tr></table></figure>
+
 <p><img src="../images/navicat-mysql/2.png" alt="image"></p>
 <p>ON 表示已经打开</p>
 <ol start="3">
@@ -44,7 +44,7 @@
 <li>过程内容</li>
 </ol>
 <p><img src="../images/navicat-mysql/6.png" alt="image"></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DEFINER=<span class="string">`zh`</span>@<span class="string">`%`</span> <span class="keyword">PROCEDURE</span> <span class="string">`timer`</span>()</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="comment">#Routine body goes here...定时 过程 </span></span><br><span class="line">	<span class="keyword">UPDATE</span> sys_students <span class="keyword">SET</span> <span class="string">`status`</span> = <span class="number">0</span> <span class="keyword">WHERE</span> <span class="string">`status`</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DEFINER=<span class="string">`user`</span>@<span class="string">`%`</span> <span class="keyword">PROCEDURE</span> <span class="string">`timer`</span>()</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="comment">#Routine body goes here...定时 过程 </span></span><br><span class="line">	<span class="keyword">UPDATE</span> sys_students <span class="keyword">SET</span> <span class="string">`status`</span> = <span class="number">0</span>, <span class="string">`sZWH`</span> = <span class="number">0</span> <span class="keyword">WHERE</span> <span class="string">`status`</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="新建定时事件-调用过程"><a href="#新建定时事件-调用过程" class="headerlink" title="新建定时事件 调用过程"></a>新建定时事件 调用过程</h3><ol>
 <li>右击<strong>事件</strong>，<strong>新建事件</strong></li>
