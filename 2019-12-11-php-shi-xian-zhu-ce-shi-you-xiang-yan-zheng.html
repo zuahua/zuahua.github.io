@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="说明：  PHP7 使用smtp 163邮箱  实现思路：  注册时利用用户名、加密密码、时间戳构建激活识别码存入数据库，数据库中active_status&#x3D;0 发送邮件给用户，激活识别码传入 激活链接，点击链接GET方式将激活识别码交给后台处理 激活将active_status&#x3D;1  文件目录:  register.html register.php sql.php Smtp.class.php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP实现注册时邮箱验证">
+<meta property="og:url" content="http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html">
+<meta property="og:site_name" content="inno的博客">
+<meta property="og:description" content="说明：  PHP7 使用smtp 163邮箱  实现思路：  注册时利用用户名、加密密码、时间戳构建激活识别码存入数据库，数据库中active_status&#x3D;0 发送邮件给用户，激活识别码传入 激活链接，点击链接GET方式将激活识别码交给后台处理 激活将active_status&#x3D;1  文件目录:  register.html register.php sql.php Smtp.class.php">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://innozh.com/assets/images/PHPMail/1.png">
+<meta property="article:published_time" content="2019-12-11T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-30T10:41:45.263Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="邮箱验证">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://innozh.com/assets/images/PHPMail/1.png">
+
+<link rel="canonical" href="http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>PHP实现注册时邮箱验证 | inno的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          PHP实现注册时邮箱验证
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-11 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-11T00:00:00Z">2019-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-30 10:41:45" itemprop="dateModified" datetime="2020-03-30T10:41:45Z">2020-03-30</time>
+              </span>
+
+          
+            <span id="/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html" class="post-meta-item leancloud_visitors" data-flag-title="PHP实现注册时邮箱验证" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019-12-11-php-shi-xian-zhu-ce-shi-you-xiang-yan-zheng.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>说明：</p>
+<ul>
+<li>PHP7</li>
+<li>使用smtp</li>
+<li>163邮箱</li>
+</ul>
+<p>实现思路：</p>
+<ul>
+<li>注册时利用用户名、加密密码、时间戳构建激活识别码存入数据库，数据库中active_status=0</li>
+<li>发送邮件给用户，激活识别码传入 激活链接，点击链接GET方式将激活识别码交给后台处理</li>
+<li>激活将active_status=1</li>
+</ul>
+<p>文件目录:</p>
+<ul>
+<li>register.html</li>
+<li>register.php</li>
+<li>sql.php</li>
+<li>Smtp.class.php</li>
+<li>active.php</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><p><img src="/assets/images/PHPMail/1.png" alt="image"></p>
+<ul>
+<li>注意设置数值型字段初值</li>
+</ul>
+<h3 id="register-html"><a href="#register-html" class="headerlink" title="register.html"></a>register.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"register.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>姓名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sName"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>学号：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sId"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>班级：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sClass"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>手机号：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sPhone"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sMail"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>密码：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sPwd"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="sql-php"><a href="#sql-php" class="headerlink" title="sql.php"></a>sql.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $server = <span class="string">"localhost"</span>;</span><br><span class="line">	$user = <span class="string">"root"</span>;</span><br><span class="line">	$password = <span class="string">"密码"</span>;</span><br><span class="line">    $dbname = <span class="string">"users"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="register-php"><a href="#register-php" class="headerlink" title="register.php"></a>register.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">isset</span>($_POST[<span class="string">"submit"</span>])) &#123;</span><br><span class="line">        <span class="keyword">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">include</span> <span class="string">'./sql.php'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接</span></span><br><span class="line">	$conn = <span class="keyword">new</span> mysqli($server, $user, $password, $dbname);</span><br><span class="line">	<span class="keyword">if</span>($conn-&gt;connect_error)&#123;</span><br><span class="line">		<span class="keyword">die</span>(<span class="string">"连接失败"</span> . $conn-&gt;connect_error);</span><br><span class="line">		<span class="keyword">exit</span>();</span><br><span class="line">	&#125;</span><br><span class="line">    $conn-&gt;query(<span class="string">"set names utf8"</span>);</span><br><span class="line"></span><br><span class="line">    $sName = trim($_POST[<span class="string">"sName"</span>]);</span><br><span class="line">    $sId = trim($_POST[<span class="string">"sId"</span>]);</span><br><span class="line">    $sClass = trim($_POST[<span class="string">"sClass"</span>]);</span><br><span class="line">    $sPhone = trim($_POST[<span class="string">"sPhone"</span>]);</span><br><span class="line">    $sMail = trim($_POST[<span class="string">"sMail"</span>]);</span><br><span class="line">    </span><br><span class="line">    $sPwd = md5(trim($_POST[<span class="string">"sPwd"</span>]));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户名是否存在...</span></span><br><span class="line"></span><br><span class="line">    $regtime = time();</span><br><span class="line"> </span><br><span class="line">    $token = md5($sName.$sPwd.$regtime); <span class="comment">//创建用于激活识别码</span></span><br><span class="line">    $token_exptime = time()+<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>;<span class="comment">//过期时间为24小时后</span></span><br><span class="line"></span><br><span class="line">    $sql_insert = <span class="string">"INSERT INTO `sys_students` </span></span><br><span class="line"><span class="string">        (`sId`, `sName`, `sClass`, `sPhone`, `sMail`, `sPwd`, `token`, </span></span><br><span class="line"><span class="string">        `token_exptime`, `regtime`)</span></span><br><span class="line"><span class="string">        VALUES ($sId, '$sName', '$sClass', '$sPhone', '$sMail', '$sPwd', '$token', </span></span><br><span class="line"><span class="string">        $token_exptime, $regtime)"</span>;</span><br><span class="line">    $result = $conn-&gt;query($sql_insert);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>($result) &#123;<span class="comment">// 数据插入成功</span></span><br><span class="line">        <span class="keyword">require_once</span> <span class="string">"Smtp.class.php"</span>;</span><br><span class="line">        <span class="comment">//******************** 配置信息 ********************************</span></span><br><span class="line">        $smtpserver = <span class="string">"smtp.163.com"</span>;<span class="comment">//SMTP服务器</span></span><br><span class="line">        $smtpserverport =<span class="number">25</span>;<span class="comment">//SMTP服务器端口</span></span><br><span class="line">        $smtpusermail = <span class="string">"187xx212478@163.com"</span>;<span class="comment">//SMTP服务器的用户邮箱</span></span><br><span class="line">        $smtpemailto = $sMail;<span class="comment">//发送给谁</span></span><br><span class="line">        $smtpuser = <span class="string">"187xx2478@163.com"</span>;<span class="comment">//SMTP服务器的用户帐号，注：部分邮箱只需@前面的用户名</span></span><br><span class="line">        $smtppass = <span class="string">"密码"</span>;<span class="comment">//SMTP服务器的授权码</span></span><br><span class="line">        $mailtitle = <span class="string">"用户帐号激活"</span>;<span class="comment">//邮件主题</span></span><br><span class="line">        $mailcontent = <span class="string">"亲爱的"</span>.$sName.<span class="string">"：&lt;br/&gt;感谢您在我站注册了新帐号。&lt;br/&gt;请点击链接激活您的帐号。&lt;br/&gt;&lt;a href='http://127.0.0.1:82/test/mailValidate/active.php?verify="</span>.$token.<span class="string">"' target='_blank'&gt;http://127.0.0.1:82/test/mailValidate/active.php?verify="</span>.$token.<span class="string">"&lt;/a&gt;&lt;br/&gt;如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。&lt;br/&gt;如果此次激活请求非你本人所发，请忽略本邮件。&lt;br/&gt;&lt;p style='text-align:right'&gt;注册&lt;/p&gt;"</span>;<span class="comment">//邮件内容</span></span><br><span class="line">        $mailtype = <span class="string">"HTML"</span>;<span class="comment">//邮件格式（HTML/TXT）,TXT为文本邮件</span></span><br><span class="line">        <span class="comment">//************************ 配置信息 ****************************</span></span><br><span class="line">        $smtp = <span class="keyword">new</span> Smtp($smtpserver,$smtpserverport,<span class="keyword">true</span>,$smtpuser,$smtppass);<span class="comment">//这里面的一个true是表示使用身份验证,否则不使用身份验证.</span></span><br><span class="line">        $smtp-&gt;debug = <span class="keyword">false</span>;<span class="comment">//是否显示发送的调试信息</span></span><br><span class="line">        $state = $smtp-&gt;sendmail($smtpemailto, $smtpusermail, $mailtitle, $mailcontent, $mailtype);</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;div style='width:300px; margin:36px auto;'&gt;"</span>;</span><br><span class="line">        <span class="keyword">if</span>($state==<span class="string">""</span>)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"对不起，邮件发送失败！请检查邮箱填写是否有误。"</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"&lt;a href='index.html'&gt;点此返回&lt;/a&gt;"</span>;</span><br><span class="line">            <span class="keyword">exit</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"恭喜！注册成功！请登录邮箱即使激活账号，若未收到邮件，请查看垃圾邮件"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;a href='index.html'&gt;点此返回&lt;/a&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;/div&gt;"</span>;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>这里使用本地apache服务器</li>
+<li>163邮箱开启SMTP需要设置授权码，密码使用授权码</li>
+</ul>
+<h3 id="Smtp-class-php"><a href="#Smtp-class-php" class="headerlink" title="Smtp.class.php"></a>Smtp.class.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * email smtp （support php7）</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Modified by: Reson 2017/06</span></span><br><span class="line"><span class="comment"> * UPDATE:</span></span><br><span class="line"><span class="comment"> * 1、change ereg to preg_match；change ereg_replace to preg_replace.</span></span><br><span class="line"><span class="comment"> * 2、change var to public/private.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Smtp</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/* Public Variables */</span></span><br><span class="line">    <span class="keyword">public</span> $smtp_port;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $time_out;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $host_name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $log_file;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $relay_host;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $debug;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $auth;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $user;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $pass;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Private Variables */</span></span><br><span class="line">    <span class="keyword">private</span> $sock;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Constractor */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($relay_host = <span class="string">""</span>, $smtp_port = <span class="number">25</span>,$auth = false,$user,$pass)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;debug = <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;smtp_port = $smtp_port;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;relay_host = $relay_host;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;time_out = <span class="number">30</span>; <span class="comment">//is used in fsockopen()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;auth = $auth;<span class="comment">//auth</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;user = $user;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;pass = $pass;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;host_name = <span class="string">"localhost"</span>; <span class="comment">//is used in HELO command</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;log_file = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;sock = <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Main Function */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sendmail</span><span class="params">($to, $from, $subject = <span class="string">""</span>, $body = <span class="string">""</span>, $mailtype, $cc = <span class="string">""</span>, $bcc = <span class="string">""</span>, $additional_headers = <span class="string">""</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $mail_from = <span class="keyword">$this</span>-&gt;get_address(<span class="keyword">$this</span>-&gt;strip_comment($from));</span><br><span class="line"></span><br><span class="line">        $body = preg_replace(<span class="string">"/(^|(\r\n))(\.)/"</span>, <span class="string">"\1.\3"</span>, $body);</span><br><span class="line"></span><br><span class="line">        $header = <span class="string">"MIME-Version:1.0\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>($mailtype==<span class="string">"HTML"</span>)&#123;</span><br><span class="line"></span><br><span class="line">            $header .= <span class="string">"Content-Type:text/html\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $header .= <span class="string">"To: "</span>.$to.<span class="string">"\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($cc != <span class="string">""</span>) &#123;</span><br><span class="line"></span><br><span class="line">            $header .= <span class="string">"Cc: "</span>.$cc.<span class="string">"\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $header .= <span class="string">"From: $from&lt;"</span>.$from.<span class="string">"&gt;\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        $header .= <span class="string">"Subject: "</span>.$subject.<span class="string">"\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        $header .= $additional_headers;</span><br><span class="line"></span><br><span class="line">        $header .= <span class="string">"Date: "</span>.date(<span class="string">"r"</span>).<span class="string">"\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        $header .= <span class="string">"X-Mailer:By Redhat (PHP/"</span>.phpversion().<span class="string">")\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">list</span>($msec, $sec) = explode(<span class="string">" "</span>, microtime());</span><br><span class="line"></span><br><span class="line">        $header .= <span class="string">"Message-ID: &lt;"</span>.date(<span class="string">"YmdHis"</span>, $sec).<span class="string">"."</span>.($msec*<span class="number">1000000</span>).<span class="string">"."</span>.$mail_from.<span class="string">"&gt;\r\n"</span>;</span><br><span class="line"></span><br><span class="line">        $TO = explode(<span class="string">","</span>, <span class="keyword">$this</span>-&gt;strip_comment($to));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($cc != <span class="string">""</span>) &#123;</span><br><span class="line"></span><br><span class="line">            $TO = array_merge($TO, explode(<span class="string">","</span>, <span class="keyword">$this</span>-&gt;strip_comment($cc)));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($bcc != <span class="string">""</span>) &#123;</span><br><span class="line"></span><br><span class="line">            $TO = array_merge($TO, explode(<span class="string">","</span>, <span class="keyword">$this</span>-&gt;strip_comment($bcc)));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $sent = <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> ($TO <span class="keyword">as</span> $rcpt_to) &#123;</span><br><span class="line"></span><br><span class="line">            $rcpt_to = <span class="keyword">$this</span>-&gt;get_address($rcpt_to);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_sockopen($rcpt_to)) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Cannot send email to "</span>.$rcpt_to.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">                $sent = <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;smtp_send(<span class="keyword">$this</span>-&gt;host_name, $mail_from, $rcpt_to, $header, $body)) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">$this</span>-&gt;log_write(<span class="string">"E-mail has been sent to &lt;"</span>.$rcpt_to.<span class="string">"&gt;\n"</span>);</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Cannot send email to &lt;"</span>.$rcpt_to.<span class="string">"&gt;\n"</span>);</span><br><span class="line"></span><br><span class="line">                $sent = <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            fclose(<span class="keyword">$this</span>-&gt;sock);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Disconnected from remote host\n"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $sent;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Private Functions */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_send</span><span class="params">($helo, $from, $to, $header, $body = <span class="string">""</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">"HELO"</span>, $helo)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending HELO command"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//auth</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;auth)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">"AUTH LOGIN"</span>, base64_encode(<span class="keyword">$this</span>-&gt;user))) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending HELO command"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">""</span>, base64_encode(<span class="keyword">$this</span>-&gt;pass))) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending HELO command"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">"MAIL"</span>, <span class="string">"FROM:&lt;"</span>.$from.<span class="string">"&gt;"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending MAIL FROM command"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">"RCPT"</span>, <span class="string">"TO:&lt;"</span>.$to.<span class="string">"&gt;"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending RCPT TO command"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">"DATA"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending DATA command"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_message($header, $body)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending message"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_eom()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt; [EOM]"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;smtp_putcmd(<span class="string">"QUIT"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_error(<span class="string">"sending QUIT command"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_sockopen</span><span class="params">($address)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;relay_host == <span class="string">""</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_sockopen_mx($address);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_sockopen_relay();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_sockopen_relay</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Trying to "</span>.<span class="keyword">$this</span>-&gt;relay_host.<span class="string">":"</span>.<span class="keyword">$this</span>-&gt;smtp_port.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;sock = @fsockopen(<span class="keyword">$this</span>-&gt;relay_host, <span class="keyword">$this</span>-&gt;smtp_port, $errno, $errstr, <span class="keyword">$this</span>-&gt;time_out);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!(<span class="keyword">$this</span>-&gt;sock &amp;&amp; <span class="keyword">$this</span>-&gt;smtp_ok())) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Cannot connenct to relay host "</span>.<span class="keyword">$this</span>-&gt;relay_host.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: "</span>.$errstr.<span class="string">" ("</span>.$errno.<span class="string">")\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Connected to relay host "</span>.<span class="keyword">$this</span>-&gt;relay_host.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_sockopen_mx</span><span class="params">($address)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $domain = preg_replace(<span class="string">"/^.+@([^@]+)$/"</span>, <span class="string">"\1"</span>, $address);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!@getmxrr($domain, $MXHOSTS)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Cannot resolve MX \""</span>.$domain.<span class="string">"\"\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> ($MXHOSTS <span class="keyword">as</span> $host) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Trying to "</span>.$host.<span class="string">":"</span>.<span class="keyword">$this</span>-&gt;smtp_port.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;sock = @fsockopen($host, <span class="keyword">$this</span>-&gt;smtp_port, $errno, $errstr, <span class="keyword">$this</span>-&gt;time_out);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!(<span class="keyword">$this</span>-&gt;sock &amp;&amp; <span class="keyword">$this</span>-&gt;smtp_ok())) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Warning: Cannot connect to mx host "</span>.$host.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: "</span>.$errstr.<span class="string">" ("</span>.$errno.<span class="string">")\n"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Connected to mx host "</span>.$host.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Cannot connect to any mx hosts ("</span>.implode(<span class="string">", "</span>, $MXHOSTS).<span class="string">")\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_message</span><span class="params">($header, $body)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        fputs(<span class="keyword">$this</span>-&gt;sock, $header.<span class="string">"\r\n"</span>.$body);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;smtp_debug(<span class="string">"&gt; "</span>.str_replace(<span class="string">"\r\n"</span>, <span class="string">"\n"</span>.<span class="string">"&gt; "</span>, $header.<span class="string">"\n&gt; "</span>.$body.<span class="string">"\n&gt; "</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_eom</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        fputs(<span class="keyword">$this</span>-&gt;sock, <span class="string">"\r\n.\r\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;smtp_debug(<span class="string">". [EOM]\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_ok();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_ok</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $response = str_replace(<span class="string">"\r\n"</span>, <span class="string">""</span>, fgets(<span class="keyword">$this</span>-&gt;sock, <span class="number">512</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;smtp_debug($response.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!preg_match(<span class="string">"/^[23]/"</span>, $response)) &#123;</span><br><span class="line"></span><br><span class="line">            fputs(<span class="keyword">$this</span>-&gt;sock, <span class="string">"QUIT\r\n"</span>);</span><br><span class="line"></span><br><span class="line">            fgets(<span class="keyword">$this</span>-&gt;sock, <span class="number">512</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Remote host returned \""</span>.$response.<span class="string">"\"\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_putcmd</span><span class="params">($cmd, $arg = <span class="string">""</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($arg != <span class="string">""</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>($cmd==<span class="string">""</span>) $cmd = $arg;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span> $cmd = $cmd.<span class="string">" "</span>.$arg;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fputs(<span class="keyword">$this</span>-&gt;sock, $cmd.<span class="string">"\r\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;smtp_debug(<span class="string">"&gt; "</span>.$cmd.<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;smtp_ok();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_error</span><span class="params">($string)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;log_write(<span class="string">"Error: Error occurred while "</span>.$string.<span class="string">".\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">log_write</span><span class="params">($message)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;smtp_debug($message);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;log_file == <span class="string">""</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $message = date(<span class="string">"M d H:i:s "</span>).get_current_user().<span class="string">"["</span>.getmypid().<span class="string">"]: "</span>.$message;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!@file_exists(<span class="keyword">$this</span>-&gt;log_file) || !($fp = @fopen(<span class="keyword">$this</span>-&gt;log_file, <span class="string">"a"</span>))) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">$this</span>-&gt;smtp_debug(<span class="string">"Warning: Cannot open log file \""</span>.<span class="keyword">$this</span>-&gt;log_file.<span class="string">"\"\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">FALSE</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        flock($fp, LOCK_EX);</span><br><span class="line"></span><br><span class="line">        fputs($fp, $message);</span><br><span class="line"></span><br><span class="line">        fclose($fp);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">TRUE</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">strip_comment</span><span class="params">($address)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $comment = <span class="string">"/\([^()]*\)/"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (preg_match($comment, $address)) &#123;</span><br><span class="line"></span><br><span class="line">            $address = preg_replace($comment, <span class="string">""</span>, $address);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $address;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">get_address</span><span class="params">($address)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $address = preg_replace(<span class="string">"/([ \t\r\n])+/"</span>, <span class="string">""</span>, $address);</span><br><span class="line"></span><br><span class="line">        $address = preg_replace(<span class="string">"/^.*&lt;(.+)&gt;.*$/"</span>, <span class="string">"\1"</span>, $address);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $address;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">smtp_debug</span><span class="params">($message)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;debug) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">echo</span> $message;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="active-php"><a href="#active-php" class="headerlink" title="active.php"></a>active.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">'./sql.php'</span>;</span><br><span class="line"><span class="comment">// 连接</span></span><br><span class="line">$conn = <span class="keyword">new</span> mysqli($server, $user, $password, $dbname);</span><br><span class="line"><span class="keyword">if</span>($conn-&gt;connect_error)&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"连接失败"</span> . $conn-&gt;connect_error);</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line">$conn-&gt;query(<span class="string">"set names utf8"</span>);</span><br><span class="line"></span><br><span class="line">$verify = stripslashes(trim($_GET[<span class="string">'verify'</span>]));</span><br><span class="line">$nowtime = time();</span><br><span class="line">$sql = <span class="string">"SELECT id,token_exptime FROM sys_students WHERE status=0 AND token='$verify'"</span>;</span><br><span class="line">$result = $conn-&gt;query($sql);</span><br><span class="line">$row = $result-&gt;fetch_assoc();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($row) &#123;</span><br><span class="line">	<span class="keyword">if</span> ($nowtime &gt; $row[<span class="string">'token_exptime'</span>]) &#123; </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;script&gt;</span></span><br><span class="line"><span class="string">                alert('您的激活有效期已过，请登录您的帐号重新发送激活邮件');</span></span><br><span class="line"><span class="string">        &lt;/script&gt;"</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        $sql_update = <span class="string">"UPDATE sys_students SET active_status=1 WHERE id="</span> . $row[<span class="string">'id'</span>];</span><br><span class="line">        $result_update = $conn-&gt;query($sql_update);</span><br><span class="line">        <span class="keyword">if</span> ($result_update) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"&lt;script&gt;</span></span><br><span class="line"><span class="string">            alert('激活成功！');</span></span><br><span class="line"><span class="string">            &lt;/script&gt;"</span>;</span><br><span class="line">            </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"&lt;script&gt;</span></span><br><span class="line"><span class="string">            alert('服务器忙！');</span></span><br><span class="line"><span class="string">            &lt;/script&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;script&gt;</span></span><br><span class="line"><span class="string">            alert('error');</span></span><br><span class="line"><span class="string">    &lt;/script&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://www.cnblogs.com/linksgo2011/archive/2013/04/23/3037429.html" target="_blank" rel="noopener external nofollow noreferrer">php 邮箱验证原理</a></p>
+<p><a href="https://www.moquit.com/1520.html" target="_blank" rel="noopener external nofollow noreferrer">PHP用户注册邮箱验证激活帐号</a></p>
+<p><a href="https://segmentfault.com/a/1190000014789528" target="_blank" rel="noopener external nofollow noreferrer">用phpmail发送邮件，简单实现php发邮件功能！</a></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-31-php-password-hash.html" rel="bookmark">PHP中password_hash()密码加密</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-07-31-php-mysql-create.html" rel="bookmark">PHP新建用户数据库和表</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-08-01-php-apache-mysql-uls-1-yong-hu-deng-lu-xi-tong.html" rel="bookmark">php+Apache+mysql用户登录系统(1)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+              <a href="/tags/%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81/" rel="tag"><i class="fa fa-tag"></i> 邮箱验证</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-11-12-ipsec-vpn-xu-ni-ju-yu-wang-da-jian.html" rel="prev" title="搭建IPSec VPN 虚拟局域网">
+      <i class="fa fa-chevron-left"></i> 搭建IPSec VPN 虚拟局域网
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019-12-14-shi-yong-phpmailer-ku-fa-song-you-jian.html" rel="next" title="使用PHPMailer库发送邮件支持ssl方式">
+      使用PHPMailer库发送邮件支持ssl方式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据表"><span class="nav-number">1.</span> <span class="nav-text">数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#register-html"><span class="nav-number">2.</span> <span class="nav-text">register.html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-php"><span class="nav-number">3.</span> <span class="nav-text">sql.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#register-php"><span class="nav-number">4.</span> <span class="nav-text">register.php</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">4.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Smtp-class-php"><span class="nav-number">5.</span> <span class="nav-text">Smtp.class.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#active-php"><span class="nav-number">6.</span> <span class="nav-text">active.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考链接"><span class="nav-number">7.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">254k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":120,"height":200,"position":"left","hOffset":20,"vOffset":50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

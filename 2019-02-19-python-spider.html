@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="学习环境:python3python IDLE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫入门学习笔记">
+<meta property="og:url" content="http://innozh.com/2019-02-19-python-spider.html">
+<meta property="og:site_name" content="inno的博客">
+<meta property="og:description" content="学习环境:python3python IDLE">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://innozh.com/python-spider/python-1.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-2.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-3.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-4.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-5.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-6.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-7.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-8.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-9.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-10.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-11.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-12.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-14.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-15.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-16.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-17.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-18.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-19.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-20.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-21.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-22.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-23.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-24.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-25.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-26.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-27.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-28.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-29.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-30.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-31.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-32.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-33.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-34.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-35.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-36.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-37.png">
+<meta property="og:image" content="http://innozh.com/python-spider/python-38.png">
+<meta property="article:published_time" content="2019-02-19T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-30T11:23:24.689Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="python爬虫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://innozh.com/python-spider/python-1.png">
+
+<link rel="canonical" href="http://innozh.com/2019-02-19-python-spider.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>python爬虫入门学习笔记 | inno的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2019-02-19-python-spider.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          python爬虫入门学习笔记
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-19 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-19T00:00:00Z">2019-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-30 11:23:24" itemprop="dateModified" datetime="2020-03-30T11:23:24Z">2020-03-30</time>
+              </span>
+
+          
+            <span id="/2019-02-19-python-spider.html" class="post-meta-item leancloud_visitors" data-flag-title="python爬虫入门学习笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019-02-19-python-spider.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019-02-19-python-spider.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>22k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>20 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学习环境:python3<br>python IDLE</p>
+<a id="more"></a>
+
+<h4 id="1-python安装3-0及以上版本"><a href="#1-python安装3-0及以上版本" class="headerlink" title="1.python安装3.0及以上版本"></a>1.python安装3.0及以上版本</h4><h4 id="2-安装requests库"><a href="#2-安装requests库" class="headerlink" title="2.安装requests库"></a>2.安装requests库</h4><p>cmd指令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<p>测试:(打开python 的IDLE)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">// 获取网页</span><br><span class="line">r = requests.get(<span class="string">"https://www.baidu.com"</span>)</span><br><span class="line">// 获取状态码<span class="number">200</span>为正常</span><br><span class="line">r.status_code</span><br><span class="line">// 更改编码方式为utf<span class="number">-8</span></span><br><span class="line">r.encoding = <span class="string">'utf-8'</span></span><br><span class="line">// 打印</span><br><span class="line">r.text</span><br></pre></td></tr></table></figure>
+<h4 id="3-requests库的get-方法"><a href="#3-requests库的get-方法" class="headerlink" title="3.requests库的get()方法"></a>3.requests库的get()方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests.get(url)</span><br></pre></td></tr></table></figure>
+<p>它有Request和Response两个对象</p>
+<h4 id="4-Response对象"><a href="#4-Response对象" class="headerlink" title="4.Response对象"></a>4.Response对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">r = requests.get(<span class="string">"https://www.baidu.com"</span>)</span><br><span class="line">print(r.status_code)</span><br><span class="line">// 查看r的类型</span><br><span class="line">type(r)</span><br><span class="line">// 查看r的头</span><br><span class="line">r.headers</span><br></pre></td></tr></table></figure>
+<h5 id="4-1-Response对象的属性"><a href="#4-1-Response对象的属性" class="headerlink" title="4.1 Response对象的属性"></a>4.1 Response对象的属性</h5><p><img src="/python-spider/python-1.png" alt="image"></p>
+<h5 id="4-2-Request库异常"><a href="#4-2-Request库异常" class="headerlink" title="4.2 Request库异常"></a>4.2 Request库异常</h5><p><img src="/python-spider/python-2.png" alt="image"></p>
+<h5 id="4-3-判断是否异常-通用代码框架"><a href="#4-3-判断是否异常-通用代码框架" class="headerlink" title="4.3 判断是否异常(通用代码框架)"></a>4.3 判断是否异常(通用代码框架)</h5><p>方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r.raise_for_status()</span><br><span class="line"><span class="comment"># 如果状态不是200，报错</span></span><br></pre></td></tr></table></figure>
+<p>通用代码框架:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		r = requests.get(url, timeout = <span class="number">30</span>)</span><br><span class="line">		r.raise_for_status() <span class="comment"># 判断状态是否为200</span></span><br><span class="line">		r.encoding = r.apparent_encoding</span><br><span class="line">		<span class="keyword">return</span> r.text</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"产生异常"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">     url = <span class="string">"https://www.baidu.com"</span></span><br><span class="line">     print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+<h4 id="5-Request库的主要方法"><a href="#5-Request库的主要方法" class="headerlink" title="5 Request库的主要方法"></a>5 Request库的主要方法</h4><p> <img src="/python-spider/python-3.png" alt="image"><br>put方法会将原有覆盖</p>
+<p>patch对资源更新</p>
+<h4 id="6-网络爬虫的尺寸"><a href="#6-网络爬虫的尺寸" class="headerlink" title="6 网络爬虫的尺寸"></a>6 网络爬虫的尺寸</h4><p><img src="/python-spider/python-4.png" alt="image"></p>
+<h4 id="7-对网络爬虫限制"><a href="#7-对网络爬虫限制" class="headerlink" title="7 对网络爬虫限制"></a>7 对网络爬虫限制</h4><p><img src="/python-spider/python-5.png" alt="image"></p>
+<h5 id="7-1-Robots协议"><a href="#7-1-Robots协议" class="headerlink" title="7.1 Robots协议"></a>7.1 Robots协议</h5><p><img src="/python-spider/python-6.png" alt="image"></p>
+<h4 id="8-爬取被拒绝，如果是User-Agent，如何爬取？"><a href="#8-爬取被拒绝，如果是User-Agent，如何爬取？" class="headerlink" title="8 爬取被拒绝，如果是User-Agent，如何爬取？"></a>8 爬取被拒绝，如果是User-Agent，如何爬取？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 查看头部User-Agent,发现User-Agent: python-requests...</span><br><span class="line">r.request.headers</span><br><span class="line"># 定义键值对去模拟浏览器访问，更改User-Agent</span><br><span class="line">kv &#x3D; &#123;&#39;User-Agent&#39;:&#39;Mozilla&#x2F;5.0&#39;&#125;</span><br><span class="line">url &#x3D; ...</span><br><span class="line"># 爬取页面，更改User-Agent</span><br><span class="line">r &#x3D; requests.get(url,headers &#x3D; kv)</span><br><span class="line"># 查看状态码，如为200则成功</span><br><span class="line">r.status_code</span><br></pre></td></tr></table></figure>
+<p>例如爬取amazon的页面全代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        kv = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0'</span>&#125;</span><br><span class="line">        r = requests.get(url,headers = kv)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        print(r.text) <span class="comment"># r.text[1000:2000]指打印第1001~1999个字符</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"错误"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    url = <span class="string">"https://www.amazon.com"</span></span><br><span class="line">    print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+<h4 id="9-爬取百度-360关键词搜索结果"><a href="#9-爬取百度-360关键词搜索结果" class="headerlink" title="9 爬取百度 360关键词搜索结果"></a>9 爬取百度 360关键词搜索结果</h4><p>搜索引擎关键词提交接口:<br>百度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;keyword</span><br></pre></td></tr></table></figure>
+<p>360：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.so.com&#x2F;s?q&#x3D;keyword</span><br></pre></td></tr></table></figure>
+<h4 id="10-爬取网络图片并保存"><a href="#10-爬取网络图片并保存" class="headerlink" title="10 爬取网络图片并保存"></a>10 爬取网络图片并保存</h4><p>网络图片链接的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.example.com&#x2F;picture.jpg</span><br></pre></td></tr></table></figure>
+<p>案例，爬取google一张图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">url = <span class="string">"http://news.qingdaonews.com/images/attachement/jpg/site1/20170720/48d224f8c5531ada49cc0a.jpg"</span></span><br><span class="line">root = <span class="string">"F:/py/py-creeper/spider-picture/"</span></span><br><span class="line">path = root  +  url.split(<span class="string">'/'</span>)[<span class="number">-1</span>] <span class="comment"># 剪切出图片名称</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">     <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(root): <span class="comment"># 判断root路径是否存在</span></span><br><span class="line">          os.mkdir(root)</span><br><span class="line">     <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path): <span class="comment"># 判断path下文件是否存在</span></span><br><span class="line">          r = requests.get(url)</span><br><span class="line">          <span class="keyword">with</span> open(path, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">               f.write(r.content)</span><br><span class="line">               f.close()</span><br><span class="line">               printf(<span class="string">"OK"</span>)</span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">          print(<span class="string">"文件已存在"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">     print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="11-IP地址归属地的自动查询"><a href="#11-IP地址归属地的自动查询" class="headerlink" title="11 IP地址归属地的自动查询"></a>11 IP地址归属地的自动查询</h4><p>ip138接口形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;m.ip138.com&#x2F;ip.asp?ip&#x3D;IpAddress</span><br></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://m.ip138.com/ip.asp?ip="</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">     r = requests.get(url + <span class="string">'202.204.80.112'</span>)</span><br><span class="line">     r.raise_for_status()</span><br><span class="line">     <span class="comment"># r.encoding = r.apparent.encoding</span></span><br><span class="line">     print(r.text)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">     print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="12-网页数据的解析，beautifulsoup库"><a href="#12-网页数据的解析，beautifulsoup库" class="headerlink" title="12 网页数据的解析，beautifulsoup库"></a>12 网页数据的解析，beautifulsoup库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装,打开cmd</span><br><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+<p>使用方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup <span class="comment"># 从BeautifulSoup4导入BeautifulSoup类</span></span><br><span class="line"><span class="comment"># data是网页数据,html.parser是解析方式</span></span><br><span class="line">soup = BeautifulSoup(&lt;p&gt;data&lt;/p&gt;,"html.parser")</span><br></pre></td></tr></table></figure>
+
+<h5 id="12-1-测试解析效果"><a href="#12-1-测试解析效果" class="headerlink" title="12.1 测试解析效果"></a>12.1 测试解析效果</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">     url = <span class="string">"https://python123.io/ws/demo.html"</span></span><br><span class="line">     r = requests.get(url)</span><br><span class="line">     r.raise_for_status() <span class="comment"># 判断状态200</span></span><br><span class="line">     demo = r.text</span><br><span class="line">     <span class="comment"># 解析网页</span></span><br><span class="line">     soup = BeautifulSoup(demo , <span class="string">"html.parser"</span>) <span class="comment"># html.parser是解析方式</span></span><br><span class="line">     print(soup.prettify()) <span class="comment"># prettify意为美化</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">     print(<span class="string">"失败"</span>)</span><br></pre></td></tr></table></figure>
+<p>它可以将网页标签解析为容易看的格式</p>
+<p>解析结果</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span></span><br><span class="line">   This is a python demo page</span><br><span class="line">  <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">b</span>&gt;</span></span><br><span class="line">    The demo python introduces several python courses.</span><br><span class="line">   <span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"course"</span>&gt;</span></span><br><span class="line">   Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py1"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-268001"</span> <span class="attr">id</span>=<span class="string">"link1"</span>&gt;</span></span><br><span class="line">    Basic Python</span><br><span class="line">   <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">   and</span><br><span class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py2"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-1001870001"</span> <span class="attr">id</span>=<span class="string">"link2"</span>&gt;</span></span><br><span class="line">    Advanced Python</span><br><span class="line">   <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">   .</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="12-2-理解BeautifulSoup"><a href="#12-2-理解BeautifulSoup" class="headerlink" title="12.2 理解BeautifulSoup"></a>12.2 理解BeautifulSoup</h5><p>如有需要，可直接导入整个库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bs4</span><br></pre></td></tr></table></figure>
+<p>BeautifulSoup是bs4库中的类</p>
+<p>HTML = 标签树 = BeautifulSoup</p>
+<h5 id="12-3-BeautifulSoup解析本地html文件方式"><a href="#12-3-BeautifulSoup解析本地html文件方式" class="headerlink" title="12.3 BeautifulSoup解析本地html文件方式"></a>12.3 BeautifulSoup解析本地html文件方式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 impor BeautifulSoup</span><br><span class="line"><span class="comment"># 编码方式为utf-8</span></span><br><span class="line">soup1 = BeautifulSoup(open(<span class="string">"F:\\HTML\\text2.html"</span> , encoding = <span class="string">"utf-8"</span>) , <span class="string">"html.parser"</span> )</span><br><span class="line">print(soup1.prettify())</span><br></pre></td></tr></table></figure>
+<h5 id="12-4-BeautifulSoup的解析器"><a href="#12-4-BeautifulSoup的解析器" class="headerlink" title="12.4 BeautifulSoup的解析器"></a>12.4 BeautifulSoup的解析器</h5><p><img src="/python-spider/python-7.png" alt="image"></p>
+<h5 id="12-5-BeautifulSoup的基本元素"><a href="#12-5-BeautifulSoup的基本元素" class="headerlink" title="12.5 BeautifulSoup的基本元素"></a>12.5 BeautifulSoup的基本元素</h5><p><img src="/python-spider/python-8.png" alt="image"></p>
+<h5 id="12-6-利用BeautifulSoup查看元素信息"><a href="#12-6-利用BeautifulSoup查看元素信息" class="headerlink" title="12.6 利用BeautifulSoup查看元素信息"></a>12.6 利用BeautifulSoup查看元素信息</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">r = requests.get(<span class="string">"https://python123.io/ws/demo.html"</span>)</span><br><span class="line">demo = r.text</span><br><span class="line">soup = BeautifulSoup(demo , <span class="string">"html.parser"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看标题</span></span><br><span class="line">soup.title</span><br><span class="line"><span class="comment"># 输出： &lt;title&gt;This is a python demo page&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询标签为&lt;a&gt;的</span></span><br><span class="line">tag = soup.a</span><br><span class="line"><span class="comment"># 输出其中第一个: &lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看标签名</span></span><br><span class="line">soup.a.name</span><br><span class="line"><span class="comment"># 输出： 'a'</span></span><br><span class="line"><span class="comment"># 查看其父名</span></span><br><span class="line">soup.a.parent.name</span><br><span class="line"><span class="comment"># 输出：'p'</span></span><br><span class="line"><span class="comment"># 查看其父父名</span></span><br><span class="line">soup.a.parent.parent.name</span><br><span class="line"><span class="comment"># 输出 ：'body'</span></span><br></pre></td></tr></table></figure>
+<p>查看标签属性信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tag1 = soup.a</span><br><span class="line"><span class="comment"># .attrs属性</span></span><br><span class="line">tag1.attrs <span class="comment"># 输出：&#123;'href': 'http://www.icourse163.org/course/BIT-268001', 'class': ['py1'], 'id': 'link1'&#125;</span></span><br><span class="line"><span class="comment"># &lt;a&gt;标签的属性也是一个字典</span></span><br></pre></td></tr></table></figure>
+<p>提取属性中的信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取class中值</span></span><br><span class="line">tag1.attrs[<span class="string">'class'</span>]</span><br><span class="line"><span class="comment"># 输出: ['py1']</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取链接</span></span><br><span class="line">tag1.attrs[<span class="string">'href'</span>]</span><br><span class="line"><span class="comment"># 输出：'http://www.icourse163.org/course/BIT-268001'</span></span><br></pre></td></tr></table></figure>
+<p>提取标签中的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">soup.a.string</span><br><span class="line"><span class="comment"># 输出： 'Basic Python'</span></span><br><span class="line">soup.p.string</span><br><span class="line"><span class="comment"># 输出：'The demo python introduces several python courses.'</span></span><br></pre></td></tr></table></figure>
+<p>特别的是：注释标签，获取内容时不会表示其中是否是注释，只有通过查看它的类型来区分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>newsoup = BeautifulSoup(<span class="string">"&lt;b&gt;&lt;!--This is a comment--&gt;&lt;/b&gt;&lt;p&gt;This is not a comment &lt;/p&gt;"</span>, <span class="string">"html.parser"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>newsoup.b.string</span><br><span class="line"><span class="string">'This is a comment'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(newsoup.b.string)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">bs4</span>.<span class="title">element</span>.<span class="title">Comment</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">newsoup</span>.<span class="title">p</span>.<span class="title">string</span></span></span><br><span class="line"><span class="class">'<span class="title">This</span> <span class="title">is</span> <span class="title">not</span> <span class="title">a</span> <span class="title">comment</span> '</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(newsoup.p.string)</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">bs4</span>.<span class="title">element</span>.<span class="title">NavigableString</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="12-7-元素、属性总结"><a href="#12-7-元素、属性总结" class="headerlink" title="12.7 元素、属性总结"></a>12.7 元素、属性总结</h5><p><img src="/python-spider/python-9.png" alt="image"></p>
+<h4 id="13-基于bs4的HTML的遍历方法"><a href="#13-基于bs4的HTML的遍历方法" class="headerlink" title="13 基于bs4的HTML的遍历方法"></a>13 基于bs4的HTML的遍历方法</h4><p><img src="/python-spider/python-10.png" alt="image"></p>
+<h5 id="13-1-标签树的下行遍历"><a href="#13-1-标签树的下行遍历" class="headerlink" title="13.1 标签树的下行遍历"></a>13.1 标签树的下行遍历</h5><p><img src="/python-spider/python-11.png" alt="image"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.head</span><br><span class="line">&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<p>head的子节点列表,body的子节点列表</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># head的子节点列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.head.contents</span><br><span class="line">[&lt;title&gt;This is a python demo page&lt;/title&gt;]</span><br><span class="line"><span class="comment"># body的子节点列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.body.contents</span><br><span class="line">['\n', &lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;, '\n', &lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line"></span><br><span class="line">&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;, '\n']</span><br></pre></td></tr></table></figure>
+<p>查看body子节点的个数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(soup.body.contents)</span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>输出body子节点列表中第一个元素</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.body.contents[<span class="number">1</span>]</span><br><span class="line">&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="遍历子节点、子孙节点"><a href="#遍历子节点、子孙节点" class="headerlink" title="遍历子节点、子孙节点"></a>遍历子节点、子孙节点</h5><p><strong>遍历子节点</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> child <span class="keyword">in</span> soup.body.children:</span><br><span class="line">	print(child)</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>The demo python introduces several python courses.<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"course"</span>&gt;</span>Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py1"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-268001"</span> <span class="attr">id</span>=<span class="string">"link1"</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span> and <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py2"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-1001870001"</span> <span class="attr">id</span>=<span class="string">"link2"</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>遍历子孙节点</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> child <span class="keyword">in</span> soup.body.descendants:</span><br><span class="line">	print(child)</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>The demo python introduces several python courses.<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>The demo python introduces several python courses.<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">The demo python introduces several python courses.</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"course"</span>&gt;</span>Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py1"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-268001"</span> <span class="attr">id</span>=<span class="string">"link1"</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span> and <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py2"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-1001870001"</span> <span class="attr">id</span>=<span class="string">"link2"</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py1"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-268001"</span> <span class="attr">id</span>=<span class="string">"link1"</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">Basic Python</span><br><span class="line"> and </span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"py2"</span> <span class="attr">href</span>=<span class="string">"http://www.icourse163.org/course/BIT-1001870001"</span> <span class="attr">id</span>=<span class="string">"link2"</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">Advanced Python</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+<h5 id="13-2-标签树的上行遍历"><a href="#13-2-标签树的上行遍历" class="headerlink" title="13.2 标签树的上行遍历"></a>13.2 标签树的上行遍历</h5><p><img src="/python-spider/python-12.png" alt="image"><br>与下行遍历类似</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">soup.body.parent</span><br><span class="line">soup.body.parents</span><br></pre></td></tr></table></figure>
+<p>==soup本身的parent为空==</p>
+<p>打印&lt;a&gt;标签的.parents.name</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>demo = r.text</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo , <span class="string">"html.parser"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> parent <span class="keyword">in</span> soup.a.parents:</span><br><span class="line">	<span class="keyword">if</span> parent <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">		print(parent)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		print(parent.name)</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">p</span><br><span class="line">body</span><br><span class="line">html</span><br><span class="line">[document]</span><br><span class="line">```python</span><br><span class="line"><span class="comment">##### 13.3 平行遍历</span></span><br><span class="line">![image](/python-spider/python<span class="number">-13.</span>png)</span><br><span class="line"></span><br><span class="line">==条件：平行遍历发生在同一个父子节点下的节点==</span><br><span class="line"></span><br><span class="line">遍历\&lt;a&gt;之后的平行节点</span><br><span class="line"></span><br><span class="line">==注意：节点有可能是string类型的<span class="keyword">and</span>，而不一定完全是标签类型==</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>for sibling in soup.a.next_siblings:<br>    if isinstance(sibling,str):<br>        print(sibling)<br>    else:<br>        print(sibling.name)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p> and<br>a<br>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">遍历\&lt;a&gt;之后的平行节点</span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">&gt;&gt;&gt; for sibling in soup.a.next_siblings:</span><br><span class="line">	print(sibling)</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"> and </span><br><span class="line">&lt;a class&#x3D;&quot;py2&quot; href&#x3D;&quot;http:&#x2F;&#x2F;www.icourse163.org&#x2F;course&#x2F;BIT-1001870001&quot; id&#x3D;&quot;link2&quot;&gt;Advanced Python&lt;&#x2F;a&gt;</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+<p>遍历&lt;a&gt;之前的平行节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> sibling <span class="keyword">in</span> soup.a.previous_siblings:</span><br><span class="line">	print(sibling)</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">Python <span class="keyword">is</span> a wonderful general-purpose programming language. You can learn Python <span class="keyword">from</span> novice to professional by tracking the following courses:</span><br></pre></td></tr></table></figure>
+<h5 id="13-4-规整输出HTML的prettify-方法"><a href="#13-4-规整输出HTML的prettify-方法" class="headerlink" title="13.4 规整输出HTML的prettify()方法"></a>13.4 规整输出HTML的prettify()方法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(soup.prettify())</span><br><span class="line">print(soup.a.prettify())</span><br></pre></td></tr></table></figure>
+<h4 id="14-信息标记的三种形式"><a href="#14-信息标记的三种形式" class="headerlink" title="14 信息标记的三种形式"></a>14 信息标记的三种形式</h4><p>XML</p>
+<p><img src="/python-spider/python-14.png" alt="image"><br>JSON : 有类型的键值对</p>
+<p><img src="/python-spider/python-15.png" alt="image"><br>YAML ：无类型的键值对</p>
+<p><img src="/python-spider/python-16.png" alt="image"></p>
+<h4 id="15-信息的提取"><a href="#15-信息的提取" class="headerlink" title="15 信息的提取"></a>15 信息的提取</h4><p>实例<br><img src="/python-spider/python-17.png" alt="image"><br>使用了soup.find_all()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查找所有&lt;a&gt;</span><br><span class="line">soup.find_all(<span class="string">'a'</span>)</span><br></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">url = <span class="string">"https://python123.io/ws/demo.html"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">     r = requests.get(url)</span><br><span class="line">     r.raise_for_status()</span><br><span class="line">     demo = r.text</span><br><span class="line">     soup = BeautifulSoup(demo , <span class="string">"html.parser"</span> )</span><br><span class="line">     <span class="keyword">for</span> link <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>):</span><br><span class="line">          print(link.get(<span class="string">'href'</span>))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">     print(<span class="string">"失败"</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="15-1-soup-find-all-方法的查询信息"><a href="#15-1-soup-find-all-方法的查询信息" class="headerlink" title="15.1 soup.find_all()方法的查询信息"></a>15.1 soup.find_all()方法的查询信息</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&gt;.find_all(name,attrs,recursive,string,**kwargs)</span><br></pre></td></tr></table></figure>
+<h6 id="15-1-1-参数name，表示对标签名字的查找字符串"><a href="#15-1-1-参数name，表示对标签名字的查找字符串" class="headerlink" title="15.1.1 参数name，表示对标签名字的查找字符串"></a>15.1.1 参数name，表示对标签名字的查找字符串</h6><p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> requests</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>url = <span class="string">"https://python123.io/ws/demo.html"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(url)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>demo = r.text</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo , <span class="string">"html.parser"</span>)</span><br></pre></td></tr></table></figure>
+<p>查找所有&lt;a&gt;标签，输出是个列表</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all(<span class="string">'a'</span>)</span><br><span class="line">[&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt;, &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;]</span><br></pre></td></tr></table></figure>
+<p>查找所有的&lt;a&gt;&lt;b&gt;标签</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all([<span class="string">'a'</span> , <span class="string">'b'</span>])</span><br><span class="line">[&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;, &lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt;, &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;]</span><br></pre></td></tr></table></figure>
+<p>如果soup.find_all(True) , 则表示==查找出所有的标签==</p>
+<p>打印页面所有标签名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> tag <span class="keyword">in</span> soup.find_all(<span class="literal">True</span>):</span><br><span class="line">	print(tag.name)</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">html</span><br><span class="line">head</span><br><span class="line">title</span><br><span class="line">body</span><br><span class="line">p</span><br><span class="line">b</span><br><span class="line">p</span><br><span class="line">a</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<p>打印所有以b开头的标签</p>
+<p>用到==正则表达式库==</p>
+<p>使用方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找所有以b开头的标签</span></span><br><span class="line">soup.find_all(re.compile(<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> tag <span class="keyword">in</span> soup.find_all(re.compile(<span class="string">'b'</span>)):</span><br><span class="line">	print(tag.name)</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">body</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<h6 id="15-1-2-参数attrs，对标签属性值的检索字符串，可标注属性检索"><a href="#15-1-2-参数attrs，对标签属性值的检索字符串，可标注属性检索" class="headerlink" title="15.1.2 参数attrs，对标签属性值的检索字符串，可标注属性检索"></a>15.1.2 参数attrs，对标签属性值的检索字符串，可标注属性检索</h6><p>实例:</p>
+<p>检索带有course属性值的&lt;p&gt;标签</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all(<span class="string">'p'</span> , <span class="string">'course'</span>)</span><br><span class="line">[&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line"></span><br><span class="line">&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;]</span><br></pre></td></tr></table></figure>
+<p>查找属性id=’link1’的标签</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(id=<span class="string">'link1'</span>)</span><br><span class="line">[&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt;]</span><br></pre></td></tr></table></figure>
+<p>使用正则表达式检索所有id包含’link’的标签，link1,link2…</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all(id = re.compile(<span class="string">'link'</span>))</span><br><span class="line">[&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt;, &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;]</span><br></pre></td></tr></table></figure>
+<h6 id="15-1-3-参数-recursive：是否对子孙全部检索，默认True-改为False时，表示只检索其子节点"><a href="#15-1-3-参数-recursive：是否对子孙全部检索，默认True-改为False时，表示只检索其子节点" class="headerlink" title="15.1.3 参数 recursive：是否对子孙全部检索，默认True,改为False时，表示只检索其子节点"></a>15.1.3 参数 recursive：是否对子孙全部检索，默认True,改为False时，表示只检索其子节点</h6><p>例：表示soup的子节点中没有&lt;a&gt;标签</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all(<span class="string">'a'</span> , recursive=<span class="literal">False</span>)</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+<h6 id="15-1-4-参数string-lt-gt-…-lt-gt-中字符串区域的检索字符串"><a href="#15-1-4-参数string-lt-gt-…-lt-gt-中字符串区域的检索字符串" class="headerlink" title="15.1.4 参数string : &lt;&gt;…&lt;/&gt;中字符串区域的检索字符串"></a>15.1.4 参数string : &lt;&gt;…&lt;/&gt;中字符串区域的检索字符串</h6><p>例:</p>
+<p>检索标签内容中的 Basic Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all(string = <span class="string">"Basic Python"</span>)</span><br><span class="line">[<span class="string">'Basic Python'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>使用正则表达式检索标签内容==含有==Python的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>soup.find_all(string = re.compile(<span class="string">"Python"</span>))</span><br><span class="line">[<span class="string">'Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n'</span>, <span class="string">'Basic Python'</span>, <span class="string">'Advanced Python'</span>]</span><br></pre></td></tr></table></figure>
+<h6 id="15-1-5-find的扩展方法"><a href="#15-1-5-find的扩展方法" class="headerlink" title="15.1.5 find的扩展方法"></a>15.1.5 find的扩展方法</h6><p><img src="/python-spider/python-18.png" alt="image"></p>
+<p>由于find_all()十分常用，==soup.find_all()等价于soup()==</p>
+<h4 id="16-实例，爬取中国大学排名信息"><a href="#16-实例，爬取中国大学排名信息" class="headerlink" title="16 实例，爬取中国大学排名信息"></a>16 实例，爬取中国大学排名信息</h4><p>完整代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 爬取大学排名网页</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">     <span class="keyword">try</span>:</span><br><span class="line">          r = requests.get(url , timeout = <span class="number">30</span>)</span><br><span class="line">          r.raise_for_status() <span class="comment"># 判断状态码</span></span><br><span class="line">          r.encoding = r.apparent_encoding</span><br><span class="line">          <span class="keyword">return</span> r.text</span><br><span class="line">     <span class="keyword">except</span>:</span><br><span class="line">          <span class="keyword">return</span> <span class="string">"爬取失败"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取网页中大学排名相关信息，并存到列表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getUnivList</span><span class="params">(ulist , html)</span>:</span></span><br><span class="line">     soup = BeautifulSoup(html , <span class="string">"html.parser"</span>)</span><br><span class="line">     <span class="keyword">for</span> tr <span class="keyword">in</span> soup.find(<span class="string">'tbody'</span>).children:</span><br><span class="line">          <span class="keyword">if</span> isinstance(tr , bs4.element.Tag):</span><br><span class="line">               tds = tr.find_all(<span class="string">'td'</span>)</span><br><span class="line">               ulist.append( [tds[<span class="number">0</span>].string , tds[<span class="number">1</span>].string , tds[<span class="number">3</span>].string] )</span><br><span class="line">               </span><br><span class="line">     </span><br><span class="line"><span class="comment"># 输出大学排名列表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printUnivList</span><span class="params">(ulist , num)</span>:</span></span><br><span class="line">     tplt = <span class="string">"&#123;0:^6&#125;\t&#123;1:&#123;3&#125;^15&#125;\t&#123;2:^6&#125;"</span></span><br><span class="line">     print(tplt.format(<span class="string">"排名"</span> , <span class="string">"大学名称"</span> , <span class="string">"总分"</span> , chr(<span class="number">12288</span>)))</span><br><span class="line">     <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">          u = ulist[i]</span><br><span class="line">          print(tplt.format(u[<span class="number">0</span>] , u[<span class="number">1</span>] , u[<span class="number">2</span>] , chr(<span class="number">12288</span>)))</span><br><span class="line">     print(str(num) + <span class="string">"所大学"</span>)</span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"><span class="comment"># 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">     uinfo = []</span><br><span class="line">     url = <span class="string">"http://www.zuihaodaxue.com/zuihaodaxuepaiming2019.html"</span></span><br><span class="line">     html = getHTMLText(url)</span><br><span class="line">     getUnivList(uinfo , html)</span><br><span class="line">     printUnivList(uinfo , <span class="number">30</span>)</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<h5 id="16-1-代码分析"><a href="#16-1-代码分析" class="headerlink" title="16.1 代码分析"></a>16.1 代码分析</h5><hr>
+<p>为什么导入 bs4库?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># isinstance()用于判断tr类型时，bs4.element.Tag需要用到bs4库</span></span><br><span class="line"> isinstance(tr , bs4.element.Tag)</span><br></pre></td></tr></table></figure>
+<hr>
+<p> 主函数<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    ...</span><br><span class="line">main()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>==注意网页的编码方式==</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.encoding = r.apparent_encoding</span><br></pre></td></tr></table></figure>
+<hr>
+<p>网页表格的父子关系:  ==标签==</p>
+<p>&lt;tbody&gt;–&gt;&lt;tr&gt;–&gt;&lt;td&gt;</p>
+<p>&lt;tbody&gt;包含整个表的信息，这里包含全部大学排名及其相关的信息</p>
+<p>&lt;tr&gt;包含一个大学的所有相关信息,表示表的==每一行==</p>
+<p>&lt;td&gt;就是一个大学中的一个信息，如名称，排名；表格==一行中的一个信息==</p>
+<hr>
+<p>数据的存入：</p>
+<p>使用二维列表;</p>
+<p>一维列表中再存一维列表构成二维列表</p>
+<hr>
+<p>格式化输出 str.format()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"&#123;:^6&#125;\t&#123;:^15&#125;\t&#123;:^6&#125;"</span>.format(<span class="string">"排名"</span>，<span class="string">"大学名称"</span>,<span class="string">"分数"</span>))</span><br></pre></td></tr></table></figure>
+<p>^ 表示右对齐</p>
+<hr>
+<p>格式化输出的优化（中西文输出的优化）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 表示中文的空格</span></span><br><span class="line">chr(<span class="number">12288</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#123;1:&#123;3&#125;^15&#125; 含义:1代表format()中第二个参数来填充这个位置；</span></span><br><span class="line"><span class="comment"># &#123;3&#125;代表用format()中第四个参数来填充字符前的空白区域</span></span><br><span class="line"><span class="comment"># 15代表宽度</span></span><br><span class="line">string1 = <span class="string">"&#123;0:^6&#125;\t&#123;1:&#123;3&#125;^15&#125;\t&#123;2:^6&#125;"</span>.format(u[<span class="number">0</span>],u[<span class="number">1</span>],u[<span class="number">2</span>],chr(<span class="number">12288</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="17-正则表达式"><a href="#17-正则表达式" class="headerlink" title="17 正则表达式"></a>17 正则表达式</h4><p><img src="/python-spider/python-19.png" alt="image"></p>
+<p><img src="/python-spider/python-20.png" alt="image"></p>
+<p><img src="/python-spider/python-21.png" alt="image"></p>
+<p><img src="/python-spider/python-22.png" alt="image"></p>
+<p><img src="/python-spider/python-23.png" alt="image"></p>
+<p>正则表达式的表示类型<br><img src="/python-spider/python-24.png" alt="image"></p>
+<p><img src="/python-spider/python-25.png" alt="image"></p>
+<h4 id="18-Re库主要功能函数-正则表达式库"><a href="#18-Re库主要功能函数-正则表达式库" class="headerlink" title="18 Re库主要功能函数(正则表达式库)"></a>18 Re库主要功能函数(正则表达式库)</h4><p><img src="/python-spider/python-26.png" alt="image"></p>
+<h5 id="18-1-re-search"><a href="#18-1-re-search" class="headerlink" title="18.1 re.search()"></a>18.1 re.search()</h5><p><img src="/python-spider/python-27.png" alt="image"></p>
+<p><img src="/python-spider/python-28.png" alt="image"></p>
+<p>例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>match = re.search(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'BIT 100081'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> match:</span><br><span class="line">	print(match.group(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"><span class="number">100081</span></span><br></pre></td></tr></table></figure>
+<h5 id="18-2-re-match"><a href="#18-2-re-match" class="headerlink" title="18.2 re.match()"></a>18.2 re.match()</h5><p>它匹配字符串是在==头位置匹配==</p>
+<p>例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>match = re.match(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'100067 BIT'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> match:</span><br><span class="line">	print(match.group(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"><span class="number">100067</span></span><br></pre></td></tr></table></figure>
+<h5 id="18-3-re-findall"><a href="#18-3-re-findall" class="headerlink" title="18.3 re.findall()"></a>18.3 re.findall()</h5><p>它返回的是个列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ls = re.findall(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'IJK100088 OKL156009 IOP188899'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(ls)</span><br><span class="line">[<span class="string">'100088'</span>, <span class="string">'156009'</span>, <span class="string">'188899'</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="18-4-re-split"><a href="#18-4-re-split" class="headerlink" title="18.4 re.split()"></a>18.4 re.split()</h5><p><img src="/python-spider/python-29.png" alt="image"></p>
+<p>maxsplit=1 参数表示，只切割出第一个，剩下的原样输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'IJK100088 OKL156009 IOP188899'</span>)</span><br><span class="line">[<span class="string">'IJK'</span>, <span class="string">' OKL'</span>, <span class="string">' IOP'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'IJK100088 OKL156009 IOP188899'</span> , maxsplit=<span class="number">1</span>)</span><br><span class="line">[<span class="string">'IJK'</span>, <span class="string">' OKL156009 IOP188899'</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="18-5-re-finditer"><a href="#18-5-re-finditer" class="headerlink" title="18.5 re.finditer()"></a>18.5 re.finditer()</h5><p>finditer()遍历了整个字符串，每次返回一个match类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> m <span class="keyword">in</span> re.finditer(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'IJK100088 OKL156009 IOP188899'</span>):</span><br><span class="line">	<span class="keyword">if</span> m:</span><br><span class="line">		print(m.group(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="number">100088</span></span><br><span class="line"><span class="number">156009</span></span><br><span class="line"><span class="number">188899</span></span><br></pre></td></tr></table></figure>
+<h5 id="18-6-re-sub-pattern-repl-string-count-0-flags-0"><a href="#18-6-re-sub-pattern-repl-string-count-0-flags-0" class="headerlink" title="18.6 re.sub(pattern,repl,string,count=0,flags=0)"></a>18.6 re.sub(pattern,repl,string,count=0,flags=0)</h5><p><img src="/python-spider/python-30.png" alt="image"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.sub(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'zipcode'</span> , <span class="string">'IJK100088 OKL156009 IOP188899'</span>)</span><br><span class="line"><span class="string">'IJKzipcode OKLzipcode IOPzipcode'</span></span><br></pre></td></tr></table></figure>
+<h5 id="18-7-正则表达式的面向对象的用法"><a href="#18-7-正则表达式的面向对象的用法" class="headerlink" title="18.7 正则表达式的面向对象的用法"></a>18.7 正则表达式的面向对象的用法</h5><p><img src="/python-spider/python-31.png" alt="image"></p>
+<p>将正则表达式存储为==正则表达式对象==</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pat = re.compile(<span class="string">r'[1-9]\d&#123;5&#125;'</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="18-8-regex-re-compile-pattern-flags-0"><a href="#18-8-regex-re-compile-pattern-flags-0" class="headerlink" title="18.8 regex = re.compile(pattern,flags=0)"></a>18.8 regex = re.compile(pattern,flags=0)</h5><p>regex:正则表达式</p>
+<p>等价用法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">regex.search()</span><br><span class="line">regex.match()</span><br><span class="line">regex.findall()</span><br><span class="line">regex.split()</span><br><span class="line">regex.finditer()</span><br><span class="line">regex.sub()</span><br></pre></td></tr></table></figure>
+<h5 id="18-9-match对象"><a href="#18-9-match对象" class="headerlink" title="18.9 match对象"></a>18.9 match对象</h5><p>==match对象只有一个结果，字符串中有多个可用finditer()==</p>
+<p><img src="/python-spider/python-32.png" alt="image"></p>
+<p><img src="/python-spider/python-33.png" alt="image"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = re.search(<span class="string">r'[1-9]\d&#123;5&#125;'</span> , <span class="string">'KLO100089 JIO100056'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.string</span><br><span class="line"><span class="string">'KLO100089 JIO100056'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.re</span><br><span class="line">re.compile(<span class="string">'[1-9]\\d&#123;5&#125;'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.pos</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.endpos</span><br><span class="line"><span class="number">19</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)</span><br><span class="line"><span class="string">'100089'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m</span><br><span class="line">&lt;re.Match object; span=(<span class="number">3</span>, <span class="number">9</span>), match=<span class="string">'100089'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.start()</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.end()</span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h4 id="19-实例：爬取京东鼠标"><a href="#19-实例：爬取京东鼠标" class="headerlink" title="19 实例：爬取京东鼠标"></a>19 实例：爬取京东鼠标</h4><h5 id="19-1-查看链接与接口"><a href="#19-1-查看链接与接口" class="headerlink" title="19.1 查看链接与接口"></a>19.1 查看链接与接口</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8&amp;wq=%E9%BC%A0%E6%A0%87&amp;pvid=ab1812a3adfc4abfa04fc59f52d3e6cb</span></span><br><span class="line"><span class="comment"># https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%BC%A0%E6%A0%87&amp;page=3&amp;s=59&amp;click=0</span></span><br><span class="line"><span class="comment"># https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%BC%A0%E6%A0%87&amp;page=5&amp;s=114&amp;click=0</span></span><br><span class="line"><span class="comment"># https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%BC%A0%E6%A0%87&amp;page=7&amp;s=166&amp;click=0</span></span><br><span class="line"><span class="comment"># https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%BC%A0%E6%A0%87&amp;page=9&amp;s=218&amp;click=0</span></span><br><span class="line"><span class="comment"># https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%BC%A0%E6%A0%87&amp;page=11&amp;s=271&amp;click=0</span></span><br></pre></td></tr></table></figure>
+<h5 id="19-2-使用的库"><a href="#19-2-使用的库" class="headerlink" title="19.2 使用的库"></a>19.2 使用的库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br></pre></td></tr></table></figure>
+<h5 id="19-3-查看网页源码提取信息"><a href="#19-3-查看网页源码提取信息" class="headerlink" title="19.3 查看网页源码提取信息"></a>19.3 查看网页源码提取信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if len(name[i].split(&#39;&gt;&#39;)) &lt; 3 :</span><br><span class="line">                name1 &#x3D; name[i].split(&#39;&gt;&#39;)[1]</span><br><span class="line">            elif len(name[i].split(&#39;&gt;&#39;)) &gt;&#x3D; 3 and len(name[i].split(&#39;&gt;&#39;)) &lt; 6 :</span><br><span class="line">                name1 &#x3D; name[i].split(&#39;&gt;&#39;)[2]</span><br><span class="line">            else:</span><br><span class="line">                name1 &#x3D; name[i].split(&#39;&gt;&#39;)[7]</span><br><span class="line">            name2 &#x3D; name1.split(&#39;&lt;&#39;)[0]</span><br><span class="line">            price1 &#x3D; price[i].split(&#39;&gt;&#39;)[1]</span><br><span class="line">            price2 &#x3D; price1.split(&#39;&lt;&#39;)[0]</span><br><span class="line">            ulist.append([name2 , price2])</span><br></pre></td></tr></table></figure>
+
+<h5 id="19-4-完整代码"><a href="#19-4-完整代码" class="headerlink" title="19.4 完整代码"></a>19.4 完整代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        kv = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0'</span>&#125;</span><br><span class="line">        r = requests.get(url , headers = kv)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"爬取失败"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getInfo</span><span class="params">(ulist , html)</span>:</span></span><br><span class="line">    name = re.findall(<span class="string">'\&lt;em\&gt;.*?\&lt;font'</span> , html)</span><br><span class="line">    price = re.findall(<span class="string">'\&lt;i\&gt;[\d]*\.[\d]*\&lt;\/i\&gt;'</span> , html)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(name)):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> len(name[i].split(<span class="string">'&gt;'</span>)) &lt; <span class="number">3</span> :</span><br><span class="line">                name1 = name[i].split(<span class="string">'&gt;'</span>)[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> len(name[i].split(<span class="string">'&gt;'</span>)) &gt;= <span class="number">3</span> <span class="keyword">and</span> len(name[i].split(<span class="string">'&gt;'</span>)) &lt; <span class="number">6</span> :</span><br><span class="line">                name1 = name[i].split(<span class="string">'&gt;'</span>)[<span class="number">2</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                name1 = name[i].split(<span class="string">'&gt;'</span>)[<span class="number">7</span>]</span><br><span class="line">            name2 = name1.split(<span class="string">'&lt;'</span>)[<span class="number">0</span>]</span><br><span class="line">            price1 = price[i].split(<span class="string">'&gt;'</span>)[<span class="number">1</span>]</span><br><span class="line">            price2 = price1.split(<span class="string">'&lt;'</span>)[<span class="number">0</span>]</span><br><span class="line">            ulist.append([name2 , price2])</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printList</span><span class="params">(ulist)</span>:</span></span><br><span class="line">    string = <span class="string">'&#123;0:&lt;6&#125;\t&#123;1:&#123;3&#125;&lt;40&#125;\t&#123;2:&lt;6&#125;'</span></span><br><span class="line">    print(string.format(<span class="string">"商品序列"</span>,<span class="string">"商品名称"</span>,<span class="string">"商品价格"</span>,chr(<span class="number">12288</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ulist)):</span><br><span class="line">        info = ulist[i]</span><br><span class="line">        print(string.format(i+<span class="number">1</span>,info[<span class="number">0</span>],info[<span class="number">1</span>],chr(<span class="number">12288</span>)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    infoList = []</span><br><span class="line">    pageNum = <span class="number">5</span></span><br><span class="line">    url = <span class="string">"https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8"</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(pageNum):</span><br><span class="line">        html = getHTMLText(url)</span><br><span class="line">        url = <span class="string">"https://search.jd.com/Search?keyword=%E9%BC%A0%E6%A0%87&amp;enc=utf-8"</span> + <span class="string">"&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%BC%A0%E6%A0%87&amp;page="</span> + str(<span class="number">3</span>+<span class="number">2</span>*i) + <span class="string">"&amp;s="</span> + str(<span class="number">59</span>*(i+<span class="number">1</span>)) + <span class="string">"&amp;click=0"</span></span><br><span class="line">        getInfo(infoList , html)</span><br><span class="line"></span><br><span class="line">    printList(infoList)</span><br><span class="line">    </span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<h4 id="20-scrapy框架"><a href="#20-scrapy框架" class="headerlink" title="20 scrapy框架"></a>20 scrapy框架</h4><p>安装scrapy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cmd 命令</span><br><span class="line">pip install scrapy</span><br></pre></td></tr></table></figure>
+
+<h5 id="20-1-框架结构"><a href="#20-1-框架结构" class="headerlink" title="20.1 框架结构"></a>20.1 框架结构</h5><p><img src="/python-spider/python-34.png" alt="image"></p>
+<h5 id="20-2-scrapy-常用命令"><a href="#20-2-scrapy-常用命令" class="headerlink" title="20.2  scrapy 常用命令"></a>20.2  scrapy 常用命令</h5><p>查看命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy -h</span><br></pre></td></tr></table></figure>
+<p><img src="/python-spider/python-35.png" alt="image"></p>
+<h5 id="20-3-小实例"><a href="#20-3-小实例" class="headerlink" title="20.3 小实例"></a>20.3 小实例</h5><p>cmd下操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 某目录下创建项目</span></span><br><span class="line">scrapy startproject python123demo</span><br></pre></td></tr></table></figure>
+<p><img src="/python-spider/python-36.png" alt="image"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd python123demo</span><br><span class="line"><span class="comment"># 生成爬虫</span></span><br><span class="line">scrapy genspider demo python.io</span><br></pre></td></tr></table></figure>
+<p>编辑生成的demo.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    <span class="comment"># 爬虫名</span></span><br><span class="line">    name = <span class="string">'demo'</span></span><br><span class="line">    <span class="comment"># 爬取的链接</span></span><br><span class="line">    start_urls = [<span class="string">'http://python.io/ws/demo.html'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># 爬取的页面保存为文件</span></span><br><span class="line">        fname = response.url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(fname , <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(response.body)</span><br><span class="line">            fname.close()</span><br><span class="line">        self.log(<span class="string">'saved file %s'</span> % fname)</span><br></pre></td></tr></table></figure>
+<p>运行爬虫文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmd 运行爬虫文件</span></span><br><span class="line">scrapy crawl demo.py</span><br></pre></td></tr></table></figure>
+<h5 id="20-4-yield-关键字"><a href="#20-4-yield-关键字" class="headerlink" title="20.4 yield 关键字"></a>20.4 yield 关键字</h5><p>yeild是一个生成器，当运行到它时，它会生成一个值，然后冻结，直到再次唤醒它，再生成一个值,一般与循环连用</p>
+<p>例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">(n)</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">		<span class="keyword">yield</span> i**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen(<span class="number">5</span>):</span><br><span class="line">    print(i,<span class="string">" "</span>,end=<span class="string">""</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果: 0  1  4  9  16</span></span><br></pre></td></tr></table></figure>
+<h5 id="20-5-使用yield优化demo爬虫"><a href="#20-5-使用yield优化demo爬虫" class="headerlink" title="20.5 使用yield优化demo爬虫"></a>20.5 使用yield优化demo爬虫</h5><p>在链接非常多的情况下，能有效地节约资源</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    <span class="comment"># 爬虫名</span></span><br><span class="line">    name = <span class="string">'demo'</span></span><br><span class="line">    <span class="comment"># 爬取的链接</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span><span class="params">(self)</span>:</span></span><br><span class="line">        urls = [<span class="string">'http://python123.io/ws/demo.html'</span>]</span><br><span class="line">        <span class="comment"># 使用生成器去调用链接</span></span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(url=url , callback=self.parse)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># 爬取的页面保存为文件</span></span><br><span class="line">        fname = response.url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(fname , <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(response.body)</span><br><span class="line">            fname.close()</span><br><span class="line">        self.log(<span class="string">'saved file %s'</span> % fname)</span><br></pre></td></tr></table></figure>
+<h4 id="21-scrapy爬虫的数据类型"><a href="#21-scrapy爬虫的数据类型" class="headerlink" title="21 scrapy爬虫的数据类型"></a>21 scrapy爬虫的数据类型</h4><h5 id="21-1-Request类"><a href="#21-1-Request类" class="headerlink" title="21.1 Request类"></a>21.1 Request类</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">scrapy</span>.<span class="title">http</span>.<span class="title">Request</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>表示一个http请求</p>
+<p><img src="/python-spider/python-37.png" alt="image"></p>
+<h5 id="21-2-Response类"><a href="#21-2-Response类" class="headerlink" title="21.2 Response类"></a>21.2 Response类</h5><p><img src="/python-spider/python-38.png" alt="image"></p>
+<h5 id="21-3-Item类"><a href="#21-3-Item类" class="headerlink" title="21.3 Item类"></a>21.3 Item类</h5><h4 id="22-实例-爬取股票数据"><a href="#22-实例-爬取股票数据" class="headerlink" title="22 实例:爬取股票数据"></a>22 实例:爬取股票数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 新浪股票</span><br><span class="line">https:&#x2F;&#x2F;finance.sina.com.cn&#x2F;stock&#x2F;</span><br><span class="line"># 百度股票</span><br><span class="line">https:&#x2F;&#x2F;gupiao.baidu.com&#x2F;stock</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 股票代码一览表</span><br><span class="line">http:&#x2F;&#x2F;quote.eastmoney.com&#x2F;stocklist.html</span><br></pre></td></tr></table></figure>
+<p>全部代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpiderStock</span>:</span></span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 获取页面</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(self,url)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            kv = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0'</span>&#125;</span><br><span class="line">            r = requests.get(url , headers = kv)</span><br><span class="line">            r.raise_for_status()</span><br><span class="line">            r.encoding = r.apparent_encoding</span><br><span class="line">            <span class="keyword">return</span> r.text</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(<span class="string">"\r爬取失败"</span>,end=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 提取信息</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getInfo</span><span class="params">(self,sCodeList,fname)</span>:</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        infoDict = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> stock <span class="keyword">in</span> sCodeList:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                    url = <span class="string">"https://gupiao.baidu.com/stock/"</span> + stock</span><br><span class="line">                    <span class="keyword">if</span> url == <span class="string">''</span>:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                        </span><br><span class="line">                    html = self.getHTMLText(url)</span><br><span class="line">                        </span><br><span class="line">                    soup = BeautifulSoup(html,<span class="string">'html.parser'</span>)</span><br><span class="line">                    <span class="comment"># 查询股票信息的位置</span></span><br><span class="line">                    infoStock = soup.find(<span class="string">'div'</span>,attrs = &#123;<span class="string">'class'</span>:<span class="string">'stock-bets'</span>&#125;)</span><br><span class="line">                    <span class="comment"># 股票名称</span></span><br><span class="line">                    name = infoStock.find(<span class="string">'a'</span>,attrs = &#123;<span class="string">'class'</span>:<span class="string">'bets-name'</span>&#125;)</span><br><span class="line">                    <span class="comment"># 存放在字典中</span></span><br><span class="line">                    infoDict.update(&#123;<span class="string">'股票名称'</span>:name.text.split()[<span class="number">0</span>]&#125;)</span><br><span class="line">                    </span><br><span class="line">                    keyList = infoStock.find_all(<span class="string">'dt'</span>)</span><br><span class="line">                    valueList = infoStock.find_all(<span class="string">'dd'</span>)</span><br><span class="line">                </span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(valueList)):</span><br><span class="line">                        key = keyList[j].text</span><br><span class="line">                        value = valueList[j].text</span><br><span class="line">                        <span class="comment"># 字典添加值</span></span><br><span class="line">                        infoDict[key] = value</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># 将信息保存在文件</span></span><br><span class="line">                    <span class="keyword">with</span> open(fname,<span class="string">'a'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                        f.write(str(infoDict) + <span class="string">'\n'</span>)</span><br><span class="line">                        count = count + <span class="number">1</span></span><br><span class="line">                        print(<span class="string">'\r当前进度: &#123;:.2f&#125;%'</span>.format(count*<span class="number">100</span>/len(sCodeList)),end=<span class="string">''</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                count = count + <span class="number">1</span></span><br><span class="line">                print(<span class="string">'\r当前进度: &#123;:.2f&#125;%'</span>.format(count*<span class="number">100</span>/len(sCodeList)),end=<span class="string">''</span>)</span><br><span class="line">                <span class="comment"># traceback.print_exc()  显示错误</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">                </span><br><span class="line">    <span class="comment"># 获取股票代码</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getStockList</span><span class="params">(self,sUrl)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            string = <span class="string">r'[s][hz][\d]&#123;6&#125;\.[h][t][m][l]'</span></span><br><span class="line">            html = self.getHTMLText(sUrl)</span><br><span class="line">            sCodeList = re.findall(string,html)</span><br><span class="line">            <span class="keyword">return</span> sCodeList</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(<span class="string">"\r获取股票代码失败"</span>,end=<span class="string">''</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 输出表</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printList</span><span class="params">(self , slist)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 主函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(self)</span>:</span></span><br><span class="line">        url = <span class="string">"https://gupiao.baidu.com/stock"</span></span><br><span class="line">        sCodeUrl = <span class="string">"http://quote.eastmoney.com/stocklist.html"</span></span><br><span class="line">        <span class="comment"># 存储文件路径</span></span><br><span class="line">        fname = <span class="string">"F:\\py\\py-spider\\spider-stock\\info_stock.txt"</span></span><br><span class="line">        slist = []</span><br><span class="line">        lack_slist = []</span><br><span class="line">        slist = self.getStockList(sCodeUrl)</span><br><span class="line">        <span class="comment"># 确定股票数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">            lack_slist.append(slist[i])</span><br><span class="line">        </span><br><span class="line">        self.getInfo(lack_slist , fname)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">spiderstock = SpiderStock()</span><br><span class="line">spiderstock.main()</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-2.html" rel="bookmark">python中的运算符</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-4.html" rel="bookmark">程序结构、分支语句、条件、列表、循环</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-5.html" rel="bookmark">函数、return、函数参数、列表字典传入函数、函数文档</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+              <a href="/tags/python%E7%88%AC%E8%99%AB/" rel="tag"><i class="fa fa-tag"></i> python爬虫</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-06-12-html-note.html" rel="prev" title="HTML学习笔记">
+      <i class="fa fa-chevron-left"></i> HTML学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019-03-03-c-yu-yan-lian-biao.html" rel="next" title="C语言链表">
+      C语言链表 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-python安装3-0及以上版本"><span class="nav-number">1.</span> <span class="nav-text">1.python安装3.0及以上版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装requests库"><span class="nav-number">2.</span> <span class="nav-text">2.安装requests库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-requests库的get-方法"><span class="nav-number">3.</span> <span class="nav-text">3.requests库的get()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Response对象"><span class="nav-number">4.</span> <span class="nav-text">4.Response对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-Response对象的属性"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Response对象的属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-Request库异常"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Request库异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-判断是否异常-通用代码框架"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 判断是否异常(通用代码框架)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Request库的主要方法"><span class="nav-number">5.</span> <span class="nav-text">5 Request库的主要方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-网络爬虫的尺寸"><span class="nav-number">6.</span> <span class="nav-text">6 网络爬虫的尺寸</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-对网络爬虫限制"><span class="nav-number">7.</span> <span class="nav-text">7 对网络爬虫限制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-Robots协议"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Robots协议</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-爬取被拒绝，如果是User-Agent，如何爬取？"><span class="nav-number">8.</span> <span class="nav-text">8 爬取被拒绝，如果是User-Agent，如何爬取？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-爬取百度-360关键词搜索结果"><span class="nav-number">9.</span> <span class="nav-text">9 爬取百度 360关键词搜索结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-爬取网络图片并保存"><span class="nav-number">10.</span> <span class="nav-text">10 爬取网络图片并保存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-IP地址归属地的自动查询"><span class="nav-number">11.</span> <span class="nav-text">11 IP地址归属地的自动查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-网页数据的解析，beautifulsoup库"><span class="nav-number">12.</span> <span class="nav-text">12 网页数据的解析，beautifulsoup库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#12-1-测试解析效果"><span class="nav-number">12.1.</span> <span class="nav-text">12.1 测试解析效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-2-理解BeautifulSoup"><span class="nav-number">12.2.</span> <span class="nav-text">12.2 理解BeautifulSoup</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-3-BeautifulSoup解析本地html文件方式"><span class="nav-number">12.3.</span> <span class="nav-text">12.3 BeautifulSoup解析本地html文件方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-4-BeautifulSoup的解析器"><span class="nav-number">12.4.</span> <span class="nav-text">12.4 BeautifulSoup的解析器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-5-BeautifulSoup的基本元素"><span class="nav-number">12.5.</span> <span class="nav-text">12.5 BeautifulSoup的基本元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-6-利用BeautifulSoup查看元素信息"><span class="nav-number">12.6.</span> <span class="nav-text">12.6 利用BeautifulSoup查看元素信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-7-元素、属性总结"><span class="nav-number">12.7.</span> <span class="nav-text">12.7 元素、属性总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-基于bs4的HTML的遍历方法"><span class="nav-number">13.</span> <span class="nav-text">13 基于bs4的HTML的遍历方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#13-1-标签树的下行遍历"><span class="nav-number">13.1.</span> <span class="nav-text">13.1 标签树的下行遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#遍历子节点、子孙节点"><span class="nav-number">13.2.</span> <span class="nav-text">遍历子节点、子孙节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-2-标签树的上行遍历"><span class="nav-number">13.3.</span> <span class="nav-text">13.2 标签树的上行遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-4-规整输出HTML的prettify-方法"><span class="nav-number">13.4.</span> <span class="nav-text">13.4 规整输出HTML的prettify()方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-信息标记的三种形式"><span class="nav-number">14.</span> <span class="nav-text">14 信息标记的三种形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-信息的提取"><span class="nav-number">15.</span> <span class="nav-text">15 信息的提取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#15-1-soup-find-all-方法的查询信息"><span class="nav-number">15.1.</span> <span class="nav-text">15.1 soup.find_all()方法的查询信息</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#15-1-1-参数name，表示对标签名字的查找字符串"><span class="nav-number">15.1.1.</span> <span class="nav-text">15.1.1 参数name，表示对标签名字的查找字符串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-1-2-参数attrs，对标签属性值的检索字符串，可标注属性检索"><span class="nav-number">15.1.2.</span> <span class="nav-text">15.1.2 参数attrs，对标签属性值的检索字符串，可标注属性检索</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-1-3-参数-recursive：是否对子孙全部检索，默认True-改为False时，表示只检索其子节点"><span class="nav-number">15.1.3.</span> <span class="nav-text">15.1.3 参数 recursive：是否对子孙全部检索，默认True,改为False时，表示只检索其子节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-1-4-参数string-lt-gt-…-lt-gt-中字符串区域的检索字符串"><span class="nav-number">15.1.4.</span> <span class="nav-text">15.1.4 参数string : &lt;&gt;…&lt;&#x2F;&gt;中字符串区域的检索字符串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-1-5-find的扩展方法"><span class="nav-number">15.1.5.</span> <span class="nav-text">15.1.5 find的扩展方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-实例，爬取中国大学排名信息"><span class="nav-number">16.</span> <span class="nav-text">16 实例，爬取中国大学排名信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#16-1-代码分析"><span class="nav-number">16.1.</span> <span class="nav-text">16.1 代码分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-正则表达式"><span class="nav-number">17.</span> <span class="nav-text">17 正则表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-Re库主要功能函数-正则表达式库"><span class="nav-number">18.</span> <span class="nav-text">18 Re库主要功能函数(正则表达式库)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#18-1-re-search"><span class="nav-number">18.1.</span> <span class="nav-text">18.1 re.search()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-2-re-match"><span class="nav-number">18.2.</span> <span class="nav-text">18.2 re.match()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-3-re-findall"><span class="nav-number">18.3.</span> <span class="nav-text">18.3 re.findall()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-4-re-split"><span class="nav-number">18.4.</span> <span class="nav-text">18.4 re.split()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-5-re-finditer"><span class="nav-number">18.5.</span> <span class="nav-text">18.5 re.finditer()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-6-re-sub-pattern-repl-string-count-0-flags-0"><span class="nav-number">18.6.</span> <span class="nav-text">18.6 re.sub(pattern,repl,string,count&#x3D;0,flags&#x3D;0)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-7-正则表达式的面向对象的用法"><span class="nav-number">18.7.</span> <span class="nav-text">18.7 正则表达式的面向对象的用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-8-regex-re-compile-pattern-flags-0"><span class="nav-number">18.8.</span> <span class="nav-text">18.8 regex &#x3D; re.compile(pattern,flags&#x3D;0)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-9-match对象"><span class="nav-number">18.9.</span> <span class="nav-text">18.9 match对象</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-实例：爬取京东鼠标"><span class="nav-number">19.</span> <span class="nav-text">19 实例：爬取京东鼠标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#19-1-查看链接与接口"><span class="nav-number">19.1.</span> <span class="nav-text">19.1 查看链接与接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#19-2-使用的库"><span class="nav-number">19.2.</span> <span class="nav-text">19.2 使用的库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#19-3-查看网页源码提取信息"><span class="nav-number">19.3.</span> <span class="nav-text">19.3 查看网页源码提取信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#19-4-完整代码"><span class="nav-number">19.4.</span> <span class="nav-text">19.4 完整代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-scrapy框架"><span class="nav-number">20.</span> <span class="nav-text">20 scrapy框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#20-1-框架结构"><span class="nav-number">20.1.</span> <span class="nav-text">20.1 框架结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#20-2-scrapy-常用命令"><span class="nav-number">20.2.</span> <span class="nav-text">20.2  scrapy 常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#20-3-小实例"><span class="nav-number">20.3.</span> <span class="nav-text">20.3 小实例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#20-4-yield-关键字"><span class="nav-number">20.4.</span> <span class="nav-text">20.4 yield 关键字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#20-5-使用yield优化demo爬虫"><span class="nav-number">20.5.</span> <span class="nav-text">20.5 使用yield优化demo爬虫</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-scrapy爬虫的数据类型"><span class="nav-number">21.</span> <span class="nav-text">21 scrapy爬虫的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#21-1-Request类"><span class="nav-number">21.1.</span> <span class="nav-text">21.1 Request类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#21-2-Response类"><span class="nav-number">21.2.</span> <span class="nav-text">21.2 Response类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#21-3-Item类"><span class="nav-number">21.3.</span> <span class="nav-text">21.3 Item类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-实例-爬取股票数据"><span class="nav-number">22.</span> <span class="nav-text">22 实例:爬取股票数据</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">254k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":120,"height":200,"position":"left","hOffset":20,"vOffset":50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
