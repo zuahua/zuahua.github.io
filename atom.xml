@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-05-13T11:09:53.686Z</updated>
+  <updated>2020-07-25T11:47:27.510Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java JDBC操作</title>
+    <link href="http://innozh.com/2020-7-25-java-jdbc-cao-zuo.html"/>
+    <id>http://innozh.com/2020-7-25-java-jdbc-cao-zuo.html</id>
+    <published>2020-07-25T00:00:00.000Z</published>
+    <updated>2020-07-25T11:47:27.510Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;java&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;学习记录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;笔记&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="java" scheme="http://innozh.com/tags/java/"/>
+    
+      <category term="JDBC" scheme="http://innozh.com/tags/JDBC/"/>
+    
+  </entry>
   
   <entry>
     <title>基于 express 的占座系统</title>
@@ -134,6 +162,31 @@
   </entry>
   
   <entry>
+    <title>html、CSS 文字两边居中横线</title>
+    <link href="http://innozh.com/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html"/>
+    <id>http://innozh.com/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html</id>
+    <published>2020-03-26T00:00:00.000Z</published>
+    <updated>2020-03-30T10:15:06.663Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;html、CSS &lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;文字两边居中横线&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="HTML" scheme="http://innozh.com/tags/HTML/"/>
+    
+      <category term="CSS" scheme="http://innozh.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>页面只同时播放一个音频</title>
     <link href="http://innozh.com/2020-3-26-ye-mian-zhi-tong-shi-bo-fang-yi-ge-yin-pin.html"/>
     <id>http://innozh.com/2020-3-26-ye-mian-zhi-tong-shi-bo-fang-yi-ge-yin-pin.html</id>
@@ -158,31 +211,6 @@
       <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html、CSS 文字两边居中横线</title>
-    <link href="http://innozh.com/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html"/>
-    <id>http://innozh.com/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html</id>
-    <published>2020-03-26T00:00:00.000Z</published>
-    <updated>2020-03-30T10:15:06.663Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;html、CSS &lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;文字两边居中横线&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="HTML" scheme="http://innozh.com/tags/HTML/"/>
-    
-      <category term="CSS" scheme="http://innozh.com/tags/CSS/"/>
     
   </entry>
   
@@ -238,30 +266,6 @@
   </entry>
   
   <entry>
-    <title>fetch的简单使用</title>
-    <link href="http://innozh.com/2020-3-11-fetch.html"/>
-    <id>http://innozh.com/2020-3-11-fetch.html</id>
-    <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-30T10:18:54.735Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;fetch的简单使用&lt;/p&gt;
-&lt;p&gt;promise对象&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
-    
-      <category term="fetch" scheme="http://innozh.com/tags/fetch/"/>
-    
-  </entry>
-  
-  <entry>
     <title>jQuery中使用AJAX</title>
     <link href="http://innozh.com/2020-3-11-ajax-jquery.html"/>
     <id>http://innozh.com/2020-3-11-ajax-jquery.html</id>
@@ -313,28 +317,26 @@
   </entry>
   
   <entry>
-    <title>jQuery使用JSONP</title>
-    <link href="http://innozh.com/2020-3-10-jsonp-jquery.html"/>
-    <id>http://innozh.com/2020-3-10-jsonp-jquery.html</id>
-    <published>2020-03-10T00:00:00.000Z</published>
-    <updated>2020-03-30T10:21:27.793Z</updated>
+    <title>fetch的简单使用</title>
+    <link href="http://innozh.com/2020-3-11-fetch.html"/>
+    <id>http://innozh.com/2020-3-11-fetch.html</id>
+    <published>2020-03-11T00:00:00.000Z</published>
+    <updated>2020-03-30T10:18:54.735Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;服务端php&lt;/p&gt;
-&lt;p&gt;jQuery&lt;/p&gt;
-&lt;p&gt;JSONP&lt;/p&gt;
-&lt;p&gt;根据JSON数据创建表格&lt;/p&gt;
+&lt;p&gt;fetch的简单使用&lt;/p&gt;
+&lt;p&gt;promise对象&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
-      <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
+      <category term="fetch" scheme="http://innozh.com/tags/fetch/"/>
     
   </entry>
   
@@ -365,18 +367,19 @@
   </entry>
   
   <entry>
-    <title>jQuery实例7-城市选择案例</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-7.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-7.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:38:34.133Z</updated>
+    <title>jQuery使用JSONP</title>
+    <link href="http://innozh.com/2020-3-10-jsonp-jquery.html"/>
+    <id>http://innozh.com/2020-3-10-jsonp-jquery.html</id>
+    <published>2020-03-10T00:00:00.000Z</published>
+    <updated>2020-03-30T10:21:27.793Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;城市选择案例&lt;/p&gt;
+&lt;p&gt;服务端php&lt;/p&gt;
+&lt;p&gt;jQuery&lt;/p&gt;
+&lt;p&gt;JSONP&lt;/p&gt;
+&lt;p&gt;根据JSON数据创建表格&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -384,6 +387,8 @@
     
     
       <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+      <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
     
   </entry>
   
@@ -411,64 +416,18 @@
   </entry>
   
   <entry>
-    <title>jQuery实例4-tab栏切换</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-4.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-4.html</id>
+    <title>jQuery实例8-表格全选和反选</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-8.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-8.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:39:09.887Z</updated>
+    <updated>2020-03-30T10:22:43.013Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;tab栏切换&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例11-自定义tabs插件 实现tab切换</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-11.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-11.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:21:48.365Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;自定义tabs插件 实现tab切换&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例3-商品显示</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:39:24.376Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;商品显示&lt;/p&gt;
+&lt;p&gt;表格全选和反选&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -503,18 +462,64 @@
   </entry>
   
   <entry>
-    <title>jQuery实例2-手风琴</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-2.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-2.html</id>
+    <title>jQuery实例3-商品显示</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
     <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:39:34.317Z</updated>
+    <updated>2020-03-30T10:39:24.376Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;手风琴&lt;/p&gt;
+&lt;p&gt;商品显示&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery实例11-自定义tabs插件 实现tab切换</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-11.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-11.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-30T10:21:48.365Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;自定义tabs插件 实现tab切换&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery实例4-tab栏切换</title>
+    <link href="http://innozh.com/2020-3-9-jquery-shi-li-4.html"/>
+    <id>http://innozh.com/2020-3-9-jquery-shi-li-4.html</id>
+    <published>2020-03-09T00:00:00.000Z</published>
+    <updated>2020-03-30T10:39:09.887Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;笔记整理&lt;/p&gt;
+&lt;p&gt;jQuery实例&lt;/p&gt;
+&lt;p&gt;tab栏切换&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>

@@ -337,10 +337,10 @@
       <div class="popular-posts-title"><a href="\2019-08-04-javascript-xue-xi-shi-li-2.html" rel="bookmark">JavaScript学习实例(2)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+      <div class="popular-posts-title"><a href="\2019-08-03-javascript-xue-xi-shi-li-1.html" rel="bookmark">JavaScript学习实例(1)</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2018-08-10-python-1.html" rel="bookmark">python数据类型</a></div>
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
     </li>
   </ul>
 
@@ -359,12 +359,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html" rel="prev" title="html、CSS 文字两边居中横线">
-      <i class="fa fa-chevron-left"></i> html、CSS 文字两边居中横线
+    <a href="/2020-3-20-php-du-wen-jian-mu-lu.html" rel="prev" title="php读文件目录名及文件夹列表">
+      <i class="fa fa-chevron-left"></i> php读文件目录名及文件夹列表
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020-3-30-js-ri-qi-ge-shi-hua.html" rel="next" title="JavaScript日期格式化">
-      JavaScript日期格式化 <i class="fa fa-chevron-right"></i>
+    <a href="/2020-3-26-wen-zi-liang-bian-ju-zhong-heng-xian.html" rel="next" title="html、CSS 文字两边居中横线">
+      html、CSS 文字两边居中横线 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -442,14 +442,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -494,12 +494,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">263k</span>
+    <span title="站点总字数">283k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:59</span>
+    <span title="站点阅读时长">4:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
@@ -561,6 +561,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
@@ -660,35 +689,6 @@ const back2bottom = () => {
   window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
 }
 
-</script>
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
-      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
-      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: 'zh-cn' || 'zh-cn',
-      path: location.pathname,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
 </script>
 
 
