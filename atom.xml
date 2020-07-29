@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-07-28T13:49:37.358Z</updated>
+  <updated>2020-07-29T11:52:58.425Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,15 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Java文件IO</title>
-    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
-    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
-    <published>2020-07-28T00:00:00.000Z</published>
-    <updated>2020-07-28T13:49:37.358Z</updated>
+    <title>android 安装 MapBox SDK</title>
+    <link href="http://innozh.com/2020-7-29-android-an-zhuang-mapbox-sdk.html"/>
+    <id>http://innozh.com/2020-7-29-android-an-zhuang-mapbox-sdk.html</id>
+    <published>2020-07-29T00:00:00.000Z</published>
+    <updated>2020-07-29T11:52:58.425Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java各种IO操作&lt;/p&gt;
+      &lt;p&gt;android 安装 MapBox SDK&lt;/p&gt;
+&lt;p&gt;环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AndroidStudio 4.0&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="笔记" scheme="http://innozh.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="MapBox" scheme="http://innozh.com/tags/MapBox/"/>
+    
+      <category term="android" scheme="http://innozh.com/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 多线程</title>
+    <link href="http://innozh.com/2020-07-28java-duo-xian-cheng.html"/>
+    <id>http://innozh.com/2020-07-28java-duo-xian-cheng.html</id>
+    <published>2020-07-28T00:00:00.000Z</published>
+    <updated>2020-07-28T13:52:41.712Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java 多线程&lt;/p&gt;
     
     </summary>
     
@@ -38,15 +65,15 @@
   </entry>
   
   <entry>
-    <title>Java 多线程</title>
-    <link href="http://innozh.com/2020-07-28java-duo-xian-cheng.html"/>
-    <id>http://innozh.com/2020-07-28java-duo-xian-cheng.html</id>
+    <title>Java文件IO</title>
+    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
+    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
     <published>2020-07-28T00:00:00.000Z</published>
-    <updated>2020-07-28T13:50:07.153Z</updated>
+    <updated>2020-07-28T13:52:41.702Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java 多线程&lt;/p&gt;
+      &lt;p&gt;Java各种IO操作&lt;/p&gt;
     
     </summary>
     
@@ -86,7 +113,7 @@
     <link href="http://innozh.com/2020-7-25-java-jdbc-cao-zuo.html"/>
     <id>http://innozh.com/2020-7-25-java-jdbc-cao-zuo.html</id>
     <published>2020-07-25T00:00:00.000Z</published>
-    <updated>2020-07-28T13:48:36.643Z</updated>
+    <updated>2020-07-29T11:48:44.250Z</updated>
     
     <summary type="html">
     
@@ -495,29 +522,6 @@
 &lt;p&gt;笔记整理&lt;/p&gt;
 &lt;p&gt;jQuery实例&lt;/p&gt;
 &lt;p&gt;5颗心评分案例&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例3-商品显示</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-3.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-3.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:39:24.376Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;商品显示&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>

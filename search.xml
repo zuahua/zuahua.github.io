@@ -5261,9 +5261,9 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><p
 <li><p>用户数据表</p>
 </li>
 </ul>
-<p><img src="images%5Cjava%5Cjdbc1.png" alt="image"></p>
+<p><img src="../images/java/jdbc1.png" alt="image"></p>
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="新建项目-导入jar包"><a href="#新建项目-导入jar包" class="headerlink" title="新建项目 导入jar包"></a>新建项目 导入jar包</h4><p>导入<strong>mysql-connector-java-5.0.8-bin.jar</strong></p>
-<p><img src="images%5Cjava%5Cjdbc2.png" alt=""></p>
+<p><img src="../images/java/jdbc2.png" alt=""></p>
 <h4 id="使用-JDBC-代码流程"><a href="#使用-JDBC-代码流程" class="headerlink" title="使用 JDBC 代码流程"></a>使用 JDBC 代码流程</h4><ol>
 <li>初始化数据库驱动 如果没有引包，会抛出异常</li>
 <li>连接数据库</li>
@@ -5379,7 +5379,7 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><p
 <p><strong>这里使用 maven-quickstart；</strong></p>
 <p><strong>可换用阿里的镜像；</strong></p>
 <p>我的<strong>目录结构</strong>：</p>
-<p><img src="images%5Cjava%5Cjdbc3.png" alt=""></p>
+<p><img src="../images/java/jdbc3.png" alt=""></p>
 <h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h4><p>文件 <strong>pom.xml</strong></p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HikariCP --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.zaxxer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>HikariCP<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- mysql驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.15<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- log --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.28<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -5616,6 +5616,72 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><p
       <tags>
         <tag>java</tag>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>android 安装 MapBox SDK</title>
+    <url>/2020-7-29-android-an-zhuang-mapbox-sdk.html</url>
+    <content><![CDATA[<p>android 安装 MapBox SDK</p>
+<p>环境：</p>
+<ul>
+<li>AndroidStudio 4.0</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="android-安装-MapBox-SDK"><a href="#android-安装-MapBox-SDK" class="headerlink" title="android 安装 MapBox SDK"></a>android 安装 MapBox SDK</h2><h3 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h3><p>使用Android Studio 建立一个空项目。</p>
+<p>这里项目命名为 MapBoxTest2。</p>
+<h3 id="配置-public-token"><a href="#配置-public-token" class="headerlink" title="配置 public token"></a>配置 public token</h3><p>需要先<a href="https://account.mapbox.com/auth/signup/" target="_blank" rel="noopener external nofollow noreferrer">注册</a></p>
+<p>在<a href="https://account.mapbox.com/" target="_blank" rel="noopener external nofollow noreferrer">账户页面</a> 选择 token 复制</p>
+<p><img src="../images/mapbox/1.png" alt=""></p>
+<p>找到资源路径下 <strong><em>values/strings.xml</em></strong>  文件，添加</p>
+<ul>
+<li><strong>MAPBOX_ACCESS_TOKEN</strong> 为复制的 <strong>Token</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"mapbox_access_token"</span>&gt;</span>MAPBOX_ACCESS_TOKEN<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加-MapBox-依赖"><a href="#添加-MapBox-依赖" class="headerlink" title="添加 MapBox 依赖"></a>添加 MapBox 依赖</h3><h4 id="打开app级build-gradle"><a href="#打开app级build-gradle" class="headerlink" title="打开app级build.gradle"></a>打开<strong><em>app级build.gradle</em></strong></h4><p>需要最低sdkVersion：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  ...</span><br><span class="line">  defaultConfig &#123;</span><br><span class="line">      minSdkVersion 14</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>并添加MapBox依赖</strong>：(<strong>2020年7月使用官网9.3.0版本出现未知错误，这里使用9.2.0版本</strong>)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	&#x2F;&#x2F;    MapBox 依赖</span><br><span class="line">    implementation &#39;com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>右上角出现 <strong>sync now</strong>，点击，开始同步，下载依赖</p>
+<h3 id="添加位置权限"><a href="#添加位置权限" class="headerlink" title="添加位置权限"></a>添加位置权限</h3><h4 id="打开-src-main-AndroidManifest-xml"><a href="#打开-src-main-AndroidManifest-xml" class="headerlink" title="打开 src/main/AndroidManifest.xml"></a>打开 src/main/AndroidManifest.xml</h4><p>添加位置权限</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_FINE_LOCATION"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/mapbox/2.png" alt=""></p>
+<h3 id="添加地图"><a href="#添加地图" class="headerlink" title="添加地图"></a>添加地图</h3><h4 id="打开-MainActivity-java"><a href="#打开-MainActivity-java" class="headerlink" title="打开 MainActivity.java"></a>打开 MainActivity.java</h4><p>也可以添加到你想添加的活动页面，<strong>这里添加到主活动</strong></p>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>实例化 Mapbox 必须放在 setContentView 之前，不然会闪退</li>
+<li>IDEA标红的对象 <strong>alt + enter</strong> 可导入包</li>
+<li><strong>R.id.mapView</strong> 还未在布局中写，下面添加布局控件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.mapboxtest2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.mapbox.mapboxsdk.Mapbox;</span><br><span class="line"><span class="keyword">import</span> com.mapbox.mapboxsdk.maps.MapView;</span><br><span class="line"><span class="keyword">import</span> com.mapbox.mapboxsdk.maps.MapboxMap;</span><br><span class="line"><span class="keyword">import</span> com.mapbox.mapboxsdk.maps.OnMapReadyCallback;</span><br><span class="line"><span class="keyword">import</span> com.mapbox.mapboxsdk.maps.Style;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// MapView</span></span><br><span class="line">    <span class="keyword">private</span> MapView mapView;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">		<span class="comment">// 实例化 Mapbox 必须放在 setContentView 之前，不然会闪退</span></span><br><span class="line">        Mapbox.getInstance(<span class="keyword">this</span>, getString(R.string.mapbox_access_token));</span><br><span class="line"></span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加地图</span></span><br><span class="line">        mapView = (MapView) findViewById(R.id.mapView);</span><br><span class="line">        mapView.onCreate(savedInstanceState);</span><br><span class="line">        mapView.getMapAsync(<span class="keyword">new</span> OnMapReadyCallback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMapReady</span><span class="params">(@NonNull MapboxMap mapboxMap)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                mapboxMap.setStyle(Style.MAPBOX_STREETS, <span class="keyword">new</span> Style.OnStyleLoaded() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStyleLoaded</span><span class="params">(@NonNull Style style)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// Map is set up and the style has loaded. Now you can add data or make other map adjustments</span></span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="打开对应布局-layout-activity-main-xml"><a href="#打开对应布局-layout-activity-main-xml" class="headerlink" title="打开对应布局 layout/activity_main.xml"></a>打开对应布局 layout/activity_main.xml</h4><p>添加Mapbox控件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">com.mapbox.mapboxsdk.maps.MapView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/mapView"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p><img src="../images/mapbox/3.png" alt=""></p>
+<h3 id="警告：Compatible-side-by-side-NDK-version-was-not-found-Default-is-21-0-6113669"><a href="#警告：Compatible-side-by-side-NDK-version-was-not-found-Default-is-21-0-6113669" class="headerlink" title="警告：Compatible side by side NDK version was not found. Default is 21.0.6113669."></a>警告：Compatible side by side NDK version was not found. Default is 21.0.6113669.</h3><p>虽然运行成功了，但是出现</p>
+<p>Compatible side by side NDK version was not found. Default is 21.0.6113669.</p>
+<p>警告。</p>
+<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p><strong>IDEA工具栏：</strong></p>
+<p>Tools-&gt;SDK Manager</p>
+<p>Android SDK页面，SDK Tool，选择<strong>NDK(Side by Side)</strong></p>
+<p>再勾选右下角 Show package details</p>
+<p>勾选对应版本</p>
+<img src="../images/mapbox/4.png" style="zoom:75%;" />
+
+<p>点击 <strong>OK</strong> 开始下载</p>
+<p><strong>完成后重新运行项目</strong></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://docs.mapbox.com/android/maps/overview/#install-the-maps-sdk" target="_blank" rel="noopener external nofollow noreferrer">Mapbox 官网英文</a></p>
+<p><a href="https://www.mapbox.cn/android-docs/maps/overview/" target="_blank" rel="noopener external nofollow noreferrer">Mapbox 官网中文</a></p>
+]]></content>
+      <tags>
+        <tag>笔记</tag>
+        <tag>MapBox</tag>
+        <tag>android</tag>
       </tags>
   </entry>
 </search>
