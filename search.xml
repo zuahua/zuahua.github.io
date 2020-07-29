@@ -5684,4 +5684,53 @@ fuck</code></pre><figure class="highlight python"><table><tr><td class="code"><p
         <tag>android</tag>
       </tags>
   </entry>
+  <entry>
+    <title>UEditor富文本编辑器定制</title>
+    <url>/2020-7-29-ueditor-ding-zhi.html</url>
+    <content><![CDATA[<p>定制百度UEditor</p>
+<p>修改上传图片等相关问题</p>
+<p>定制预览功能</p>
+<a id="more"></a>
+
+<h2 id="UEditor富文本编辑器定制"><a href="#UEditor富文本编辑器定制" class="headerlink" title="UEditor富文本编辑器定制"></a>UEditor富文本编辑器定制</h2><h3 id="功能与效果"><a href="#功能与效果" class="headerlink" title="功能与效果"></a>功能与效果</h3><h4 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h4><img src="../images/ueditor/1.png" style="zoom:30%;" />
+
+<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>JSP 版本</p>
+<h4 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h4><ul>
+<li><p><strong>单图上传</strong></p>
+</li>
+<li><p><strong>多图上传</strong></p>
+</li>
+<li><p><strong>上传视频</strong></p>
+</li>
+<li><p><strong>结果导出为自适应样式的html</strong></p>
+</li>
+<li><p><strong>预览功能</strong></p>
+</li>
+</ul>
+<h3 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h3><h4 id="下载使用"><a href="#下载使用" class="headerlink" title="下载使用"></a>下载使用</h4><p>下载后将apache-tomcat-8.5.56-windows-x64放在你想放的位置</p>
+<p>双击运行 /apache-tomcat-8.5.56-windows-x64\bin\startup.bat启动Tomcat</p>
+<h4 id="测试地址"><a href="#测试地址" class="headerlink" title="测试地址"></a>测试地址</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;ueditor1_4_3_3-utf8-jsp&#x2F;utf8-jsp&#x2F;index.html</span><br></pre></td></tr></table></figure>
+
+<h4 id="放在自己的服务器"><a href="#放在自己的服务器" class="headerlink" title="放在自己的服务器"></a>放在自己的服务器</h4><p>提取ueditor1_4_3_3-utf8-jsp文件放在Tomcat webapps下</p>
+<h3 id="文件上传位置"><a href="#文件上传位置" class="headerlink" title="文件上传位置"></a>文件上传位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\apache-tomcat-8.5.56-windows-x64\webapps\ueditor1_4_3_3-utf8-jsp\ueditor\jsp\upload\</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h3><p><strong>页面上传按钮功能未实现。</strong></p>
+<p>仓库内容包括：</p>
+<ul>
+<li>整个Tomcat程序</li>
+</ul>
+<p>UEditor位置：</p>
+<ul>
+<li><strong>\webapps\ueditor1_4_3_3-utf8-jsp</strong></li>
+</ul>
+<h3 id="使用截图"><a href="#使用截图" class="headerlink" title="使用截图"></a>使用截图</h3><h4 id="编辑中"><a href="#编辑中" class="headerlink" title="编辑中"></a>编辑中</h4><p><img src="../images/ueditor/2.png" alt=""></p>
+<h4 id="多图上传页面"><a href="#多图上传页面" class="headerlink" title="多图上传页面"></a>多图上传页面</h4><p><img src="../images/ueditor/3.png" alt=""></p>
+<h4 id="预览页面"><a href="#预览页面" class="headerlink" title="预览页面"></a>预览页面</h4><p><img src="../images/ueditor/4.png" alt=""></p>
+<h3 id="Github仓库地址"><a href="#Github仓库地址" class="headerlink" title="Github仓库地址"></a>Github仓库地址</h3><p><a href="https://github.com/zuahua/customUEditor" target="_blank" rel="noopener external nofollow noreferrer">Github</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://fex.baidu.com/ueditor/#api-common" target="_blank" rel="noopener external nofollow noreferrer">UEditor官方文档</a></p>
+]]></content>
+      <tags>
+        <tag>UEditor</tag>
+      </tags>
+  </entry>
 </search>
