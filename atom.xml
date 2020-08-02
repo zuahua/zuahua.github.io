@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-07-29T12:59:16.758Z</updated>
+  <updated>2020-08-02T08:45:17.430Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -17,23 +17,26 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>UEditor富文本编辑器定制</title>
-    <link href="http://innozh.com/2020-7-29-ueditor-ding-zhi.html"/>
-    <id>http://innozh.com/2020-7-29-ueditor-ding-zhi.html</id>
-    <published>2020-07-29T00:00:00.000Z</published>
-    <updated>2020-07-29T12:59:16.758Z</updated>
+    <title>Spring boot 学习笔记</title>
+    <link href="http://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html"/>
+    <id>http://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html</id>
+    <published>2020-08-02T00:00:00.000Z</published>
+    <updated>2020-08-02T08:45:17.430Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;定制百度UEditor&lt;/p&gt;
-&lt;p&gt;修改上传图片等相关问题&lt;/p&gt;
-&lt;p&gt;定制预览功能&lt;/p&gt;
+      &lt;p&gt;Spring boot 学习笔记&lt;/p&gt;
+&lt;p&gt;从创建项目到部署到服务器&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="UEditor" scheme="http://innozh.com/tags/UEditor/"/>
+      <category term="java" scheme="http://innozh.com/tags/java/"/>
+    
+      <category term="Spring boot" scheme="http://innozh.com/tags/Spring-boot/"/>
+    
+      <category term="javaEE" scheme="http://innozh.com/tags/javaEE/"/>
     
   </entry>
   
@@ -65,23 +68,23 @@
   </entry>
   
   <entry>
-    <title>Java文件IO</title>
-    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
-    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
-    <published>2020-07-28T00:00:00.000Z</published>
-    <updated>2020-07-28T13:52:41.702Z</updated>
+    <title>UEditor富文本编辑器定制</title>
+    <link href="http://innozh.com/2020-7-29-ueditor-ding-zhi.html"/>
+    <id>http://innozh.com/2020-7-29-ueditor-ding-zhi.html</id>
+    <published>2020-07-29T00:00:00.000Z</published>
+    <updated>2020-07-29T12:59:16.758Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java各种IO操作&lt;/p&gt;
+      &lt;p&gt;定制百度UEditor&lt;/p&gt;
+&lt;p&gt;修改上传图片等相关问题&lt;/p&gt;
+&lt;p&gt;定制预览功能&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="java" scheme="http://innozh.com/tags/java/"/>
-    
-      <category term="笔记" scheme="http://innozh.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="UEditor" scheme="http://innozh.com/tags/UEditor/"/>
     
   </entry>
   
@@ -95,6 +98,27 @@
     <summary type="html">
     
       &lt;p&gt;Java 多线程&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="java" scheme="http://innozh.com/tags/java/"/>
+    
+      <category term="笔记" scheme="http://innozh.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java文件IO</title>
+    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
+    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
+    <published>2020-07-28T00:00:00.000Z</published>
+    <updated>2020-07-28T13:52:41.702Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java各种IO操作&lt;/p&gt;
     
     </summary>
     
@@ -504,29 +528,6 @@
       <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
       <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery实例9-固定导航栏</title>
-    <link href="http://innozh.com/2020-3-9-jquery-shi-li-9.html"/>
-    <id>http://innozh.com/2020-3-9-jquery-shi-li-9.html</id>
-    <published>2020-03-09T00:00:00.000Z</published>
-    <updated>2020-03-30T10:22:25.766Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;笔记整理&lt;/p&gt;
-&lt;p&gt;jQuery实例&lt;/p&gt;
-&lt;p&gt;固定导航栏&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
   </entry>
   

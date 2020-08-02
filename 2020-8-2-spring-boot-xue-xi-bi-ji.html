@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://innozh.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":false,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Spring boot 学习笔记 从创建项目到部署到服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring boot 学习笔记">
+<meta property="og:url" content="http://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html">
+<meta property="og:site_name" content="inno的博客">
+<meta property="og:description" content="Spring boot 学习笔记 从创建项目到部署到服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://innozh.com/images/spring/8.png">
+<meta property="og:image" content="http://innozh.com/images/spring/9.png">
+<meta property="og:image" content="http://innozh.com/images/spring/10.png">
+<meta property="og:image" content="http://innozh.com/images/spring/1.png">
+<meta property="og:image" content="http://innozh.com/images/spring/2.png">
+<meta property="og:image" content="http://innozh.com/images/spring/4.png">
+<meta property="og:image" content="http://innozh.com/images/spring/5.png">
+<meta property="og:image" content="http://innozh.com/images/spring/6.png">
+<meta property="og:image" content="http://innozh.com/images/spring/7.png">
+<meta property="article:published_time" content="2020-08-02T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-02T08:45:17.430Z">
+<meta property="article:author" content="inno">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="Spring boot">
+<meta property="article:tag" content="javaEE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://innozh.com/images/spring/8.png">
+
+<link rel="canonical" href="http://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Spring boot 学习笔记 | inno的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="inno的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">inno的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">生活不止眼前的苟且，还有看不懂的诗和到不了的远方</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zuahua" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="inno">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inno的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Spring boot 学习笔记
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-02 00:00:00 / 修改时间：08:45:17" itemprop="dateCreated datePublished" datetime="2020-08-02T00:00:00Z">2020-08-02</time>
+            </span>
+
+          
+            <span id="/2020-8-2-spring-boot-xue-xi-bi-ji.html" class="post-meta-item leancloud_visitors" data-flag-title="Spring boot 学习笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Spring boot 学习笔记</p>
+<p>从创建项目到部署到服务器</p>
+<a id="more"></a>
+
+<h2 id="Spring-boot-学习笔记"><a href="#Spring-boot-学习笔记" class="headerlink" title="Spring boot 学习笔记"></a>Spring boot 学习笔记</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>JDK1.8</p>
+<p>Spring Boot 2.3.2</p>
+<p>Intellij IDEA</p>
+<h4 id="Intellij-IDEA-的准备"><a href="#Intellij-IDEA-的准备" class="headerlink" title="Intellij IDEA 的准备"></a>Intellij IDEA 的准备</h4><p>由于下面建立Spring boot项目是使用Maven构建</p>
+<p>最好将Maven下载源换为国内的</p>
+<p><a href="https://innozh.com/2020-7-27-idea-chuang-jian-maven-gong-cheng-xiang-mu.html">IDEA创建Maven工程项目 换下载源</a></p>
+<h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p><strong>Intellij IDEA 新建Spring boot 项目</strong></p>
+<p><img src="../images/spring/8.png" alt="image"></p>
+<img src="../images/spring/9.png" alt="image" style="zoom:67%;" />
+
+<img src="../images/spring/10.png" alt="image" style="zoom:70%;" />
+
+<p>下一步保存路径完成</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="端口和上下文路径"><a href="#端口和上下文路径" class="headerlink" title="端口和上下文路径"></a>端口和上下文路径</h4><p><strong>application.properties</strong></p>
+<p>也<strong>可不用配置</strong>，使用默认</p>
+<ul>
+<li>默认8080端口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8888</span><br><span class="line">server.context-path&#x3D;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p><strong>application.properties</strong></p>
+<ul>
+<li>jdbc:mysql://localhost:3306/river?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8</li>
+<li>上面这一句不加时区配置(serverTimezone=UTC)后面使用Mybatis测试就报错 </li>
+<li><strong>river</strong>表示数据库名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;river?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8</span><br><span class="line">spring.datasource.username&#x3D;root</span><br><span class="line">spring.datasource.password&#x3D;hua123456</span><br><span class="line">spring.datasource.driver-class-name&#x3D;com.mysql.cj.jdbc.Driver</span><br></pre></td></tr></table></figure>
+
+<h4 id="thymeleaf"><a href="#thymeleaf" class="headerlink" title="thymeleaf"></a>thymeleaf</h4><p><strong>application.properties</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#thymeleaf 配置</span><br><span class="line">spring.thymeleaf.mode&#x3D;HTML5</span><br><span class="line">spring.thymeleaf.encoding&#x3D;UTF-8</span><br><span class="line">spring.thymeleaf.content-type&#x3D;text&#x2F;html</span><br><span class="line">#缓存设置为false, 这样修改之后马上生效，便于调试</span><br><span class="line">spring.thymeleaf.cache&#x3D;false</span><br></pre></td></tr></table></figure>
+
+<h4 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h4><p>pom.xml中dependencies标签中添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- mybatis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Maven的安装环境变量配置"><a href="#Maven的安装环境变量配置" class="headerlink" title="Maven的安装环境变量配置"></a>Maven的安装环境变量配置</h4><p>Intellij IDEA 默认安装了Maven</p>
+<p>我的路径在</p>
+<p>D:\Program Files\IntelliJ IDEA 2020.1.2<strong>\plugins\maven\lib\maven3\bin</strong></p>
+<p>直接系统环境变量Path中添加上面的路径</p>
+<p><strong>cmd</strong>中输入·：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -v</span><br></pre></td></tr></table></figure>
+
+<p>看到版本说明配置成功</p>
+<h4 id="多配置切换"><a href="#多配置切换" class="headerlink" title="多配置切换"></a>多配置切换</h4><ul>
+<li>适应开发生产环境的不同配置</li>
+</ul>
+<p>新建</p>
+<ul>
+<li><p>src\main\resources<strong>\application-dev.properties</strong></p>
+</li>
+<li><p>src\main\resources<strong>\application-pro.properties</strong></p>
+</li>
+</ul>
+<p>两个文件夹分别表示开发环境使用和生产环境使用</p>
+<p>修改<strong>application.properties</strong>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active&#x3D;dev</span><br></pre></td></tr></table></figure>
+
+<p>表示使用哪一个配置文件：</p>
+<ul>
+<li>dev 表示使用 application-dev.properties</li>
+<li>pro 表示使用 application-pro.properties</li>
+</ul>
+<p>我的已配置好的两个文件如下：(注意修改用户名、密码、IP地址)</p>
+<p>application-dev.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#JDBC配置</span><br><span class="line">spring.datasource.url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;river?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8</span><br><span class="line">spring.datasource.username&#x3D;root</span><br><span class="line">spring.datasource.password&#x3D;key</span><br><span class="line">spring.datasource.driver-class-name&#x3D;com.mysql.cj.jdbc.Driver</span><br><span class="line"></span><br><span class="line">#thymeleaf 配置</span><br><span class="line">spring.thymeleaf.mode&#x3D;HTML5</span><br><span class="line">spring.thymeleaf.encoding&#x3D;UTF-8</span><br><span class="line">spring.thymeleaf.content-type&#x3D;text&#x2F;html</span><br><span class="line">#缓存设置为false, 这样修改之后马上生效，便于调试</span><br><span class="line">spring.thymeleaf.cache&#x3D;false</span><br></pre></td></tr></table></figure>
+
+<p>application-pro.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#JDBC配置</span><br><span class="line">spring.datasource.url&#x3D;jdbc:mysql:&#x2F;&#x2F;IP:3306&#x2F;river?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8</span><br><span class="line">spring.datasource.username&#x3D;username</span><br><span class="line">spring.datasource.password&#x3D;key</span><br><span class="line">spring.datasource.driver-class-name&#x3D;com.mysql.cj.jdbc.Driver</span><br><span class="line"></span><br><span class="line">#thymeleaf 配置</span><br><span class="line">spring.thymeleaf.mode&#x3D;HTML5</span><br><span class="line">spring.thymeleaf.encoding&#x3D;UTF-8</span><br><span class="line">spring.thymeleaf.content-type&#x3D;text&#x2F;html</span><br><span class="line">#缓存设置为false, 这样修改之后马上生效，便于调试</span><br><span class="line">spring.thymeleaf.cache&#x3D;false</span><br></pre></td></tr></table></figure>
+
+<h3 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h3><p>pom.xml中添加依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span> <span class="comment">&lt;!-- 这个需要为 true 热部署才有效 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>还需要spring-boot-maven-plugin插件，一般IDEA创建时已经加入了</p>
+<h3 id="导入Spring-boot-项目"><a href="#导入Spring-boot-项目" class="headerlink" title="导入Spring boot 项目"></a>导入Spring boot 项目</h3><p>使用IDEA从外部导入项目的方法（略）</p>
+<p><a href="https://how2j.cn/k/springboot/springboot-import-idea/1920.html" target="_blank" rel="noopener external nofollow noreferrer">导入Spring boot项目</a></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="新建全局异常控制的java类"><a href="#新建全局异常控制的java类" class="headerlink" title="新建全局异常控制的java类"></a>新建全局异常控制的java类</h4><ul>
+<li>java包名~\<strong>web\Exception\GlobalExceptionHandler.java</strong> (web和Exception是我右击新建的包)</li>
+<li>将异常信息传给了 <strong>errorPage</strong> 页面</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.web.Exception;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpRequest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ControllerAdvice;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(value = Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">ModelAndView</span> <span class="title">defaultErrorHandler</span>(<span class="title">HttpServletRequest</span> <span class="title">req</span>, <span class="title">Exception</span> <span class="title">e</span>) <span class="title">throws</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line">        ModelAndView mav = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mav.addObject(<span class="string">"exception"</span>, e);</span><br><span class="line">        mav.addObject(<span class="string">"url"</span>, req.getRequestURL());</span><br><span class="line">        mav.setViewName(<span class="string">"errorPage"</span>);</span><br><span class="line">        <span class="keyword">return</span> mav;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="errorPage-html页面"><a href="#errorPage-html页面" class="headerlink" title="errorPage.html页面"></a>errorPage.html页面</h4><p>前提：</p>
+<ul>
+<li>已经配置好 <strong>thymeleaf模板</strong></li>
+</ul>
+<p>新建</p>
+<p>src\main\<strong>resources\templates\errorPage.html</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>error<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:500px;border:1px solid lightgray;margin:200px auto;padding:80px"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    系统 出现了异常，异常原因是：</span><br><span class="line">    <span class="comment">&lt;!--/*@thymesVar id="exception" type="java"*/--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">"$&#123;exception&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    出现异常的地址是：</span><br><span class="line">    <span class="comment">&lt;!--/*@thymesVar id="url" type="java"*/--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">"$&#123;url&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="测试异常"><a href="#测试异常" class="headerlink" title="测试异常"></a>测试异常</h4><p>新建控制器测试</p>
+<p>src\main\java\com\zuahua\river<strong>\web\FirstPageController.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javafx.scene.input.DataFormat;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.DateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstPageController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(Model m)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"出现异常"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行访问：<a href="http://localhost:8080/" target="_blank" rel="noopener external nofollow noreferrer">http://localhost:8080/</a></p>
+<p><img src="../images/spring/1.png" alt="image"></p>
+<h3 id="Mybatis测试"><a href="#Mybatis测试" class="headerlink" title="Mybatis测试"></a>Mybatis测试</h3><p><strong>先配置完成</strong></p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>river数据库</p>
+<p>users数据表</p>
+<p>数据表<br><img src="../images/spring/2.png" alt="image" style="zoom:70%;" /></p>
+<p><strong>测试用数据表网盘下载</strong></p>
+<p>链接：<a href="https://pan.baidu.com/s/1jF_ogVXm3SCNOGb9pnKoNA" target="_blank" rel="noopener external nofollow noreferrer">https://pan.baidu.com/s/1jF_ogVXm3SCNOGb9pnKoNA</a><br>提取码：tqma</p>
+<h4 id="pojo包下创建实体类"><a href="#pojo包下创建实体类" class="headerlink" title="pojo包下创建实体类"></a>pojo包下创建实体类</h4><p>src\main\java\com\zuahua\river<strong>\pojo\User.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String mail;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String token; <span class="comment">// 激活识别码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> token_exptime; <span class="comment">// 激活过期时间 秒为单位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> active_status; <span class="comment">// 激活状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> regtime; <span class="comment">// 激活时间 秒为单位</span></span><br><span class="line">    <span class="keyword">private</span> String changeKey_validate; <span class="comment">// 重置密码时的验证码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> changeKey_exptime; <span class="comment">// 更改密码过期时间 秒为单位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> admin; <span class="comment">// 管理员身份 0 1值 2为超级管理员</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> integral; <span class="comment">// 用户积分</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mail;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMail</span><span class="params">(String mail)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mail = mail;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setToken</span><span class="params">(String token)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.token = token;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getToken_exptime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> token_exptime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setToken_exptime</span><span class="params">(<span class="keyword">float</span> token_exptime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.token_exptime = token_exptime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getActive_status</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> active_status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setActive_status</span><span class="params">(<span class="keyword">int</span> active_status)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.active_status = active_status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getRegtime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> regtime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRegtime</span><span class="params">(<span class="keyword">float</span> regtime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.regtime = regtime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getChangeKey_validate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> changeKey_validate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setChangeKey_validate</span><span class="params">(String changeKey_validate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.changeKey_validate = changeKey_validate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getChangeKey_exptime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> changeKey_exptime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setChangeKey_exptime</span><span class="params">(<span class="keyword">float</span> changeKey_exptime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.changeKey_exptime = changeKey_exptime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAdmin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> admin;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAdmin</span><span class="params">(<span class="keyword">int</span> admin)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.admin = admin;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntegral</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> integral;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIntegral</span><span class="params">(<span class="keyword">int</span> integral)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.integral = integral;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="新建mapper包，下面新建UserMapper接口"><a href="#新建mapper包，下面新建UserMapper接口" class="headerlink" title="新建mapper包，下面新建UserMapper接口"></a>新建mapper包，下面新建UserMapper接口</h4><p>src\main\java\com\zuahua\river<strong>\mapper\UserMapper.java</strong></p>
+<ul>
+<li><strong>使用Mybatis映射CRUD的方法</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zuahua.river.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Select;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from users"</span>)</span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="建立-UserListController-控制器类"><a href="#建立-UserListController-控制器类" class="headerlink" title="建立 UserListController 控制器类"></a>建立 UserListController 控制器类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zuahua.river.mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.zuahua.river.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserListController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/listUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">listUser</span><span class="params">(Model m)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        List&lt;User&gt; userList = userMapper.findAll();</span><br><span class="line">        m.addAttribute(<span class="string">"userList"</span>, userList);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"listUser"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="userMapper-下出现红色波浪线-的问题"><a href="#userMapper-下出现红色波浪线-的问题" class="headerlink" title="userMapper 下出现红色波浪线 的问题"></a>userMapper 下出现红色波浪线 的问题</h5><p><img src="../images/spring/4.png" alt="image"></p>
+<img src="../images/spring/5.png" alt="image" style="zoom:60%;" />
+
+<h4 id="新建listUser-html"><a href="#新建listUser-html" class="headerlink" title="新建listUser.html"></a>新建listUser.html</h4><ul>
+<li>src\main\resources\templates<strong>\listUser.html</strong></li>
+<li>使用了 <strong>thymeleaf</strong> 模板语法</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>用户列表<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">'center'</span> <span class="attr">border</span>=<span class="string">'1'</span> <span class="attr">cellspacing</span>=<span class="string">'0'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>id<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>username<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>mail<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>password<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>token<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>token_exptime<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>active_status<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>regtime<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>changeKey_validate<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>changeKey_exptime<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>integral<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user : $&#123;userList&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getId()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getUsername()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getMail()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getPassword()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getToken()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getToken_exptime()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getActive_status()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getRegtime()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getChangeKey_validate()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getChangeKey_exptime()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getAdmin()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.getIntegral()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="运行查看结果"><a href="#运行查看结果" class="headerlink" title="运行查看结果"></a>运行查看结果</h4><p><a href="http://localhost:8080/listUser" target="_blank" rel="noopener external nofollow noreferrer">http://localhost:8080/listUser</a></p>
+<img src="../images/spring/6.png" alt="image" style="zoom:70%;" />
+
+<h3 id="部署到阿里云服务器"><a href="#部署到阿里云服务器" class="headerlink" title="部署到阿里云服务器"></a>部署到阿里云服务器</h3><h4 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h4><p>需要先配置Maven环境变量</p>
+<h4 id="打包项目为jar文件"><a href="#打包项目为jar文件" class="headerlink" title="打包项目为jar文件"></a>打包项目为jar文件</h4><p>打开CMD</p>
+<p>到项目文件下，我的在<strong>F:\java_webServer\riverServer</strong> 目录下</p>
+<p>指令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F:</span><br><span class="line">cd F:\java\_webServer\riverServer</span><br><span class="line">mvn install</span><br></pre></td></tr></table></figure>
+
+<p>此时会出现 <strong>BUILD SUCCESS</strong></p>
+<p>出现 <strong>\target\river-0.0.1-SNAPSHOT.jar</strong>   打包好的jar文件</p>
+<h4 id="运行此jar文件"><a href="#运行此jar文件" class="headerlink" title="运行此jar文件"></a>运行此jar文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar target\river-0.0.1-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
+
+<p>访问</p>
+<p><a href="http://localhost:8080/listUser" target="_blank" rel="noopener external nofollow noreferrer">http://localhost:8080/listUser</a></p>
+<h4 id="将打包好的jar文件上传到阿里云服务器"><a href="#将打包好的jar文件上传到阿里云服务器" class="headerlink" title="将打包好的jar文件上传到阿里云服务器"></a>将打包好的jar文件上传到阿里云服务器</h4><h5 id="服务器环境"><a href="#服务器环境" class="headerlink" title="服务器环境"></a>服务器环境</h5><p>winserver 2012</p>
+<p>已安装配置好 java 环境</p>
+<p>数据库已新建了river数据库，并将users表<strong>还原备份</strong>过去</p>
+<h5 id="修改项目在生产环境的配置"><a href="#修改项目在生产环境的配置" class="headerlink" title="修改项目在生产环境的配置"></a>修改项目在生产环境的配置</h5><ol>
+<li>如果已经配置了“<strong>多配置切换</strong>”</li>
+</ol>
+<p>只需修改<strong>application-pro.properties</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active&#x3D;pro</span><br></pre></td></tr></table></figure>
+
+<p>pro开发环境</p>
+<ol start="2">
+<li>如果没有配置，记得修改服务器IP、数据库 用户名、密码</li>
+</ol>
+<p><strong>application-pro.properties</strong></p>
+<p>修改数据库IP地址(YourIP替换为你的IP)</p>
+<p>用户名和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc:mysql:&#x2F;&#x2F;YourIP:3306&#x2F;river?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8</span><br><span class="line">spring.datasource.username&#x3D;username</span><br><span class="line">spring.datasource.password&#x3D;key</span><br></pre></td></tr></table></figure>
+
+<h5 id="重新打包项目为-jar"><a href="#重新打包项目为-jar" class="headerlink" title="重新打包项目为 jar"></a>重新打包项目为 jar</h5><p>按上面打包步骤</p>
+<h5 id="远程连接到阿里云服务器"><a href="#远程连接到阿里云服务器" class="headerlink" title="远程连接到阿里云服务器"></a>远程连接到阿里云服务器</h5><p>将jar文件复制到服务器某文件夹</p>
+<p>同样需要运行 jar</p>
+<img src="../images/spring/7.png" alt="image" style="zoom:67%;" />
+
+<p><strong>若出现8080端口被占用的情况：</strong></p>
+<p><strong>将原来的的Tomcat服务关闭；</strong></p>
+<p><strong>或者更换可用端口</strong></p>
+<h5 id="打开链接"><a href="#打开链接" class="headerlink" title="打开链接"></a>打开链接</h5><p><a href="http://YourIP:8080/listUser" target="_blank" rel="noopener external nofollow noreferrer">http://YourIP:8080/listUser</a></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020-7-25-java-jdbc-cao-zuo.html" rel="bookmark">Java JDBC操作</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020-7-27-idea-chuang-jian-maven-gong-cheng-xiang-mu.html" rel="bookmark">IDEA创建Maven工程项目 换下载源</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020-07-28-wen-jian-io.html" rel="bookmark">Java文件IO</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019-08-05-tu-pian-ju-zhong-css.html" rel="bookmark">CSS图片居中</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2018-08-10-python-3.html" rel="bookmark">标准输入输出</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+              <a href="/tags/Spring-boot/" rel="tag"><i class="fa fa-tag"></i> Spring boot</a>
+              <a href="/tags/javaEE/" rel="tag"><i class="fa fa-tag"></i> javaEE</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-7-29-android-an-zhuang-mapbox-sdk.html" rel="prev" title="android 安装 MapBox SDK">
+      <i class="fa fa-chevron-left"></i> android 安装 MapBox SDK
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot-学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Spring boot 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境"><span class="nav-number">1.1.</span> <span class="nav-text">环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Intellij-IDEA-的准备"><span class="nav-number">1.1.1.</span> <span class="nav-text">Intellij IDEA 的准备</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建项目"><span class="nav-number">1.2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">1.3.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#端口和上下文路径"><span class="nav-number">1.3.1.</span> <span class="nav-text">端口和上下文路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDBC"><span class="nav-number">1.3.2.</span> <span class="nav-text">JDBC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thymeleaf"><span class="nav-number">1.3.3.</span> <span class="nav-text">thymeleaf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mybatis"><span class="nav-number">1.3.4.</span> <span class="nav-text">Mybatis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maven的安装环境变量配置"><span class="nav-number">1.3.5.</span> <span class="nav-text">Maven的安装环境变量配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多配置切换"><span class="nav-number">1.3.6.</span> <span class="nav-text">多配置切换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热部署"><span class="nav-number">1.4.</span> <span class="nav-text">热部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入Spring-boot-项目"><span class="nav-number">1.5.</span> <span class="nav-text">导入Spring boot 项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">1.6.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建全局异常控制的java类"><span class="nav-number">1.6.1.</span> <span class="nav-text">新建全局异常控制的java类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#errorPage-html页面"><span class="nav-number">1.6.2.</span> <span class="nav-text">errorPage.html页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试异常"><span class="nav-number">1.6.3.</span> <span class="nav-text">测试异常</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis测试"><span class="nav-number">1.7.</span> <span class="nav-text">Mybatis测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备"><span class="nav-number">1.7.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pojo包下创建实体类"><span class="nav-number">1.7.2.</span> <span class="nav-text">pojo包下创建实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建mapper包，下面新建UserMapper接口"><span class="nav-number">1.7.3.</span> <span class="nav-text">新建mapper包，下面新建UserMapper接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立-UserListController-控制器类"><span class="nav-number">1.7.4.</span> <span class="nav-text">建立 UserListController 控制器类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#userMapper-下出现红色波浪线-的问题"><span class="nav-number">1.7.4.1.</span> <span class="nav-text">userMapper 下出现红色波浪线 的问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建listUser-html"><span class="nav-number">1.7.5.</span> <span class="nav-text">新建listUser.html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行查看结果"><span class="nav-number">1.7.6.</span> <span class="nav-text">运行查看结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到阿里云服务器"><span class="nav-number">1.8.</span> <span class="nav-text">部署到阿里云服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备-1"><span class="nav-number">1.8.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打包项目为jar文件"><span class="nav-number">1.8.2.</span> <span class="nav-text">打包项目为jar文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行此jar文件"><span class="nav-number">1.8.3.</span> <span class="nav-text">运行此jar文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将打包好的jar文件上传到阿里云服务器"><span class="nav-number">1.8.4.</span> <span class="nav-text">将打包好的jar文件上传到阿里云服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器环境"><span class="nav-number">1.8.4.1.</span> <span class="nav-text">服务器环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改项目在生产环境的配置"><span class="nav-number">1.8.4.2.</span> <span class="nav-text">修改项目在生产环境的配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重新打包项目为-jar"><span class="nav-number">1.8.4.3.</span> <span class="nav-text">重新打包项目为 jar</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#远程连接到阿里云服务器"><span class="nav-number">1.8.4.4.</span> <span class="nav-text">远程连接到阿里云服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#打开链接"><span class="nav-number">1.8.4.5.</span> <span class="nav-text">打开链接</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="inno"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">inno</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zua" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:innotsu@outlook.com" title="E-Mail → mailto:innotsu@outlook.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">inno</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">313k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:44</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+      <div class="moon-menu-item" onclick="back2bottom()">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    
+      <div class="moon-menu-item" onclick="back2top()">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"></circle>
+        <circle class="moon-menu-point" r=".2rem"></circle>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"></circle>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+
+<script>
+
+const moonMenuListener = function () {
+
+  //Get scroll percent
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+  let percent = Math.round(scrollTop/(scrollHeight - offsetHeight)*100);
+  if (percent > 100) percent = 100;
+  
+  let menuText = document.querySelector('.moon-menu-text');
+  let menuPoints = document.querySelector('.moon-menu-points');
+  if (!percent){
+    percent = 0;
+    menuText.style.display = 'none';
+    menuPoints.style.display = 'block';
+  } else {
+    menuText.style.display = 'block';
+    menuPoints.style.display = 'none';
+    menuText.innerHTML = percent + '%';
+  }
+  
+  //Update strokeDasharray
+  let length = 196;
+  document.querySelector('.moon-menu-border').style.strokeDasharray = percent*length/100 + ' ' + length;
+
+}
+
+window.addEventListener('load' , () => {
+  moonMenuListener();
+});
+window.addEventListener('scroll' , moonMenuListener);
+
+const moonMenuClick = function () {
+  let items = document.querySelector('.moon-menu-items')
+  items.classList.toggle('active');
+  let points = document.querySelectorAll('.moon-menu-point');
+  let childItems = document.querySelectorAll('.moon-menu-item');
+  if (items.classList.contains('active')) {
+    points[0].setAttribute("cx","-.8rem");
+    points[0].setAttribute("cy","0");
+    points[2].setAttribute("cx",".8rem");
+    points[2].setAttribute("cy","0");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = -3 - 3*i + 'rem';
+      childItems[i].style.opacity = .9;
+    }
+  } else {
+    points[0].setAttribute("cx","0");
+    points[0].setAttribute("cy","-.8rem");
+    points[2].setAttribute("cx","0");
+    points[2].setAttribute("cy",".8rem");
+    for (let i=0; i<childItems.length; i++) {
+      childItems[i].style.top = '1rem';
+      childItems[i].style.opacity = 0;
+    }
+  }
+};
+
+const back2top = () => {
+  window.scroll({top: 0, behavior: 'smooth'});
+}
+
+const back2bottom = () => {
+  let offsetHeight =document.documentElement.offsetHeight;
+  let scrollHeight =document.documentElement.scrollHeight;
+  window.scroll({top: (scrollHeight - offsetHeight), behavior: 'smooth'});
+}
+
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jHrU7jOkGYDiJ0jyeRoqPFkg-MdYXbMMI',
+      appKey: 'cvQUKTNdW8S6PH9mDKGWmzYV',
+      placeholder: "ヾﾉ≧∀≦)o 友善的评论区",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+
+
+
+
+   
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+    
+
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":120,"height":200,"position":"left","hOffset":20,"vOffset":50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
