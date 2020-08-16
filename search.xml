@@ -5911,4 +5911,65 @@ Sum(one, two)
         <tag>android</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Spring boot 中使用 Mybatis-plus</title>
+    <url>/2020-8-16-mybatis-plus.html</url>
+    <content><![CDATA[<h2 id="Spring-boot-中使用-Mybatis-plus"><a href="#Spring-boot-中使用-Mybatis-plus" class="headerlink" title="Spring boot 中使用 Mybatis-plus"></a>Spring boot 中使用 Mybatis-plus</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>Spring boot</p>
+<p>IntelliJ IDEA</p>
+<p>接上一篇内容</p>
+<p><a href="https://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html">Spring boot 学习笔记</a></p>
+<a id="more"></a>
+
+<p>添加使用的库：</p>
+<ul>
+<li>mybatis-plus</li>
+</ul>
+<p>对mybatis的增强，操作数据库更简单</p>
+<ul>
+<li>lombok</li>
+</ul>
+<p>简化bean的getter setter，简化代码</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h4><p>pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--lombok--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--mybatis-plus--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>(使用 mybatis-plus 时，先去除掉 mybatis 的依赖，mybatis-plus 已经集成好了)</p>
+<h4 id="添加-MapperScan-注解"><a href="#添加-MapperScan-注解" class="headerlink" title="添加 MapperScan 注解"></a>添加 MapperScan 注解</h4><ul>
+<li>com\zuahua\river\RiverApplication.java (Spring boot 启动类)</li>
+<li>@MapperScan(“com.zuahua.river.mapper”)</li>
+<li>com.zuahua.river.mapper  <strong>为mapper包的路径，没有则新建</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.mybatis.spring.annotation.MapperScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.zuahua.river.mapper"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RiverApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(RiverApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="新建-RiverUser-类"><a href="#新建-RiverUser-类" class="headerlink" title="新建 RiverUser 类"></a>新建 RiverUser 类</h4><ul>
+<li>pojo包下新建类</li>
+<li>@Data <strong>是lombok的注解，自动给类加上 getter setter</strong></li>
+<li>@TableName(“users”)  <strong>对应数据库中的users表名</strong></li>
+<li>@TableId(type = IdType.AUTO)  <strong>表示主键id为自增</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.IdType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableId;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableName;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@TableName</span>(<span class="string">"users"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RiverUser</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TableId</span>(type = IdType.AUTO)</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String mail;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String token; <span class="comment">// 激活识别码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> token_exptime; <span class="comment">// 激活过期时间 秒为单位</span></span><br><span class="line">    <span class="keyword">private</span> Integer active_status; <span class="comment">// 激活状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> regtime; <span class="comment">// 激活时间 秒为单位</span></span><br><span class="line">    <span class="keyword">private</span> String changeKey_validate; <span class="comment">// 重置密码时的验证码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> changeKey_exptime; <span class="comment">// 更改密码过期时间 秒为单位</span></span><br><span class="line">    <span class="keyword">private</span> Integer admin; <span class="comment">// 管理员身份 0 1值 2为超级管理员</span></span><br><span class="line">    <span class="keyword">private</span> Integer integral; <span class="comment">// 用户积分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="新建-RiverUserMapper-接口"><a href="#新建-RiverUserMapper-接口" class="headerlink" title="新建 RiverUserMapper 接口"></a>新建 RiverUserMapper 接口</h4><ul>
+<li>在mapper包下新建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.zuahua.river.pojo.RiverUser;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RiverUserMapper</span> <span class="keyword">extends</span> <span class="title">BaseMapper</span>&lt;<span class="title">RiverUser</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试插入记录"><a href="#测试插入记录" class="headerlink" title="测试插入记录"></a>测试插入记录</h4><p>新建测试类，test文件夹下，新建RiverUserTest类</p>
+<ul>
+<li><strong><em>src\test\java\com\zuahua\river\RiverUserTest.java</em></strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zuahua.river;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zuahua.river.mapper.RiverUserMapper;</span><br><span class="line"><span class="keyword">import</span> com.zuahua.river.pojo.RiverUser;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">RiverUserTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RiverUserMapper riverUserMapper;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 测试插入操作</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------------------"</span>);</span><br><span class="line">        RiverUser r = <span class="keyword">new</span> RiverUser();</span><br><span class="line">        r.setUsername(<span class="string">"username"</span>);</span><br><span class="line">        r.setMail(<span class="string">"yourMail@163.com"</span>);</span><br><span class="line">        r.setPassword(<span class="string">"123456"</span>);</span><br><span class="line">        r.setToken(<span class="string">""</span>);</span><br><span class="line">        r.setTokenExptime(<span class="number">90</span>);</span><br><span class="line">        r.setActiveStatus(<span class="number">0</span>);</span><br><span class="line">        r.setRegtime(<span class="number">3</span>);</span><br><span class="line">        r.setChangekeyExptime(<span class="number">0</span>);</span><br><span class="line">        r.setAdmin(<span class="number">0</span>);</span><br><span class="line">        r.setIntegral(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> result = riverUserMapper.insert(r);</span><br><span class="line">        System.out.println(<span class="string">"------------"</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li><strong>出现报红，光标移到上面，使用快捷键 ALT+ENTER，添加对应类或其他操作</strong></li>
+<li><strong>选中测试类的方法名，右击选择运行此方法</strong></li>
+<li>查看结果</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://baomidou.com/guide/quick-start.html#%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener external nofollow noreferrer">Mybatis-plus官网</a></p>
+]]></content>
+      <tags>
+        <tag>Spring boot</tag>
+        <tag>mybatis-plus</tag>
+      </tags>
+  </entry>
 </search>

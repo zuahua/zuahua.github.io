@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-08-02T08:47:52.556Z</updated>
+  <updated>2020-08-16T08:23:15.671Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring boot 中使用 Mybatis-plus</title>
+    <link href="http://innozh.com/2020-8-16-mybatis-plus.html"/>
+    <id>http://innozh.com/2020-8-16-mybatis-plus.html</id>
+    <published>2020-08-16T00:00:00.000Z</published>
+    <updated>2020-08-16T08:23:15.671Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Spring-boot-中使用-Mybatis-plus&quot;&gt;&lt;a href=&quot;#Spring-boot-中使用-Mybatis-plus&quot; class=&quot;headerlink&quot; title=&quot;Spring boot 中使用 Mybatis-plus&quot;&gt;&lt;/a&gt;Spring boot 中使用 Mybatis-plus&lt;/h2&gt;&lt;h3 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h3&gt;&lt;p&gt;Spring boot&lt;/p&gt;
+&lt;p&gt;IntelliJ IDEA&lt;/p&gt;
+&lt;p&gt;接上一篇内容&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://innozh.com/2020-8-2-spring-boot-xue-xi-bi-ji.html&quot;&gt;Spring boot 学习笔记&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Spring boot" scheme="http://innozh.com/tags/Spring-boot/"/>
+    
+      <category term="mybatis-plus" scheme="http://innozh.com/tags/mybatis-plus/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring boot 学习笔记</title>
@@ -37,6 +61,27 @@
       <category term="Spring boot" scheme="http://innozh.com/tags/Spring-boot/"/>
     
       <category term="javaEE" scheme="http://innozh.com/tags/javaEE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UEditor富文本编辑器定制</title>
+    <link href="http://innozh.com/2020-7-29-ueditor-ding-zhi.html"/>
+    <id>http://innozh.com/2020-7-29-ueditor-ding-zhi.html</id>
+    <published>2020-07-29T00:00:00.000Z</published>
+    <updated>2020-07-29T12:59:16.758Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;定制百度UEditor&lt;/p&gt;
+&lt;p&gt;修改上传图片等相关问题&lt;/p&gt;
+&lt;p&gt;定制预览功能&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="UEditor" scheme="http://innozh.com/tags/UEditor/"/>
     
   </entry>
   
@@ -64,27 +109,6 @@
       <category term="MapBox" scheme="http://innozh.com/tags/MapBox/"/>
     
       <category term="android" scheme="http://innozh.com/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UEditor富文本编辑器定制</title>
-    <link href="http://innozh.com/2020-7-29-ueditor-ding-zhi.html"/>
-    <id>http://innozh.com/2020-7-29-ueditor-ding-zhi.html</id>
-    <published>2020-07-29T00:00:00.000Z</published>
-    <updated>2020-07-29T12:59:16.758Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;定制百度UEditor&lt;/p&gt;
-&lt;p&gt;修改上传图片等相关问题&lt;/p&gt;
-&lt;p&gt;定制预览功能&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="UEditor" scheme="http://innozh.com/tags/UEditor/"/>
     
   </entry>
   
@@ -500,32 +524,6 @@
     
     
       <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
-    
-      <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jQuery使用JSONP</title>
-    <link href="http://innozh.com/2020-3-10-jsonp-jquery.html"/>
-    <id>http://innozh.com/2020-3-10-jsonp-jquery.html</id>
-    <published>2020-03-10T00:00:00.000Z</published>
-    <updated>2020-03-30T10:21:27.793Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;服务端php&lt;/p&gt;
-&lt;p&gt;jQuery&lt;/p&gt;
-&lt;p&gt;JSONP&lt;/p&gt;
-&lt;p&gt;根据JSON数据创建表格&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="jQuery" scheme="http://innozh.com/tags/jQuery/"/>
     
       <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
     
