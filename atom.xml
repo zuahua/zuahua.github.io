@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-08-16T08:23:15.671Z</updated>
+  <updated>2020-11-21T06:32:10.214Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 快速开发</title>
+    <link href="http://innozh.com/2020-11-18-android.html"/>
+    <id>http://innozh.com/2020-11-18-android.html</id>
+    <published>2020-11-18T00:00:00.000Z</published>
+    <updated>2020-11-21T06:32:10.214Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android 快速开发笔记&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Android" scheme="http://innozh.com/tags/Android/"/>
+    
+      <category term="rxjava" scheme="http://innozh.com/tags/rxjava/"/>
+    
+      <category term="okhttp" scheme="http://innozh.com/tags/okhttp/"/>
+    
+      <category term="fastjson" scheme="http://innozh.com/tags/fastjson/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring boot 中使用 Mybatis-plus</title>
@@ -113,15 +138,15 @@
   </entry>
   
   <entry>
-    <title>Java 多线程</title>
-    <link href="http://innozh.com/2020-07-28java-duo-xian-cheng.html"/>
-    <id>http://innozh.com/2020-07-28java-duo-xian-cheng.html</id>
+    <title>Java文件IO</title>
+    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
+    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
     <published>2020-07-28T00:00:00.000Z</published>
-    <updated>2020-07-28T13:52:41.712Z</updated>
+    <updated>2020-07-28T13:52:41.702Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java 多线程&lt;/p&gt;
+      &lt;p&gt;Java各种IO操作&lt;/p&gt;
     
     </summary>
     
@@ -134,15 +159,15 @@
   </entry>
   
   <entry>
-    <title>Java文件IO</title>
-    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
-    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
+    <title>Java 多线程</title>
+    <link href="http://innozh.com/2020-07-28java-duo-xian-cheng.html"/>
+    <id>http://innozh.com/2020-07-28java-duo-xian-cheng.html</id>
     <published>2020-07-28T00:00:00.000Z</published>
-    <updated>2020-07-28T13:52:41.702Z</updated>
+    <updated>2020-07-28T13:52:41.712Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java各种IO操作&lt;/p&gt;
+      &lt;p&gt;Java 多线程&lt;/p&gt;
     
     </summary>
     
@@ -500,32 +525,6 @@
       <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
       <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用JSONP</title>
-    <link href="http://innozh.com/2020-3-10-jsonp-js.html"/>
-    <id>http://innozh.com/2020-3-10-jsonp-js.html</id>
-    <published>2020-03-10T00:00:00.000Z</published>
-    <updated>2020-03-30T10:21:05.163Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;服务端php&lt;/p&gt;
-&lt;p&gt;原生JS&lt;/p&gt;
-&lt;p&gt;JSONP&lt;/p&gt;
-&lt;p&gt;根据JSON数据创建表格&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
-    
-      <category term="JSONP" scheme="http://innozh.com/tags/JSONP/"/>
     
   </entry>
   
