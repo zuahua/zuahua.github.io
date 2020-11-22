@@ -6025,4 +6025,70 @@ Sum(one, two)
         <tag>fastjson</tag>
       </tags>
   </entry>
+  <entry>
+    <title>阿里短信服务 Java SDK 使用</title>
+    <url>/2020-11-22-alisms.html</url>
+    <content><![CDATA[<p>阿里短信服务 Java SDK 使用</p>
+<a id="more"></a>
+
+<h2 id="阿里短信服务-Java-SDK-使用"><a href="#阿里短信服务-Java-SDK-使用" class="headerlink" title="阿里短信服务 Java SDK 使用"></a>阿里短信服务 Java SDK 使用</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul>
+<li><p>阿里短信服务添加<strong>签名</strong></p>
+</li>
+<li><p>添加<strong>模板</strong></p>
+</li>
+<li><p><a href="https://ram.console.aliyun.com/users" target="_blank" rel="noopener external nofollow noreferrer">添加子用户并授权，创建用户 AccessKey</a></p>
+</li>
+<li><p>Java SDK 短信服务代码</p>
+</li>
+</ul>
+<h3 id="添加签名"><a href="#添加签名" class="headerlink" title="添加签名"></a>添加签名</h3><p><img src="../images/aliSMS/1.png" alt="image"></p>
+<p>这里使用验证码的方式。</p>
+<p>代码中将会使用签名名称。</p>
+<h3 id="添加模板"><a href="#添加模板" class="headerlink" title="添加模板"></a>添加模板</h3><p><img src="../images/aliSMS/2.png" alt=""></p>
+<p>可使用它提供的模板。</p>
+<p>代码中将会使用模板Code</p>
+<p><strong>模板内容</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">您的验证码$&#123;code&#125;，该验证码5分钟内有效，请勿泄漏于他人！</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加子用户、授权、创建用户AccessKey"><a href="#添加子用户、授权、创建用户AccessKey" class="headerlink" title="添加子用户、授权、创建用户AccessKey"></a>添加子用户、授权、创建用户AccessKey</h3><p><a href="https://ram.console.aliyun.com/users" target="_blank" rel="noopener external nofollow noreferrer">添加子用户</a></p>
+<p><strong>注意点：</strong></p>
+<p>添加用户权限时，授权范围：</p>
+<p><strong><em>云账号全部资源</em></strong></p>
+<p>选择权限：</p>
+<table>
+<thead>
+<tr>
+<th>权限策略名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AliyunDysmsFullAccess</td>
+<td>管理短信服务（SMS）的权限</td>
+</tr>
+<tr>
+<td>AliyunDysmsReadOnlyAccess</td>
+<td>只读访问短信服务（SMS）的权限</td>
+</tr>
+</tbody></table>
+<h4 id="创建用户-的AccessKey"><a href="#创建用户-的AccessKey" class="headerlink" title="创建用户 的AccessKey"></a>创建用户 的AccessKey</h4><p>添加子用户时，勾选<strong><em>编程访问</em></strong>，会自动生成AccessKey</p>
+<p>或者添加完用户后，点击子用户，进入页面手动添加。</p>
+<p>保存</p>
+<p><strong><em>accessKeyId</em></strong></p>
+<p><strong><em>secret</em></strong></p>
+<p>后面代码中使用。</p>
+<h3 id="Java-SDK-短信服务"><a href="#Java-SDK-短信服务" class="headerlink" title="Java SDK 短信服务"></a>Java SDK 短信服务</h3><p><a href="https://help.aliyun.com/document_detail/112148.html?spm=a2c4g.11186623.6.656.606a6915WpkJaK" target="_blank" rel="noopener external nofollow noreferrer">帮助文档</a></p>
+<h4 id="导入Maven依赖"><a href="#导入Maven依赖" class="headerlink" title="导入Maven依赖"></a>导入Maven依赖</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.5.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建发送短信验证码的Java类"><a href="#创建发送短信验证码的Java类" class="headerlink" title="创建发送短信验证码的Java类"></a>创建发送短信验证码的Java类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> io.renren.common.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.CommonRequest;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.CommonResponse;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.DefaultAcsClient;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.IAcsClient;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.exceptions.ClientException;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.exceptions.ServerException;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.http.MethodType;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.profile.DefaultProfile;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> hua</span></span><br><span class="line"><span class="comment"> * 阿里短信服务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendSms</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ACCESSKEYID = <span class="string">"你的ACCESSKEYID"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ACCESSSECRET = <span class="string">"你的ACCESSSECRET"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String SignName = <span class="string">"你的签名"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String TemplateCode = <span class="string">"你的模板标识代码"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送手机验证码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mobileNumber 手机号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> code 验证码</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CommonResponse <span class="title">send</span><span class="params">(String mobileNumber, String code)</span> </span>&#123;</span><br><span class="line">        DefaultProfile profile = DefaultProfile.getProfile(<span class="string">"cn-hangzhou"</span>, ACCESSKEYID, ACCESSSECRET);</span><br><span class="line">        IAcsClient client = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line"></span><br><span class="line">        CommonRequest request = <span class="keyword">new</span> CommonRequest();</span><br><span class="line">        request.setSysMethod(MethodType.POST);</span><br><span class="line">        request.setSysDomain(<span class="string">"dysmsapi.aliyuncs.com"</span>);</span><br><span class="line">        request.setSysVersion(<span class="string">"2017-05-25"</span>);</span><br><span class="line">        request.setSysAction(<span class="string">"SendSms"</span>);</span><br><span class="line">        request.putQueryParameter(<span class="string">"RegionId"</span>, <span class="string">"cn-hangzhou"</span>);</span><br><span class="line">        request.putQueryParameter(<span class="string">"PhoneNumbers"</span>, mobileNumber);</span><br><span class="line">        request.putQueryParameter(<span class="string">"SignName"</span>, SignName);</span><br><span class="line">        request.putQueryParameter(<span class="string">"TemplateCode"</span>, TemplateCode);</span><br><span class="line">        <span class="comment">// 模板参数</span></span><br><span class="line">        request.putQueryParameter(<span class="string">"TemplateParam"</span>, <span class="string">"&#123;\"code\": \""</span>+ code + <span class="string">"\"&#125;"</span>);</span><br><span class="line">        CommonResponse response = <span class="keyword">new</span> CommonResponse();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            response = client.getCommonResponse(request);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ServerException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建返回的JavaBean"><a href="#创建返回的JavaBean" class="headerlink" title="创建返回的JavaBean"></a>创建返回的JavaBean</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> io.renren.modules.sys.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> inno</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SMSResponseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> String Message;</span><br><span class="line">   <span class="keyword">private</span> String RequestId;</span><br><span class="line">   <span class="keyword">private</span> String BizId;</span><br><span class="line">   <span class="keyword">private</span> String Code;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        Message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getRequestId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> RequestId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRequestId</span><span class="params">(String requestId)</span> </span>&#123;</span><br><span class="line">        RequestId = requestId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBizId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BizId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBizId</span><span class="params">(String bizId)</span> </span>&#123;</span><br><span class="line">        BizId = bizId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span><span class="params">(String code)</span> </span>&#123;</span><br><span class="line">        Code = code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>主要代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">CommonResponse response = SendSms.send(<span class="string">"手机号"</span>, <span class="string">"123456"</span>);</span><br><span class="line">SMSResponseEntity smsResponseEntity = JSON.parseObject(response.getData(), SMSResponseEntity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="keyword">if</span>(!StringUtils.equals(<span class="string">"OK"</span>, smsResponseEntity.getCode())) &#123;</span><br><span class="line">    System.out.println(<span class="string">"发送失败: "</span> + smsResponseEntity.getMessage());</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">"发送成功"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>SMS</tag>
+      </tags>
+  </entry>
 </search>

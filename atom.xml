@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://innozh.com/"/>
-  <updated>2020-11-21T06:32:10.214Z</updated>
+  <updated>2020-11-22T06:07:00.031Z</updated>
   <id>http://innozh.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里短信服务 Java SDK 使用</title>
+    <link href="http://innozh.com/2020-11-22-alisms.html"/>
+    <id>http://innozh.com/2020-11-22-alisms.html</id>
+    <published>2020-11-22T00:00:00.000Z</published>
+    <updated>2020-11-22T06:07:00.031Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;阿里短信服务 Java SDK 使用&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="http://innozh.com/tags/Java/"/>
+    
+      <category term="SMS" scheme="http://innozh.com/tags/SMS/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 快速开发</title>
@@ -90,27 +111,6 @@
   </entry>
   
   <entry>
-    <title>UEditor富文本编辑器定制</title>
-    <link href="http://innozh.com/2020-7-29-ueditor-ding-zhi.html"/>
-    <id>http://innozh.com/2020-7-29-ueditor-ding-zhi.html</id>
-    <published>2020-07-29T00:00:00.000Z</published>
-    <updated>2020-07-29T12:59:16.758Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;定制百度UEditor&lt;/p&gt;
-&lt;p&gt;修改上传图片等相关问题&lt;/p&gt;
-&lt;p&gt;定制预览功能&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="UEditor" scheme="http://innozh.com/tags/UEditor/"/>
-    
-  </entry>
-  
-  <entry>
     <title>android 安装 MapBox SDK</title>
     <link href="http://innozh.com/2020-7-29-android-an-zhuang-mapbox-sdk.html"/>
     <id>http://innozh.com/2020-7-29-android-an-zhuang-mapbox-sdk.html</id>
@@ -138,23 +138,23 @@
   </entry>
   
   <entry>
-    <title>Java文件IO</title>
-    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
-    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
-    <published>2020-07-28T00:00:00.000Z</published>
-    <updated>2020-07-28T13:52:41.702Z</updated>
+    <title>UEditor富文本编辑器定制</title>
+    <link href="http://innozh.com/2020-7-29-ueditor-ding-zhi.html"/>
+    <id>http://innozh.com/2020-7-29-ueditor-ding-zhi.html</id>
+    <published>2020-07-29T00:00:00.000Z</published>
+    <updated>2020-07-29T12:59:16.758Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java各种IO操作&lt;/p&gt;
+      &lt;p&gt;定制百度UEditor&lt;/p&gt;
+&lt;p&gt;修改上传图片等相关问题&lt;/p&gt;
+&lt;p&gt;定制预览功能&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="java" scheme="http://innozh.com/tags/java/"/>
-    
-      <category term="笔记" scheme="http://innozh.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="UEditor" scheme="http://innozh.com/tags/UEditor/"/>
     
   </entry>
   
@@ -168,6 +168,27 @@
     <summary type="html">
     
       &lt;p&gt;Java 多线程&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="java" scheme="http://innozh.com/tags/java/"/>
+    
+      <category term="笔记" scheme="http://innozh.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java文件IO</title>
+    <link href="http://innozh.com/2020-07-28-wen-jian-io.html"/>
+    <id>http://innozh.com/2020-07-28-wen-jian-io.html</id>
+    <published>2020-07-28T00:00:00.000Z</published>
+    <updated>2020-07-28T13:52:41.702Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java各种IO操作&lt;/p&gt;
     
     </summary>
     
@@ -403,32 +424,6 @@
   </entry>
   
   <entry>
-    <title>php读取文件目录中文乱码</title>
-    <link href="http://innozh.com/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html"/>
-    <id>http://innozh.com/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html</id>
-    <published>2020-03-20T00:00:00.000Z</published>
-    <updated>2020-03-30T10:17:57.625Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;环境说明：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;php7.x&lt;/p&gt;
-&lt;p&gt;ubuntu18.04&lt;/p&gt;
-&lt;p&gt;Nginx&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="php" scheme="http://innozh.com/tags/php/"/>
-    
-      <category term="读文件" scheme="http://innozh.com/tags/%E8%AF%BB%E6%96%87%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
     <title>php读文件目录名及文件夹列表</title>
     <link href="http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html"/>
     <id>http://innozh.com/2020-3-20-php-du-wen-jian-mu-lu.html</id>
@@ -454,26 +449,28 @@
   </entry>
   
   <entry>
-    <title>fetch的简单使用</title>
-    <link href="http://innozh.com/2020-3-11-fetch.html"/>
-    <id>http://innozh.com/2020-3-11-fetch.html</id>
-    <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-30T10:18:54.735Z</updated>
+    <title>php读取文件目录中文乱码</title>
+    <link href="http://innozh.com/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html"/>
+    <id>http://innozh.com/2020-3-20-php-du-qu-wen-jian-mu-lu-zhong-wen-luan-ma.html</id>
+    <published>2020-03-20T00:00:00.000Z</published>
+    <updated>2020-03-30T10:17:57.625Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;fetch的简单使用&lt;/p&gt;
-&lt;p&gt;promise对象&lt;/p&gt;
+      &lt;p&gt;环境说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;php7.x&lt;/p&gt;
+&lt;p&gt;ubuntu18.04&lt;/p&gt;
+&lt;p&gt;Nginx&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
     
     
     
-      <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
+      <category term="php" scheme="http://innozh.com/tags/php/"/>
     
-      <category term="fetch" scheme="http://innozh.com/tags/fetch/"/>
+      <category term="读文件" scheme="http://innozh.com/tags/%E8%AF%BB%E6%96%87%E4%BB%B6/"/>
     
   </entry>
   
@@ -504,18 +501,17 @@
   </entry>
   
   <entry>
-    <title>原生JS封装AJAX</title>
-    <link href="http://innozh.com/2020-3-11-ajax-js.html"/>
-    <id>http://innozh.com/2020-3-11-ajax-js.html</id>
+    <title>fetch的简单使用</title>
+    <link href="http://innozh.com/2020-3-11-fetch.html"/>
+    <id>http://innozh.com/2020-3-11-fetch.html</id>
     <published>2020-03-11T00:00:00.000Z</published>
-    <updated>2020-03-30T10:19:38.317Z</updated>
+    <updated>2020-03-30T10:18:54.735Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;原生JS封装AJAX为一个外部文件&lt;/p&gt;
-&lt;p&gt;实现直接调用&lt;/p&gt;
-&lt;p&gt;GET、POST传输方式&lt;/p&gt;
+&lt;p&gt;fetch的简单使用&lt;/p&gt;
+&lt;p&gt;promise对象&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -524,7 +520,7 @@
     
       <category term="JavaScript" scheme="http://innozh.com/tags/JavaScript/"/>
     
-      <category term="AJAX" scheme="http://innozh.com/tags/AJAX/"/>
+      <category term="fetch" scheme="http://innozh.com/tags/fetch/"/>
     
   </entry>
   
