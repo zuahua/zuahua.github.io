@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://innozh.com/2019-06-12-html-note.html</loc>
+    
+    <lastmod>2020-11-22T06:24:23.050Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://innozh.com/2018-08-10-python-2.html</loc>
+    
+    <lastmod>2020-11-22T06:23:03.445Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://innozh.com/2020-11-22-alisms.html</loc>
     
-    <lastmod>2020-11-22T06:07:00.031Z</lastmod>
+    <lastmod>2020-11-22T06:13:44.043Z</lastmod>
     
   </url>
   
@@ -236,13 +250,6 @@
     <loc>http://innozh.com/2019-06-12-git-shang-chuan-xiang-mu.html</loc>
     
     <lastmod>2020-03-30T11:08:43.748Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://innozh.com/2019-06-12-html-note.html</loc>
-    
-    <lastmod>2020-03-30T11:08:28.607Z</lastmod>
     
   </url>
   
@@ -691,13 +698,6 @@
     <loc>http://innozh.com/2020-1-19-php-shang-chuan-wen-jian-dao-fu-wu-qi.html</loc>
     
     <lastmod>2020-02-02T07:23:18.450Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://innozh.com/2018-08-10-python-2.html</loc>
-    
-    <lastmod>2020-01-18T01:32:38.921Z</lastmod>
     
   </url>
   
